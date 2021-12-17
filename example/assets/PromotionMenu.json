@@ -1,0 +1,306 @@
+{
+  "id": 24,
+  "total_calorie": 200,
+  "total_time": 45,
+  "promotion_menu_name": "Maç Menüsü (Orta Boy Klasik Pizzalar)",
+  "short_description": "2 Adet Orta Boy Pizza (Klasik pizzalar için geçerlidir.) + Litrelik İçecek",
+  "description": "",
+  "images": [
+    {
+      "id": 40,
+      "image_url": "https://turkcellsiparisim.s3.eu-central-1.amazonaws.com/icdn/mobile_list_doyurunbeni--2li-orta-boy-pizza-menu-06052020123717.png",
+      "list_order": 1,
+      "image_size_id": "mobile_list"
+    },
+    {
+      "id": 41,
+      "image_url": "https://turkcellsiparisim.s3.eu-central-1.amazonaws.com/icdn/mobile_list_col_doyurunbeni--2li-orta-boy-pizza-menu-06052020123717.png",
+      "list_order": 1,
+      "image_size_id": "mobile_list_col"
+    },
+    {
+      "id": 54,
+      "image_url": "https://turkcellsiparisim.s3.eu-central-1.amazonaws.com/icdn/mobile_daily_menu_taraftar .jpeg",
+      "list_order": 5,
+      "image_size_id": "mobile_daily_menu"
+    },
+    {
+      "id": 55,
+      "image_url": "https://turkcellsiparisim.s3.eu-central-1.amazonaws.com/icdn/mobile_list_taraftar .jpeg",
+      "list_order": 5,
+      "image_size_id": "mobile_list"
+    },
+    {
+      "id": 56,
+      "image_url": "https://turkcellsiparisim.s3.eu-central-1.amazonaws.com/icdn/mobile_list_col_taraftar .jpeg",
+      "list_order": 5,
+      "image_size_id": "mobile_list_col"
+    },
+    {
+      "id": 57,
+      "image_url": "https://turkcellsiparisim.s3.eu-central-1.amazonaws.com/icdn/mobile_detail_taraftar .jpeg",
+      "list_order": 5,
+      "image_size_id": "mobile_detail"
+    },
+    {
+      "id": 38,
+      "image_url": "https://turkcellsiparisim.s3.eu-central-1.amazonaws.com/icdn/mobile_detail_doyurunbeni--2li-orta-boy-pizza-menu-06052020123717.png",
+      "list_order": 1,
+      "image_size_id": "mobile_detail"
+    },
+    {
+      "id": 39,
+      "image_url": "https://turkcellsiparisim.s3.eu-central-1.amazonaws.com/icdn/mobile_daily_menu_doyurunbeni--2li-orta-boy-pizza-menu-06052020123717.png",
+      "list_order": 1,
+      "image_size_id": "mobile_daily_menu"
+    },
+    {
+      "id": 58,
+      "image_url": "https://turkcellsiparisim.s3.eu-central-1.amazonaws.com/icdn/mobile_daily_menu_tavuklu-pizza.jpeg",
+      "list_order": 9,
+      "image_size_id": "mobile_daily_menu"
+    },
+    {
+      "id": 59,
+      "image_url": "https://turkcellsiparisim.s3.eu-central-1.amazonaws.com/icdn/mobile_list_tavuklu-pizza.jpeg",
+      "list_order": 9,
+      "image_size_id": "mobile_list"
+    },
+    {
+      "id": 60,
+      "image_url": "https://turkcellsiparisim.s3.eu-central-1.amazonaws.com/icdn/mobile_list_col_tavuklu-pizza.jpeg",
+      "list_order": 9,
+      "image_size_id": "mobile_list_col"
+    },
+    {
+      "id": 61,
+      "image_url": "https://turkcellsiparisim.s3.eu-central-1.amazonaws.com/icdn/mobile_detail_tavuklu-pizza.jpeg",
+      "list_order": 9,
+      "image_size_id": "mobile_detail"
+    }
+  ],
+  "price": [
+    {
+      "id": 25,
+      "price": 70.99,
+      "is_default": false,
+      "order_delivery_type_id": "TABLE"
+    }
+  ],
+  "sections": [
+    {
+      "id": 27,
+      "products": [
+        {
+          "id": 242,
+          "tags": [],
+          "images": null,
+          "calorie": 0,
+          "features": null,
+          "make_time": 15,
+          "photo_url": "https://",
+          "product_code": "PP1",
+          "product_name": "Pepsi (1 L.)",
+          "option_groups": null,
+          "short_description": ""
+        },
+        {
+          "id": 220,
+          "tags": [],
+          "images": null,
+          "calorie": 0,
+          "features": null,
+          "make_time": 40,
+          "photo_url": "https://",
+          "product_code": "BSD1001",
+          "product_name": "Barbekü soslu Sucuksever (Orta)",
+          "option_groups": [
+            {
+              "id": 58,
+              "options": [
+                {
+                  "id": 166,
+                  "is_free": false,
+                  "add_price": 0,
+                  "is_default": false,
+                  "list_order": 1,
+                  "option_code": "",
+                  "option_name": "Sucuk"
+                },
+                {
+                  "id": 167,
+                  "is_free": false,
+                  "add_price": 0,
+                  "is_default": false,
+                  "list_order": 2,
+                  "option_code": "",
+                  "option_name": "Mozerella Peynir"
+                }
+              ],
+              "max_count": 0,
+              "list_order": 1,
+              "description": "",
+              "adding_type_id": "DECREASE",
+              "choose_type_id": "MULTIPLE",
+              "option_group_name": "Çıkarılacak Malzemeler"
+            },
+            {
+              "id": 59,
+              "options": [
+                {
+                  "id": 168,
+                  "is_free": true,
+                  "add_price": 0,
+                  "is_default": true,
+                  "list_order": 1,
+                  "option_code": "",
+                  "option_name": "İncecik Hamur"
+                },
+                {
+                  "id": 169,
+                  "is_free": false,
+                  "add_price": 3,
+                  "is_default": false,
+                  "list_order": 2,
+                  "option_code": "",
+                  "option_name": "Klasik Hamur"
+                }
+              ],
+              "max_count": 0,
+              "list_order": 2,
+              "description": "",
+              "adding_type_id": "ADD",
+              "choose_type_id": "SINGLE",
+              "option_group_name": "Hamur Seçimi"
+            }
+          ],
+          "short_description": "Pizza Sosu Mozzarella Peyniri Sucuk Barbekü Sos"
+        },
+        {
+          "id": 208,
+          "tags": [],
+          "images": [
+            {
+              "image_url": "https://turkcellsiparisim.s3.eu-central-1.amazonaws.com/icdn/mobile_detail_TR Sucuksever.jpeg",
+              "list_order": 1,
+              "image_size_id": "mobile_detail"
+            },
+            {
+              "image_url": "https://turkcellsiparisim.s3.eu-central-1.amazonaws.com/icdn/mobile_daily_menu_TR Sucuksever.jpeg",
+              "list_order": 1,
+              "image_size_id": "mobile_daily_menu"
+            },
+            {
+              "image_url": "https://turkcellsiparisim.s3.eu-central-1.amazonaws.com/icdn/mobile_list_TR Sucuksever.jpeg",
+              "list_order": 1,
+              "image_size_id": "mobile_list"
+            },
+            {
+              "image_url": "https://turkcellsiparisim.s3.eu-central-1.amazonaws.com/icdn/mobile_list_col_TR Sucuksever.jpeg",
+              "list_order": 1,
+              "image_size_id": "mobile_list_col"
+            }
+          ],
+          "calorie": 0,
+          "features": null,
+          "make_time": 45,
+          "photo_url": "https://",
+          "product_code": "SP001",
+          "product_name": "Süperos Pizza (Orta)",
+          "option_groups": [
+            {
+              "id": 54,
+              "options": [
+                {
+                  "id": 156,
+                  "is_free": true,
+                  "add_price": 0,
+                  "is_default": false,
+                  "list_order": 1,
+                  "option_code": "",
+                  "option_name": "Peynir"
+                },
+                {
+                  "id": 157,
+                  "is_free": true,
+                  "add_price": 0,
+                  "is_default": false,
+                  "list_order": 2,
+                  "option_code": "",
+                  "option_name": "Sucuk"
+                },
+                {
+                  "id": 158,
+                  "is_free": true,
+                  "add_price": 0,
+                  "is_default": false,
+                  "list_order": 3,
+                  "option_code": "",
+                  "option_name": "Kekik"
+                },
+                {
+                  "id": 159,
+                  "is_free": true,
+                  "add_price": 0,
+                  "is_default": false,
+                  "list_order": 4,
+                  "option_code": "",
+                  "option_name": "Domates"
+                }
+              ],
+              "max_count": 0,
+              "list_order": 1,
+              "description": "",
+              "adding_type_id": "DECREASE",
+              "choose_type_id": "MULTIPLE",
+              "option_group_name": "Çıkarılacak Malzemeler"
+            },
+            {
+              "id": 55,
+              "options": [
+                {
+                  "id": 160,
+                  "is_free": true,
+                  "add_price": 0,
+                  "is_default": false,
+                  "list_order": 1,
+                  "option_code": "",
+                  "option_name": "İnce Hamur"
+                },
+                {
+                  "id": 161,
+                  "is_free": false,
+                  "add_price": 6.5,
+                  "is_default": true,
+                  "list_order": 2,
+                  "option_code": "",
+                  "option_name": "Sarmasaklı Kenar Klasik Hamur"
+                },
+                {
+                  "id": 162,
+                  "is_free": false,
+                  "add_price": 6.5,
+                  "is_default": false,
+                  "list_order": 3,
+                  "option_code": "",
+                  "option_name": "Parmesan Lezzetli Klasik Hamur"
+                }
+              ],
+              "max_count": 0,
+              "list_order": 2,
+              "description": "",
+              "adding_type_id": "ADD",
+              "choose_type_id": "SINGLE",
+              "option_group_name": "Hamur Seçimi"
+            }
+          ],
+          "short_description": "Pizza Sosu Mozzarella Peyniri Sucuk Jambon Sosis Domates Siyah Zeytin Kekik"
+        }
+      ],
+      "list_order": 1,
+      "description": "Mantar, Siyah,Zeytin,Yeşilbiber, Mısır, Domates",
+      "section_name": "1. Barbekü Soslu  Pizza  (Orta)",
+      "choose_required": true
+    }
+  ]
+}

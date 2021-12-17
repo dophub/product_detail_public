@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the OrderModel class from the model library, for the Dart programming language.">
+  <title>OrderModel class - model library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../"
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">product_detail</a></li>
+    <li><a href="../model/model-library.html">model</a></li>
+    <li class="self-crumb">OrderModel class</li>
+  </ol>
+  <div class="self-name">OrderModel</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-class">OrderModel</span> class 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>Sepette ürün ekleme request inde kullanılan order model
+Order Masteri temsil etmekte</p>
+</section>
+
+
+
+    <section class="summary offset-anchor" id="constructors">
+      <h2>Constructors</h2>
+
+      <dl class="constructor-summary-list">
+        <dt id="OrderModel" class="callable">
+          <span class="name"><a href="../model/OrderModel/OrderModel.html">OrderModel</a></span><span class="signature">(<span class="parameter" id="-param-id">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">id</span>, </span><span class="parameter" id="-param-items"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model/OrderItem-class.html">OrderItem</a></span>&gt;</span>?</span> <span class="parameter-name">items</span>, </span><span class="parameter" id="-param-ssoId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">ssoId</span>, </span><span class="parameter" id="-param-dealerId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">dealerId</span>, </span><span class="parameter" id="-param-lastName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">lastName</span>, </span><span class="parameter" id="-param-nickName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">nickName</span>, </span><span class="parameter" id="-param-sessionId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">sessionId</span>, </span><span class="parameter" id="-param-firstName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">firstName</span>, </span><span class="parameter" id="-param-orderNote"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">orderNote</span>, </span><span class="parameter" id="-param-tipAmount"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">tipAmount</span>, </span><span class="parameter" id="-param-customerId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">customerId</span>, </span><span class="parameter" id="-param-orderNumber"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">orderNumber</span>, </span><span class="parameter" id="-param-orderStatus"><span class="type-annotation"><a href="../model/OrderStatus-class.html">OrderStatus</a>?</span> <span class="parameter-name">orderStatus</span>, </span><span class="parameter" id="-param-totalAmount"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">totalAmount</span>, </span><span class="parameter" id="-param-deliveryDate"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">deliveryDate</span>, </span><span class="parameter" id="-param-orderPointId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">orderPointId</span>, </span><span class="parameter" id="-param-clientPointId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">clientPointId</span>, </span><span class="parameter" id="-param-paymentTypeId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">paymentTypeId</span>, </span><span class="parameter" id="-param-deliveryTypeId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">deliveryTypeId</span>, </span><span class="parameter" id="-param-sessionPointId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">sessionPointId</span>, </span><span class="parameter" id="-param-tipAmountWithoutKdv"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">tipAmountWithoutKdv</span>, </span><span class="parameter" id="-param-totalAmountWithoutKdv"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">totalAmountWithoutKdv</span>}</span>)</span>
+        </dt>
+        <dd>
+           
+        </dd>
+        <dt id="OrderModel.fromJson" class="callable">
+          <span class="name"><a href="../model/OrderModel/OrderModel.fromJson.html">OrderModel.fromJson</a></span><span class="signature">(<span class="parameter" id="fromJson-param-json"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">json</span></span>)</span>
+        </dt>
+        <dd>
+           
+          <div class="constructor-modifier features">factory</div>
+        </dd>
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="instance-properties">
+      <h2>Properties</h2>
+
+      <dl class="properties">
+        <dt id="clientPointId" class="property">
+  <span class="name"><a href="../model/OrderModel/clientPointId.html">clientPointId</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="customerId" class="property">
+  <span class="name"><a href="../model/OrderModel/customerId.html">customerId</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="dealerId" class="property">
+  <span class="name"><a href="../model/OrderModel/dealerId.html">dealerId</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="deliveryDate" class="property">
+  <span class="name"><a href="../model/OrderModel/deliveryDate.html">deliveryDate</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="deliveryTypeId" class="property">
+  <span class="name"><a href="../model/OrderModel/deliveryTypeId.html">deliveryTypeId</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="firstName" class="property">
+  <span class="name"><a href="../model/OrderModel/firstName.html">firstName</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="hashCode" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> 
+
+</dt>
+<dd class="inherited">
+  The hash code for this object. <a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">[...]</a>
+  <div class="features">read-only, inherited</div>
+
+</dd>
+
+        <dt id="id" class="property">
+  <span class="name"><a href="../model/OrderModel/id.html">id</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="items" class="property">
+  <span class="name"><a href="../model/OrderModel/items.html">items</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model/OrderItem-class.html">OrderItem</a></span>&gt;</span>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="lastName" class="property">
+  <span class="name"><a href="../model/OrderModel/lastName.html">lastName</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="nickName" class="property">
+  <span class="name"><a href="../model/OrderModel/nickName.html">nickName</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="orderNote" class="property">
+  <span class="name"><a href="../model/OrderModel/orderNote.html">orderNote</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="orderNumber" class="property">
+  <span class="name"><a href="../model/OrderModel/orderNumber.html">orderNumber</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="orderPointId" class="property">
+  <span class="name"><a href="../model/OrderModel/orderPointId.html">orderPointId</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="orderStatus" class="property">
+  <span class="name"><a href="../model/OrderModel/orderStatus.html">orderStatus</a></span>
+  <span class="signature">&#8596; <a href="../model/OrderStatus-class.html">OrderStatus</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="paymentTypeId" class="property">
+  <span class="name"><a href="../model/OrderModel/paymentTypeId.html">paymentTypeId</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span> 
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object. 
+  <div class="features">read-only, inherited</div>
+
+</dd>
+
+        <dt id="sessionId" class="property">
+  <span class="name"><a href="../model/OrderModel/sessionId.html">sessionId</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="sessionPointId" class="property">
+  <span class="name"><a href="../model/OrderModel/sessionPointId.html">sessionPointId</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="ssoId" class="property">
+  <span class="name"><a href="../model/OrderModel/ssoId.html">ssoId</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="tipAmount" class="property">
+  <span class="name"><a href="../model/OrderModel/tipAmount.html">tipAmount</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="tipAmountWithoutKdv" class="property">
+  <span class="name"><a href="../model/OrderModel/tipAmountWithoutKdv.html">tipAmountWithoutKdv</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="totalAmount" class="property">
+  <span class="name"><a href="../model/OrderModel/totalAmount.html">totalAmount</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+        <dt id="totalAmountWithoutKdv" class="property">
+  <span class="name"><a href="../model/OrderModel/totalAmountWithoutKdv.html">totalAmountWithoutKdv</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> 
+
+</dt>
+<dd>
+   
+  <div class="features">read / write</div>
+
+</dd>
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="instance-methods">
+      <h2>Methods</h2>
+      <dl class="callables">
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a non-existent method or property is accessed. <a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">[...]</a>
+  <div class="features">inherited</div>
+
+</dd>
+
+        <dt id="toJson" class="callable">
+  <span class="name"><a href="../model/OrderModel/toJson.html">toJson</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+   
+  
+
+</dd>
+
+        <dt id="toString" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A string representation of this object. <a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">[...]</a>
+  <div class="features">inherited</div>
+
+</dd>
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor inherited" id="operators">
+      <h2>Operators</h2>
+      <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The equality operator. <a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">[...]</a>
+  <div class="features">inherited</div>
+
+</dd>
+
+      </dl>
+    </section>
+
+
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../index.html">product_detail</a></li>
+  <li><a href="../model/model-library.html">model</a></li>
+  <li class="self-crumb">OrderModel class</li>
+</ol>
+
+
+    <h5>model library</h5>
+    <ol>
+  <li class="section-title"><a href="../model/model-library.html#classes">Classes</a></li>
+  <li><a href="../model/Customer-class.html">Customer</a></li>
+  <li><a href="../model/CustomerAddress-class.html">CustomerAddress</a></li>
+  <li><a href="../model/FeatureModel-class.html">FeatureModel</a></li>
+  <li><a href="../model/ImagesModel-class.html">ImagesModel</a></li>
+  <li><a href="../model/ItemModel-class.html">ItemModel</a></li>
+  <li><a href="../model/ItemOrder-class.html">ItemOrder</a></li>
+  <li><a href="../model/Items-class.html">Items</a></li>
+  <li><a href="../model/MenuDetailCategoryModel-class.html">MenuDetailCategoryModel</a></li>
+  <li><a href="../model/MenuDetailModel-class.html">MenuDetailModel</a></li>
+  <li><a href="../model/MenuProductModel-class.html">MenuProductModel</a></li>
+  <li><a href="../model/OptionGroupModel-class.html">OptionGroupModel</a></li>
+  <li><a href="../model/OptionModel-class.html">OptionModel</a></li>
+  <li><a href="../model/Options-class.html">Options</a></li>
+  <li><a href="../model/Order-class.html">Order</a></li>
+  <li><a href="../model/OrderItem-class.html">OrderItem</a></li>
+  <li><a href="../model/OrderModel-class.html">OrderModel</a></li>
+  <li><a href="../model/OrderOption-class.html">OrderOption</a></li>
+  <li><a href="../model/OrderOptionItem-class.html">OrderOptionItem</a></li>
+  <li><a href="../model/OrderOptionModel-class.html">OrderOptionModel</a></li>
+  <li><a href="../model/OrderSectionItem-class.html">OrderSectionItem</a></li>
+  <li><a href="../model/OrderSectionItemOption-class.html">OrderSectionItemOption</a></li>
+  <li><a href="../model/OrderStatus-class.html">OrderStatus</a></li>
+  <li><a href="../model/PriceModel-class.html">PriceModel</a></li>
+  <li><a href="../model/Product-class.html">Product</a></li>
+  <li><a href="../model/ProductCartModel-class.html">ProductCartModel</a></li>
+  <li><a href="../model/ProductDetailModel-class.html">ProductDetailModel</a></li>
+  <li><a href="../model/PromotionMenu-class.html">PromotionMenu</a></li>
+  <li><a href="../model/PromotionMenuModel-class.html">PromotionMenuModel</a></li>
+  <li><a href="../model/Section-class.html">Section</a></li>
+  <li><a href="../model/SectionModel-class.html">SectionModel</a></li>
+  <li><a href="../model/SectionsWidgetModel-class.html">SectionsWidgetModel</a></li>
+
+
+
+
+
+  <li class="section-title"><a href="../model/model-library.html#functions">Functions</a></li>
+  <li><a href="../model/menuDetailModelFromJson.html">menuDetailModelFromJson</a></li>
+  <li><a href="../model/menuDetailModelToJson.html">menuDetailModelToJson</a></li>
+  <li><a href="../model/productCartModelFromJson.html">productCartModelFromJson</a></li>
+  <li><a href="../model/productCartModelToJson.html">productCartModelToJson</a></li>
+  <li><a href="../model/productDetailModelFromJson.html">productDetailModelFromJson</a></li>
+  <li><a href="../model/productDetailModelToJson.html">productDetailModelToJson</a></li>
+  <li><a href="../model/productListModelFromJson.html">productListModelFromJson</a></li>
+  <li><a href="../model/promotionMenuModelFromJson.html">promotionMenuModelFromJson</a></li>
+  <li><a href="../model/promotionMenuModelToJson.html">promotionMenuModelToJson</a></li>
+
+  <li class="section-title"><a href="../model/model-library.html#enums">Enums</a></li>
+  <li><a href="../model/TimeoutAction.html">TimeoutAction</a></li>
+
+
+</ol>
+
+  </div>
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+    <ol>
+
+    <li class="section-title"><a href="../model/OrderModel-class.html#constructors">Constructors</a></li>
+    <li><a href="../model/OrderModel/OrderModel.html">OrderModel</a></li>
+    <li><a href="../model/OrderModel/OrderModel.fromJson.html">fromJson</a></li>
+
+
+    <li class="section-title">
+      <a href="../model/OrderModel-class.html#instance-properties">Properties</a>
+    </li>
+    <li><a href="../model/OrderModel/clientPointId.html">clientPointId</a></li>
+    <li><a href="../model/OrderModel/customerId.html">customerId</a></li>
+    <li><a href="../model/OrderModel/dealerId.html">dealerId</a></li>
+    <li><a href="../model/OrderModel/deliveryDate.html">deliveryDate</a></li>
+    <li><a href="../model/OrderModel/deliveryTypeId.html">deliveryTypeId</a></li>
+    <li><a href="../model/OrderModel/firstName.html">firstName</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+    <li><a href="../model/OrderModel/id.html">id</a></li>
+    <li><a href="../model/OrderModel/items.html">items</a></li>
+    <li><a href="../model/OrderModel/lastName.html">lastName</a></li>
+    <li><a href="../model/OrderModel/nickName.html">nickName</a></li>
+    <li><a href="../model/OrderModel/orderNote.html">orderNote</a></li>
+    <li><a href="../model/OrderModel/orderNumber.html">orderNumber</a></li>
+    <li><a href="../model/OrderModel/orderPointId.html">orderPointId</a></li>
+    <li><a href="../model/OrderModel/orderStatus.html">orderStatus</a></li>
+    <li><a href="../model/OrderModel/paymentTypeId.html">paymentTypeId</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
+    <li><a href="../model/OrderModel/sessionId.html">sessionId</a></li>
+    <li><a href="../model/OrderModel/sessionPointId.html">sessionPointId</a></li>
+    <li><a href="../model/OrderModel/ssoId.html">ssoId</a></li>
+    <li><a href="../model/OrderModel/tipAmount.html">tipAmount</a></li>
+    <li><a href="../model/OrderModel/tipAmountWithoutKdv.html">tipAmountWithoutKdv</a></li>
+    <li><a href="../model/OrderModel/totalAmount.html">totalAmount</a></li>
+    <li><a href="../model/OrderModel/totalAmountWithoutKdv.html">totalAmountWithoutKdv</a></li>
+
+    <li class="section-title"><a href="../model/OrderModel-class.html#instance-methods">Methods</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+    <li><a href="../model/OrderModel/toJson.html">toJson</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
+
+    <li class="section-title inherited"><a href="../model/OrderModel-class.html#operators">Operators</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    product_detail
+      0.0.1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/script.js?v1"></script>
+
+
+
+</body>
+
+</html>
+

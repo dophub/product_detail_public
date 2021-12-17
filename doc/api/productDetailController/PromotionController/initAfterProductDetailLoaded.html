@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the initAfterProductDetailLoaded method from the PromotionController class, for the Dart programming language.">
+  <title>initAfterProductDetailLoaded method - PromotionController class - productDetailController library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../"
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">product_detail</a></li>
+    <li><a href="../../productDetailController/productDetailController-library.html">productDetailController</a></li>
+    <li><a href="../../productDetailController/PromotionController-class.html">PromotionController</a></li>
+    <li class="self-crumb">initAfterProductDetailLoaded method</li>
+  </ol>
+  <div class="self-name">initAfterProductDetailLoaded</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-method">initAfterProductDetailLoaded</span> method 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype">void</span>
+<span class="name ">initAfterProductDetailLoaded</span>(<wbr>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Frame yüklendikten sonra section lerde olan isDefault alanına göre isSelected alanlarımızı güncelliyoruz</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">void initAfterProductDetailLoaded() {
+    &#47;&#47; sections loop
+  if(orderItem != null){
+    PromotionMenuModel product = orderItem!.toPromotionModel();
+    for (int sectionsIndex = 0; sectionsIndex &lt; promotionMenuModel.sections!.length; sectionsIndex++) {
+      var sections = promotionMenuModel.sections![sectionsIndex];
+      var orderSections = product.sections!.firstWhere((element) =&gt; element.id == sections.id, orElse: () =&gt; SectionModel());
+      if (orderSections.id != null) {
+        sections.isSelected = true;
+        for (int productsIndex = 0; productsIndex &lt; sections.products!.length;productsIndex++) {
+          var products = sections.products![productsIndex];
+          var orderProducts = orderSections.products!.firstWhere((element) =&gt; element.id == products.id,orElse: () =&gt; ProductDetailModel());
+          if (orderProducts.id != null) {
+            products.isSelected = true;
+            &#47;&#47; optionGroups loop
+            for (int groupIndex = 0; groupIndex &lt; products.optionGroups!.length; groupIndex++) {
+              var optionGroups = products.optionGroups![groupIndex];
+              var orderOptionGroups = orderProducts.optionGroups!.firstWhere((element) =&gt; element.id == optionGroups.id, orElse: () =&gt; OptionGroupModel());
+              &#47;&#47; options loop
+              if (orderOptionGroups.id != null) {
+                for (int optionsIndex = 0; optionsIndex &lt; optionGroups.options!.length; optionsIndex++) {
+                  var orderOption = orderOptionGroups.options!.firstWhere((element) =&gt;element.id ==optionGroups.options![optionsIndex].id, orElse: () =&gt; OptionModel());
+                  if (orderOption.id != null) {
+                    optionGroups.options![optionsIndex].isSelected = true;
+                    optionGroups.isSelected = true;
+                  }
+                }
+              }
+            }
+            &#47;&#47; features loop
+            for (int featuresIndex = 0; featuresIndex &lt; products.features!.length; featuresIndex++) {
+              var features = products.features![featuresIndex];
+              var orderFeatures = orderProducts.features!.firstWhere((element) =&gt; element.id == features.id, orElse: () =&gt; FeatureModel());
+              &#47;&#47; items loop
+              if (orderFeatures.id != null) {
+                for (int itemsIndex = 0; itemsIndex &lt; features.items!.length; itemsIndex++) {
+                  var orderFeatureItem = orderFeatures.items!.firstWhere((element) =&gt;element.id == features.items![itemsIndex].id, orElse: () =&gt; ItemModel());
+                  if (orderFeatureItem.id != null) {
+                  features.items![itemsIndex].isSelected = true;
+                  features.isSelected = true;
+                }
+              }
+            }}
+          }
+        }
+      }
+    }}
+  else
+    for (int sectionsIndex = 0; sectionsIndex &lt; promotionMenuModel.sections!.length; sectionsIndex++) {
+      var sections = promotionMenuModel.sections![sectionsIndex];
+      for (int productsIndex = 0; productsIndex &lt; sections.products!.length; productsIndex++){
+        var products = sections.products![productsIndex];
+        &#47;&#47; optionGroups loop
+        for (int groupIndex = 0; groupIndex &lt; products.optionGroups!.length; groupIndex++) {
+          var optionGroups = products.optionGroups![groupIndex];
+          &#47;&#47; options loop
+          for (int optionsIndex = 0; optionsIndex &lt; optionGroups.options!.length; optionsIndex++) {
+            if (optionGroups.options![optionsIndex].isDefault!) {
+              optionGroups.options![optionsIndex].isSelected = true;
+              optionGroups.isSelected = true;
+            }
+          }
+        }
+        &#47;&#47; features loop
+        for (int featuresIndex = 0; featuresIndex &lt; products.features!.length; featuresIndex++) {
+          var features = products.features![featuresIndex];
+          &#47;&#47; items loop
+          for (int itemsIndex = 0; itemsIndex &lt; features.items!.length; itemsIndex++) {
+            if (features.items![itemsIndex].isDefault!) {
+              features.items![itemsIndex].isSelected = true;
+              features.isSelected = true;
+            }
+          }
+        }
+      }
+    }
+  amountUpdate();
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">product_detail</a></li>
+  <li><a href="../../productDetailController/productDetailController-library.html">productDetailController</a></li>
+  <li><a href="../../productDetailController/PromotionController-class.html">PromotionController</a></li>
+  <li class="self-crumb">initAfterProductDetailLoaded method</li>
+</ol>
+
+
+    <h5>PromotionController class</h5>
+    <ol>
+
+    <li class="section-title"><a href="../../productDetailController/PromotionController-class.html#constructors">Constructors</a></li>
+    <li><a href="../../productDetailController/PromotionController/PromotionController.html">PromotionController</a></li>
+
+
+    <li class="section-title">
+      <a href="../../productDetailController/PromotionController-class.html#instance-properties">Properties</a>
+    </li>
+    <li><a href="../../productDetailController/PromotionController/amount.html">amount</a></li>
+    <li><a href="../../productDetailController/PromotionController/cNote.html">cNote</a></li>
+    <li><a href="../../productDetailController/PromotionController/count.html">count</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+    <li class="inherited"><a href="https://pub.dev/documentation/get/4.5.1/get_state_manager_src_simple_list_notifier/ListNotifierMixin/hasListeners.html">hasListeners</a></li>
+    <li class="inherited"><a href="https://pub.dev/documentation/get/4.5.1/get_instance_src_lifecycle/GetLifeCycleBase/initialized.html">initialized</a></li>
+    <li class="inherited"><a href="https://pub.dev/documentation/get/4.5.1/get_instance_src_lifecycle/GetLifeCycleBase/isClosed.html">isClosed</a></li>
+    <li class="inherited"><a href="https://pub.dev/documentation/get/4.5.1/get_state_manager_src_simple_list_notifier/ListNotifierMixin/listeners.html">listeners</a></li>
+    <li><a href="../../productDetailController/PromotionController/onChangeAmount.html">onChangeAmount</a></li>
+    <li class="inherited"><a href="https://pub.dev/documentation/get/4.5.1/get_instance_src_lifecycle/GetLifeCycleBase/onDelete.html">onDelete</a></li>
+    <li class="inherited"><a href="https://pub.dev/documentation/get/4.5.1/get_instance_src_lifecycle/GetLifeCycleBase/onStart.html">onStart</a></li>
+    <li><a href="../../productDetailController/PromotionController/orderItem.html">orderItem</a></li>
+    <li><a href="../../productDetailController/PromotionController/promotionMenuModel.html">promotionMenuModel</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
+
+    <li class="section-title"><a href="../../productDetailController/PromotionController-class.html#instance-methods">Methods</a></li>
+    <li class="inherited"><a href="https://pub.dev/documentation/get/4.5.1/get_instance_src_lifecycle/GetLifeCycleBase/$configureLifeCycle.html">$configureLifeCycle</a></li>
+    <li class="inherited"><a href="https://pub.dev/documentation/get/4.5.1/get_state_manager_src_simple_list_notifier/ListNotifierMixin/addListener.html">addListener</a></li>
+    <li class="inherited"><a href="https://pub.dev/documentation/get/4.5.1/get_state_manager_src_simple_list_notifier/ListNotifierMixin/addListenerId.html">addListenerId</a></li>
+    <li><a href="../../productDetailController/PromotionController/amountUpdate.html">amountUpdate</a></li>
+    <li><a href="../../productDetailController/PromotionController/countUpdate.html">countUpdate</a></li>
+    <li class="inherited"><a href="https://pub.dev/documentation/get/4.5.1/get_state_manager_src_simple_list_notifier/ListNotifierMixin/dispose.html">dispose</a></li>
+    <li class="inherited"><a href="https://pub.dev/documentation/get/4.5.1/get_state_manager_src_simple_list_notifier/ListNotifierMixin/disposeId.html">disposeId</a></li>
+    <li><a href="../../productDetailController/PromotionController/getBasketModel.html">getBasketModel</a></li>
+    <li><a href="../../productDetailController/PromotionController/getFeaturesForSelectedProduct.html">getFeaturesForSelectedProduct</a></li>
+    <li><a href="../../productDetailController/PromotionController/getIndexForSelectedFeatureItem.html">getIndexForSelectedFeatureItem</a></li>
+    <li><a href="../../productDetailController/PromotionController/getIndexForSelectedOption.html">getIndexForSelectedOption</a></li>
+    <li><a href="../../productDetailController/PromotionController/getIndexForSelectedProduct.html">getIndexForSelectedProduct</a></li>
+    <li><a href="../../productDetailController/PromotionController/getOptionsForSelectedProduct.html">getOptionsForSelectedProduct</a></li>
+    <li><a href="../../productDetailController/PromotionController/initAfterProductDetailLoaded.html">initAfterProductDetailLoaded</a></li>
+    <li><a href="../../productDetailController/PromotionController/multiAddFeatureSelection.html">multiAddFeatureSelection</a></li>
+    <li><a href="../../productDetailController/PromotionController/multiAddOptionSelection.html">multiAddOptionSelection</a></li>
+    <li><a href="../../productDetailController/PromotionController/multiDecreaseFeatureSelection.html">multiDecreaseFeatureSelection</a></li>
+    <li><a href="../../productDetailController/PromotionController/multiDecreaseOptionSelection.html">multiDecreaseOptionSelection</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+    <li class="inherited"><a href="https://pub.dev/documentation/get/4.5.1/get_state_manager_src_simple_list_notifier/ListNotifierMixin/notifyChildrens.html">notifyChildrens</a></li>
+    <li class="inherited"><a href="https://pub.dev/documentation/get/4.5.1/get_state_manager_src_rx_flutter_rx_disposable/DisposableInterface/onClose.html">onClose</a></li>
+    <li><a href="../../productDetailController/PromotionController/onCloseNotDialog.html">onCloseNotDialog</a></li>
+    <li><a href="../../productDetailController/PromotionController/onInit.html">onInit</a></li>
+    <li><a href="../../productDetailController/PromotionController/onReady.html">onReady</a></li>
+    <li class="inherited"><a href="https://pub.dev/documentation/get/4.5.1/get_state_manager_src_simple_list_notifier/ListNotifierMixin/refresh.html">refresh</a></li>
+    <li class="inherited"><a href="https://pub.dev/documentation/get/4.5.1/get_state_manager_src_simple_list_notifier/ListNotifierMixin/refreshGroup.html">refreshGroup</a></li>
+    <li class="inherited"><a href="https://pub.dev/documentation/get/4.5.1/get_state_manager_src_simple_list_notifier/ListNotifierMixin/removeListener.html">removeListener</a></li>
+    <li class="inherited"><a href="https://pub.dev/documentation/get/4.5.1/get_state_manager_src_simple_list_notifier/ListNotifierMixin/removeListenerId.html">removeListenerId</a></li>
+    <li><a href="../../productDetailController/PromotionController/sectionBottomSheetOnChange.html">sectionBottomSheetOnChange</a></li>
+    <li><a href="../../productDetailController/PromotionController/singleFeatureSelection.html">singleFeatureSelection</a></li>
+    <li><a href="../../productDetailController/PromotionController/singleOptionSelection.html">singleOptionSelection</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
+    <li class="inherited"><a href="https://pub.dev/documentation/get/4.5.1/get_state_manager/GetxController/update.html">update</a></li>
+
+    <li class="section-title inherited"><a href="../../productDetailController/PromotionController-class.html#operators">Operators</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    product_detail
+      0.0.1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/script.js?v1"></script>
+
+
+
+</body>
+
+</html>
+

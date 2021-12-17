@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="generator" content="made with love by dartdoc 4.1.0">
+  <meta name="description" content="product_detail API docs, for the Dart programming language.">
+  <title>product_detail - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href=""
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li class="self-crumb">product_detail package</li>
+  </ol>
+  <div class="self-name">product_detail</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <!-- 
+Türkcell Siparişim uygulamasının ürün profil ekranının detay kısmını kapsamaktadır. 
+-->
+<h2 id="kullanm">Kullanımı</h2>
+<p>Paketi projeye eklemek için 'pubspec.yaml' dosyasına girip altaki kod bluğu ekliyoruz</p>
+<pre class="language-dart"><code class="language-dart">  product_detail:
+    git:
+      url: https://bitbucket.org/digital-operasyon-merkezi/product_detail_package.git
+      ref: prod
+</code></pre>
+<p>Controlleri import etmek için</p>
+<pre class="language-dart"><code class="language-dart">import 'package:product_detail/controller.dart';
+</code></pre>
+<p>ProductDetail'i import etmek için</p>
+<pre class="language-dart"><code class="language-dart">import 'package:product_detail/product_detail.dart';
+</code></pre>
+<p>Product,Promotion ve Basket modellerini import etmek için</p>
+<pre class="language-dart"><code class="language-dart">import 'package:product_detail/model.dart';
+</code></pre>
+<p>Kontrolumuzu init yapıyoruz</p>
+<pre class="language-dart"><code class="language-dart">final ProductViewController productViewController =  ProductViewController(orderItem,productDetailModel);
+</code></pre>
+<p>View kısmında bu kod bluğunu ekliyoruz</p>
+<pre class="language-dart"><code class="language-dart">Container(
+     child: ProductDetailView(
+      controller: controller.productViewController,
+),)
+</code></pre>
+<p>Tutar değişkenini dinlemek istediğmizde</p>
+<pre class="language-dart"><code class="language-dart">productViewController.addListener(() {   
+  amount = productViewController.value;
+});
+</code></pre>
+<p>Ürün Adedini güncellemek istersek</p>
+<pre class="language-dart"><code class="language-dart">void onTapQuantityBtn(int _count) {
+  int _count = 4;
+  productViewController.count = _count;
+}
+</code></pre>
+<p>Sepet modelini seçilen özeliklere göre getirmek istersek</p>
+<pre class="language-dart"><code class="language-dart">var item = productViewController.getBasketModel(TimeoutAction.Add);
+</code></pre>
+<p>Dealer de Masa TimeOut durumu.</p>
+<pre class="language-dart"><code class="language-dart">///[None] Sepete Ilk eklemede ekleyeceğmiz durum.
+///[New] Yeni Service Başlatmak istiyorum.
+///[Add] Masaya açık olan service devam etmek istiyorum.
+enum TimeoutAction { None, New, Add }
+</code></pre>
+<p>Sepete eklemek istediğimizde controllerden Sepet modelini Çekip Http işlemleri yapacaz.</p>
+<pre class="language-dart"><code class="language-dart">Future&lt;void&gt; onTapAddToCartBtn(TimeoutAction timeoutAction) async {
+  BuildContext context = scaffoldKey.currentContext!;
+  LoadingProgress.showLoading(context);
+  var item = optionViewController.getBasketModel(TimeoutAction.Add);
+  await Future.delayed(Duration(seconds: 1)); // Http işlemi
+  LoadingProgress.done(context);
+  showToastMessage(context, textMessage: 'Ürün sepete eklendi');
+}
+</code></pre>
+<p>Dispose işlemi</p>
+<pre class="language-dart"><code class="language-dart">@override
+void onClose() {
+  promotionViewController.dispose();   
+  super.onClose();
+}
+</code></pre>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="controller">
+  <span class="name"><a href="controller/controller-library.html">controller</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="model">
+  <span class="name"><a href="model/model-library.html">model</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+          <dt id="product_detail">
+  <span class="name"><a href="product_detail/product_detail-library.html">product_detail</a></span> 
+
+</dt>
+<dd> 
+</dd>
+
+        </dl>
+      </section>
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li class="self-crumb">product_detail package</li>
+</ol>
+
+
+    <h5 class="hidden-xs"><span class="package-name">product_detail</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="controller/controller-library.html">controller</a></li>
+      <li><a href="model/model-library.html">model</a></li>
+      <li><a href="product_detail/product_detail-library.html">product_detail</a></li>
+</ol>
+
+  </div>
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+
+</main>
+
+<footer>
+  <span class="no-break">
+    product_detail
+      0.0.1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/script.js?v1"></script>
+
+
+
+</body>
+
+</html>
+

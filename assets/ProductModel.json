@@ -1,0 +1,191 @@
+
+{
+  "id": 171,
+  "product_name": "BK Kral Burger",
+  "short_description": "BK Kral Burger BK Kral Burger",
+  "product_code": null,
+  "tags": [
+    "ketçap",
+    "mayonez"
+  ],
+  "make_time": 45,
+  "calorie": 150,
+  "photo_url": "https://",
+  "price": [
+    {
+      "id": 65,
+      "price": 28,
+      "is_default": false,
+      "order_delivery_type_id": "TAKEOUT"
+    },
+    {
+      "id": 67,
+      "price": 39,
+      "is_default": false,
+      "order_delivery_type_id": "TAKEOUT"
+    },
+    {
+      "id": 68,
+      "price": 31,
+      "is_default": true,
+      "order_delivery_type_id": "TABLE"
+    }
+  ],
+  "images": null,
+  "option_groups": [
+    {
+      "id": 34,
+      "options": [
+        {
+          "id": 114,
+          "is_free": true,
+          "add_price": 7,
+          "is_default": true,
+          "list_order": 1,
+          "option_code": "BKOCODE4",
+          "option_name": "beyaz peynir"
+        },
+        {
+          "id": 114,
+          "is_free": true,
+          "add_price": 8,
+          "is_default": true,
+          "list_order": 1,
+          "option_code": "BKOCODE4",
+          "option_name": "beyaz peynir"
+        },
+        {
+          "id": 113,
+          "is_free": true,
+          "add_price": 5,
+          "is_default": true,
+          "list_order": 3,
+          "option_code": "BKOCODE3",
+          "option_name": "cheedar"
+        }
+      ],
+      "max_count": 0,
+      "list_order": 10,
+      "description": "description",
+      "adding_type_id": "SELECT",
+      "choose_type_id": "SINGLE",
+      "option_group_name": "Peynir"
+    }
+  ],
+  "features": [
+    {
+      "id": 39,
+      "items": [
+        {
+          "id": 63,
+          "is_free": false,
+          "add_price": 5,
+          "is_default": false,
+          "list_order": 1,
+          "product_name": "Hamburger"
+        },
+        {
+          "id": 63,
+          "is_free": false,
+          "add_price": 6.5,
+          "is_default": false,
+          "list_order": 1,
+          "product_name": "Hamburger"
+        }
+      ],
+      "max_count": 4,
+      "list_order": 1,
+      "description": "açıklama",
+      "feature_name": "Peynir Seçimi",
+      "adding_type_id": "ADD",
+      "choose_type_id": "SINGLE",
+      "max_free_count": 2
+    },
+    {
+      "id": 47,
+      "items": [
+        {
+          "id": 73,
+          "is_free": true,
+          "add_price": 5,
+          "is_default": true,
+          "list_order": 5,
+          "product_name": "BK Kral Burger"
+        },
+        {
+          "id": 74,
+          "is_free": true,
+          "add_price": 7,
+          "is_default": true,
+          "list_order": 6,
+          "product_name": "Acı Sos"
+        },
+        {
+          "id": 75,
+          "is_free": true,
+          "add_price": 8,
+          "is_default": true,
+          "list_order": 7,
+          "product_name": "Double Big King"
+        }
+      ],
+      "max_count": 3,
+      "list_order": 1,
+      "description": "test ",
+      "feature_name": "İçecekler",
+      "adding_type_id": "ADD",
+      "choose_type_id": "MULTIPLE",
+      "max_free_count": 5
+    },
+    {
+      "id": 40,
+      "items": [
+        {
+          "id": 64,
+          "is_free": true,
+          "add_price": 7,
+          "is_default": true,
+          "list_order": 2,
+          "product_name": "King Sundae"
+        },
+        {
+          "id": 64,
+          "is_free": true,
+          "add_price": 7.5,
+          "is_default": true,
+          "list_order": 2,
+          "product_name": "King Sundae"
+        }
+      ],
+      "max_count": 5,
+      "list_order": 2,
+      "description": "acıklama",
+      "feature_name": "Sos seçimi",
+      "adding_type_id": "DECREASE",
+      "choose_type_id": "MULTIPLE",
+      "max_free_count": 3
+    },
+    {
+      "id": 41,
+      "items": [
+        {
+          "id": 65,
+          "is_free": false,
+          "add_price": 8,
+          "is_default": false,
+          "list_order": 4,
+          "product_name": "Klasik Gurme Tavuk"
+        }
+      ],
+      "max_count": 5,
+      "list_order": 2,
+      "description": "açıklama",
+      "feature_name": "malzemeler",
+      "adding_type_id": "SELECT",
+      "choose_type_id": "SINGLE",
+      "max_free_count": 3
+    }
+  ]
+}
+
+

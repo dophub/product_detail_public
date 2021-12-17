@@ -1,0 +1,30 @@
+name: product_detail
+description: Turkcell Siparisim ürün detay ekranı
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  get: ^4.3.8
+  flutter_svg: ^0.22.0
+  connectivity: ^3.0.6
+  intl: ^0.17.0
+
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  assets:
+    - assets/images/

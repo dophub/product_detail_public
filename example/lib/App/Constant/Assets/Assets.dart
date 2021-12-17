@@ -1,0 +1,65 @@
+/// Tüm Assets path leri buradan çekilecek Proje içinde Herhangi bir path yazılmayacak
+
+String? fontFamily = 'GreycliffCF';
+
+String assets = 'assets/images/';
+
+String siparisimLight = assets + 'siparisim_light.svg';
+String blueQR = assets + 'blue_qr.svg';
+String fastLoginWhiteTr = assets + 'fast_login_white_tr.svg';
+String firstScreenBackground = assets + 'first_screen_background.svg';
+String siparisimWhiteLogo = assets + 'siparisim_white_logo.svg';
+String fastLoginButtonWhiteTr = assets + 'fast_login_button_white_tr.png';
+String plate = assets + 'plate.png';
+String tableIcon = assets + 'table_icon.svg';
+String drawerIcon = assets + 'drawer_icon.svg';
+String storeOpenIcon = assets + 'store_open_icon.svg';
+String watchIcon = assets + 'watch.svg';
+String searchIcon = assets + 'search_icon.svg';
+String arrowRightIcon = assets + 'arrow_right_icon.svg';
+String starNote = assets + 'star_note.svg';
+String kcalIcon = assets + 'kcal_icon.svg';
+String valeIcon = assets + 'vale_icon.svg';
+String mainScreenIcon = assets + 'main_screen_icon.svg';
+String orderIcon = assets + 'order_icon.svg';
+String waiterIcon = assets + 'waiter_icon.svg';
+String customerServiceIcon = assets + 'customer_service_icon.svg';
+String locationIcon = assets + 'location_icon.svg';
+String cardIcon = assets + 'card_icon.svg';
+String campaignIcon = assets + 'kampaign_icon.svg';
+String discoverIcon = assets + 'discover_icon.svg';
+String userIcon = assets + 'user_icon.svg';
+String drawerBackground = assets + 'drawer_background.svg';
+String discountTagVertical = assets + 'discount_tag_vartical.svg';
+String selectedProduct = assets + 'selected_product.svg';
+String discountTagHorizontalLeft = assets + 'discount_tag_horizontal_left.svg';
+String discountTagHorizontalRight = assets + 'discount_tag_horizontal_right.svg';
+String yellowStarIcon = assets + 'yellow_star.svg';
+String personIcon = assets + 'person_icon.svg';
+String tagIcon = assets + 'tag_icon.svg';
+String gridIcon = assets + 'grid_icon.svg';
+String barcodeCard = assets + 'barcode_card.png';
+String chefHat = assets + 'chef_hat.svg';
+String grinningFace = assets + 'grinning_face.svg';
+String heartEyesFace = assets + 'heart_eyes.svg';
+String neutralFace = assets + 'neutral_face.svg';
+String smilingFace = assets + 'smiling_face.svg';
+String yellowErrorIcon = assets + 'yellow_error_icon.svg';
+String doneIcon = assets + 'done_icon.svg';
+String outlineStarIcon = assets + 'outline_star_icon.svg';
+String arrowIcon = assets + 'arrow_icon.svg';
+String outlineErrorIcon = assets + 'outline_error_icon.svg';
+String outlineDoneIcon = assets + 'outline_done_icon.svg';
+String homeIcon = assets + 'home.svg';
+String basketIcon = assets + 'basket_icon.svg';
+String lineIcon = assets + 'line_icon.svg';
+String outlineBarcodeIcon = assets + 'outline_barcode_icon.svg';
+String barcodeIcon = assets + 'barcode_icon.svg';
+String refreshIcon = assets + 'refresh_icon.svg';
+String rightChevronIcon = assets + 'right_chevron.svg';
+String filterIcon = assets + 'filter_icon.svg';
+String addPersonIcon = assets + 'add_person_icon.svg';
+String forkSpoonIcon = assets + 'fork_spoon_icon.svg';
+String buildingIcon = assets + 'building_icon.svg';
+String downChevronIcon = assets + 'down_chevron_icon.svg';
+
