@@ -8,7 +8,7 @@ Paketi projeye eklemek için 'pubspec.yaml' dosyasına girip altaki kod bluğu e
 ```dart
   product_detail:
     git:
-      url: https://bitbucket.org/digital-operasyon-merkezi/product_detail_package.git
+      url: https://bitbucket.org/digital-operasyon-merkezi/product_detail_public.git
       ref: prod
 ```
 
