@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:product_detail/src/app/const/IdEnum.dart';
 import 'package:product_detail/src/app/const/TypeEnum.dart';
+import 'package:product_detail/src/app/model/ProductCartModel.dart';
 
-import '../../../model.dart';
 import 'ImagesModel.dart';
 import 'MenuDetailModel.dart';
 import 'PriceModel.dart';
@@ -187,7 +187,7 @@ class OrderItem {
     this.itemPriceWithoutKdv,
     this.totalPriceWithoutKdv,
     this.itemObject,
-    this.statusName,
+    this.status,
   });
 
   int? id;
@@ -207,7 +207,7 @@ class OrderItem {
   double? itemPriceWithoutKdv;
   double? totalPriceWithoutKdv;
   MenuProductModel? itemObject;
-  String? statusName;
+  ItemStatus? status;
 
   /// Order modelde olan ürünü ProductPrfile ekranında kullanılan modele çevirmekte
   /// [OrderItem] ---> [ProductDetailModel]
@@ -351,7 +351,7 @@ class OrderItem {
     promotionMenuId: json["promotion_menu_id"] == null ? null : json["promotion_menu_id"],
     itemPriceWithoutKdv: json["item_price_without_kdv"].toDouble(),
     totalPriceWithoutKdv: json["total_price_without_kdv"].toDouble(),
-    statusName: json["status_name"],
+    status: ItemStatus.fromJson(json["status"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -372,7 +372,7 @@ class OrderItem {
     "item_object": itemObject == null ? null : itemObject!.toJson(),
     "item_price_without_kdv": itemPriceWithoutKdv,
     "total_price_without_kdv": totalPriceWithoutKdv,
-    "status_name": statusName,
+    "status": status == null ? null :  status!.toJson(),
   };
 }
 
@@ -546,3 +546,25 @@ class OrderSectionItemOption {
   };
 }
 /// __________________________________________________
+
+class ItemStatus {
+  ItemStatus({
+    this.statusName,
+    this.statusCode,
+  });
+
+  String? statusName;
+  String? statusCode;
+
+  factory ItemStatus.fromJson(Map<String, dynamic> json) => ItemStatus(
+    statusName: json["status_name"],
+    statusCode: json["status_code"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "status_name": statusName,
+    "status_code": statusCode,
+  };
+}
+
+
