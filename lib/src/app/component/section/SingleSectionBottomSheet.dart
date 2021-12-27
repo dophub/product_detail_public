@@ -4,7 +4,7 @@ import 'package:product_detail/src/app/const/Assets.dart';
 import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
 import 'package:product_detail/src/app/const/TSTextStyle.dart';
 import 'package:product_detail/src/app/model/SectionsWidgetModel.dart';
-import '../Other/BottomSheetHoldAndDragWidget.dart';
+import '../other/BottomSheetHoldAndDragWidget.dart';
 import 'BottomSheetRadioButtonList.dart';
 
 /// Tekli seçmelide kullanılan dropdown

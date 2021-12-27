@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:product_detail/src/app/component/other/TitleWithRightSubTitleAndMark.dart';
 import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
 import 'package:product_detail/src/app/model/SectionsWidgetModel.dart';
-import '../Other/PriceTextWidgetWithParentheses.dart';
+import '../other/PriceTextWidgetWithParentheses.dart';
 
 /// Birden falza seçmelide kullanılan checkBox list
 /// [title] checkBox üst kısmında cıkan başlık

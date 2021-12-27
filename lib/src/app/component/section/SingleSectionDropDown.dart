@@ -5,7 +5,7 @@ import 'package:product_detail/src/app/const/TSTextStyle.dart';
 import 'package:product_detail/src/app/model/SectionsWidgetModel.dart';
 import 'package:collection/collection.dart';
 
-import '../Other/PriceTextWidgetWithParentheses.dart';
+import '../other/PriceTextWidgetWithParentheses.dart';
 
 /// Tekli seçmelide kullanılan dropdown
 /// [title] dropdown üst kısmında cıkan başlık
