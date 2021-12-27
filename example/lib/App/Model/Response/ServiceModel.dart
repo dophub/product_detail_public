@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:example/App/Model/General/IBaseModel.dart';
 import 'package:product_detail/model.dart';
 
 ServiceModel serviceModelFromJson(String str) => ServiceModel().fromJson(json.decode(str));
@@ -53,7 +52,7 @@ class ServiceModel extends IBaseModel<ServiceModel>{
         serviceTotalAmountWithoutKdv:
             json["service_total_amount_without_kdv"].toDouble(),
         orders: List<OrderModel>.from(
-            json["orders"].map((x) => OrderModel.fromJson(x))),
+            json["orders"].map((x) => OrderModel().fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {

@@ -3,6 +3,7 @@ import 'package:product_detail/src/app/const/IdEnum.dart';
 import 'package:product_detail/src/app/const/TypeEnum.dart';
 import 'package:product_detail/src/app/model/ProductCartModel.dart';
 
+import 'IBaseModel.dart';
 import 'ImagesModel.dart';
 import 'MenuDetailModel.dart';
 import 'PriceModel.dart';
@@ -11,7 +12,7 @@ import 'PromotionMenuModel.dart';
 
 /// Sepette ürün ekleme request inde kullanılan order model
 /// Order Masteri temsil etmekte
-class OrderModel {
+class OrderModel extends IBaseModel<OrderModel>{
   OrderModel({
     this.id,
     this.items,
@@ -68,7 +69,8 @@ class OrderModel {
   int? tableServiceId;
   PaymentInfo? paymentInfo;
 
-  factory OrderModel.fromJson(Map<String, dynamic> json) => OrderModel(
+  @override
+  OrderModel fromJson(Map<dynamic, dynamic> json) => OrderModel(
     id: json["id"],
     items: json["items"] == null ? [] : List<OrderItem>.from(json["items"].map((x) => OrderItem.fromJson(x))),
     ssoId: json["sso_id"],
@@ -96,6 +98,7 @@ class OrderModel {
     tableServiceId: json["table_service_id"],
   );
 
+  @override
   Map<String, dynamic> toJson() => {
     "id": id,
     "items": List<dynamic>.from(items!.map((x) => x.toJson())),
@@ -123,6 +126,7 @@ class OrderModel {
     "payment_info": paymentInfo!.toJson(),
     "table_service_id": tableServiceId,
   };
+
 }
 
 class OrderStatus {

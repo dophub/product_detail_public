@@ -1,7 +1,10 @@
-import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
+import 'package:product_detail/src/app/const/GeneralEnum.dart';
+import 'package:product_detail/src/app/const/TypeEnum.dart';
+import 'package:product_detail/src/app/model/MenuDetailModel.dart';
+import 'package:product_detail/src/app/model/PriceModel.dart';
+import 'package:product_detail/src/app/model/ProductCartModel.dart';
 
-import '../../model.dart';
 
 /// Bu sınıfımız Genel tüm modüller için yazıldı.
 ///
