@@ -37,7 +37,7 @@ class ServiceModel extends IBaseModel<ServiceModel>{
   double? serviceTotalAmountWithoutKdv;
   List<OrderModel>? orders;
 
-  ServiceModel fromJson(Map<dynamic, dynamic> json) => ServiceModel(
+  factory ServiceModel.fromJson(Map<dynamic, dynamic> json) => ServiceModel(
         serviceId: json["service_id"],
         tableId: json["table_id"],
         serviceNumber: json["service_number"],
@@ -70,4 +70,14 @@ class ServiceModel extends IBaseModel<ServiceModel>{
         "service_total_amount_without_kdv": serviceTotalAmountWithoutKdv,
         "orders": List<dynamic>.from(orders!.map((x) => x.toJson())),
       };
+
+  @override
+  ServiceModel fromJsonList(List map) {
+    throw UnimplementedError();
+  }
+
+  @override
+  ServiceModel fromJson(Map json) {
+    return ServiceModel.fromJson(json);
+  }
 }

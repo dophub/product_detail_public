@@ -127,6 +127,11 @@ class OrderModel extends IBaseModel<OrderModel>{
     "table_service_id": tableServiceId,
   };
 
+  @override
+  OrderModel fromJsonList(List map) {
+    throw UnimplementedError();
+  }
+
 }
 
 class OrderStatus {
