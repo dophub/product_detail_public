@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 abstract class IBaseModel<T> {
-  T fromJson(Map<dynamic, dynamic> json);
+  Future<T> fromJson(Map<dynamic, dynamic> json);
 
-  T fromJsonList(List<dynamic> map);
+  Future<T> fromJsonList(List<dynamic> map);
 
   dynamic jsonParser(Uint8List bodyBytes) async {
     final jsonBody = json.decode(utf8.decode(bodyBytes));

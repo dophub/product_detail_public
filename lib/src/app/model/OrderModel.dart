@@ -70,7 +70,7 @@ class OrderModel extends IBaseModel<OrderModel>{
   PaymentInfo? paymentInfo;
 
   @override
-  OrderModel fromJson(Map<dynamic, dynamic> json) => OrderModel(
+  Future<OrderModel> fromJson(Map<dynamic, dynamic> json) async => OrderModel(
     id: json["id"],
     items: json["items"] == null ? [] : List<OrderItem>.from(json["items"].map((x) => OrderItem.fromJson(x))),
     ssoId: json["sso_id"],
@@ -98,7 +98,6 @@ class OrderModel extends IBaseModel<OrderModel>{
     tableServiceId: json["table_service_id"],
   );
 
-  @override
   Map<String, dynamic> toJson() => {
     "id": id,
     "items": List<dynamic>.from(items!.map((x) => x.toJson())),
@@ -128,7 +127,7 @@ class OrderModel extends IBaseModel<OrderModel>{
   };
 
   @override
-  OrderModel fromJsonList(List map) {
+  Future<OrderModel> fromJsonList(List map) async {
     throw UnimplementedError();
   }
 

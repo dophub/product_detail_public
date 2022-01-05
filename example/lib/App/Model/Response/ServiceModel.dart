@@ -1,9 +1,8 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:product_detail/model.dart';
 
-ServiceModel serviceModelFromJson(String str) => ServiceModel().fromJson(json.decode(str));
 
-String serviceModelToJson(ServiceModel data) => json.encode(data.toJson());
 
 /// Dealer de adisyon için kullanılmakta
 class ServiceModel extends IBaseModel<ServiceModel>{
@@ -55,29 +54,18 @@ class ServiceModel extends IBaseModel<ServiceModel>{
             json["orders"].map((x) => OrderModel().fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
-        "service_id": serviceId,
-        "table_id": tableId,
-        "service_number": serviceNumber,
-        "person_count": personCount,
-        "revision_number": revisionNumber,
-        "total_tip_amount": totalTipAmount,
-        "dealer_id": dealerId,
-        "pay_customer_id": payCustomerId,
-        "payment_type_id": paymentTypeId,
-        "service_pay_type_id": servicePayTypeId,
-        "service_total_amount": serviceTotalAmount,
-        "service_total_amount_without_kdv": serviceTotalAmountWithoutKdv,
-        "orders": List<dynamic>.from(orders!.map((x) => x.toJson())),
-      };
-
   @override
-  ServiceModel fromJsonList(List map) {
-    throw UnimplementedError();
+  Future<ServiceModel> fromJson(Map json) async {
+    return await compute(parse, json);
+  }
+
+  static ServiceModel parse(map) {
+    return ServiceModel.fromJson(map);
   }
 
   @override
-  ServiceModel fromJson(Map json) {
-    return ServiceModel.fromJson(json);
+  Future<ServiceModel> fromJsonList(List map) async {
+    // TODO: implement fromJsonList
+    throw UnimplementedError();
   }
 }
