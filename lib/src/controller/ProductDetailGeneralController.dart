@@ -15,6 +15,7 @@ class ProductDetailGeneralController  {
   /// Verilen [PriceModel] listesinden kullanıcının o anki bullunduğu mödüle göre fiyat döndürmekte.
   /// Gelen listede kullanılan modülün fiyat türü yok ise [PriceType.TABLE] fiyatını döndürmekte.
   double getPrice(PriceType priceType,List<PriceModel> list) {
+    //Todo : İsDefault alanı kontrol edilmesi gerek
     late double tablePrice;
     double? getInPrice;
     double? tekOutPrice;

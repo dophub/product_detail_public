@@ -1,14 +1,17 @@
 
 import 'dart:convert';
+import 'dart:isolate';
+import 'package:flutter/foundation.dart';
+import 'package:product_detail/src/app/model/IBaseModel.dart';
+
 import 'ImagesModel.dart';
 import 'PriceModel.dart';
 
-ProductDetailModel productDetailModelFromJson(String str) => ProductDetailModel.fromJson(json.decode(str));
 
 String productDetailModelToJson(ProductDetailModel data) => json.encode(data.toJson());
 
 /// ProductProfileScreende kullanılam ürün detay modelidir
-class ProductDetailModel {
+class ProductDetailModel extends IBaseModel<ProductDetailModel> {
   ProductDetailModel({
     this.id,
     this.productName,
@@ -26,8 +29,6 @@ class ProductDetailModel {
     this.itemType,
   });
 
-
-
   int? id;
   String? productName;
   String? shortDescription;
@@ -44,7 +45,7 @@ class ProductDetailModel {
   String? itemType;
 
 
-  factory ProductDetailModel.fromJson(Map<String, dynamic> json) => ProductDetailModel(
+  factory ProductDetailModel.fromJson(Map<dynamic, dynamic> json) => ProductDetailModel(
     id: json["id"],
     productName: json["product_name"],
     shortDescription: json["short_description"],
@@ -75,6 +76,26 @@ class ProductDetailModel {
     "features": features == null ? [] :  List<dynamic>.from(features!.map((x) => x.toJson())),
     "item_type": itemType,
   };
+
+
+  @override
+  Future<ProductDetailModel> fromJsonList(List map) {
+    // TODO: implement fromJsonList
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ProductDetailModel> fromJson(Map map) async {
+    final port = ReceivePort();
+    await Isolate.spawn(parse, {'port':port.sendPort,'map':map});
+    return await port.first;
+  }
+
+  ProductDetailModel parse(Map map) {
+    final port = map['port'];
+    final result = ProductDetailModel.fromJson(map['map']);
+    Isolate.exit(port,result);
+  }
 }
 
 /// Ürün özelikleri her biri bi üründür

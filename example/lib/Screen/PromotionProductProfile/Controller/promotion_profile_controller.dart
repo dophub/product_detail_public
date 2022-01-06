@@ -118,7 +118,7 @@ class PromotionProfileController extends GetxController {
     try {
       if (await checkInternet(context)) {
         loadingStatus = LoadingStatus.Loading;
-        BaseHttpModel response = await General().getPromotionDetail(dealerId, itemObject.id!);
+        BaseHttpModel response = await General().getPromotionDetail<PromotionMenuModel>(PromotionMenuModel(),dealerId, itemObject.id!);
         if (response.status.isOk) {
           loadingStatus = LoadingStatus.Loaded;
           promotionMenuModel = response.data!;

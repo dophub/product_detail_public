@@ -115,7 +115,7 @@ class ProductProfileController extends GetxController {
     BuildContext context = scaffoldKey.currentContext!;
     try {
       loadingStatus = LoadingStatus.Loading;
-      BaseHttpModel response = await General().getProductDetail(dealerId, itemObject.id!);
+      BaseHttpModel response = await General().getProductDetail<ProductDetailModel>(ProductDetailModel(),dealerId, itemObject.id!);
       if (response.status.isOk) {
         productDetailModel = response.data!;
         optionViewController = ProductViewController(orderItem,productDetailModel,PriceType.TABLE);

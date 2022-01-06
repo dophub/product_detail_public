@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+
+import 'package:product_detail/src/app/model/IBaseModel.dart';
+
 import 'ImagesModel.dart';
 import 'MenuDetailModel.dart';
 import 'PriceModel.dart';
@@ -10,7 +13,7 @@ PromotionMenuModel promotionMenuModelFromJson(String str) => PromotionMenuModel.
 String promotionMenuModelToJson(PromotionMenuModel data) => json.encode(data.toJson());
 
 /// PromotionProfileScreende kullanılam promosyonlu ürün detay modelidir
-class PromotionMenuModel {
+class PromotionMenuModel extends IBaseModel<PromotionMenuModel>{
   PromotionMenuModel({
     this.id,
     this.totalCalorie,
@@ -35,7 +38,7 @@ class PromotionMenuModel {
 
 
 
-  factory PromotionMenuModel.fromJson(Map<String, dynamic> json) => PromotionMenuModel(
+  factory PromotionMenuModel.fromJson(Map<dynamic, dynamic> json) => PromotionMenuModel(
     id: json["id"],
     totalCalorie: json["total_calorie"],
     totalTime: json["total_time"],
@@ -58,6 +61,18 @@ class PromotionMenuModel {
     "price": List<PriceModel>.from(price!.map((x) => x.toJson())),
     "sections": List<SectionModel>.from(sections!.map((x) => x.toJson())),
   };
+
+
+  @override
+  Future<PromotionMenuModel> fromJsonList(List map) {
+    // TODO: implement fromJsonList
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<PromotionMenuModel> fromJson(Map json) async {
+    return PromotionMenuModel.fromJson(json);
+  }
 }
 
 /// Promosyon ürünleri Sectionidir
