@@ -78,20 +78,6 @@ class ProductDetailModel extends IBaseModel<ProductDetailModel> {
     "item_type": itemType,
   };
 
-  @override
-  Future<ProductDetailModel> fromJsonInBackground(Uint8List bodyBytes) async {
-    // TODO: implement fromJsonList
-    final port = ReceivePort();
-    await Isolate.spawn(_parse, {'port': port.sendPort, 'body': bodyBytes});
-    return await port.first;
-  }
-
-  ProductDetailModel _parse(map) {
-    final port = map['port'];
-    final model = json.decode(utf8.decode(map['body']));
-    final result = fromJson(model);
-    Isolate.exit(port, result);
-  }
 }
 
 /// Ürün özelikleri her biri bi üründür
