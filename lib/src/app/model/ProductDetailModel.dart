@@ -1,6 +1,7 @@
 
 import 'dart:convert';
 import 'dart:isolate';
+import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:product_detail/src/app/model/IBaseModel.dart';
 
@@ -45,7 +46,7 @@ class ProductDetailModel extends IBaseModel<ProductDetailModel> {
   String? itemType;
 
 
-  factory ProductDetailModel.fromJson(Map<dynamic, dynamic> json) => ProductDetailModel(
+  fromJson(Map<dynamic, dynamic> json) => ProductDetailModel(
     id: json["id"],
     productName: json["product_name"],
     shortDescription: json["short_description"],
@@ -77,24 +78,19 @@ class ProductDetailModel extends IBaseModel<ProductDetailModel> {
     "item_type": itemType,
   };
 
-
   @override
-  Future<ProductDetailModel> fromJsonList(List map) {
+  Future<ProductDetailModel> fromJsonInBackground(Uint8List bodyBytes) async {
     // TODO: implement fromJsonList
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<ProductDetailModel> fromJson(Map map) async {
     final port = ReceivePort();
-    await Isolate.spawn(_parse, {'port':port.sendPort,'map':map});
+    await Isolate.spawn(_parse, {'port': port.sendPort, 'body': bodyBytes});
     return await port.first;
   }
 
-  _parse(Map map) {
+  ProductDetailModel _parse(map) {
     final port = map['port'];
-    final result = ProductDetailModel.fromJson(map['map']);
-    Isolate.exit(port,result);
+    final model = json.decode(utf8.decode(map['body']));
+    final result = fromJson(model);
+    Isolate.exit(port, result);
   }
 }
 

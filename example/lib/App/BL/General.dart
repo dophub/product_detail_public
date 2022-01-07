@@ -45,7 +45,7 @@ class General {
     try {
       var response = await HttpClient().get(HttpUrl.getProductDetails, body: '$dealerId/$productId', header: getHeader());
       if (response!.statusCode == HttpStatus.ok) {
-        ProductDetailModel responseModel = await model.jsonParser(response.bodyBytes);
+        ProductDetailModel responseModel = await model.backgroundJsonParser(response.bodyBytes);
         return BaseHttpModel(status: BaseModelStatus.Ok, data: responseModel);
       } else if (response.statusCode == HttpStatus.unprocessableEntity) {
         ResponseErrorModel responseModel = ResponseErrorModel.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));

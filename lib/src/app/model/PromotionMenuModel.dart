@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 
 import 'package:product_detail/src/app/model/IBaseModel.dart';
@@ -8,9 +9,7 @@ import 'MenuDetailModel.dart';
 import 'PriceModel.dart';
 import 'ProductDetailModel.dart';
 
-PromotionMenuModel promotionMenuModelFromJson(String str) => PromotionMenuModel.fromJson(json.decode(str));
-
-String promotionMenuModelToJson(PromotionMenuModel data) => json.encode(data.toJson());
+PromotionMenuModel promotionMenuModelFromJson(String str) => PromotionMenuModel().fromJson(json.decode(str));
 
 /// PromotionProfileScreende kullanılam promosyonlu ürün detay modelidir
 class PromotionMenuModel extends IBaseModel<PromotionMenuModel>{
@@ -36,9 +35,7 @@ class PromotionMenuModel extends IBaseModel<PromotionMenuModel>{
   List<PriceModel>? price;
   List<SectionModel>? sections;
 
-
-
-  factory PromotionMenuModel.fromJson(Map<dynamic, dynamic> json) => PromotionMenuModel(
+  fromJson(Map<dynamic, dynamic> json) => PromotionMenuModel(
     id: json["id"],
     totalCalorie: json["total_calorie"],
     totalTime: json["total_time"],
@@ -50,28 +47,10 @@ class PromotionMenuModel extends IBaseModel<PromotionMenuModel>{
     sections: json["sections"] == null ? [] : List<SectionModel>.from(json["sections"].map((x) => SectionModel.fromJson(x))),
   );
 
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "total_calorie": totalCalorie,
-    "total_time": totalTime,
-    "promotion_menu_name": promotionMenuName,
-    "short_description": shortDescription,
-    "description": description,
-    "images": List<dynamic>.from(images!.map((x) => x.toJson())),
-    "price": List<PriceModel>.from(price!.map((x) => x.toJson())),
-    "sections": List<SectionModel>.from(sections!.map((x) => x.toJson())),
-  };
-
-
   @override
-  Future<PromotionMenuModel> fromJsonList(List map) {
-    // TODO: implement fromJsonList
+  Future<PromotionMenuModel> fromJsonInBackground(Uint8List bodyBytes) {
+    // TODO: implement fromJsonInBackground
     throw UnimplementedError();
-  }
-
-  @override
-  Future<PromotionMenuModel> fromJson(Map json) async {
-    return PromotionMenuModel.fromJson(json);
   }
 }
 
@@ -97,7 +76,7 @@ class SectionModel {
 
   factory SectionModel.fromJson(Map<String, dynamic> json) => SectionModel(
     id: json["id"],
-    products: json["products"] == null ? [] : List<ProductDetailModel>.from(json["products"].map((x) => ProductDetailModel.fromJson(x))),
+    products: json["products"] == null ? [] : List<ProductDetailModel>.from(json["products"].map((x) => ProductDetailModel().fromJson(x))),
     listOrder: json["list_order"],
     description: json["description"],
     sectionName: json["section_name"],

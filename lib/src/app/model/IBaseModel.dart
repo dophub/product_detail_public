@@ -2,19 +2,22 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 abstract class IBaseModel<T> {
-  Future<T> fromJson(Map<dynamic, dynamic> json);
+  T fromJson(Map<dynamic, dynamic> json);
 
-  Future<T> fromJsonList(List<dynamic> map);
+  Future<T> fromJsonInBackground(Uint8List bodyBytes);
 
-  dynamic jsonParser(Uint8List bodyBytes) async {
+  dynamic jsonParser(Uint8List bodyBytes) {
     final jsonBody = json.decode(utf8.decode(bodyBytes));
     if (jsonBody is List) {
-      return await fromJsonList(jsonBody);
-    }
-    else if (jsonBody is Map) {
-      return await fromJson(jsonBody);
+      return jsonBody.map((e) => fromJson(e)).toList().cast<T>();
+    } else if (jsonBody is Map) {
+      return fromJson(jsonBody);
     } else {
       return jsonBody;
     }
+  }
+
+  dynamic backgroundJsonParser(Uint8List bodyBytes) async {
+    return await fromJsonInBackground(bodyBytes);
   }
 }

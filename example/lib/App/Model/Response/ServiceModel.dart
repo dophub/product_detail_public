@@ -1,11 +1,8 @@
-import 'dart:convert';
-import 'package:flutter/foundation.dart';
+import 'dart:typed_data';
 import 'package:product_detail/model.dart';
 
-
-
 /// Dealer de adisyon için kullanılmakta
-class ServiceModel extends IBaseModel<ServiceModel>{
+class ServiceModel extends IBaseModel<ServiceModel> {
   ServiceModel({
     this.serviceId,
     this.tableId,
@@ -36,7 +33,8 @@ class ServiceModel extends IBaseModel<ServiceModel>{
   double? serviceTotalAmountWithoutKdv;
   List<OrderModel>? orders;
 
-  factory ServiceModel.fromJson(Map<dynamic, dynamic> json) => ServiceModel(
+  @override
+  fromJson(Map<dynamic, dynamic> json) => ServiceModel(
         serviceId: json["service_id"],
         tableId: json["table_id"],
         serviceNumber: json["service_number"],
@@ -55,17 +53,8 @@ class ServiceModel extends IBaseModel<ServiceModel>{
       );
 
   @override
-  Future<ServiceModel> fromJson(Map json) async {
-    return await compute(parse, json);
-  }
-
-  static ServiceModel parse(map) {
-    return ServiceModel.fromJson(map);
-  }
-
-  @override
-  Future<ServiceModel> fromJsonList(List map) async {
-    // TODO: implement fromJsonList
+  Future<ServiceModel> fromJsonInBackground(Uint8List bodyBytes) {
+    // TODO: implement fromJsonInBackground
     throw UnimplementedError();
   }
 }

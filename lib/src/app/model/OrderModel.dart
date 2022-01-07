@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/foundation.dart';
 import 'package:product_detail/src/app/const/IdEnum.dart';
 import 'package:product_detail/src/app/const/TypeEnum.dart';
@@ -70,7 +72,7 @@ class OrderModel extends IBaseModel<OrderModel>{
   PaymentInfo? paymentInfo;
 
   @override
-  Future<OrderModel> fromJson(Map<dynamic, dynamic> json) async => OrderModel(
+    OrderModel fromJson(Map<dynamic, dynamic> json) => OrderModel(
     id: json["id"],
     items: json["items"] == null ? [] : List<OrderItem>.from(json["items"].map((x) => OrderItem.fromJson(x))),
     ssoId: json["sso_id"],
@@ -127,7 +129,8 @@ class OrderModel extends IBaseModel<OrderModel>{
   };
 
   @override
-  Future<OrderModel> fromJsonList(List map) async {
+  Future<OrderModel> fromJsonInBackground(Uint8List bodyBytes) {
+    // TODO: implement fromJsonInBackground
     throw UnimplementedError();
   }
 
