@@ -87,11 +87,11 @@ class ProductDetailModel extends IBaseModel<ProductDetailModel> {
   @override
   Future<ProductDetailModel> fromJson(Map map) async {
     final port = ReceivePort();
-    await Isolate.spawn(parse, {'port':port.sendPort,'map':map});
+    await Isolate.spawn(_parse, {'port':port.sendPort,'map':map});
     return await port.first;
   }
 
-  ProductDetailModel parse(Map map) {
+  _parse(Map map) {
     final port = map['port'];
     final result = ProductDetailModel.fromJson(map['map']);
     Isolate.exit(port,result);
