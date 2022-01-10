@@ -1,9 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:product_detail/src/app/const/Enum.dart';
-import 'package:product_detail/src/app/model/MenuDetailModel.dart';
-import 'package:product_detail/src/app/model/PriceModel.dart';
-import 'package:product_detail/src/app/model/ProductCartModel.dart';
-
+import 'package:sip_models/sip_enum.dart';
+import 'package:sip_models/sip_general_models.dart';
 
 /// Bu sınıfımız Genel tüm modüller için yazıldı.
 ///

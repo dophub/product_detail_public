@@ -2,14 +2,13 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-import 'package:example/App/Model/Response/ResponseErrorModel.dart';
+import 'package:example/App/Model/BaseHttpModel.dart';
 import 'package:flutter/foundation.dart';
-import 'package:example/App/Model/Response/TokenModel.dart';
 import 'package:example/Core/Service/HttpClient.dart';
 import 'package:example/App/Constant/App/HttpUrl.dart';
 import 'package:example/App/Constant/Enums/LoadingStatusEnum.dart';
-import 'package:example/App/Model/Response/BaseHttpModel.dart';
-import 'package:product_detail/model.dart';
+import 'package:sip_models/sip_general_models.dart';
+import 'package:sip_models/sip_response_models.dart';
 
 /// Tüm moldüllerde ile kullanılan Http işlemleri burada yapılmakta
 ///

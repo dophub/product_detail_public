@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
-import 'package:product_detail/model.dart';
 import 'package:example/App/Widget/title/TitleWithRightSubTitleAndMark.dart';
+import 'package:sip_models/sip_general_models.dart';
 
 import 'RadioButtonList.dart';
 

@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:product_detail/src/app/const/Assets.dart';
 import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
 import 'package:product_detail/src/app/const/TSTextStyle.dart';
-import 'package:product_detail/src/app/model/SectionsWidgetModel.dart';
+import 'package:sip_models/sip_general_models.dart';
 import '../other/BottomSheetHoldAndDragWidget.dart';
 import 'BottomSheetRadioButtonList.dart';
 

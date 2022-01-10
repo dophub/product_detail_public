@@ -106,7 +106,7 @@ packages:
       name: get
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.5.1"
+    version: "4.6.1"
   intl:
     dependency: "direct main"
     description:
@@ -169,7 +169,16 @@ packages:
       name: plugin_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.2"
+    version: "2.1.2"
+  sip_models:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: prod
+      resolved-ref: "9702f396137941c3b2a9f0513b6c2f430a955c32"
+      url: "https://bitbucket.org/digital-operasyon-merkezi/sip-models.git"
+    source: git
+    version: "0.0.1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -239,5 +248,5 @@ packages:
     source: hosted
     version: "5.3.1"
 sdks:
-  dart: ">=2.14.0 <3.0.0"
+  dart: ">=2.15.1 <3.0.0"
   flutter: ">=1.24.0-7.0"

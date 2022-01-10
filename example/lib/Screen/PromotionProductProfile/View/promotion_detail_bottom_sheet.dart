@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sip_models/sip_enum.dart';
 import 'package:snapping_sheet/snapping_sheet.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
-import 'package:product_detail/model.dart';
 import 'package:example/App/Extension/GeneralExtension.dart';
 import 'package:example/App/Init/Screen/SizeConfig.dart';
 import 'package:example/App/Widget/Button/AddToCartButton.dart';

@@ -1,8 +1,7 @@
-
 import 'package:example/App/BL/General.dart';
 import 'package:example/App/Constant/App/HttpUrl.dart';
 import 'package:example/App/Extension/GeneralExtension.dart';
-import 'package:example/App/Model/Response/BaseHttpModel.dart';
+import 'package:example/App/Model/BaseHttpModel.dart';
 import 'package:example/App/Widget/Dialog/LoadingProgress.dart';
 import 'package:example/App/Widget/Message/ToastMessage.dart';
 import 'package:example/Screen/ProductProfileScreen/product_profile_screen.dart';
@@ -11,8 +10,10 @@ import 'package:get/get.dart';
 import 'package:example/App/Constant/Enums/LoadingStatusEnum.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:sip_models/sip_enum.dart';
+import 'package:sip_models/sip_general_models.dart';
 import 'package:uuid/uuid.dart';
-import 'package:product_detail/model.dart';
+
 /// Bu sınıfımız Genel tüm modüllerin için yazıldı.
 ///
 /// Uygulamnın genelinde kullanılan metodlarımızı buraya yazmaktayız.

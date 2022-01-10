@@ -6,9 +6,9 @@ import 'package:example/App/Extension/GeneralExtension.dart';
 import 'package:example/App/Init/Screen/SizeConfig.dart';
 import 'package:example/App/Widget/Button/AddToCartButton.dart';
 import 'package:example/Screen/ProductProfileScreen/Controller/product_profile_controller.dart';
+import 'package:sip_models/sip_enum.dart';
 import 'product_details.dart';
 import '../Widgets/product_profile_image.dart';
-import 'package:product_detail/model.dart';
 
 class ProductDetailSliverList extends StatelessWidget {
   final ScrollController _scrollController = ScrollController();

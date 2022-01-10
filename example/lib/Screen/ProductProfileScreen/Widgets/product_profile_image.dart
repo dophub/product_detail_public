@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
 import 'package:example/App/Init/Screen/SizeConfig.dart';
-import 'package:product_detail/model.dart';
 import 'package:example/App/Widget/OtherWidgets/ImageListPositionsTag.dart';
 import 'package:example/App/Widget/OtherWidgets/TSImageNetwork.dart';
 import 'package:example/Screen/ProductProfileScreen/Controller/product_profile_controller.dart';
+import 'package:sip_models/sip_general_models.dart';
 
 /// Ürün profilde ürün resimleri
 /// Yatay kayan şeklinde

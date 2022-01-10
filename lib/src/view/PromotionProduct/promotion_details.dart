@@ -4,10 +4,9 @@ import 'package:product_detail/src/app/component/other/NoteDialog.dart';
 import 'package:product_detail/src/app/component/section/SingleSectionBottomSheet.dart';
 import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
 import 'package:product_detail/src/app/const/TSColors.dart';
-import 'package:product_detail/src/app/model/PromotionMenuModel.dart';
-import 'package:product_detail/src/app/model/SectionsWidgetModel.dart';
 import 'package:product_detail/src/controller/PromotionController.dart';
 import 'package:product_detail/src/view/PromotionProduct/promotion_feature_and_option.dart';
+import 'package:sip_models/sip_general_models.dart';
 
 class PromotionDetails extends StatelessWidget {
   /// Ürün section, Feature ve option lerini listeler

@@ -1,5 +1,6 @@
 name: product_detail
 description: Turkcell Siparisim ürün detay ekranı
+publish_to: 'none'
 version: 0.0.1
 homepage:
 
@@ -12,6 +13,11 @@ dependencies:
   flutter_svg: ^0.22.0
   connectivity: ^3.0.6
   intl: ^0.17.0
+  sip_models:
+    git:
+      url: https://bitbucket.org/digital-operasyon-merkezi/sip-models.git
+      ref: prod
+
 
   flutter:
     sdk: flutter

@@ -2,7 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:product_detail/src/app/component/other/TitleWithRightSubTitleAndMark.dart';
 import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
-import 'package:product_detail/src/app/model/SectionsWidgetModel.dart';
+import 'package:sip_models/sip_general_models.dart';
 import '../other/PriceTextWidgetWithParentheses.dart';
 
 /// Birden falza seçmelide kullanılan checkBox list

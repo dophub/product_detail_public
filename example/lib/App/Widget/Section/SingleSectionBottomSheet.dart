@@ -3,9 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
 import 'package:example/App/Constant/Assets/Assets.dart';
 import 'package:example/App/Init/Screen/SizeConfig.dart';
-import 'package:product_detail/model.dart';
 import 'package:example/App/Theme/TSTextStyle.dart';
 import 'package:example/App/Widget/OtherWidgets/BottomSheetHoldAndDragWidget.dart';
+import 'package:sip_models/sip_general_models.dart';
 import 'BottomSheetRadioButtonList.dart';
 
 /// Tekli seçmelide kullanılan dropdown

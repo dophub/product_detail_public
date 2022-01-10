@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:product_detail/src/app/const/Enum.dart';
-import 'package:product_detail/src/app/model/OrderModel.dart';
-import 'package:product_detail/src/app/model/ProductCartModel.dart';
-import 'package:product_detail/src/app/model/ProductDetailModel.dart';
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
+import 'package:sip_models/sip_enum.dart';
+import 'package:sip_models/sip_general_models.dart';
 import 'ProductDetailGeneralController.dart';
 
 
