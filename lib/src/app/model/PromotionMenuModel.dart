@@ -9,11 +9,10 @@ import 'MenuDetailModel.dart';
 import 'PriceModel.dart';
 import 'ProductDetailModel.dart';
 
-PromotionMenuModel promotionMenuModelFromJson(String str) => PromotionMenuModel().fromJson(json.decode(str));
 
 /// PromotionProfileScreende kullanılam promosyonlu ürün detay modelidir
-class PromotionMenuModel extends IBaseModel<PromotionMenuModel>{
-  PromotionMenuModel({
+class PromotionMenuDetailModel extends IBaseModel<PromotionMenuDetailModel>{
+  PromotionMenuDetailModel({
     this.id,
     this.totalCalorie,
     this.totalTime,
@@ -35,7 +34,7 @@ class PromotionMenuModel extends IBaseModel<PromotionMenuModel>{
   List<PriceModel>? price;
   List<SectionModel>? sections;
 
-  fromJson(Map<dynamic, dynamic> json) => PromotionMenuModel(
+  fromJson(Map<dynamic, dynamic> json) => PromotionMenuDetailModel(
     id: json["id"],
     totalCalorie: json["total_calorie"],
     totalTime: json["total_time"],
@@ -48,7 +47,7 @@ class PromotionMenuModel extends IBaseModel<PromotionMenuModel>{
   );
 
   @override
-  Future<PromotionMenuModel> fromJsonInBackground(Uint8List bodyBytes) {
+  Future<PromotionMenuDetailModel> fromJsonInBackground(Uint8List bodyBytes) {
     // TODO: implement fromJsonInBackground
     throw UnimplementedError();
   }

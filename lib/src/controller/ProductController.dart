@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:product_detail/src/app/const/GeneralEnum.dart';
-import 'package:product_detail/src/app/const/TypeEnum.dart';
+import 'package:product_detail/src/app/const/Enum.dart';
 import 'package:product_detail/src/app/model/OrderModel.dart';
 import 'package:product_detail/src/app/model/ProductCartModel.dart';
 import 'package:product_detail/src/app/model/ProductDetailModel.dart';

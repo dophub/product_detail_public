@@ -11,7 +11,6 @@ import 'package:get/get.dart';
 import 'package:example/App/Constant/Enums/LoadingStatusEnum.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:example/App/Constant/Enums/IdEnum.dart';
 import 'package:uuid/uuid.dart';
 import 'package:product_detail/model.dart';
 /// Bu sınıfımız Genel tüm modüllerin için yazıldı.

@@ -65,7 +65,7 @@ class General {
     try {
       var response = await HttpClient().get(HttpUrl.getPromotionMenu, body: '$dealerId/$productId', header: getHeader());
       if (response!.statusCode == HttpStatus.ok) {
-        PromotionMenuModel responseModel = await model.jsonParser(response.bodyBytes);
+        PromotionMenuDetailModel responseModel = await model.jsonParser(response.bodyBytes);
         return BaseHttpModel(status: BaseModelStatus.Ok, data: responseModel);
       } else if (response.statusCode == HttpStatus.unprocessableEntity) {
         ResponseErrorModel responseModel = ResponseErrorModel.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));

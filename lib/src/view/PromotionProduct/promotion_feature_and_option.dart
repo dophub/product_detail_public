@@ -5,7 +5,7 @@ import 'package:product_detail/src/app/component/section/MultiSectionCheckBox.da
 import 'package:product_detail/src/app/component/section/ProductDecriseSection.dart';
 import 'package:product_detail/src/app/component/section/SingleSectionBottomSheet.dart';
 import 'package:product_detail/src/app/component/section/SingleSectionRadioButton.dart';
-import 'package:product_detail/src/app/const/IdEnum.dart';
+import 'package:product_detail/src/app/const/Enum.dart';
 import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
 import 'package:product_detail/src/app/model/ProductDetailModel.dart';
 import 'package:product_detail/src/app/model/SectionsWidgetModel.dart';

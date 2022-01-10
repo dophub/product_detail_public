@@ -1,8 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
-import 'package:product_detail/src/app/const/IdEnum.dart';
-import 'package:product_detail/src/app/const/TypeEnum.dart';
+import 'package:product_detail/src/app/const/Enum.dart';
 import 'package:product_detail/src/app/model/ProductCartModel.dart';
 
 import 'IBaseModel.dart';
@@ -281,9 +280,9 @@ class OrderItem {
 
 
   /// Order modelde olan ürünü ProductPrfile ekranında kullanılan modele çevirmekte
-  /// [OrderItem] ---> [PromotionMenuModel]
+  /// [OrderItem] ---> [PromotionMenuDetailModel]
   /// Promosyonlu ürünler için.
-  PromotionMenuModel toPromotionModel() => PromotionMenuModel()
+  PromotionMenuDetailModel toPromotionModel() => PromotionMenuDetailModel()
     ..id = this.itemTypeId == describeEnum(ItemType.PRODUCT)
         ? this.productId
         : this.promotionMenuId

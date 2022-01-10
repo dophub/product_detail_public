@@ -1,12 +1,15 @@
 import 'dart:convert';
+import 'package:product_detail/src/app/model/IBaseModel.dart';
+
 import 'ImagesModel.dart';
 import 'PriceModel.dart';
 
-MenuDetailModel menuDetailModelFromJson(String str) => MenuDetailModel.fromJson(json.decode(str));
+MenuDetailModel menuDetailModelFromJson(String str) =>
+    MenuDetailModel.fromJson(json.decode(str));
 
-String menuDetailModelToJson(MenuDetailModel data) => json.encode(data.toJson());
-
-List<MenuProductModel> productListModelFromJson(String str) => List<MenuProductModel>.from(json.decode(str).map((x) => MenuProductModel.fromJson(x)));
+List<MenuProductModel> productListModelFromJson(String str) =>
+    List<MenuProductModel>.from(
+        json.decode(str).map((x) => MenuProductModel.fromJson(x)));
 
 /// Menü ye tılandığı zaman Api den gelen Response için kullanılmakta
 class MenuDetailModel {
@@ -16,66 +19,54 @@ class MenuDetailModel {
     this.categories,
   });
 
-
   int? id;
   String? menuName;
-  List<MenuDetailCategoryModel>? categories;
+  List<CategoryModel>? categories;
 
   factory MenuDetailModel.fromJson(Map<String, dynamic> json) =>
       MenuDetailModel(
         id: json["id"],
         menuName: json["menu_name"],
-        categories: List<MenuDetailCategoryModel>.from(
-            json["categories"].map((x) => MenuDetailCategoryModel.fromJson(x))),
+        categories: List<CategoryModel>.from(
+            json["categories"].map((x) => CategoryModel().fromJson(x))),
       );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "menu_name": menuName,
-        "categories": List<dynamic>.from(categories!.map((x) => x.toJson())),
-      };
 }
 
-class MenuDetailCategoryModel {
-  MenuDetailCategoryModel({
+class CategoryModel extends IBaseModel<CategoryModel> {
+  CategoryModel({
     this.id,
-    this.products,
-    this.listOrder,
     this.categoryName,
     this.menuListTypeId,
+    this.listOrder,
+    this.products,
   });
 
-  MenuDetailCategoryModel.clone(MenuDetailCategoryModel obj)
+  CategoryModel.clone(CategoryModel obj)
       : this(
           id: obj.id,
-          products: obj.products,
-          listOrder: obj.listOrder,
           categoryName: obj.categoryName,
           menuListTypeId: obj.menuListTypeId,
+          listOrder: obj.listOrder,
+          products: obj.products,
         );
 
   int? id;
-  List<MenuProductModel>? products;
-  int? listOrder;
   String? categoryName;
   String? menuListTypeId;
+  int? listOrder;
+  List<MenuProductModel>? products;
 
-  factory MenuDetailCategoryModel.fromJson(Map<String, dynamic> json) =>
-      MenuDetailCategoryModel(
+  @override
+  CategoryModel fromJson(Map<dynamic, dynamic> json) => CategoryModel(
         id: json["id"],
-        products: json["products"] == null ? []: List<MenuProductModel>.from(json["products"].map((x) => MenuProductModel.fromJson(x))),
-        listOrder: json["list_order"],
         categoryName: json["category_name"],
         menuListTypeId: json["menu_list_type_id"],
+        listOrder: json["list_order"],
+        products: json["products"] == null
+            ? []
+            : List<MenuProductModel>.from(
+                json["products"].map((x) => MenuProductModel.fromJson(x))),
       );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "products": List<dynamic>.from(products!.map((x) => x.toJson())),
-        "list_order": listOrder,
-        "category_name": categoryName,
-        "menu_list_type_id": menuListTypeId,
-      };
 }
 
 /// Menu va kategori modelerde olan ürün biligileri
@@ -104,10 +95,15 @@ class MenuProductModel {
   String? productName;
   String? shortDescription;
 
-  factory MenuProductModel.fromJson(Map<String, dynamic> json) => MenuProductModel(
+  factory MenuProductModel.fromJson(Map<String, dynamic> json) =>
+      MenuProductModel(
         id: json["id"],
-        price: List<PriceModel>.from(json["price"].map((x) => PriceModel.fromJson(x))),
-        images: json["images"] == null ? []:List<ImagesModel>.from(json["images"].map((x) => ImagesModel.fromJson(x))),
+        price: List<PriceModel>.from(
+            json["price"].map((x) => PriceModel.fromJson(x))),
+        images: json["images"] == null
+            ? []
+            : List<ImagesModel>.from(
+                json["images"].map((x) => ImagesModel.fromJson(x))),
         calorie: json["calorie"] ?? 0,
         itemType: json["item_type"],
         makeTime: json["make_time"] ?? 0,

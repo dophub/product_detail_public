@@ -17,7 +17,6 @@ abstract class IBaseModel<T> {
   }
 
   dynamic backgroundJsonParser(Uint8List bodyBytes) async {
-    // TODO: implement fromJsonList
     final port = ReceivePort();
     await Isolate.spawn(_parse, {'port':port.sendPort,'body':bodyBytes});
     return await port.first;

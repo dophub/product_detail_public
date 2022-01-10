@@ -7,6 +7,5 @@ export 'src/app/model/ProductCartModel.dart';
 export 'src/app/model/ProductDetailModel.dart';
 export 'src/app/model/PromotionMenuModel.dart';
 export 'src/app/model/SectionsWidgetModel.dart';
-export 'src/app/const/GeneralEnum.dart';
-export 'src/app/const/TypeEnum.dart';
 export 'src/app/model/IBaseModel.dart';
+export 'src/app/const/Enum.dart';
