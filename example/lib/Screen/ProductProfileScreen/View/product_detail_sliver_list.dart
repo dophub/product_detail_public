@@ -1,6 +1,5 @@
 import 'package:example/App/Theme/TSTextStyle.dart';
 import 'package:example/App/Widget/Button/TSCloseButton.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:example/App/Extension/GeneralExtension.dart';

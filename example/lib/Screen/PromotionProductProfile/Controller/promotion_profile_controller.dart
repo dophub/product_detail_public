@@ -27,7 +27,7 @@ class PromotionProfileController extends GetxController {
   final SnappingSheetController bottomSheetScrollController = SnappingSheetController();
   late Rx<double> _bottomSheetPosition;
   late List<ImagesModel> imagesList;
-  late MenuProductModel itemObject;
+  late ProductModel itemObject;
   late Rx<int> _count;
   PromotionViewController? optionViewController;
   late Rx<bool> _flexibleSpaceBarClosed;

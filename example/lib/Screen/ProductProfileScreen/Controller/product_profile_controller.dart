@@ -26,7 +26,7 @@ class ProductProfileController extends GetxController {
   final SnappingSheetController bottomSheetScrollController = SnappingSheetController();
   late Rx<double> _bottomSheetPosition;
   late List<ImagesModel> imagesList;
-  late MenuProductModel itemObject;
+  late ProductModel itemObject;
   late OrderItem? orderItem;
   ProductViewController? optionViewController;
   late Rx<bool> _flexibleSpaceBarClosed;

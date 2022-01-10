@@ -1,9 +1,4 @@
-import 'dart:convert';
-import 'dart:typed_data';
-
-
 import 'package:product_detail/src/app/model/IBaseModel.dart';
-
 import 'ImagesModel.dart';
 import 'MenuDetailModel.dart';
 import 'PriceModel.dart';
@@ -46,11 +41,6 @@ class PromotionMenuDetailModel extends IBaseModel<PromotionMenuDetailModel>{
     sections: json["sections"] == null ? [] : List<SectionModel>.from(json["sections"].map((x) => SectionModel.fromJson(x))),
   );
 
-  @override
-  Future<PromotionMenuDetailModel> fromJsonInBackground(Uint8List bodyBytes) {
-    // TODO: implement fromJsonInBackground
-    throw UnimplementedError();
-  }
 }
 
 /// Promosyon ürünleri Sectionidir
@@ -86,7 +76,7 @@ class SectionModel {
 
   Map<String, dynamic> toJson() => {
     "id": id,
-    "products": List<MenuProductModel>.from(products!.map((x) => x.toJson())),
+    "products": List<ProductModel>.from(products!.map((x) => x.toJson())),
     "list_order": listOrder,
     "description": description,
     "section_name": sectionName,

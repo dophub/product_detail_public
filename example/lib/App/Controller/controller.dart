@@ -47,7 +47,7 @@ class Controller extends GetxController  {
 
   /// Menu list item tıklandığında çalışan metod.
   /// [ProductProfileScreen] e gider.
-  void goToProductProfileScreen(BuildContext context, int dealerId, MenuProductModel productModel) {
+  void goToProductProfileScreen(BuildContext context, int dealerId, ProductModel productModel) {
     productModel.itemType == describeEnum(ItemType.PRODUCT)
         ? Navigator.push(context, MaterialPageRoute(builder: (_) => ProductProfileScreen(itemObject: productModel, dealerId: dealerId)))
         : Navigator.push(context, MaterialPageRoute(builder: (_) => PromotionProfileScreen(dealerId: dealerId, itemObject: productModel)));
@@ -60,7 +60,7 @@ class Controller extends GetxController  {
   String getImage(List<ImagesModel> images,ImageSizeId imageSizeId) => images.firstWhere((ImagesModel element) => element.imageSizeId == describeEnum(ImageSizeId.mobile_list),orElse: () => ImagesModel()..imageUrl = '').imageUrl!;
 
   void onTapGetProductBtn(BuildContext context) {
-    MenuProductModel model = MenuProductModel()
+    ProductModel model = ProductModel()
       ..id = 222
       ..price = [
         PriceModel(
@@ -83,7 +83,7 @@ class Controller extends GetxController  {
   }
 
   void onTapGetPromotionProductBtn(BuildContext context){
-    MenuProductModel model = MenuProductModel()..id = 5..price = [PriceModel(price: 0,id: 108,isDefault: false,orderDeliveryTypeId: 'TABLE')]
+    ProductModel model = ProductModel()..id = 5..price = [PriceModel(price: 0,id: 108,isDefault: false,orderDeliveryTypeId: 'TABLE')]
       ..images = [
         ImagesModel(
             id: 0,

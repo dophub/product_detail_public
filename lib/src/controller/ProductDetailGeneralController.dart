@@ -39,7 +39,7 @@ class ProductDetailGeneralController  {
 
   /// Opsiyonsuz Order modeli oluşturmak için yazıldı.
   /// Opsiyonu olmayan ProductCard e olan sepete ekle buttonuna tıklandığında modeli oluşturmak için kullanılmakta.
-  ItemOrder? getBasketModelWithOutOption(MenuProductModel product,PriceType priceType,TimeoutAction timeoutAction) {
+  ItemOrder? getBasketModelWithOutOption(ProductModel product,PriceType priceType,TimeoutAction timeoutAction) {
     double amount = getPrice(priceType,product.price!);
     var item = ItemOrder(id: 0);
     /// Yeni ürün olduğuda 0 önceden eklenen ürünü güncelliyorsak order de dönen id yi veriyoruz

@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:flutter/foundation.dart';
 import 'package:product_detail/src/app/const/Enum.dart';
 import 'package:product_detail/src/app/model/ProductCartModel.dart';
@@ -126,13 +124,6 @@ class OrderModel extends IBaseModel<OrderModel>{
     "payment_info": paymentInfo!.toJson(),
     "table_service_id": tableServiceId,
   };
-
-  @override
-  Future<OrderModel> fromJsonInBackground(Uint8List bodyBytes) {
-    // TODO: implement fromJsonInBackground
-    throw UnimplementedError();
-  }
-
 }
 
 class OrderStatus {
@@ -216,7 +207,7 @@ class OrderItem {
   int? promotionMenuId;
   double? itemPriceWithoutKdv;
   double? totalPriceWithoutKdv;
-  MenuProductModel? itemObject;
+  ProductModel? itemObject;
   ItemStatus? status;
 
   /// Order modelde olan ürünü ProductPrfile ekranında kullanılan modele çevirmekte
@@ -353,7 +344,7 @@ class OrderItem {
     itemPrice: json["item_price"].toDouble(),
     itemTitle: json["item_title"],
     productId: json["product_id"] == null ? null : json["product_id"],
-    itemObject: MenuProductModel.fromJson(json["item_object"]),
+    itemObject: ProductModel.fromJson(json["item_object"]),
     taxPercent: json["tax_percent"],
     totalPrice: json["total_price"].toDouble(),
     itemTypeId: json["item_type_id"],

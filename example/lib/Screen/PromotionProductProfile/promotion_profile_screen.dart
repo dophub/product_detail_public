@@ -13,7 +13,7 @@ import 'View/promotion_profile.dart';
 class PromotionProfileScreen extends StatelessWidget {
   final int dealerId;
   final OrderItem? order;
-  final MenuProductModel itemObject;
+  final ProductModel itemObject;
 
   const PromotionProfileScreen({
     Key? key,

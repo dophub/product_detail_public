@@ -13,7 +13,7 @@ import 'package:example/App/Init/Screen/SizeConfig.dart';
 class ProductProfileScreen extends StatelessWidget {
   final int dealerId;
   final OrderItem? order;
-  final MenuProductModel itemObject;
+  final ProductModel itemObject;
 
   const ProductProfileScreen({
     Key? key,

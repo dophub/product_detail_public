@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
 import 'package:example/App/Init/Screen/SizeConfig.dart';
 import 'package:product_detail/model.dart';
-import 'package:example/App/Widget/Button/TSCloseButton.dart';
 import 'package:example/App/Widget/OtherWidgets/ImageListPositionsTag.dart';
 import 'package:example/App/Widget/OtherWidgets/TSImageNetwork.dart';
 import 'package:example/Screen/PromotionProductProfile/Controller/promotion_profile_controller.dart';

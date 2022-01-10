@@ -1,4 +1,3 @@
-import 'dart:typed_data';
 import 'package:product_detail/model.dart';
 
 /// Dealer de adisyon için kullanılmakta
@@ -52,9 +51,4 @@ class ServiceModel extends IBaseModel<ServiceModel> {
             json["orders"].map((x) => OrderModel().fromJson(x))),
       );
 
-  @override
-  Future<ServiceModel> fromJsonInBackground(Uint8List bodyBytes) {
-    // TODO: implement fromJsonInBackground
-    throw UnimplementedError();
-  }
 }

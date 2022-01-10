@@ -1,10 +1,6 @@
 
 import 'dart:convert';
-import 'dart:isolate';
-import 'dart:typed_data';
-import 'package:flutter/foundation.dart';
 import 'package:product_detail/src/app/model/IBaseModel.dart';
-
 import 'ImagesModel.dart';
 import 'PriceModel.dart';
 

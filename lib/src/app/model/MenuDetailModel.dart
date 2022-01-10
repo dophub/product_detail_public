@@ -7,9 +7,9 @@ import 'PriceModel.dart';
 MenuDetailModel menuDetailModelFromJson(String str) =>
     MenuDetailModel.fromJson(json.decode(str));
 
-List<MenuProductModel> productListModelFromJson(String str) =>
-    List<MenuProductModel>.from(
-        json.decode(str).map((x) => MenuProductModel.fromJson(x)));
+List<ProductModel> productListModelFromJson(String str) =>
+    List<ProductModel>.from(
+        json.decode(str).map((x) => ProductModel.fromJson(x)));
 
 /// Menü ye tılandığı zaman Api den gelen Response için kullanılmakta
 class MenuDetailModel {
@@ -54,7 +54,7 @@ class CategoryModel extends IBaseModel<CategoryModel> {
   String? categoryName;
   String? menuListTypeId;
   int? listOrder;
-  List<MenuProductModel>? products;
+  List<ProductModel>? products;
 
   @override
   CategoryModel fromJson(Map<dynamic, dynamic> json) => CategoryModel(
@@ -64,14 +64,14 @@ class CategoryModel extends IBaseModel<CategoryModel> {
         listOrder: json["list_order"],
         products: json["products"] == null
             ? []
-            : List<MenuProductModel>.from(
-                json["products"].map((x) => MenuProductModel.fromJson(x))),
+            : List<ProductModel>.from(
+                json["products"].map((x) => ProductModel.fromJson(x))),
       );
 }
 
 /// Menu va kategori modelerde olan ürün biligileri
-class MenuProductModel {
-  MenuProductModel({
+class ProductModel {
+  ProductModel({
     this.id,
     this.price,
     this.images,
@@ -95,8 +95,8 @@ class MenuProductModel {
   String? productName;
   String? shortDescription;
 
-  factory MenuProductModel.fromJson(Map<String, dynamic> json) =>
-      MenuProductModel(
+  factory ProductModel.fromJson(Map<String, dynamic> json) =>
+      ProductModel(
         id: json["id"],
         price: List<PriceModel>.from(
             json["price"].map((x) => PriceModel.fromJson(x))),
