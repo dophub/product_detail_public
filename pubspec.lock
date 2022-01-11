@@ -175,7 +175,7 @@ packages:
     description:
       path: "."
       ref: prod
-      resolved-ref: "9702f396137941c3b2a9f0513b6c2f430a955c32"
+      resolved-ref: dbd799a6ede2e8fe54f20a1a07d5ac9a8b0e9fea
       url: "https://bitbucket.org/digital-operasyon-merkezi/sip-models.git"
     source: git
     version: "0.0.1"

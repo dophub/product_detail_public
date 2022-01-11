@@ -5,7 +5,7 @@ import 'package:example/App/Theme/TSColors.dart';
 import 'package:example/App/Theme/TSTextStyle.dart';
 import 'package:example/App/Widget/Dialog/TSDialog.dart';
 import 'package:example/App/Widget/OtherWidgets/TSImageNetwork.dart';
-import 'package:sip_models/sip_response_models.dart';
+import 'package:sip_models/response.dart';
 
 /// Dealer profil ekranında appbar daki buttona tıklandığında menuleri gösteren dialog
 class MenuDialog {

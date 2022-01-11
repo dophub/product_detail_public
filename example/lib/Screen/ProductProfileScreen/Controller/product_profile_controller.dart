@@ -1,13 +1,13 @@
 import 'package:example/App/BL/General.dart';
 import 'package:example/App/Extension/GeneralExtension.dart';
 import 'package:example/App/Init/Screen/SizeConfig.dart';
-import 'package:example/App/Model/BaseHttpModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:sip_models/sip_enum.dart';
-import 'package:sip_models/sip_general_models.dart';
+import 'package:sip_models/enum.dart';
+import 'package:sip_models/request.dart';
+import 'package:sip_models/response.dart';
+import 'package:sip_models/status.dart';
 import 'package:snapping_sheet/snapping_sheet.dart';
-import 'package:example/App/Constant/Enums/LoadingStatusEnum.dart';
 import 'package:example/App/Controller/controller.dart';
 import 'package:get/get.dart';
 import 'package:example/App/Widget/Message/ToastMessage.dart';

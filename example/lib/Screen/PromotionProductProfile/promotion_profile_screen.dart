@@ -1,7 +1,8 @@
 import 'package:example/App/Init/Screen/SizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sip_models/sip_general_models.dart';
+import 'package:sip_models/request.dart';
+import 'package:sip_models/response.dart';
 import 'Controller/promotion_profile_controller.dart';
 import 'View/promotion_profile.dart';
 

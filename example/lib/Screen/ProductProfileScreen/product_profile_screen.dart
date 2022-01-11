@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 import 'package:example/Screen/ProductProfileScreen/Controller/product_profile_controller.dart';
 import 'package:example/Screen/ProductProfileScreen/View/product_profile.dart';
 import 'package:example/App/Init/Screen/SizeConfig.dart';
-import 'package:sip_models/sip_general_models.dart';
+import 'package:sip_models/request.dart';
+import 'package:sip_models/response.dart';
 
 /// Ürün profil ekranı
 /// [dealerId] İşletme ID

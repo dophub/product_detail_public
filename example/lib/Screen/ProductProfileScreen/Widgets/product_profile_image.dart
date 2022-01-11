@@ -5,7 +5,7 @@ import 'package:example/App/Init/Screen/SizeConfig.dart';
 import 'package:example/App/Widget/OtherWidgets/ImageListPositionsTag.dart';
 import 'package:example/App/Widget/OtherWidgets/TSImageNetwork.dart';
 import 'package:example/Screen/ProductProfileScreen/Controller/product_profile_controller.dart';
-import 'package:sip_models/sip_general_models.dart';
+import 'package:sip_models/response.dart';
 
 /// Ürün profilde ürün resimleri
 /// Yatay kayan şeklinde

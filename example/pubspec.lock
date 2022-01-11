@@ -222,7 +222,7 @@ packages:
     description:
       path: "."
       ref: prod
-      resolved-ref: "9702f396137941c3b2a9f0513b6c2f430a955c32"
+      resolved-ref: d1dce0d4e1d64214a6d3a1b0bc5c88f97f0e9f22
       url: "https://bitbucket.org/digital-operasyon-merkezi/sip-models.git"
     source: git
     version: "0.0.1"

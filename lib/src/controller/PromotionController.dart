@@ -1,11 +1,10 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
-import 'package:sip_models/sip_enum.dart';
-import 'package:sip_models/sip_general_models.dart';
-
+import 'package:sip_models/enum.dart';
+import 'package:sip_models/request.dart';
+import 'package:sip_models/response.dart';
 import 'ProductDetailGeneralController.dart';
 
 

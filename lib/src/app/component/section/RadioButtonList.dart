@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
 import 'package:collection/collection.dart';
-import 'package:sip_models/sip_general_models.dart';
+import 'package:sip_models/widget.dart';
 
 import '../other/PriceTextWidgetWithParentheses.dart';
 

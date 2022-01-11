@@ -1,4 +1,5 @@
-import 'package:example/App/Constant/Enums/IdEnum.dart';
+
+import 'package:sip_models/enum.dart';
 
 class HttpUrl {
   /// Api Url

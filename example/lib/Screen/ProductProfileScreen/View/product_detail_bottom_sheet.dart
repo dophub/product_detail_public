@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sip_models/sip_enum.dart';
+import 'package:sip_models/enum.dart';
 import 'package:snapping_sheet/snapping_sheet.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
 import 'package:example/App/Extension/GeneralExtension.dart';

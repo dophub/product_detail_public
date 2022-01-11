@@ -1,9 +1,9 @@
+import 'package:example/App/Extension/GeneralExtension.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sip_models/sip_enum.dart';
+import 'package:sip_models/enum.dart';
 import 'package:snapping_sheet/snapping_sheet.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
-import 'package:example/App/Extension/GeneralExtension.dart';
 import 'package:example/App/Init/Screen/SizeConfig.dart';
 import 'package:example/App/Widget/Button/AddToCartButton.dart';
 import 'package:example/Screen/PromotionProductProfile/Controller/promotion_profile_controller.dart';

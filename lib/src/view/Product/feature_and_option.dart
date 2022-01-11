@@ -8,8 +8,8 @@ import 'package:product_detail/src/app/component/section/SingleSectionBottomShee
 import 'package:product_detail/src/app/component/section/SingleSectionRadioButton.dart';
 import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
 import 'package:product_detail/src/controller/ProductController.dart';
-import 'package:sip_models/sip_enum.dart';
-import 'package:sip_models/sip_general_models.dart';
+import 'package:sip_models/enum.dart';
+import 'package:sip_models/widget.dart';
 
 /// Product optionGroups
 class FeatureAndOption extends StatelessWidget {

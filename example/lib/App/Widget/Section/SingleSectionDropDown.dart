@@ -4,7 +4,7 @@ import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
 import 'package:example/App/Theme/TSTextStyle.dart';
 import 'package:collection/collection.dart';
 import 'package:example/App/Widget/OtherWidgets/PriceTextWidgetWithParentheses.dart';
-import 'package:sip_models/sip_general_models.dart';
+import 'package:sip_models/widget.dart';
 
 /// Tekli seçmelide kullanılan dropdown
 /// [title] dropdown üst kısmında cıkan başlık

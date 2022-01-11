@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:sip_models/sip_enum.dart';
-import 'package:sip_models/sip_general_models.dart';
+import 'package:sip_models/enum.dart';
+import 'package:sip_models/response.dart';
 
 /// Bu sınıfımız Genel tüm modüller için yazıldı.
 ///

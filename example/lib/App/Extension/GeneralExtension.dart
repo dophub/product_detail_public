@@ -1,4 +1,5 @@
-import 'package:example/App/Constant/Enums/LoadingStatusEnum.dart';
+
+import 'package:sip_models/enum.dart';
 
 /// [LoadingStatus] Enumun durumlarını kontrol etmek için yazıldı
 extension LoadingStatusExtension on LoadingStatus {

@@ -1,17 +1,16 @@
 import 'package:example/App/BL/General.dart';
 import 'package:example/App/Constant/App/HttpUrl.dart';
 import 'package:example/App/Extension/GeneralExtension.dart';
-import 'package:example/App/Model/BaseHttpModel.dart';
 import 'package:example/App/Widget/Dialog/LoadingProgress.dart';
 import 'package:example/App/Widget/Message/ToastMessage.dart';
 import 'package:example/Screen/ProductProfileScreen/product_profile_screen.dart';
 import 'package:example/Screen/PromotionProductProfile/promotion_profile_screen.dart';
 import 'package:get/get.dart';
-import 'package:example/App/Constant/Enums/LoadingStatusEnum.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:sip_models/sip_enum.dart';
-import 'package:sip_models/sip_general_models.dart';
+import 'package:sip_models/enum.dart';
+import 'package:sip_models/response.dart';
+import 'package:sip_models/status.dart';
 import 'package:uuid/uuid.dart';
 
 /// Bu sınıfımız Genel tüm modüllerin için yazıldı.
