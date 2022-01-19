@@ -23,7 +23,7 @@ dependencies:
   sip_models:
     git:
       url: https://bitbucket.org/digital-operasyon-merkezi/sip-models.git
-      ref: prod
+      ref: prod-1901
 
 dev_dependencies:
   product_detail:

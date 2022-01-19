@@ -221,8 +221,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: prod
-      resolved-ref: d1dce0d4e1d64214a6d3a1b0bc5c88f97f0e9f22
+      ref: prod-1901
+      resolved-ref: e54147d482b28e4d13164f389f0d783f01a10ceb
       url: "https://bitbucket.org/digital-operasyon-merkezi/sip-models.git"
     source: git
     version: "0.0.1"
