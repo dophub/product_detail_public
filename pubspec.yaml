@@ -16,7 +16,7 @@ dependencies:
   sip_models:
     git:
       url: https://bitbucket.org/digital-operasyon-merkezi/sip-models.git
-      ref: prod-1901
+      ref: prod-2001
 
 
   flutter:
