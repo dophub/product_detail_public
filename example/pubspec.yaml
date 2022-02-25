@@ -12,13 +12,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.2
-  flutter_svg: ^0.22.0
-  http: ^0.13.3
+  cupertino_icons: ^1.0.4
+  flutter_svg: ^1.0.3
+  http: ^0.13.4
   flutter_styled_toast: ^2.0.0
   connectivity: ^3.0.6
-  get: ^4.3.8
-  uuid: ^3.0.4
+  get: ^4.6.1
+  uuid: ^3.0.6
   snapping_sheet: ^3.1.0
 
 dev_dependencies:
