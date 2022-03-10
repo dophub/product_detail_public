@@ -9,10 +9,10 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  get: ^4.6.1
-  flutter_svg: ^1.0.3
-  connectivity: ^3.0.6
-  intl: ^0.17.0
+  get: any
+  flutter_svg: any
+  connectivity: any
+  intl: any
 
   flutter:
     sdk: flutter
