@@ -1,127 +1,275 @@
 {
-  "service_id": 1,
-  "table_id": "",
-  "service_number": "",
-  "total_amount": 0.2,
-  "pay_type_id": "TOTAL,IND",
-  "dealer_id": 0,
-  "payment_type_id": "KK",
-  "pay_customer": {
-    "id": 1,
-    "name_surname": "",
-    "sessionId": "",
-    "nick_name": ""
-  },
-  "orders": [
+  "id": 676,
+  "product_name": "Test Ãzellik ÃrÃ¼n",
+  "short_description": "Test ÃrÃ¼n AÃ§Ä±klamasÄ±",
+  "description": "Test ÃrÃ¼n AÃ§Ä±klamasÄ± DetaylÄ±",
+  "product_code": "R344L6K0H85roPbI",
+  "tags": [],
+  "make_time": 15,
+  "calorie": 0,
+  "price": [
     {
-      "id": 1,
-      "customer": {
-        "id": 1,
-        "name_surname": "",
-        "sessionId": "",
-        "nick_name": ""
-      },
-      "order_number": "",
-      "total_amount": 1.4,
-      "order_note": "",
-      "order_point_id": "IN,OUT",
-      "session_point_id": "RESTIN,MARKETPLACE,LINK",
-      "payment_type_id": "KK",
-      "delivery_type_id": "TAKEOUT,GETIN,TABLE",
-      "customer_address": {
-        "id": 1,
-        "address_name": "",
-        "city_id": 1,
-        "city_name": "",
-        "address": ""
-      },
-      "delivery_time_id": "NOW,LATER",
-      "delivery_date": "2009-10-1",
-      "tip_amount": 5.5,
-      "dealer_id": 1,
-      "client_point_id": "MOBILE_APP,WEB_APP,DEALER_WEB_APP",
-      "order_status": {
-        "order_status_code": "",
-        "order_status_name": ""
-      },
-      "order_options": [
-        {
-          "option_code": "",
-          "option_name": ""
-        }
-      ],
+      "id": 1052,
+      "price": 10.0,
+      "is_default": false,
+      "order_delivery_type_id": "TAKEOUT"
+    },
+    {
+      "id": 1053,
+      "price": 10.0,
+      "is_default": false,
+      "order_delivery_type_id": "TABLE"
+    },
+    {
+      "id": 1054,
+      "price": 10.0,
+      "is_default": false,
+      "order_delivery_type_id": "GETIN"
+    }
+  ],
+  "images": [
+    {
+      "id": 2376,
+      "image_url": "https://siparisimcdn2.s3.eu-central-1.amazonaws.com/icdn/mobile-daily-menu-logo-0-10344170922732299.png",
+      "list_order": 1516,
+      "image_size_id": "mobile_daily_menu"
+    },
+    {
+      "id": 2377,
+      "image_url": "https://siparisimcdn2.s3.eu-central-1.amazonaws.com/icdn/mobile-list-logo-0-021516529010956686.png",
+      "list_order": 1516,
+      "image_size_id": "mobile_list"
+    },
+    {
+      "id": 2378,
+      "image_url": "https://siparisimcdn2.s3.eu-central-1.amazonaws.com/icdn/mobile-list-col-logo-0-9796777361325049.png",
+      "list_order": 1516,
+      "image_size_id": "mobile_list_col"
+    },
+    {
+      "id": 2379,
+      "image_url": "https://siparisimcdn2.s3.eu-central-1.amazonaws.com/icdn/mobile-detail-logo-0-4222263572856828.png",
+      "list_order": 1516,
+      "image_size_id": "mobile_detail"
+    }
+  ],
+  "option_groups": null,
+  "features": [
+    {
+      "id": 81,
       "items": [
         {
-          "note": "",
-          "item_type": "PRODUCT,PROMOTION_MENU",
-          "count": 1,
-          "item_amount": 45.5,
-          "total_amount": 45.5,
-          "product":
-            {
-              "item_id": 1,
-              "product_name": "",
-              "options": [
-                {
-                  "option_type": "OPTION,FEATURE",
-                  "id": 1,
-                  "title": "Çıkarılacak Malzeme",
-                  "adding_type": "DECREASE,SELECT,ADD,SELECT",
-                  "total_price": 4.5,
-                  "items": [
-                    {
-                      "id": 1,
-                      "title": "Peynir",
-                      "product_id": 0,
-                      "price": 0.0
-                    }
-                  ]
-                }
-              ]
-            },
-          "promotion_menu": [
-            {
-              "item_id": 1,
-              "promotion_name": "",
-              "sections": [
-                {
-                  "section_id": 1,
-                  "section_title": "",
-                  "section_item": {
-                    "item_id": 1,
-                    "product_name": "",
-                    "options": {
-                      "option_type": "OPTION,FEATURE",
-                      "id": 1,
-                      "title": "Çıkarılacak Malzeme",
-                      "adding_type": "DECREASE,SELECT,ADD,SELECT",
-                      "total_price": 4.5,
-                      "items": {
-                        "id": 1,
-                        "title": "Peynir",
-                        "product_id": 0,
-                        "price": 0.0
-                      }
-                    }
-                  }
-                }
-              ]
-            }
-          ]
+          "id": 155,
+          "is_free": false,
+          "add_price": 10.0,
+          "is_default": false,
+          "list_order": 1,
+          "product_name": "Pepsi (33 cl.)"
+        },
+        {
+          "id": 156,
+          "is_free": false,
+          "add_price": 10.0,
+          "is_default": false,
+          "list_order": 2,
+          "product_name": "Pepsi Max (33 cl.)"
+        },
+        {
+          "id": 157,
+          "is_free": false,
+          "add_price": 10.0,
+          "is_default": false,
+          "list_order": 3,
+          "product_name": "Pepsi Twist (33 cl.)"
         }
-      ]
+      ],
+      "max_count": 2,
+      "list_order": 0,
+      "description": "",
+      "feature_name": "Ãzellik - Tekli - Ekleme",
+      "adding_type_id": "ADD",
+      "choose_type_id": "SINGLE",
+      "max_free_count": 1
+    },
+    {
+      "id": 82,
+      "items": [
+        {
+          "id": 158,
+          "is_free": false,
+          "add_price": 10.0,
+          "is_default": false,
+          "list_order": 1,
+          "product_name": "Pepsi (33 cl.)"
+        },
+        {
+          "id": 159,
+          "is_free": false,
+          "add_price": 10.0,
+          "is_default": false,
+          "list_order": 2,
+          "product_name": "Pepsi Max (33 cl.)"
+        },
+        {
+          "id": 160,
+          "is_free": false,
+          "add_price": 10.0,
+          "is_default": false,
+          "list_order": 3,
+          "product_name": "Pepsi Twist (33 cl.)"
+        }
+      ],
+      "max_count": 2,
+      "list_order": 0,
+      "description": "",
+      "feature_name": "Ãzellik - Tekli - Cikarma",
+      "adding_type_id": "DECREASE",
+      "choose_type_id": "SINGLE",
+      "max_free_count": 1
+    },
+    {
+      "id": 83,
+      "items": [
+        {
+          "id": 161,
+          "is_free": false,
+          "add_price": 10.0,
+          "is_default": false,
+          "list_order": 1,
+          "product_name": "Pepsi (33 cl.)"
+        },
+        {
+          "id": 162,
+          "is_free": false,
+          "add_price": 10.0,
+          "is_default": false,
+          "list_order": 2,
+          "product_name": "Pepsi Max (33 cl.)"
+        },
+        {
+          "id": 163,
+          "is_free": false,
+          "add_price": 10.0,
+          "is_default": false,
+          "list_order": 3,
+          "product_name": "Pepsi Twist (33 cl.)"
+        }
+      ],
+      "max_count": 2,
+      "list_order": 0,
+      "description": "",
+      "feature_name": "Ãzellik - Tekli - SeÃ§im",
+      "adding_type_id": "SELECT",
+      "choose_type_id": "SINGLE",
+      "max_free_count": 1
+    },
+    {
+      "id": 84,
+      "items": [
+        {
+          "id": 164,
+          "is_free": false,
+          "add_price": 10.0,
+          "is_default": false,
+          "list_order": 1,
+          "product_name": "Pepsi (33 cl.)"
+        },
+        {
+          "id": 165,
+          "is_free": false,
+          "add_price": 10.0,
+          "is_default": false,
+          "list_order": 2,
+          "product_name": "Pepsi Max (33 cl.)"
+        },
+        {
+          "id": 166,
+          "is_free": false,
+          "add_price": 10.0,
+          "is_default": false,
+          "list_order": 3,
+          "product_name": "Pepsi Twist (33 cl.)"
+        }
+      ],
+      "max_count": 2,
+      "list_order": 0,
+      "description": "",
+      "feature_name": "Ãzellik - Coklu - Ekleme",
+      "adding_type_id": "ADD",
+      "choose_type_id": "MULTIPLE",
+      "max_free_count": 1
+    },
+    {
+      "id": 85,
+      "items": [
+        {
+          "id": 167,
+          "is_free": false,
+          "add_price": 10.0,
+          "is_default": false,
+          "list_order": 1,
+          "product_name": "Pepsi (33 cl.)"
+        },
+        {
+          "id": 168,
+          "is_free": false,
+          "add_price": 10.0,
+          "is_default": false,
+          "list_order": 2,
+          "product_name": "Pepsi Max (33 cl.)"
+        },
+        {
+          "id": 169,
+          "is_free": false,
+          "add_price": 10.0,
+          "is_default": false,
+          "list_order": 3,
+          "product_name": "Pepsi Twist (33 cl.)"
+        }
+      ],
+      "max_count": 2,
+      "list_order": 0,
+      "description": "",
+      "feature_name": "Ãzellik - Coklu - Cikarma",
+      "adding_type_id": "DECREASE",
+      "choose_type_id": "MULTIPLE",
+      "max_free_count": 1
+    },
+    {
+      "id": 86,
+      "items": [
+        {
+          "id": 170,
+          "is_free": false,
+          "add_price": 10.0,
+          "is_default": false,
+          "list_order": 1,
+          "product_name": "Pepsi (33 cl.)"
+        },
+        {
+          "id": 171,
+          "is_free": false,
+          "add_price": 10.0,
+          "is_default": false,
+          "list_order": 2,
+          "product_name": "Pepsi Max (33 cl.)"
+        },
+        {
+          "id": 172,
+          "is_free": false,
+          "add_price": 10.0,
+          "is_default": false,
+          "list_order": 3,
+          "product_name": "Pepsi Twist (33 cl.)"
+        }
+      ],
+      "max_count": 2,
+      "list_order": 0,
+      "description": "",
+      "feature_name": "Ãzellik - Coklu - Secim",
+      "adding_type_id": "SELECT",
+      "choose_type_id": "MULTIPLE",
+      "max_free_count": 1
     }
   ]
 }
-
-
-
-
-
-
-
-
-
-
-
-

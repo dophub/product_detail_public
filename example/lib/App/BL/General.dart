@@ -37,42 +37,48 @@ class General {
     }
   }
 
+
   /// Ürün detayı çekmek için yazıldı
   /// [getProductDetail] Ürün detayını çekmek için yazıldı
-  Future<BaseHttpModel> getProductDetail<T extends IBaseModel>(T model,int dealerId, int productId) async {
+  Future<BaseHttpModel> getProductDetail(int dealerId, int productId) async {
     try {
-      var response = await HttpClient().get(HttpUrl.getProductDetails, body: '$dealerId/$productId', header: getHeader());
+      var response = await HttpClient().get(HttpUrl.getProductDetails(dealerId, productId), header: getHeader());
       if (response!.statusCode == HttpStatus.ok) {
-        ProductDetailModel responseModel = await model.jsonParser(response.bodyBytes);
+        ProductDetailModel responseModel = ProductDetailModel().fromJson(
+            jsonDecode(utf8.decode(response.bodyBytes)));
         return BaseHttpModel(status: BaseModelStatus.Ok, data: responseModel);
       } else if (response.statusCode == HttpStatus.unprocessableEntity) {
-        ResponseErrorModel responseModel = ResponseErrorModel.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
+        ResponseErrorModel responseModel = ResponseErrorModel.fromJson(
+            jsonDecode(utf8.decode(response.bodyBytes)));
         return BaseHttpModel(status: BaseModelStatus.Ok, data: responseModel);
       } else {
         return BaseHttpModel(status: BaseModelStatus.Error);
       }
     } catch (e) {
-      log(e.toString(),name: 'Api Error getProductDetail');
+      log(e.toString(), name: 'Api Error getProductDetail');
       return BaseHttpModel(status: BaseModelStatus.Error);
     }
   }
 
+
   /// Ürün detayı çekmek için yazıldı
   /// [getPromotionDetail] Promosyonlu ürün detayını çekmek için yazıldı
-  Future<BaseHttpModel> getPromotionDetail<T extends IBaseModel>(T model,int dealerId, int productId) async {
+  Future<BaseHttpModel> getPromotionDetail(int dealerId, int productId) async {
     try {
-      var response = await HttpClient().get(HttpUrl.getPromotionMenu, body: '$dealerId/$productId', header: getHeader());
+      var response = await HttpClient().get(HttpUrl.getPromotionMenu(dealerId,productId), header: getHeader());
       if (response!.statusCode == HttpStatus.ok) {
-        PromotionMenuDetailModel responseModel = await model.jsonParser(response.bodyBytes);
+        PromotionMenuDetailModel responseModel = PromotionMenuDetailModel().fromJson(
+            jsonDecode(utf8.decode(response.bodyBytes)));
         return BaseHttpModel(status: BaseModelStatus.Ok, data: responseModel);
       } else if (response.statusCode == HttpStatus.unprocessableEntity) {
-        ResponseErrorModel responseModel = ResponseErrorModel.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
+        ResponseErrorModel responseModel = ResponseErrorModel.fromJson(
+            jsonDecode(utf8.decode(response.bodyBytes)));
         return BaseHttpModel(status: BaseModelStatus.Ok, data: responseModel);
-      }  else {
+      } else {
         return BaseHttpModel(status: BaseModelStatus.Error);
       }
     } catch (e) {
-      log(e.toString(),name: 'Api Error getPromotionDetail');
+      log(e.toString(), name: 'Api Error getPromotionDetail');
       return BaseHttpModel(status: BaseModelStatus.Error);
     }
   }
