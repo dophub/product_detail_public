@@ -52,7 +52,6 @@ class PromotionDetails extends StatelessWidget {
                               onTap: (int selectedIndex) => controller.sectionBottomSheetOnChange(sectionIndex, selectedIndex),
                               selectedCardColor: TSColor.turkcellYellow,
                             ),
-                            SizedBox(height: paddingM),
                             // Section secilmiş mi
                             controller.promotionMenuModel
                                     .sections![sectionIndex].isSelected
@@ -71,8 +70,7 @@ class PromotionDetails extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: paddingM)
-                        .copyWith(bottom: paddingM),
+                    padding: const EdgeInsets.all(paddingM),
                     child: GestureDetector(
                       child: GestureDetector(
                         onTap: () {

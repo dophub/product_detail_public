@@ -31,7 +31,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
       children: [
         /// Product Option
         Padding(
-          padding: EdgeInsets.only(bottom: optionGroupsList.length == 0 ? 0 :paddingM),
+          padding: EdgeInsets.only(top: optionGroupsList.length == 0 ? 0 :paddingM),
           child: ListView.separated(
             padding: EdgeInsets.zero,
             shrinkWrap: true,
@@ -108,7 +108,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
         ),
         /// Product Features
         Padding(
-          padding: EdgeInsets.only(bottom:  featuresList.length == 0 ? 0 :paddingM),
+          padding: EdgeInsets.only(top:  featuresList.length == 0 ? 0 :paddingM),
           child: ListView.separated(
             shrinkWrap: true,
             padding: EdgeInsets.zero,

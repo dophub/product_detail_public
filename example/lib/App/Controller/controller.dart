@@ -83,7 +83,7 @@ class Controller extends GetxController  {
   }
 
   void onTapGetPromotionProductBtn(BuildContext context){
-    ProductModel model = ProductModel()..id = 5..price = [PriceModel(price: 0,id: 108,isDefault: false,orderDeliveryTypeId: 'TABLE')]
+    ProductModel model = ProductModel()..id = 67..price = [PriceModel(price: 0,id: 108,isDefault: false,orderDeliveryTypeId: 'TABLE')]
       ..images = [
         ImagesModel(
             id: 0,
@@ -96,7 +96,7 @@ class Controller extends GetxController  {
     ..listOrder = 0
     ..productName = 'Product'
     ..shortDescription = 'shortDescription';
-    goToProductProfileScreen(context, 594, model);
+    goToProductProfileScreen(context, 603, model);
   }
 }
 
