@@ -49,7 +49,7 @@ class SingleSectionDropDown extends StatelessWidget {
                 ),
                 iconSize: 24,
                 elevation: 2,
-                dropdownColor: Theme.of(context).cardColor,
+                dropdownColor: Theme.of(context).cardTheme.color,
                 style: s16W400Dark(context),
                 onChanged: onSelect,
                 items: list!
