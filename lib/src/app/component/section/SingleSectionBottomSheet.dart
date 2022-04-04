@@ -97,7 +97,7 @@ class SingleSectionBottomSheet extends StatelessWidget {
         ),
       ),
       constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height / 2),
-      backgroundColor: Theme.of(context).cardTheme.color,
+      backgroundColor: Theme.of(context).cardColor,
       builder: (BuildContext context) {
         return SafeArea(
             child: Padding(
