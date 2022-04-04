@@ -8,10 +8,10 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  get: any
-  flutter_svg: any
-  connectivity: any
-  intl: any
+  get: ^4.3.8
+  flutter_svg: ^0.22.0
+  connectivity: ^3.0.6
+  intl: ^0.17.0
 
   flutter:
     sdk: flutter
