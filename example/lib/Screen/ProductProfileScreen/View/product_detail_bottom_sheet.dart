@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sip_models/enum.dart';
 import 'package:snapping_sheet/snapping_sheet.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
 import 'package:example/App/Extension/GeneralExtension.dart';
@@ -8,7 +9,6 @@ import 'package:example/App/Widget/Button/AddToCartButton.dart';
 import 'package:example/Screen/ProductProfileScreen/Controller/product_profile_controller.dart';
 import 'product_details.dart';
 import '../Widgets/product_profile_image.dart';
-import 'package:product_detail/model.dart';
 
 /// Ürün detayını gösteren bottom sheet
 /// Ürün Resimleri

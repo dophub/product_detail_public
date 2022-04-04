@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
 import 'package:product_detail/src/app/const/TSTextStyle.dart';
-import 'package:product_detail/src/app/model/SectionsWidgetModel.dart';
 import 'package:collection/collection.dart';
+import 'package:sip_models/widget.dart';
 
-import '../Other/PriceTextWidgetWithParentheses.dart';
+import '../other/PriceTextWidgetWithParentheses.dart';
 
 /// Tekli seçmelide kullanılan dropdown
 /// [title] dropdown üst kısmında cıkan başlık

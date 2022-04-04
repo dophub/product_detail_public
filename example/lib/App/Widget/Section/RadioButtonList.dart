@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
-import 'package:product_detail/model.dart';
 import 'package:collection/collection.dart';
 import 'package:example/App/Widget/OtherWidgets/PriceTextWidgetWithParentheses.dart';
+import 'package:sip_models/widget.dart';
 
 /// Radio Button Liste
 /// [selectedIndex] seçilen index

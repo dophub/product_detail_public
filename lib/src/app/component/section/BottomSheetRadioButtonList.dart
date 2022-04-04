@@ -3,9 +3,9 @@ import 'package:collection/collection.dart';
 import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
 import 'package:product_detail/src/app/const/TSColors.dart';
 import 'package:product_detail/src/app/const/TSTextStyle.dart';
-import 'package:product_detail/src/app/model/SectionsWidgetModel.dart';
+import 'package:sip_models/widget.dart';
 
-import '../Other/PriceTextWidgetWithParentheses.dart';
+import '../other/PriceTextWidgetWithParentheses.dart';
 
 /// Radio Button Liste
 /// [selectedIndex] seçilen index
