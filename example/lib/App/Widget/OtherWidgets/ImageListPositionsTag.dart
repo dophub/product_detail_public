@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
-import 'package:example/App/Theme/TSColors.dart';
+import 'package:example/App/Theme/AppColors.dart';
 import 'package:example/Screen/ProductProfileScreen/product_profile_screen.dart';
 
 /// [ProductProfileScreen] de Ürün resmin alt kısmında gösterilen resim index ini beliten teg Listesin.

@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
 import 'package:example/App/Constant/Assets/Assets.dart';
 import 'package:example/App/Init/Screen/SizeConfig.dart';
-import 'package:example/App/Theme/TSColors.dart';
+import 'package:example/App/Theme/AppColors.dart';
 import 'package:example/App/Theme/TSTextStyle.dart';
 import 'package:example/App/Widget/Button/TSOutlineButton.dart';
 import 'package:example/App/Widget/Dialog/TSSimpleDialog.dart';

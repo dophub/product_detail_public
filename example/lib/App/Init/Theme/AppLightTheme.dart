@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:example/App/Constant/Assets/Assets.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
-import 'package:example/App/Extension/ExtensionWidgetsScale.dart';
-import 'package:example/App/Theme/TSColors.dart';
+import 'package:example/App/Theme/AppColors.dart';
 
-import 'TSTheme.dart';
+import 'AppTheme.dart';
 
-class TSLightTheme implements TSTheme {
+class AppLightTheme implements AppTheme {
   @override
   Brightness brightness = Brightness.light;
   @override

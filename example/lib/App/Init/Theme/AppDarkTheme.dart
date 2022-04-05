@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:example/App/Constant/Assets/Assets.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
-import 'package:example/App/Theme/TSColors.dart';
+import 'package:example/App/Theme/AppColors.dart';
 
-import 'TSTheme.dart';
+import 'AppTheme.dart';
 
-class TSDarkTheme implements TSTheme {
+class AppDarkTheme implements AppTheme {
   @override
   Brightness brightness = Brightness.dark;
   @override

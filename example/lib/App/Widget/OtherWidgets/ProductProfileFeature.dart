@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:example/App/Constant/App/AppConstant.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
 import 'package:example/App/Constant/Assets/Assets.dart';
-import 'package:example/App/Theme/TSColors.dart';
+import 'package:example/App/Theme/AppColors.dart';
 import 'package:example/App/Theme/TSTextStyle.dart';
 import 'package:example/App/Widget/OtherWidgets/TSImageNetwork.dart';
 

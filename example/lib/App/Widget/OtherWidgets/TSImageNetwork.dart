@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:example/App/Theme/TSColors.dart';
+import 'package:example/App/Theme/AppColors.dart';
 
 /// Base Image.network
 class TSImageNetwork extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-abstract class TSTheme {
+abstract class AppTheme {
   late final Brightness brightness;
   late final Color backgroundColor;
   late final Color scaffoldBackgroundColor;

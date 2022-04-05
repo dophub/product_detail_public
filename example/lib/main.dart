@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 
 import 'App/Controller/controller.dart';
 import 'App/Init/Theme/GetTheme.dart';
-import 'App/Init/Theme/TSDarkTheme.dart';
-import 'App/Init/Theme/TSLightTheme.dart';
+import 'App/Init/Theme/AppDarkTheme.dart';
+import 'App/Init/Theme/AppLightTheme.dart';
 void main() {
   HttpUrl.baseUrl = 'https://sandbox2.siparisimapi.com/';
   runApp(const MyApp());
@@ -24,8 +24,8 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           themeMode: ThemeMode.system,
-          theme: getTheme(TSLightTheme()),
-          darkTheme: getTheme(TSDarkTheme()),
+          theme: getTheme(AppLightTheme()),
+          darkTheme: getTheme(AppDarkTheme()),
           home: const MyHomePage(title: 'TS Product Detail'),
         );
       }

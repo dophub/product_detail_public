@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:example/App/Constant/App/AppConstant.dart';
-import 'package:example/App/Theme/TSColors.dart';
+import 'package:example/App/Theme/AppColors.dart';
 import 'package:example/App/Theme/TSTextStyle.dart';
 
 /// Section lerde gösterilen 'Section Addı (+₺ 5.00)' şeklinde widget

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'TSTheme.dart';
+import 'AppTheme.dart';
 
-ThemeData getTheme<T extends TSTheme>(T theme) => ThemeData(
+ThemeData getTheme<T extends AppTheme>(T theme) => ThemeData(
       colorScheme: theme.colorScheme,
       backgroundColor: theme.backgroundColor,
       scaffoldBackgroundColor: theme.scaffoldBackgroundColor,
