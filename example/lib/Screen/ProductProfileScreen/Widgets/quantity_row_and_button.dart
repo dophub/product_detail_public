@@ -20,6 +20,7 @@ class QuantityRowAndButton extends StatelessWidget {
         width: double.infinity,
         height: 48,
         child: Card(
+          color: Theme.of(context).cardColor,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: paddingM),
             child: Row(

@@ -63,8 +63,8 @@ class MultiSectionDecreaseSection extends StatelessWidget {
                             borderRadius: BorderRadius.circular(radiusXXXS),
                             border: Border.all(
                                 color: element.status!
-                                    ? TSColor.paleTextColor
-                                    : TSColor.turkcellBlue, width: 1)),
+                                    ? AppColor.paleTextColor
+                                    : AppColor.primaryVariant, width: 1)),
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: paddingXS, vertical: paddingXXS),
@@ -72,8 +72,8 @@ class MultiSectionDecreaseSection extends StatelessWidget {
                             element.name,
                             style: s16W400Dark(context).copyWith(
                               color: element.status!
-                                  ? TSColor.paleTextColor
-                                  : TSColor.darkText,
+                                  ? AppColor.paleTextColor
+                                  : AppColor.darkText,
                                 decoration: !element.status!
                                     ? TextDecoration.none
                                     : TextDecoration.lineThrough),

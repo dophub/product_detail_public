@@ -57,7 +57,7 @@ class PromotionTitleAndDetail extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom:paddingS),
                 child: Text(
                     subTitle!,
-                    style: s12W400Dark(context).copyWith(color: TSColor.paleTextColor),
+                    style: s12W400Dark(context).copyWith(color: AppColor.paleTextColor),
                   ),
               ),
           detail == null || detail!.isEmpty

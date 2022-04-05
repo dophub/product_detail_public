@@ -37,7 +37,7 @@ class CircleAddButton extends StatelessWidget {
         height: iconSize == null ? 28 : iconSize! + 7,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: TSColor.turkcellBlue,
+          color: AppColor.primaryVariant,
           borderRadius: BorderRadius.circular(radiusXXXL),
         ),
         child: Icon(

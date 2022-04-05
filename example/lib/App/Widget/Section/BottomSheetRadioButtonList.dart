@@ -37,13 +37,13 @@ class BottomSheetRadioButtonList extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                           color: selectedIndex == index
-                              ? TSColor.turkcellYellow
+                              ? AppColor.turkcellYellow
                               : Colors.transparent,
                           borderRadius: BorderRadius.circular(radiusXS),
                           border: selectedIndex == index
                               ? null
                               : Border.all(
-                                  width: 1, color: TSColor.turkcellBlue)),
+                                  width: 1, color: AppColor.primaryVariant)),
                       child: Padding(
                         padding: const EdgeInsets.all(paddingS),
                         child: Row(
@@ -59,15 +59,15 @@ class BottomSheetRadioButtonList extends StatelessWidget {
                                     border: Border.all(
                                       width: 1,
                                       color: selectedIndex == index
-                                          ? TSColor.darkText
-                                          : TSColor.turkcellBlue,
+                                          ? AppColor.darkText
+                                          : AppColor.primaryVariant,
                                     ),
                                   ),
                                   child: Visibility(
                                     visible: selectedIndex == index,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        color: TSColor.darkText,
+                                        color: AppColor.darkText,
                                         shape: BoxShape.circle,
                                       ),
                                     ),
@@ -82,8 +82,8 @@ class BottomSheetRadioButtonList extends StatelessWidget {
                                   name: list[index].name,
                                   textStyle: s16W700Dark(context),
                                   color: selectedIndex == index
-                                      ? TSColor.darkText
-                                      : TSColor.turkcellBlue,
+                                      ? AppColor.darkText
+                                      : AppColor.primaryVariant,
                                 ),
                               ),
                             ),

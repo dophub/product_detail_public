@@ -31,27 +31,33 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              RichText(
-                text: TextSpan(
-                  text: title,
-                  style: titleStyle ?? s16W400Dark(context),
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: maxCount != null && maxCount != 0
-                            ? ' (En Fazla: ' + maxCount.toString() + ' Seçim)'
-                            : null,
-                        style:
-                            s14W400Dark(context).copyWith(color: Colors.red)),
-                  ],
+              Flexible(
+                child: RichText(
+                  text: TextSpan(
+                    text: title,
+                    style: titleStyle ?? s16W400Dark(context),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: maxCount != null && maxCount != 0
+                              ? ' (En Fazla: ' + maxCount.toString() + ' Seçim)'
+                              : null,
+                          style:
+                              s14W400Dark(context).copyWith(color: Colors.red)),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(width: paddingXXXS),
               Visibility(
                 visible: showMark ?? false,
-                child: CircleAvatar(
-                  radius: radiusXXXS,
-                  backgroundColor: TSColor.turkcellYellow,
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.width * 0.05,
+                  child: CircleAvatar(
+                    radius: radiusXXXS,
+                    backgroundColor: TSColor.turkcellYellow,
+                  ),
                 ),
               )
             ],

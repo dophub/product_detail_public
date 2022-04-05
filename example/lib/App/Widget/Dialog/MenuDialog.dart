@@ -54,7 +54,7 @@ class MenuDialog {
                                         imageUrl: list[index].menuImage!,
                                       ),
                                       Container(
-                                        color: TSColor.cardBarrierColor,
+                                        color: AppColor.cardBarrierColor,
                                         alignment: Alignment.center,
                                         padding: EdgeInsets.symmetric(
                                             horizontal: paddingXXS),

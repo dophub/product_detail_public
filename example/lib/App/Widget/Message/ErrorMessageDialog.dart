@@ -24,7 +24,7 @@ class ErrorMessageDialog {
             children: [
               SvgPicture.asset(
                 outlineErrorIcon,
-                color: TSColor.turkcellYellow,
+                color: AppColor.turkcellYellow,
                 height: 63,
               ),
               SizedBox(height: paddingM),

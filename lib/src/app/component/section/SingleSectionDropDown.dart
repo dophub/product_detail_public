@@ -34,6 +34,7 @@ class SingleSectionDropDown extends StatelessWidget {
     return Column(
       children: [
         Card(
+          color: Theme.of(context).cardColor,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: paddingM),
             child: DropdownButtonHideUnderline(

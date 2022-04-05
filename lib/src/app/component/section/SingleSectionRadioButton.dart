@@ -30,6 +30,7 @@ class SingleSectionRadioButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Theme.of(context).cardColor,
       child: Padding(
         padding: const EdgeInsets.all(paddingM).copyWith(bottom: 0),
         child: Column(

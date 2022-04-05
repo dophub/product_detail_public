@@ -51,7 +51,7 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
                 visible: showMark ?? false,
                 child: CircleAvatar(
                   radius: radiusXXXS,
-                  backgroundColor: TSColor.turkcellYellow,
+                  backgroundColor: AppColor.turkcellYellow,
                 ),
               )
             ],
@@ -63,7 +63,7 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
               children: [
                 Divider(
                   height: paddingM,
-                  color: TSColor.turkcellBlue,
+                  color: AppColor.primaryVariant,
                 ),
                 Text(
                   subTitle!,

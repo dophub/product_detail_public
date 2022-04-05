@@ -17,7 +17,7 @@ class _ProductProfileState extends State<ProductProfile> {
     final controller = Get.find<ProductProfileController>();
     return Scaffold(
       key: controller.scaffoldKey,
-      backgroundColor: Theme.of(context).cardColor,
+      backgroundColor: Theme.of(context).cardTheme.color,
       body: ProductDetailSliverList(),
     );
   }

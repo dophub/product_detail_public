@@ -41,7 +41,7 @@ class SingleSectionBottomSheet extends StatelessWidget {
     return GestureDetector(
       onTap: () => onSelect(context),
       child: Card(
-        color: selectedIndex != null ? selectedCardColor : null,
+        color: selectedIndex != null ? selectedCardColor ?? Theme.of(context).cardColor :  Theme.of(context).cardColor,
         child: Padding(
           padding: const EdgeInsets.all(paddingM),
           child: Row(

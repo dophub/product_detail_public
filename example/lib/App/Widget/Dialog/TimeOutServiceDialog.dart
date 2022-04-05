@@ -34,7 +34,7 @@ class TimeOutServiceDialog {
                   children: [
                     SvgPicture.asset(forkSpoonIcon),
                     SizedBox(width: paddingS),
-                    Flexible(child: Text('Bana yeni bir servis aç', style: s16W400Dark(context).copyWith(color: TSColor.turkcellBlue)))
+                    Flexible(child: Text('Bana yeni bir servis aç', style: s16W400Dark(context).copyWith(color: AppColor.primaryVariant)))
                   ],
                 ),
               ),
@@ -49,7 +49,7 @@ class TimeOutServiceDialog {
                     SizedBox(width: paddingS),
                     Flexible(
                         child: Text('Masadaki arkadaşlarıma katılacağım',
-                            style: s16W400Dark(context).copyWith(color: TSColor.turkcellBlue)))
+                            style: s16W400Dark(context).copyWith(color: AppColor.primaryVariant)))
                   ],
                 ),
               ),

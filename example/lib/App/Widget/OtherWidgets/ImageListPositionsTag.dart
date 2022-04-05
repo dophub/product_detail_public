@@ -36,13 +36,13 @@ class ImageListPositionsTag extends StatelessWidget {
                 ? Container(
                 width: width * 3,
                 decoration: BoxDecoration(
-                  color: color ?? TSColor.turkcellBlue,
+                  color: color ?? AppColor.primaryVariant,
                   borderRadius: BorderRadius.circular(radiusXXXL),
                 ),
               ): Container(
                 width: width,
                 decoration: BoxDecoration(
-                  color: TSColor.background,
+                  color: AppColor.background,
                   borderRadius: BorderRadius.circular(radiusXXXL),
                 ),
               );

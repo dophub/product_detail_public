@@ -18,7 +18,7 @@ class _PromotionProfileState extends State<PromotionProfile> {
     return Scaffold(
       key: controller.scaffoldKey,
       resizeToAvoidBottomInset: false,
-      backgroundColor: Theme.of(context).cardColor,
+      backgroundColor: Theme.of(context).cardTheme.color,
       body: PromotionDetailSliverList(),
     );
   }

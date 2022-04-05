@@ -72,7 +72,7 @@ class ProductProfileFeature extends StatelessWidget {
                             Text(
                               '143dk',
                               style: s12W400Dark(context)
-                                  .copyWith(color: TSColor.turkcellBlue),
+                                  .copyWith(color: AppColor.primaryVariant),
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -124,12 +124,12 @@ class MiniCard extends StatelessWidget {
                     assets,
                     width: SizeConfig.blockSizeHorizontal * 9,
                     height: SizeConfig.blockSizeHorizontal * 9,
-                    color: TSColor.turkcellBlue,
+                    color: AppColor.primaryVariant,
                   ),
                   Spacer(),
                   Text(
                     txt,
-                    style: s12W400Dark(context).copyWith(color: TSColor.turkcellBlue),
+                    style: s12W400Dark(context).copyWith(color: AppColor.primaryVariant),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
