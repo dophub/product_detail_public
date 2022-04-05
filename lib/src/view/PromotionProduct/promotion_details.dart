@@ -1,14 +1,13 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:product_detail/src/app/component/other/NoteDialog.dart';
 import 'package:product_detail/src/app/component/section/SingleSectionBottomSheet.dart';
 import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
 import 'package:product_detail/src/app/const/TSColors.dart';
-import 'package:product_detail/src/app/model/PromotionMenuModel.dart';
-import 'package:product_detail/src/app/model/SectionsWidgetModel.dart';
 import 'package:product_detail/src/controller/PromotionController.dart';
 import 'package:product_detail/src/view/PromotionProduct/promotion_feature_and_option.dart';
+import 'package:sip_models/response.dart';
+import 'package:sip_models/widget.dart';
 
 class PromotionDetails extends StatelessWidget {
   /// Ürün section, Feature ve option lerini listeler
@@ -53,7 +52,6 @@ class PromotionDetails extends StatelessWidget {
                               onTap: (int selectedIndex) => controller.sectionBottomSheetOnChange(sectionIndex, selectedIndex),
                               selectedCardColor: TSColor.turkcellYellow,
                             ),
-                            SizedBox(height: paddingM),
                             // Section secilmiş mi
                             controller.promotionMenuModel
                                     .sections![sectionIndex].isSelected
@@ -72,8 +70,7 @@ class PromotionDetails extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: paddingM)
-                        .copyWith(bottom: paddingM),
+                    padding: const EdgeInsets.all(paddingM),
                     child: GestureDetector(
                       child: GestureDetector(
                         onTap: () {

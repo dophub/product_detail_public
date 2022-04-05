@@ -1,19 +1,18 @@
-
 import 'package:example/App/BL/General.dart';
 import 'package:example/App/Constant/App/HttpUrl.dart';
 import 'package:example/App/Extension/GeneralExtension.dart';
-import 'package:example/App/Model/Response/BaseHttpModel.dart';
 import 'package:example/App/Widget/Dialog/LoadingProgress.dart';
 import 'package:example/App/Widget/Message/ToastMessage.dart';
 import 'package:example/Screen/ProductProfileScreen/product_profile_screen.dart';
 import 'package:example/Screen/PromotionProductProfile/promotion_profile_screen.dart';
 import 'package:get/get.dart';
-import 'package:example/App/Constant/Enums/LoadingStatusEnum.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:example/App/Constant/Enums/IdEnum.dart';
+import 'package:sip_models/enum.dart';
+import 'package:sip_models/response.dart';
+import 'package:sip_models/status.dart';
 import 'package:uuid/uuid.dart';
-import 'package:product_detail/model.dart';
+
 /// Bu sınıfımız Genel tüm modüllerin için yazıldı.
 ///
 /// Uygulamnın genelinde kullanılan metodlarımızı buraya yazmaktayız.
@@ -48,7 +47,7 @@ class Controller extends GetxController  {
 
   /// Menu list item tıklandığında çalışan metod.
   /// [ProductProfileScreen] e gider.
-  void goToProductProfileScreen(BuildContext context, int dealerId, MenuProductModel productModel) {
+  void goToProductProfileScreen(BuildContext context, int dealerId, ProductModel productModel) {
     productModel.itemType == describeEnum(ItemType.PRODUCT)
         ? Navigator.push(context, MaterialPageRoute(builder: (_) => ProductProfileScreen(itemObject: productModel, dealerId: dealerId)))
         : Navigator.push(context, MaterialPageRoute(builder: (_) => PromotionProfileScreen(dealerId: dealerId, itemObject: productModel)));
@@ -61,8 +60,8 @@ class Controller extends GetxController  {
   String getImage(List<ImagesModel> images,ImageSizeId imageSizeId) => images.firstWhere((ImagesModel element) => element.imageSizeId == describeEnum(ImageSizeId.mobile_list),orElse: () => ImagesModel()..imageUrl = '').imageUrl!;
 
   void onTapGetProductBtn(BuildContext context) {
-    MenuProductModel model = MenuProductModel()
-      ..id = 222
+    ProductModel model = ProductModel()
+      ..id = 676
       ..price = [
         PriceModel(
             price: 0, id: 108, isDefault: false, orderDeliveryTypeId: 'TABLE')
@@ -80,11 +79,11 @@ class Controller extends GetxController  {
     ..listOrder = 0
     ..productName = 'Product'
     ..shortDescription = 'shortDescription';
-    goToProductProfileScreen(context, 594, model);
+    goToProductProfileScreen(context, 603,model);
   }
 
   void onTapGetPromotionProductBtn(BuildContext context){
-    MenuProductModel model = MenuProductModel()..id = 5..price = [PriceModel(price: 0,id: 108,isDefault: false,orderDeliveryTypeId: 'TABLE')]
+    ProductModel model = ProductModel()..id = 67..price = [PriceModel(price: 0,id: 108,isDefault: false,orderDeliveryTypeId: 'TABLE')]
       ..images = [
         ImagesModel(
             id: 0,
@@ -97,7 +96,7 @@ class Controller extends GetxController  {
     ..listOrder = 0
     ..productName = 'Product'
     ..shortDescription = 'shortDescription';
-    goToProductProfileScreen(context, 594, model);
+    goToProductProfileScreen(context, 603, model);
   }
 }
 

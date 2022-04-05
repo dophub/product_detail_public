@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
-import 'package:example/App/Constant/Enums/TypeEnum.dart';
 import 'package:example/App/Theme/TSColors.dart';
 import 'package:example/App/Theme/TSTextStyle.dart';
 import 'package:example/App/Widget/Button/TSCloseButton.dart';
+import 'package:sip_models/enum.dart';
 
 
 /// Product Profile screen de gösterilen Ürün Başlık,Alt Başlık ve Detay

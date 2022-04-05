@@ -1,10 +1,10 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
-import 'package:product_detail/model.dart';
 import 'package:example/App/Theme/TSColors.dart';
 import 'package:example/App/Theme/TSTextStyle.dart';
 import 'package:example/App/Widget/title/TitleWithRightSubTitleAndMark.dart';
+import 'package:sip_models/widget.dart';
 
 /// Ürün de olan malzemeleri cıkarmak için olüştürldü
 /// Birden fazla seçmeli

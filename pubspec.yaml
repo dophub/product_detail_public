@@ -1,5 +1,6 @@
 name: product_detail
 description: Turkcell Siparisim ürün detay ekranı
+publish_to: 'none'
 version: 0.0.1
 homepage:
 
@@ -8,10 +9,10 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  get: ^4.3.8
-  flutter_svg: ^0.22.0
-  connectivity: ^3.0.6
-  intl: ^0.17.0
+  get: any
+  flutter_svg: any
+  connectivity: any
+  intl: any
 
   flutter:
     sdk: flutter

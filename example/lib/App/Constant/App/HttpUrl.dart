@@ -1,4 +1,5 @@
-import 'package:example/App/Constant/Enums/IdEnum.dart';
+
+import 'package:sip_models/enum.dart';
 
 class HttpUrl {
   /// Api Url
@@ -19,10 +20,11 @@ class HttpUrl {
   static const String getToken = 'gettoken/app';
 
   /// Ürün detay getirir
-  /// app/products/detail/{dealer_id}/{product_id}
-  static const String getProductDetails = 'app/products/detail';
+  /// app/dealer/{dealer_id}/products/{product_id}
+  static String getProductDetails(int dealerId, int productId) => 'app/dealer/$dealerId/products/$productId';
 
   /// Promotion menu getirir
-  /// app/promotion_menu/detail/{dealer_id}/{promotion_menu_id}
-  static const String getPromotionMenu = 'app/promotion_menu/detail';
+  /// app/dealer/{dealer_id}/promotion_menu/{promotion_menu_id}
+  static String getPromotionMenu(int dealerId, int promotionMenuId) =>
+      'app/dealer/$dealerId/promotion_menu/$promotionMenuId';
 }

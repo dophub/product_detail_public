@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:product_detail/src/app/const/Assets.dart';
 import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
 import 'package:product_detail/src/app/const/TSTextStyle.dart';
-import 'package:product_detail/src/app/model/SectionsWidgetModel.dart';
-import '../Other/BottomSheetHoldAndDragWidget.dart';
+import 'package:sip_models/widget.dart';
+import '../other/BottomSheetHoldAndDragWidget.dart';
 import 'BottomSheetRadioButtonList.dart';
 
 /// Tekli seçmelide kullanılan dropdown
@@ -97,7 +97,7 @@ class SingleSectionBottomSheet extends StatelessWidget {
         ),
       ),
       constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height / 2),
-      backgroundColor: Theme.of(context).cardColor,
+      backgroundColor: Theme.of(context).cardTheme.color,
       builder: (BuildContext context) {
         return SafeArea(
             child: Padding(

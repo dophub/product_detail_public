@@ -1,3 +1,4 @@
+import 'package:example/App/Extension/GeneralExtension.dart';
 import 'package:example/App/Theme/TSTextStyle.dart';
 import 'package:example/App/Widget/Button/TSCloseButton.dart';
 import 'package:example/Screen/PromotionProductProfile/Controller/promotion_profile_controller.dart';
@@ -5,10 +6,9 @@ import 'package:example/Screen/PromotionProductProfile/View/promotion_details.da
 import 'package:example/Screen/PromotionProductProfile/Widgets/promotion_profile_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:example/App/Extension/GeneralExtension.dart';
 import 'package:example/App/Init/Screen/SizeConfig.dart';
 import 'package:example/App/Widget/Button/AddToCartButton.dart';
-import 'package:product_detail/model.dart';
+import 'package:sip_models/enum.dart';
 
 class PromotionDetailSliverList extends StatelessWidget {
   final ScrollController _scrollController = ScrollController();

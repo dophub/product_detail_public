@@ -5,11 +5,11 @@ import 'package:product_detail/src/app/component/section/MultiSectionCheckBox.da
 import 'package:product_detail/src/app/component/section/ProductDecriseSection.dart';
 import 'package:product_detail/src/app/component/section/SingleSectionBottomSheet.dart';
 import 'package:product_detail/src/app/component/section/SingleSectionRadioButton.dart';
-import 'package:product_detail/src/app/const/IdEnum.dart';
 import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
-import 'package:product_detail/src/app/model/ProductDetailModel.dart';
-import 'package:product_detail/src/app/model/SectionsWidgetModel.dart';
 import 'package:product_detail/src/controller/PromotionController.dart';
+import 'package:sip_models/enum.dart';
+import 'package:sip_models/response.dart';
+import 'package:sip_models/widget.dart';
 
 /// Product optionGroups
 class PromotionFeatureAndOption extends StatelessWidget {
@@ -31,7 +31,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
       children: [
         /// Product Option
         Padding(
-          padding: EdgeInsets.only(bottom: optionGroupsList.length == 0 ? 0 :paddingM),
+          padding: EdgeInsets.only(top: optionGroupsList.length == 0 ? 0 :paddingM),
           child: ListView.separated(
             padding: EdgeInsets.zero,
             shrinkWrap: true,
@@ -108,7 +108,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
         ),
         /// Product Features
         Padding(
-          padding: EdgeInsets.only(bottom:  featuresList.length == 0 ? 0 :paddingM),
+          padding: EdgeInsets.only(top:  featuresList.length == 0 ? 0 :paddingM),
           child: ListView.separated(
             shrinkWrap: true,
             padding: EdgeInsets.zero,

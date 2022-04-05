@@ -1,15 +1,10 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
-import 'package:product_detail/src/app/const/GeneralEnum.dart';
-import 'package:product_detail/src/app/const/TypeEnum.dart';
-import 'package:product_detail/src/app/model/OrderModel.dart';
-import 'package:product_detail/src/app/model/ProductCartModel.dart';
-import 'package:product_detail/src/app/model/ProductDetailModel.dart';
-import 'package:product_detail/src/app/model/PromotionMenuModel.dart';
-
+import 'package:sip_models/enum.dart';
+import 'package:sip_models/request.dart';
+import 'package:sip_models/response.dart';
 import 'ProductDetailGeneralController.dart';
 
 
@@ -55,7 +50,7 @@ class PromotionViewController extends ValueNotifier<double>{
 
   /// [orderItem] Sipariş te olan ürün güncellemek istersek sipariş ürünü buraya veriyoruz
   /// [promotionMenuModel] apiden gelen ürün detayı
-  PromotionViewController(OrderItem? orderItem,PromotionMenuModel promotionMenuModel,PriceType priceType) : super(0){
+  PromotionViewController(OrderItem? orderItem,PromotionMenuDetailModel promotionMenuModel,PriceType priceType) : super(0){
     _controller = Get.put(PromotionController(orderItem,promotionMenuModel,onChangeAmount,priceType));
   }
 
@@ -89,7 +84,7 @@ class PromotionViewController extends ValueNotifier<double>{
 class PromotionController extends GetxController with ProductDetailGeneralController {
 
   /// Promosyonlu Ürün Detay modelidir
-  late Rx<PromotionMenuModel> _promotionMenuModel;
+  late Rx<PromotionMenuDetailModel> _promotionMenuModel;
 
   /// Sipariş te olan ürün detayidir
   late OrderItem? orderItem;
@@ -128,7 +123,7 @@ class PromotionController extends GetxController with ProductDetailGeneralContro
   }
 
 
-  PromotionController(this.orderItem,PromotionMenuModel _model,this.onChangeAmount,this.priceType) {
+  PromotionController(this.orderItem,PromotionMenuDetailModel _model,this.onChangeAmount,this.priceType) {
     _promotionMenuModel = _model.obs;
 
     /// [orderItem] olduğunda sepette olan ürünün notunu setlemekte
@@ -155,9 +150,9 @@ class PromotionController extends GetxController with ProductDetailGeneralContro
     _amount.value = value;
   }
 
-  PromotionMenuModel get promotionMenuModel => _promotionMenuModel.value;
+  PromotionMenuDetailModel get promotionMenuModel => _promotionMenuModel.value;
 
-  set promotionMenuModel(PromotionMenuModel value) {
+  set promotionMenuModel(PromotionMenuDetailModel value) {
     _promotionMenuModel.value = value;
     update(['promotionDetailModelUpdate']);
   }
@@ -172,7 +167,7 @@ class PromotionController extends GetxController with ProductDetailGeneralContro
   /// [sectionIndex] section Id si.
   /// [selectedIndex] Seçilen ürünün index i
   void sectionBottomSheetOnChange(int sectionIndex, int selectedIndex) {
-    PromotionMenuModel value = promotionMenuModel;
+    PromotionMenuDetailModel value = promotionMenuModel;
     /// Tümünü sıfırla
     for (int i = 0; i < value.sections![sectionIndex].products!.length; i++)
       value.sections![sectionIndex].products![i].isSelected = false;
@@ -188,7 +183,7 @@ class PromotionController extends GetxController with ProductDetailGeneralContro
 
   /// Tekli opsiyon Seçimlerde çalışan metod
   void singleOptionSelection(int sectionIndex, int optionGroupsIndex, int selectedIndex) {
-      PromotionMenuModel value = promotionMenuModel;
+      PromotionMenuDetailModel value = promotionMenuModel;
       int productIndex = getIndexForSelectedProduct(sectionIndex)!;
       for (int i = 0; i < value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].options!.length; i++)
         value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].options![i].isSelected = false;
@@ -200,7 +195,7 @@ class PromotionController extends GetxController with ProductDetailGeneralContro
 
   /// Tekli özelik Seçimlerde çalışan metod
   void singleFeatureSelection(int sectionIndex, int featureIndex, int selectedIndex) {
-      PromotionMenuModel value = promotionMenuModel;
+      PromotionMenuDetailModel value = promotionMenuModel;
       int productIndex = getIndexForSelectedProduct(sectionIndex)!;
       for (int i = 0; i < value.sections![sectionIndex].products![productIndex].features![featureIndex].items!.length; i++)
         value.sections![sectionIndex].products![productIndex].features![featureIndex].items![i].isSelected = false;
@@ -214,7 +209,7 @@ class PromotionController extends GetxController with ProductDetailGeneralContro
   /// Birden fazla seçimlerde
   void multiDecreaseFeatureSelection(int sectionIndex, bool status, int featureIndex, int selectedIndex) {
     print(status);
-      PromotionMenuModel value = promotionMenuModel;
+      PromotionMenuDetailModel value = promotionMenuModel;
       int productIndex = getIndexForSelectedProduct(sectionIndex)!;
       value.sections![sectionIndex].products![productIndex].features![featureIndex].items![selectedIndex].isSelected = status;
       value.sections![sectionIndex].products![productIndex].features![featureIndex].isSelected = true;
@@ -225,7 +220,7 @@ class PromotionController extends GetxController with ProductDetailGeneralContro
   /// Birden fazla seçimlerde
   void multiDecreaseOptionSelection(int sectionIndex, bool status, int optionGroupsIndex, int selectedIndex) {
     print(status);
-      PromotionMenuModel value = promotionMenuModel;
+      PromotionMenuDetailModel value = promotionMenuModel;
       int productIndex = getIndexForSelectedProduct(sectionIndex)!;
       value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].options![selectedIndex].isSelected = status;
       value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].isSelected = true;
@@ -236,7 +231,7 @@ class PromotionController extends GetxController with ProductDetailGeneralContro
   /// Birden fazla seçimlerde.
   void multiAddFeatureSelection(int sectionIndex, bool status, int featureIndex, int selectedIndex) {
     print(status);
-      PromotionMenuModel value = promotionMenuModel;
+      PromotionMenuDetailModel value = promotionMenuModel;
       int productIndex = getIndexForSelectedProduct(sectionIndex)!;
       value.sections![sectionIndex].products![productIndex].features![featureIndex].items![selectedIndex].isSelected = status;
       if (status)
@@ -260,7 +255,7 @@ class PromotionController extends GetxController with ProductDetailGeneralContro
   /// Birden fazla seçimlerde.
   void multiAddOptionSelection(int sectionIndex, bool status, int optionGroupsIndex, int selectedIndex) {
     print(status);
-      PromotionMenuModel value = promotionMenuModel;
+      PromotionMenuDetailModel value = promotionMenuModel;
       int productIndex = getIndexForSelectedProduct(sectionIndex)!;
       value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].options![selectedIndex].isSelected = status;
       if (status)
@@ -289,7 +284,7 @@ class PromotionController extends GetxController with ProductDetailGeneralContro
   /// Secilen SECTION lere göre toplam tutarı güncellemekte
   void amountUpdate() {
     double _amount = 0;
-      PromotionMenuModel value = promotionMenuModel;
+      PromotionMenuDetailModel value = promotionMenuModel;
       _amount = getPrice(priceType,value.price!);
 
       /// section
@@ -473,7 +468,7 @@ class PromotionController extends GetxController with ProductDetailGeneralContro
   void initAfterProductDetailLoaded() {
       // sections loop
     if(orderItem != null){
-      PromotionMenuModel product = orderItem!.toPromotionModel();
+      PromotionMenuDetailModel product = orderItem!.toPromotionModel();
       for (int sectionsIndex = 0; sectionsIndex < promotionMenuModel.sections!.length; sectionsIndex++) {
         var sections = promotionMenuModel.sections![sectionsIndex];
         var orderSections = product.sections!.firstWhere((element) => element.id == sections.id, orElse: () => SectionModel());

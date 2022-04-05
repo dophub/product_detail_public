@@ -2,14 +2,12 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-import 'package:example/App/Model/Response/ResponseErrorModel.dart';
 import 'package:flutter/foundation.dart';
-import 'package:example/App/Model/Response/TokenModel.dart';
 import 'package:example/Core/Service/HttpClient.dart';
 import 'package:example/App/Constant/App/HttpUrl.dart';
-import 'package:example/App/Constant/Enums/LoadingStatusEnum.dart';
-import 'package:example/App/Model/Response/BaseHttpModel.dart';
-import 'package:product_detail/model.dart';
+import 'package:sip_models/enum.dart';
+import 'package:sip_models/response.dart';
+import 'package:sip_models/status.dart';
 
 /// Tüm moldüllerde ile kullanılan Http işlemleri burada yapılmakta
 ///
@@ -39,42 +37,48 @@ class General {
     }
   }
 
+
   /// Ürün detayı çekmek için yazıldı
   /// [getProductDetail] Ürün detayını çekmek için yazıldı
   Future<BaseHttpModel> getProductDetail(int dealerId, int productId) async {
     try {
-      var response = await HttpClient().get(HttpUrl.getProductDetails, body: '$dealerId/$productId', header: getHeader());
+      var response = await HttpClient().get(HttpUrl.getProductDetails(dealerId, productId), header: getHeader());
       if (response!.statusCode == HttpStatus.ok) {
-        ProductDetailModel responseModel = ProductDetailModel.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
+        ProductDetailModel responseModel = ProductDetailModel().fromJson(
+            jsonDecode(utf8.decode(response.bodyBytes)));
         return BaseHttpModel(status: BaseModelStatus.Ok, data: responseModel);
       } else if (response.statusCode == HttpStatus.unprocessableEntity) {
-        ResponseErrorModel responseModel = ResponseErrorModel.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
+        ResponseErrorModel responseModel = ResponseErrorModel.fromJson(
+            jsonDecode(utf8.decode(response.bodyBytes)));
         return BaseHttpModel(status: BaseModelStatus.Ok, data: responseModel);
       } else {
         return BaseHttpModel(status: BaseModelStatus.Error);
       }
     } catch (e) {
-      log(e.toString(),name: 'Api Error getProductDetail');
+      log(e.toString(), name: 'Api Error getProductDetail');
       return BaseHttpModel(status: BaseModelStatus.Error);
     }
   }
+
 
   /// Ürün detayı çekmek için yazıldı
   /// [getPromotionDetail] Promosyonlu ürün detayını çekmek için yazıldı
   Future<BaseHttpModel> getPromotionDetail(int dealerId, int productId) async {
     try {
-      var response = await HttpClient().get(HttpUrl.getPromotionMenu, body: '$dealerId/$productId', header: getHeader());
+      var response = await HttpClient().get(HttpUrl.getPromotionMenu(dealerId,productId), header: getHeader());
       if (response!.statusCode == HttpStatus.ok) {
-        PromotionMenuModel responseModel = PromotionMenuModel.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
+        PromotionMenuDetailModel responseModel = PromotionMenuDetailModel().fromJson(
+            jsonDecode(utf8.decode(response.bodyBytes)));
         return BaseHttpModel(status: BaseModelStatus.Ok, data: responseModel);
       } else if (response.statusCode == HttpStatus.unprocessableEntity) {
-        ResponseErrorModel responseModel = ResponseErrorModel.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
+        ResponseErrorModel responseModel = ResponseErrorModel.fromJson(
+            jsonDecode(utf8.decode(response.bodyBytes)));
         return BaseHttpModel(status: BaseModelStatus.Ok, data: responseModel);
-      }  else {
+      } else {
         return BaseHttpModel(status: BaseModelStatus.Error);
       }
     } catch (e) {
-      log(e.toString(),name: 'Api Error getPromotionDetail');
+      log(e.toString(), name: 'Api Error getPromotionDetail');
       return BaseHttpModel(status: BaseModelStatus.Error);
     }
   }
