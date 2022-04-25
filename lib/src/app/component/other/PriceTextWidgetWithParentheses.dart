@@ -21,16 +21,17 @@ class PriceTextWidgetWithParentheses extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _textStyle = textStyle == null
+        ? s16W400Dark(context).copyWith(color: color ?? TSColor.turkcellBlue)
+        : textStyle!.copyWith(color: color ?? TSColor.turkcellBlue);
     var percent = NumberFormat.currency(
         locale: Localizations.localeOf(context).languageCode,
         symbol: '',
         decimalDigits: 2);
     return price == null || price == 0
         ? Text(name,
-            style: textStyle == null
-                ? s16W400Dark(context)
-                    .copyWith(color: color ?? TSColor.darkText)
-                : textStyle!.copyWith(color: color ?? TSColor.darkText))
+        style: textStyle == null ? s16W400Dark(context).copyWith(color: color ?? TSColor.darkText)
+        : textStyle!.copyWith(color: color ?? TSColor.darkText))
         : RichText(
             textAlign: TextAlign.start,
             text: TextSpan(
@@ -41,19 +42,15 @@ class PriceTextWidgetWithParentheses extends StatelessWidget {
               children: <TextSpan>[
                 TextSpan(
                   text: ' (+',
-                  style: textStyle == null
-                      ? s16W400Dark(context)
-                          .copyWith(color: color ?? TSColor.turkcellBlue)
-                      : textStyle!
-                          .copyWith(color: color ?? TSColor.turkcellBlue),
+                  style: _textStyle,
+                ),
+                TextSpan(
+                  text: priceUnit,
+                  style: _textStyle.copyWith(fontFamily: ''),
                 ),
                 TextSpan(
                   text: '${percent.format(price!)})',
-                  style: textStyle == null
-                      ? s16W400Dark(context)
-                          .copyWith(color: color ?? TSColor.turkcellBlue)
-                      : textStyle!
-                          .copyWith(color: color ?? TSColor.turkcellBlue),
+                  style: _textStyle,
                 ),
               ],
             ),

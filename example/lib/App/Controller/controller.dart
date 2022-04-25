@@ -61,7 +61,7 @@ class Controller extends GetxController  {
 
   void onTapGetProductBtn(BuildContext context) {
     ProductModel model = ProductModel()
-      ..id = 676
+      ..id = 179
       ..price = [
         PriceModel(
             price: 0, id: 108, isDefault: false, orderDeliveryTypeId: 'TABLE')
@@ -79,7 +79,7 @@ class Controller extends GetxController  {
     ..listOrder = 0
     ..productName = 'Product'
     ..shortDescription = 'shortDescription';
-    goToProductProfileScreen(context, 603,model);
+    goToProductProfileScreen(context, 594,model);
   }
 
   void onTapGetPromotionProductBtn(BuildContext context){
