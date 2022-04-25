@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:product_detail/src/app/component/other/TitleWithRightSubTitleAndMark.dart';
 import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
-import 'package:product_detail/src/app/model/SectionsWidgetModel.dart';
-
+import 'package:sip_models/widget.dart';
 import 'RadioButtonList.dart';
 
 /// Tek seçmelide kullanılan RadioButtonList
@@ -30,6 +29,7 @@ class SingleSectionRadioButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Theme.of(context).cardColor,
       child: Padding(
         padding: const EdgeInsets.all(paddingM).copyWith(bottom: 0),
         child: Column(

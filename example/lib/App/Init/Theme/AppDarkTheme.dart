@@ -1,144 +1,165 @@
 import 'package:flutter/material.dart';
 import 'package:example/App/Constant/Assets/Assets.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
-import 'package:example/App/Extension/ExtensionWidgetsScale.dart';
-import 'package:example/App/Theme/TSColors.dart';
+import 'package:example/App/Theme/AppColors.dart';
 
-import 'TSTheme.dart';
+import 'AppTheme.dart';
 
-class TSDarkTheme implements TSTheme {
+class AppDarkTheme implements AppTheme {
+  @override
   Brightness brightness = Brightness.dark;
+  @override
   Color backgroundColor = Colors.black;
+  @override
   Color scaffoldBackgroundColor = Colors.black;
-  IconThemeData accentIconTheme = IconThemeData(color: Colors.black);
-  IconThemeData primaryIconTheme = IconThemeData(color: Colors.black);
-  IconThemeData iconTheme = IconThemeData(color: Colors.black);
+  @override
+  IconThemeData accentIconTheme = const IconThemeData(color: Colors.black);
+  @override
+  IconThemeData primaryIconTheme = const IconThemeData(color: Colors.black);
+  @override
+  IconThemeData iconTheme = const IconThemeData(color: Colors.black);
+  @override
   Color cardColor = Colors.black;
+  @override
   Color bottomAppBarColor = Colors.black;
-  Color dividerColor = TSColor.lightWhite;
+  @override
+  Color dividerColor = AppColor.lightWhite;
+  @override
+  Color shadowColor = Colors.black26;
 
-  ColorScheme colorScheme = ColorScheme(
-    primary: TSColor.turkcellLightBlue,
-    primaryVariant: TSColor.turkcellBlue,
+  @override
+  ColorScheme colorScheme = const ColorScheme(
+    primary: AppColor.primary,
+    primaryContainer: AppColor.primaryVariant,
     secondary: Colors.white,
-    secondaryVariant: Colors.white,
-    surface: TSColor.cardColor,
-    background: TSColor.background,
+    secondaryContainer: Colors.white,
+    surface: AppColor.cardColor,
+    background: AppColor.background,
     error: Colors.red,
     onPrimary: Colors.white,
-    onSecondary: Colors.white,
+    onSecondary: AppColor.darkText,
     onSurface: Colors.white,
-    onBackground: TSColor.paleTextColor,
+    onBackground: AppColor.paleTextColor,
     onError: Colors.white,
     brightness: Brightness.dark,
   );
 
-
-  ColorScheme buttonColorScheme = ColorScheme(
-    primary: Colors.black,
-    primaryVariant: Colors.black,
-    secondary: Colors.black,
-    secondaryVariant: Colors.black,
-    surface: Colors.black,
-    background: TSColor.turkcellBlue,
+  @override
+  ColorScheme buttonColorScheme = const ColorScheme(
+    primary: AppColor.primaryVariant,
+    primaryContainer: AppColor.primaryVariant,
+    secondary: AppColor.primary,
+    secondaryContainer: AppColor.primary,
+    surface: Colors.white,
+    background: AppColor.primaryVariant,
     error: Colors.red,
     onPrimary: Colors.white,
     onSecondary: Colors.white,
     onSurface: Colors.white,
     onBackground: Colors.white,
     onError: Colors.white,
-    brightness: Brightness.dark,
+    brightness: Brightness.light,
   );
 
+  @override
   CardTheme cardTheme = CardTheme(
     elevation: 0,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radiusXS)),
+    shape:
+    RoundedRectangleBorder(borderRadius: BorderRadius.circular(radiusXS)),
     color: Colors.black,
     margin: EdgeInsets.zero,
   );
 
+  @override
   TextTheme textTheme = TextTheme(
     ///HeadLine
     headline1: TextStyle(
-      fontSize: 12.textScale,
+      fontSize: 12,
       fontWeight: FontWeight.w400,
-      color: TSColor.darkText,
+      color: AppColor.darkText,
       fontFamily: fontFamily,
     ),
     headline2: TextStyle(
-      fontSize: 12.textScale,
+      fontSize: 13,
       fontWeight: FontWeight.w700,
-      color: TSColor.darkText,
+      color: AppColor.darkText,
       fontFamily: fontFamily,
     ),
     headline3: TextStyle(
-      fontSize: 18.textScale,
+      fontSize: 14,
       fontWeight: FontWeight.w400,
-      color: TSColor.darkText,
+      color: AppColor.darkText,
       fontFamily: fontFamily,
     ),
     headline4: TextStyle(
-      fontSize: 18.textScale,
-      fontWeight: FontWeight.w700,
-      color: TSColor.darkText,
+      fontSize: 15,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
       fontFamily: fontFamily,
     ),
     headline5: TextStyle(
-      fontSize: 20.textScale,
+      fontSize: 20,
       fontWeight: FontWeight.w400,
-      color: TSColor.darkText,
+      color: AppColor.darkText,
       fontFamily: fontFamily,
     ),
     headline6: TextStyle(
-      fontSize: 20.textScale,
+      fontSize: 26,
       fontWeight: FontWeight.w700,
-      color: TSColor.darkText,
+      color: AppColor.darkText,
       fontFamily: fontFamily,
     ),
 
     ///BodyText
     bodyText1: TextStyle(
-      fontSize: 14.textScale,
+      fontSize: 16,
       fontWeight: FontWeight.w400,
-      color: TSColor.darkText,
+      color: AppColor.darkText,
       fontFamily: fontFamily,
     ),
     bodyText2: TextStyle(
-      fontSize: 14.textScale,
-      fontWeight: FontWeight.w700,
-      color: TSColor.darkText,
+      fontSize: 10,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
       fontFamily: fontFamily,
     ),
     subtitle1: TextStyle(
-      fontSize: 16.textScale,
+      fontSize: 18,
       fontWeight: FontWeight.w400,
-      color: TSColor.darkText,
+      color: AppColor.darkText,
       fontFamily: fontFamily,
     ),
     subtitle2: TextStyle(
-      fontSize: 16.textScale,
+      fontSize: 8,
       fontWeight: FontWeight.w700,
-      color: TSColor.darkText,
+      color: AppColor.darkText,
       fontFamily: fontFamily,
     ),
   );
 
+  @override
   ElevatedButtonThemeData elevatedButtonTheme = ElevatedButtonThemeData(
     style: ButtonStyle(
-      backgroundColor: MaterialStateProperty.all<Color>(TSColor.turkcellBlue),
+      elevation: MaterialStateProperty.all(0),
+      backgroundColor:
+      MaterialStateProperty.all<Color>(AppColor.primaryVariant),
       textStyle: MaterialStateProperty.all<TextStyle>(
         TextStyle(
           color: Colors.white,
           fontFamily: fontFamily,
-          fontWeight: FontWeight.w700,
-          fontSize: 18.textScale,
+          fontWeight: FontWeight.w400,
+          fontSize: 16,
         ),
       ),
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(radiusXXS))),
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(radiusXL),
+        ),
+      ),
     ),
   );
 
+  @override
   InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
     fillColor: Colors.white,
     filled: true,
@@ -146,108 +167,157 @@ class TSDarkTheme implements TSTheme {
       color: Colors.black,
       fontFamily: fontFamily,
       fontWeight: FontWeight.normal,
-      fontSize: 16.textScale,
+      fontSize: 16,
     ),
     hintStyle: TextStyle(
       fontWeight: FontWeight.w400,
       fontFamily: fontFamily,
-      color: TSColor.paleTextColor,
-      fontSize: 16.textScale,
+      color: AppColor.paleTextColor,
+      fontSize: 14,
     ),
     enabledBorder: OutlineInputBorder(
       borderSide: BorderSide.none,
       borderRadius: BorderRadius.circular(
-        radiusXXS,
+        radiusS,
       ),
     ),
     focusedBorder: OutlineInputBorder(
       borderSide: BorderSide.none,
       borderRadius: BorderRadius.circular(
-        radiusXXS,
+        radiusS,
       ),
     ),
     focusedErrorBorder: OutlineInputBorder(
       borderSide: BorderSide.none,
       borderRadius: BorderRadius.circular(
-        radiusXXS,
+        radiusS,
       ),
     ),
     errorBorder: OutlineInputBorder(
       borderSide: BorderSide.none,
       borderRadius: BorderRadius.circular(
-        radiusXXS,
+        radiusS,
       ),
     ),
     disabledBorder: OutlineInputBorder(
       borderSide: BorderSide.none,
       borderRadius: BorderRadius.circular(
-        radiusXXS,
+        radiusS,
       ),
     ),
   );
 
+  @override
   TextSelectionThemeData textSelectionThemeData = TextSelectionThemeData(
-    cursorColor: TSColor.turkcellBlue,
-    selectionColor: TSColor.turkcellBlue.withOpacity(0.2),
-    selectionHandleColor: TSColor.turkcellBlue,
+    cursorColor: AppColor.primaryVariant,
+    selectionColor: AppColor.primaryVariant.withOpacity(0.2),
+    selectionHandleColor: AppColor.primaryVariant,
   );
 
+  @override
   TextButtonThemeData textButtonThemeData = TextButtonThemeData(
     style: ButtonStyle(
       backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
-      foregroundColor: MaterialStateProperty.all<Color>(TSColor.turkcellBlue),
+      foregroundColor:
+      MaterialStateProperty.all<Color>(AppColor.primaryVariant),
       shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
       overlayColor: MaterialStateProperty.all<Color>(Colors.transparent),
       textStyle: MaterialStateProperty.all<TextStyle>(
         TextStyle(
-          color: TSColor.turkcellLightBlue,
+          color: AppColor.primary,
           fontFamily: fontFamily,
           fontWeight: FontWeight.w400,
-          fontSize: 16.textScale,
+          fontSize: 16,
         ),
       ),
     ),
   );
 
+  @override
   OutlinedButtonThemeData outlinedButtonThemeData = OutlinedButtonThemeData(
     style: ButtonStyle(
       backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
-      side: MaterialStateProperty.all<BorderSide>(BorderSide(color: TSColor.turkcellBlue)),
-      padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.symmetric(vertical: paddingM)),
+      side: MaterialStateProperty.all<BorderSide>(
+          const BorderSide(color: AppColor.darkText)),
+      padding: MaterialStateProperty.all<EdgeInsets>(
+          const EdgeInsets.symmetric(vertical: paddingM)),
       textStyle: MaterialStateProperty.all<TextStyle>(
         TextStyle(
-          color: Colors.white,
+          color: AppColor.darkText,
           fontFamily: fontFamily,
-          fontWeight: FontWeight.w700,
-          fontSize: 18.textScale,
+          fontWeight: FontWeight.w400,
+          fontSize: 16,
         ),
       ),
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(radiusXXS))),
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(radiusXL),
+        ),
+      ),
     ),
   );
 
+  @override
   CheckboxThemeData checkboxThemeData = CheckboxThemeData(
-    fillColor: MaterialStateProperty.all<Color?>(TSColor.turkcellBlue),
+    fillColor: MaterialStateProperty.all<Color?>(AppColor.primaryVariant),
     checkColor: MaterialStateProperty.all<Color?>(Colors.white),
-    side: BorderSide(width: 0.7, color: TSColor.turkcellBlue),
+    side: const BorderSide(width: 0.7, color: AppColor.primaryVariant),
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(radiusXXXL),
+      borderRadius: BorderRadius.circular(radiusXXS),
     ),
   );
 
+  @override
   RadioThemeData radioThemeData = RadioThemeData(
-    fillColor: MaterialStateProperty.all<Color>(TSColor.turkcellBlue),
+    fillColor: MaterialStateProperty.all<Color>(AppColor.primaryVariant),
   );
 
+  @override
   DividerThemeData dividerTheme = DividerThemeData(
-    color: TSColor.lightWhite,
+    color: AppColor.lightWhite,
     space: 0,
   );
 
   @override
   AppBarTheme appBarTheme = AppBarTheme(
-    color: TSColor.turkcellBlue,
+    titleSpacing: 0,
+    elevation: 0,
+    color: AppColor.primaryVariant,
+    titleTextStyle: TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w700,
+      color: Colors.white,
+      fontFamily: fontFamily,
+    ),
     centerTitle: true,
+    actionsIconTheme: const IconThemeData(color: Colors.black),
+    iconTheme: const IconThemeData(color: Colors.black),
+  );
+
+  @override
+  TabBarTheme tabBarTheme = TabBarTheme(
+    labelColor: AppColor.primaryVariant,
+    labelStyle: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w700,
+      color: AppColor.primaryVariant,
+      fontFamily: fontFamily,
+    ),
+    unselectedLabelColor: AppColor.darkText,
+    unselectedLabelStyle: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w700,
+      color: AppColor.darkText,
+      fontFamily: fontFamily,
+    ),
+  );
+
+  @override
+  Color indicatorColor = AppColor.primaryVariant;
+
+  @override
+  BottomAppBarTheme bottomAppBarTheme = const BottomAppBarTheme(
+    color: Colors.transparent,
+    elevation: 0,
   );
 }

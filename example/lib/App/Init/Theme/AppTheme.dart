@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
-abstract class TSTheme {
+
+abstract class AppTheme {
   late final Brightness brightness;
   late final Color backgroundColor;
   late final Color scaffoldBackgroundColor;
+  late final Color shadowColor;
   late final IconThemeData accentIconTheme;
   late final IconThemeData primaryIconTheme;
   late final IconThemeData iconTheme;
@@ -23,4 +25,7 @@ abstract class TSTheme {
   late final RadioThemeData radioThemeData;
   late final DividerThemeData dividerTheme;
   late final AppBarTheme appBarTheme;
+  late final TabBarTheme tabBarTheme;
+  late final Color indicatorColor;
+  late final BottomAppBarTheme bottomAppBarTheme;
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
-import 'package:example/App/Theme/TSColors.dart';
+import 'package:example/App/Theme/AppColors.dart';
 import 'package:example/App/Theme/TSTextStyle.dart';
 
 /// [SingleSectionRadioButton],[MultiSectionCheckBox] ..vs kullanılan başlık
@@ -51,7 +51,7 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
                 visible: showMark ?? false,
                 child: CircleAvatar(
                   radius: radiusXXXS,
-                  backgroundColor: TSColor.turkcellYellow,
+                  backgroundColor: AppColor.turkcellYellow,
                 ),
               )
             ],
@@ -63,7 +63,7 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
               children: [
                 Divider(
                   height: paddingM,
-                  color: TSColor.turkcellBlue,
+                  color: AppColor.primaryVariant,
                 ),
                 Text(
                   subTitle!,

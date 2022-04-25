@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
-import 'package:example/App/Theme/TSColors.dart';
+import 'package:example/App/Theme/AppColors.dart';
 
 /// Yuvarlak mavi Mıktar ARTIRMA butonu
 class CircleDecreaseButton extends StatelessWidget {
@@ -34,7 +34,7 @@ class CircleDecreaseButton extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radiusXXXL),
-          border: Border.all(width: 1, color: TSColor.turkcellBlue),
+          border: Border.all(width: 1, color: AppColor.primaryVariant),
         ),
         child: AnimatedSwitcher(
           duration: Duration(milliseconds:350),
@@ -55,13 +55,13 @@ class CircleDecreaseButton extends StatelessWidget {
                   CupertinoIcons.delete,
                   key: ValueKey('CircleDecreaseButtonDelete'),
                   size: iconSize ?? 18,
-                  color: TSColor.turkcellBlue,
+                  color: AppColor.primaryVariant,
                 )
               : Icon(
                   CupertinoIcons.minus,
                   key: ValueKey('CircleDecreaseButtonDeleteMinus'),
                   size: iconSize ?? 18,
-                  color: TSColor.turkcellBlue,
+                  color: AppColor.primaryVariant,
                 ),
         ),
       ),

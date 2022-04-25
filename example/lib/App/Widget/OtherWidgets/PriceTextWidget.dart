@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:example/App/Constant/App/AppConstant.dart';
-import 'package:example/App/Theme/TSColors.dart';
+import 'package:example/App/Theme/AppColors.dart';
 import 'package:example/App/Theme/TSTextStyle.dart';
 
 /// Fiyat göstergelerinde kullanılmakta.
@@ -20,14 +20,14 @@ class PriceTextWidget extends StatelessWidget {
       text: TextSpan(
         text: priceUnit,
         style: textStyle == null
-            ? s12W700Dark(context).copyWith(fontFamily: '', color: color ?? TSColor.darkText)
-            : textStyle!.copyWith(fontFamily: '', color: color ?? TSColor.darkText),
+            ? s12W700Dark(context).copyWith(fontFamily: '', color: color ?? AppColor.darkText)
+            : textStyle!.copyWith(fontFamily: '', color: color ?? AppColor.darkText),
         children: <TextSpan>[
           TextSpan(
             text: ' ' + price.toStringAsFixed(2),
             style: textStyle == null
-                ? s12W700Dark(context).copyWith(color: color ?? TSColor.darkText)
-                : textStyle!.copyWith(color: color ?? TSColor.darkText),
+                ? s12W700Dark(context).copyWith(color: color ?? AppColor.darkText)
+                : textStyle!.copyWith(color: color ?? AppColor.darkText),
           ),
         ],
       ),

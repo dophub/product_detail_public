@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:example/App/Init/Screen/SizeConfig.dart';
-import 'package:example/App/Model/Response/DealerDetailModel.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
-import 'package:example/App/Theme/TSColors.dart';
+import 'package:example/App/Theme/AppColors.dart';
 import 'package:example/App/Theme/TSTextStyle.dart';
 import 'package:example/App/Widget/Dialog/TSDialog.dart';
 import 'package:example/App/Widget/OtherWidgets/TSImageNetwork.dart';
+import 'package:sip_models/response.dart';
 
 /// Dealer profil ekranında appbar daki buttona tıklandığında menuleri gösteren dialog
 class MenuDialog {
@@ -54,7 +54,7 @@ class MenuDialog {
                                         imageUrl: list[index].menuImage!,
                                       ),
                                       Container(
-                                        color: TSColor.cardBarrierColor,
+                                        color: AppColor.cardBarrierColor,
                                         alignment: Alignment.center,
                                         padding: EdgeInsets.symmetric(
                                             horizontal: paddingXXS),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
-import 'package:example/App/Theme/TSColors.dart';
+import 'package:example/App/Theme/AppColors.dart';
 import 'package:example/Screen/ProductProfileScreen/product_profile_screen.dart';
 
 /// [ProductProfileScreen] de Ürün resmin alt kısmında gösterilen resim index ini beliten teg Listesin.
@@ -36,13 +36,13 @@ class ImageListPositionsTag extends StatelessWidget {
                 ? Container(
                 width: width * 3,
                 decoration: BoxDecoration(
-                  color: color ?? TSColor.turkcellBlue,
+                  color: color ?? AppColor.primaryVariant,
                   borderRadius: BorderRadius.circular(radiusXXXL),
                 ),
               ): Container(
                 width: width,
                 decoration: BoxDecoration(
-                  color: TSColor.background,
+                  color: AppColor.background,
                   borderRadius: BorderRadius.circular(radiusXXXL),
                 ),
               );

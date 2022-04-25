@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:example/App/Theme/TSColors.dart';
+import 'package:example/App/Theme/AppColors.dart';
 
 /// Base Image.network
 class TSImageNetwork extends StatelessWidget {
@@ -27,7 +27,7 @@ class TSImageNetwork extends StatelessWidget {
       height: height,
       errorBuilder:
           (BuildContext context, Object error, StackTrace? stackTrace) {
-        return errorWidget ?? Icon(Icons.image, color: TSColor.paleTextColor);
+        return errorWidget ?? Icon(Icons.image, color: AppColor.paleTextColor);
       },
       fit: fit ?? BoxFit.cover,
     );

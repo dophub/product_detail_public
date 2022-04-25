@@ -2,15 +2,15 @@ import 'package:example/App/BL/General.dart';
 import 'package:example/App/Init/Screen/SizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:sip_models/enum.dart';
+import 'package:sip_models/request.dart';
+import 'package:sip_models/response.dart';
+import 'package:sip_models/status.dart';
 import 'package:snapping_sheet/snapping_sheet.dart';
-import 'package:example/App/Constant/Enums/IdEnum.dart';
 import 'package:example/App/Extension/GeneralExtension.dart';
-import 'package:example/App/Constant/Enums/LoadingStatusEnum.dart';
 import 'package:example/App/Controller/controller.dart';
 import 'package:get/get.dart';
-import 'package:product_detail/model.dart';
 import 'package:example/Core/Service/CheckInternet.dart';
-import 'package:example/App/Model/Response/BaseHttpModel.dart';
 import 'package:example/App/Widget/Message/ToastMessage.dart';
 import 'package:example/App/Widget/Dialog/LoadingProgress.dart';
 import 'package:product_detail/controller.dart';
@@ -20,7 +20,7 @@ import 'package:product_detail/general_controller.dart';
 class PromotionProfileController extends GetxController {
   final GlobalKey scaffoldKey = GlobalKey<ScaffoldState>();
   late Rx<LoadingStatus> _loadingStatus;
-  late Rx<PromotionMenuModel> _promotionMenuModel;
+  late Rx<PromotionMenuDetailModel> _promotionMenuModel;
   late final int dealerId;
   late OrderItem? orderItem;
   late Rx<double> _amount;
@@ -28,7 +28,7 @@ class PromotionProfileController extends GetxController {
   final SnappingSheetController bottomSheetScrollController = SnappingSheetController();
   late Rx<double> _bottomSheetPosition;
   late List<ImagesModel> imagesList;
-  late MenuProductModel itemObject;
+  late ProductModel itemObject;
   late Rx<int> _count;
   PromotionViewController? optionViewController;
   late Rx<bool> _flexibleSpaceBarClosed;
@@ -57,7 +57,7 @@ class PromotionProfileController extends GetxController {
 
   PromotionProfileController(this.dealerId,this.itemObject, this.orderItem) {
     _loadingStatus = LoadingStatus.Init.obs;
-    _promotionMenuModel = PromotionMenuModel().obs;
+    _promotionMenuModel = PromotionMenuDetailModel().obs;
     _amount = 0.0.obs;
     _imagePositionIndex = 0.obs;
     _count = orderItem == null ? 1.obs : orderItem!.count!.obs;
@@ -106,9 +106,9 @@ class PromotionProfileController extends GetxController {
   }
 
 
-  PromotionMenuModel get promotionMenuModel => _promotionMenuModel.value;
+  PromotionMenuDetailModel get promotionMenuModel => _promotionMenuModel.value;
 
-  set promotionMenuModel(PromotionMenuModel value) {
+  set promotionMenuModel(PromotionMenuDetailModel value) {
     _promotionMenuModel.value = value;
     update();
   }

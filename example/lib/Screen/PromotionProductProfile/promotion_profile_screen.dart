@@ -1,7 +1,8 @@
 import 'package:example/App/Init/Screen/SizeConfig.dart';
-import 'package:product_detail/model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sip_models/request.dart';
+import 'package:sip_models/response.dart';
 import 'Controller/promotion_profile_controller.dart';
 import 'View/promotion_profile.dart';
 
@@ -13,7 +14,7 @@ import 'View/promotion_profile.dart';
 class PromotionProfileScreen extends StatelessWidget {
   final int dealerId;
   final OrderItem? order;
-  final MenuProductModel itemObject;
+  final ProductModel itemObject;
 
   const PromotionProfileScreen({
     Key? key,

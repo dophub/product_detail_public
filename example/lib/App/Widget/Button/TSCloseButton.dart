@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
-import 'package:example/App/Constant/Enums/TypeEnum.dart';
+import 'package:sip_models/enum.dart';
 
 /// Geri dönme butonu
 /// Yuvarlak şeklinde
