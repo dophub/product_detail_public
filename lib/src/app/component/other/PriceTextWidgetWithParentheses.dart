@@ -23,7 +23,7 @@ class PriceTextWidgetWithParentheses extends StatelessWidget {
   Widget build(BuildContext context) {
     var percent = NumberFormat.currency(
         locale: Localizations.localeOf(context).languageCode,
-        symbol: priceUnit,
+        symbol: '',
         decimalDigits: 2);
     return price == null || price == 0
         ? Text(name,
