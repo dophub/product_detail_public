@@ -3,15 +3,15 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:example/App/Constant/Enums/IdEnum.dart';
-import 'package:example/App/Widget/Section/MultiSectionCheckBox.dart';
-import 'package:example/App/Widget/Section/ProductDecriseSection.dart';
-import 'package:example/App/Widget/Section/SingleSectionBottomSheet.dart';
-import 'package:example/App/Widget/Section/SingleSectionRadioButton.dart';
-import 'package:example/App/Constant/App/PaddingAndRadiusSize.dart';
+import 'package:example/App/Widget/Section/multi_section_check_box.dart';
+import 'package:example/App/Widget/Section/product_decrise_section.dart';
+import 'package:example/App/Widget/Section/single_Section_bottom_sheet.dart';
+import 'package:example/App/Widget/Section/single_section_radio_button.dart';
+import 'package:example/App/Constant/App/padding_and_radius_size.dart';
 import 'package:example/Screen/PromotionProductProfile/Controller/promotion_profile_controller.dart';
 import 'package:product_detail/model.dart';
 
-/// Product optionGroups
+/// product optionGroups
 class PromotionFeatureAndOption extends StatelessWidget {
   final List<OptionGroupModel> optionGroupsList;
   final int sectionIndex;
@@ -29,7 +29,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
     final controller = Get.find<PromotionProfileController>();
     return Column(
       children: [
-        /// Product Option
+        /// product Option
         Padding(
           padding: EdgeInsets.only(bottom: optionGroupsList.length == 0 ? 0 :paddingM),
           child: ListView.separated(
@@ -106,7 +106,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
             },
           ),
         ),
-        /// Product Features
+        /// product Features
         Padding(
           padding: EdgeInsets.only(bottom:  featuresList.length == 0 ? 0 :paddingM),
           child: ListView.separated(

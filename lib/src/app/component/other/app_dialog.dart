@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// Base Dialog
-class TSDialog {
+class AppDialog {
   Future showDynamicDialog(BuildContext context, {required Widget widget,bool? barrierDismissible,Color? barrierColor}) {
     return showDialog(
       barrierDismissible: barrierDismissible ?? true,

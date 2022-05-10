@@ -1,16 +1,16 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:product_detail/src/app/component/section/MultiSectionCheckBox.dart';
-import 'package:product_detail/src/app/component/section/ProductDecriseSection.dart';
-import 'package:product_detail/src/app/component/section/SingleSectionBottomSheet.dart';
-import 'package:product_detail/src/app/component/section/SingleSectionRadioButton.dart';
-import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
-import 'package:product_detail/src/controller/PromotionController.dart';
+import 'package:product_detail/src/app/component/section/multi_section_check_box.dart';
+import 'package:product_detail/src/app/component/section/product_decrise_section.dart';
+import 'package:product_detail/src/app/component/section/single_Section_bottom_sheet.dart';
+import 'package:product_detail/src/app/component/section/single_section_radio_button.dart';
+import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
+import 'package:product_detail/src/controller/promotion_controller.dart';
 import 'package:sip_models/enum.dart';
 import 'package:sip_models/response.dart';
 
-/// Product optionGroups
+/// product optionGroups
 class PromotionFeatureAndOption extends StatelessWidget {
   final List<OptionGroupModel> optionGroupsList;
   final int sectionIndex;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../controller/ProductController.dart';
+import '../../controller/product_controller.dart';
 import 'feature_and_option.dart';
 
 /// Ürün detayının View kısmınıdır

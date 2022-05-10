@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
-import 'package:product_detail/src/app/const/TSTextStyle.dart';
+import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
+import 'package:product_detail/src/app/const/app_text_style.dart';
 
-import 'TSButton.dart';
-import 'TSDialog.dart';
+import 'app_button.dart';
+import 'app_dialog.dart';
 
 /// Note TextFilede tıklandığında çıkan Note Dialoğu
 class NoteDialog {
@@ -12,7 +12,7 @@ class NoteDialog {
   Future showMenuDialog(BuildContext context,
       {String text = '', required Function(String) onClose}) {
     _cNote.text = text;
-    return TSDialog().showDynamicDialog(
+    return AppDialog().showDynamicDialog(
       context,
       barrierColor: Colors.black45,
       widget: Theme(
@@ -64,7 +64,7 @@ class NoteDialog {
                         child: Row(
                           children: [
                             Expanded(
-                              child: TSButton(
+                              child: AppButton(
                                 padding: EdgeInsets.zero,
                                 buttonPadding: EdgeInsets.zero,
                                 onTap: () => Navigator.of(context,rootNavigator: true).pop(),
@@ -73,7 +73,7 @@ class NoteDialog {
                             ),
                             SizedBox(width: paddingM),
                             Expanded(
-                              child: TSButton(
+                              child: AppButton(
                                 padding: EdgeInsets.zero,
                                 buttonPadding: EdgeInsets.zero,
                                 onTap: () {

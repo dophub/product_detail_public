@@ -6,7 +6,7 @@ import 'package:example/App/Widget/Button/TSCloseButton.dart';
 import 'package:sip_models/enum.dart';
 
 
-/// Product Profile screen de gösterilen Ürün Başlık,Alt Başlık ve Detay
+/// product Profile screen de gösterilen Ürün Başlık,Alt Başlık ve Detay
 ///
 class PromotionTitleAndDetail extends StatelessWidget {
   final bool showCloseButton;

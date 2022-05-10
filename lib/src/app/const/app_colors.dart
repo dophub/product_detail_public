@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// Renkleri yazdığımız sınıf
 ///
-class TSColor {
+class AppColor {
   static const Color darkText = Color(0xff464250);
   static const Color paleTextColor = Color(0xff9e9e9e);
   static const Color background = Color(0xffF2F3F8);

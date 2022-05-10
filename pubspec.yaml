@@ -13,6 +13,10 @@ dependencies:
   flutter_svg: any
   connectivity: any
   intl: any
+  sip_models:
+    git:
+      url: https://github.com/dophub/sip-models.git
+      ref: prod-0510
 
   flutter:
     sdk: flutter

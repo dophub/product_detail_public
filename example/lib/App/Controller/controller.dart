@@ -77,7 +77,7 @@ class Controller extends GetxController  {
     ..itemType = describeEnum(ItemType.PRODUCT)
     ..makeTime = 0
     ..listOrder = 0
-    ..productName = 'Product'
+    ..productName = 'product'
     ..shortDescription = 'shortDescription';
     goToProductProfileScreen(context, 594,model);
   }
@@ -94,7 +94,7 @@ class Controller extends GetxController  {
     ..itemType = describeEnum(ItemType.PROMOTION_MENU)
     ..makeTime = 0
     ..listOrder = 0
-    ..productName = 'Product'
+    ..productName = 'product'
     ..shortDescription = 'shortDescription';
     goToProductProfileScreen(context, 603, model);
   }

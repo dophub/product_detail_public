@@ -1,2 +1,2 @@
-export 'src/controller/ProductController.dart';
-export 'src/controller/PromotionController.dart';
+export 'src/controller/product_controller.dart';
+export 'src/controller/promotion_controller.dart';

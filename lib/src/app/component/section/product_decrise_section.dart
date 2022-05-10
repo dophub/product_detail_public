@@ -1,9 +1,9 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:product_detail/src/app/component/other/TitleWithRightSubTitleAndMark.dart';
-import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
-import 'package:product_detail/src/app/const/TSColors.dart';
-import 'package:product_detail/src/app/const/TSTextStyle.dart';
+import 'package:product_detail/src/app/component/other/title_with_right_sub_title_and_mark.dart';
+import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
+import 'package:product_detail/src/app/const/app_colors.dart';
+import 'package:product_detail/src/app/const/app_text_style.dart';
 import 'package:sip_models/widget.dart';
 
 /// Ürün de olan malzemeleri cıkarmak için olüştürldü
@@ -60,12 +60,12 @@ class MultiSectionDecreaseSection<T extends ISectionsWidgetModel> extends Statel
                       Color titleColor;
                       TextDecoration titleTextDecoration;
                       if (element.getStatus) {
-                        borderColor = TSColor.paleTextColor;
-                        titleColor = TSColor.paleTextColor;
+                        borderColor = AppColor.paleTextColor;
+                        titleColor = AppColor.paleTextColor;
                         titleTextDecoration = TextDecoration.none;
                       } else {
-                        borderColor = TSColor.turkcellBlue;
-                        titleColor = TSColor.darkText;
+                        borderColor = AppColor.turkcellBlue;
+                        titleColor = AppColor.darkText;
                         titleTextDecoration = TextDecoration.lineThrough;
                       }
                       return GestureDetector(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:product_detail/src/app/component/other/TitleWithRightSubTitleAndMark.dart';
-import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
+import 'package:product_detail/src/app/component/other/title_with_right_sub_title_and_mark.dart';
+import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
 import 'package:sip_models/widget.dart';
-import 'RadioButtonList.dart';
+import 'radio_button_list.dart';
 
 /// Tek seçmelide kullanılan RadioButtonList
 /// [title] üst kısımda cıkan başlık

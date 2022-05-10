@@ -8,6 +8,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.8.2"
+  background_json_parser:
+    dependency: transitive
+    description:
+      name: background_json_parser
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -177,6 +184,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
+  sip_models:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: prod-0510
+      resolved-ref: "19abe629ad7e0febf9ab7f0c517a175b966e9ec4"
+      url: "https://github.com/dophub/sip-models.git"
+    source: git
+    version: "0.0.1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -246,5 +262,5 @@ packages:
     source: hosted
     version: "5.3.1"
 sdks:
-  dart: ">=2.14.0 <3.0.0"
+  dart: ">=2.15.1 <3.0.0"
   flutter: ">=2.4.0-0.0.pre"

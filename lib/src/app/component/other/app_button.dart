@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
+import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
 
 /// Standart turkcell yatay button
-class TSButton extends StatelessWidget {
+class AppButton extends StatelessWidget {
   final VoidCallback? onTap;
   final String? txt;
   final Widget? widget;
@@ -12,7 +12,7 @@ class TSButton extends StatelessWidget {
   final ButtonStyle? style;
   final TextStyle? textStyle;
 
-  const TSButton({
+  const AppButton({
     Key? key,
     required this.onTap,
     this.txt = '',

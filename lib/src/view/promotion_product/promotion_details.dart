@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:product_detail/src/app/component/other/NoteDialog.dart';
-import 'package:product_detail/src/app/component/section/SingleSectionBottomSheet.dart';
-import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
-import 'package:product_detail/src/app/const/TSColors.dart';
-import 'package:product_detail/src/controller/PromotionController.dart';
-import 'package:product_detail/src/view/PromotionProduct/promotion_feature_and_option.dart';
+import 'package:product_detail/src/app/component/other/note_dialog.dart';
+import 'package:product_detail/src/app/component/section/single_Section_bottom_sheet.dart';
+import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
+import 'package:product_detail/src/app/const/app_colors.dart';
+import 'package:product_detail/src/controller/promotion_controller.dart';
 import 'package:sip_models/response.dart';
+
+import 'promotion_feature_and_option.dart';
 
 class PromotionDetails extends StatelessWidget {
   /// Ürün section, Feature ve option lerini listeler
@@ -46,7 +47,7 @@ class PromotionDetails extends StatelessWidget {
                               hintText: 'Seçiniz',
                               selectedIndex: controller.getIndexForSelectedProduct(sectionIndex),
                               onTap: (int selectedIndex) => controller.sectionBottomSheetOnChange(sectionIndex, selectedIndex),
-                              selectedCardColor: TSColor.turkcellYellow,
+                              selectedCardColor: AppColor.turkcellYellow,
                             ),
                             // Section secilmiş mi
                             controller.promotionMenuModel

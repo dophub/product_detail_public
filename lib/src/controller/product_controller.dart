@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:sip_models/enum.dart';
 import 'package:sip_models/request.dart';
 import 'package:sip_models/response.dart';
-import 'ProductDetailGeneralController.dart';
+import 'product_detail_general_controller.dart';
 
 
 ///

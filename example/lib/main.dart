@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           themeMode: ThemeMode.system,
           theme: getTheme(AppLightTheme()),
           darkTheme: getTheme(AppDarkTheme()),
-          home: const MyHomePage(title: 'TS Product Detail'),
+          home: const MyHomePage(title: 'TS product Detail'),
         );
       }
     );
@@ -67,11 +67,11 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             ElevatedButton(
               onPressed: () => controller.onTapGetProductBtn(context),
-              child: const Text('Get Product Detail'),
+              child: const Text('Get product Detail'),
             ),
             ElevatedButton(
               onPressed: () => controller.onTapGetPromotionProductBtn(context),
-              child: const Text('Get Promotion Product Detail'),
+              child: const Text('Get Promotion product Detail'),
             ),
           ],
         ),

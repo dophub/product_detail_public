@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
-import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
-import 'package:product_detail/src/app/const/TSColors.dart';
-import 'package:product_detail/src/app/const/TSTextStyle.dart';
+import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
+import 'package:product_detail/src/app/const/app_colors.dart';
+import 'package:product_detail/src/app/const/app_text_style.dart';
 import 'package:sip_models/widget.dart';
 
-import '../other/PriceTextWidgetWithParentheses.dart';
+import '../other/price_text_widget_with_parentheses.dart';
 
 /// Radio Button Liste
 /// [selectedIndex] seçilen index
@@ -39,11 +39,11 @@ class BottomSheetRadioButtonList<T extends ISectionsWidgetModel> extends Statele
                     child: Container(
                       decoration: BoxDecoration(
                           color:
-                              selectedIndex == index ? TSColor.turkcellYellow : Colors.transparent,
+                              selectedIndex == index ? AppColor.turkcellYellow : Colors.transparent,
                           borderRadius: BorderRadius.circular(radiusXS),
                           border: selectedIndex == index
                               ? null
-                              : Border.all(width: 1, color: TSColor.turkcellBlue)),
+                              : Border.all(width: 1, color: AppColor.turkcellBlue)),
                       child: Padding(
                         padding: const EdgeInsets.all(paddingS),
                         child: Row(
@@ -59,15 +59,15 @@ class BottomSheetRadioButtonList<T extends ISectionsWidgetModel> extends Statele
                                     border: Border.all(
                                       width: 1,
                                       color: selectedIndex == index
-                                          ? TSColor.darkText
-                                          : TSColor.turkcellBlue,
+                                          ? AppColor.darkText
+                                          : AppColor.turkcellBlue,
                                     ),
                                   ),
                                   child: Visibility(
                                     visible: selectedIndex == index,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        color: TSColor.darkText,
+                                        color: AppColor.darkText,
                                         shape: BoxShape.circle,
                                       ),
                                     ),
@@ -82,8 +82,8 @@ class BottomSheetRadioButtonList<T extends ISectionsWidgetModel> extends Statele
                                   name: list[index].getName,
                                   textStyle: s16W700Dark(context),
                                   color: selectedIndex == index
-                                      ? TSColor.darkText
-                                      : TSColor.turkcellBlue,
+                                      ? AppColor.darkText
+                                      : AppColor.turkcellBlue,
                                 ),
                               ),
                             ),

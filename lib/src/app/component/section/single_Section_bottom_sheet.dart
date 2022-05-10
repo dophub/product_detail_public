@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:product_detail/src/app/const/Assets.dart';
-import 'package:product_detail/src/app/const/PaddingAndRadiusSize.dart';
-import 'package:product_detail/src/app/const/TSTextStyle.dart';
+import 'package:product_detail/src/app/const/assets.dart';
+import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
+import 'package:product_detail/src/app/const/app_text_style.dart';
 import 'package:sip_models/widget.dart';
-import '../other/BottomSheetHoldAndDragWidget.dart';
-import 'BottomSheetRadioButtonList.dart';
+import '../other/bottom_sheet_hold_and_drag_widget.dart';
+import 'bottom_sheet_Radio_button_list.dart';
 
 /// Tekli seçmelide kullanılan dropdown
 /// [title] dropdown üst kısmında cıkan başlık
