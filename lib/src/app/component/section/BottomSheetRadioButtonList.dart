@@ -9,21 +9,21 @@ import '../other/PriceTextWidgetWithParentheses.dart';
 
 /// Radio Button Liste
 /// [selectedIndex] seçilen index
-class BottomSheetRadioButtonList extends StatelessWidget {
+class BottomSheetRadioButtonList<T extends ISectionsWidgetModel> extends StatelessWidget {
   final Widget? radioButtonWidget;
-
-  const BottomSheetRadioButtonList(
-      {Key? key,
-      required this.onTap,
-      required this.list,
-      required this.selectedIndex,
-      this.radioButtonSize,
-      this.radioButtonWidget})
-      : super(key: key);
   final void Function(int) onTap;
-  final List<SectionsWidgetModel> list;
+  final List<T> list;
   final int? selectedIndex;
   final double? radioButtonSize;
+
+  const BottomSheetRadioButtonList({
+    Key? key,
+    required this.onTap,
+    required this.list,
+    required this.selectedIndex,
+    this.radioButtonSize,
+    this.radioButtonWidget,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,14 +38,12 @@ class BottomSheetRadioButtonList extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: paddingXS),
                     child: Container(
                       decoration: BoxDecoration(
-                          color: selectedIndex == index
-                              ? TSColor.turkcellYellow
-                              : Colors.transparent,
+                          color:
+                              selectedIndex == index ? TSColor.turkcellYellow : Colors.transparent,
                           borderRadius: BorderRadius.circular(radiusXS),
                           border: selectedIndex == index
                               ? null
-                              : Border.all(
-                                  width: 1, color: TSColor.turkcellBlue)),
+                              : Border.all(width: 1, color: TSColor.turkcellBlue)),
                       child: Padding(
                         padding: const EdgeInsets.all(paddingS),
                         child: Row(
@@ -80,8 +78,8 @@ class BottomSheetRadioButtonList extends StatelessWidget {
                               child: Padding(
                                 padding: EdgeInsets.only(left: paddingXS),
                                 child: PriceTextWidgetWithParentheses(
-                                  price: list[index].price,
-                                  name: list[index].name,
+                                  price: list[index].getPrice,
+                                  name: list[index].getName,
                                   textStyle: s16W700Dark(context),
                                   color: selectedIndex == index
                                       ? TSColor.darkText

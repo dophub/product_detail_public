@@ -13,14 +13,14 @@ import 'package:sip_models/widget.dart';
 /// [onTap] item seçildiğinde oluşan feedback
 /// Status = true malzeme üründe olsun
 /// Status = false malzeme üründen cıkartıldı
-class MultiSectionDecreaseSection extends StatelessWidget {
+class MultiSectionDecreaseSection<T extends ISectionsWidgetModel> extends StatelessWidget {
   final String title;
 
   final String? subTitle;
 
-  final List<SectionsWidgetModel> list;
+  final List<T> list;
 
-  final void Function(SectionsWidgetModel, int) onTap;
+  final void Function(T, int) onTap;
 
   const MultiSectionDecreaseSection({
     Key? key,
@@ -45,9 +45,7 @@ class MultiSectionDecreaseSection extends StatelessWidget {
             TitleWithRightSubTitleAndMark(
               title: title,
               subTitle: subTitle,
-              showMark: list.indexWhere((element) => element.status!) == -1
-                  ? false
-                  : true,
+              showMark: list.indexWhere((element) => element.getStatus) == -1 ? false : true,
             ),
             SizedBox(height: paddingM),
             Wrap(
@@ -57,31 +55,42 @@ class MultiSectionDecreaseSection extends StatelessWidget {
               runAlignment: WrapAlignment.start,
               children: list
                   .mapIndexed(
-                    (index, element) => GestureDetector(
-                      onTap: () => onSelect(index),
-                      child: Container(
-                        decoration: BoxDecoration(
+                    (index, element) => Builder(builder: (context) {
+                      Color borderColor;
+                      Color titleColor;
+                      TextDecoration titleTextDecoration;
+                      if (element.getStatus) {
+                        borderColor = TSColor.paleTextColor;
+                        titleColor = TSColor.paleTextColor;
+                        titleTextDecoration = TextDecoration.none;
+                      } else {
+                        borderColor = TSColor.turkcellBlue;
+                        titleColor = TSColor.darkText;
+                        titleTextDecoration = TextDecoration.lineThrough;
+                      }
+                      return GestureDetector(
+                        onTap: () => onSelect(index),
+                        child: Container(
+                          decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(radiusXXXS),
                             border: Border.all(
-                                color: element.status!
-                                    ? TSColor.paleTextColor
-                                    : TSColor.turkcellBlue, width: 1)),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: paddingXS, vertical: paddingXXS),
-                          child: Text(
-                            element.name,
-                            style: s16W400Dark(context).copyWith(
-                              color: element.status!
-                                  ? TSColor.paleTextColor
-                                  : TSColor.darkText,
-                                decoration: !element.status!
-                                    ? TextDecoration.none
-                                    : TextDecoration.lineThrough),
+                              color: borderColor,
+                              width: 1,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: paddingXS, vertical: paddingXXS),
+                            child: Text(
+                              element.getName,
+                              style: s16W400Dark(context).copyWith(
+                                color: titleColor,
+                                decoration: titleTextDecoration,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
+                      );
+                    }),
                   )
                   .toList(),
             ),
@@ -94,7 +103,7 @@ class MultiSectionDecreaseSection extends StatelessWidget {
   void onSelect(int index) {
     /// Seçili item var mı diye kontrol ediyoruz
     /// Eğer Varsa Başlık satırında Sarı işaret bırakıyoruz
-    list[index].status = !list[index].status!;
+    list[index].setStatus = !list[index].getStatus;
     onTap(list[index], index);
   }
 }

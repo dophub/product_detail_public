@@ -7,7 +7,6 @@ import 'package:product_detail/src/app/const/TSColors.dart';
 import 'package:product_detail/src/controller/PromotionController.dart';
 import 'package:product_detail/src/view/PromotionProduct/promotion_feature_and_option.dart';
 import 'package:sip_models/response.dart';
-import 'package:sip_models/widget.dart';
 
 class PromotionDetails extends StatelessWidget {
   /// Ürün section, Feature ve option lerini listeler
@@ -41,12 +40,9 @@ class PromotionDetails extends StatelessWidget {
                         List<SectionModel>? sections = controller.promotionMenuModel.sections!;
                         return Column(
                           children: [
-                            //SizedBox(height: sectionIndex == 0? paddingM:0,),
                             SingleSectionBottomSheet(
                               title: sections[sectionIndex].sectionName!,
-                              list: List.generate(
-                                sections[sectionIndex].products!.length, (int productsIndex) => SectionsWidgetModel(name: sections[sectionIndex].products![productsIndex].productName!),
-                              ),
+                              list: sections[sectionIndex].products!,
                               hintText: 'Seçiniz',
                               selectedIndex: controller.getIndexForSelectedProduct(sectionIndex),
                               onTap: (int selectedIndex) => controller.sectionBottomSheetOnChange(sectionIndex, selectedIndex),

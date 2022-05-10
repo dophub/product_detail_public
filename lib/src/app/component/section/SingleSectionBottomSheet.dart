@@ -16,10 +16,10 @@ import 'BottomSheetRadioButtonList.dart';
 /// [hintText] dropdown init olduğunda ve [selectedIndex] null olduğunda dropdown'de gösterilen metin
 /// [hintText] ve [selectedIndex] null olduğunda [selectedIndex] imiz [initState] te 0 'a eşitlenecek
 /// [selectedCardColor] Item seçildiğinde card rengi verilen renge değişecek
-class SingleSectionBottomSheet extends StatelessWidget {
+class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends StatelessWidget {
   final String title;
   final String? subTitle;
-  final List<SectionsWidgetModel> list;
+  final List<T> list;
   final void Function(int) onTap;
   final int? selectedIndex;
   final String? hintText;
@@ -62,7 +62,7 @@ class SingleSectionBottomSheet extends StatelessWidget {
                       child: Text(
                         selectedIndex == null
                             ? 'Seçiniz'
-                            : list[selectedIndex!].name,
+                            : list[selectedIndex!].getName,
                         softWrap: true,
                         style: s16W700Dark(context),
                         maxLines: 1,

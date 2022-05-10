@@ -7,15 +7,11 @@ import '../other/PriceTextWidgetWithParentheses.dart';
 
 /// Radio Button Liste
 /// [selectedIndex] seçilen index
-class RadioButtonList extends StatelessWidget {
-  const RadioButtonList(
-      {Key? key,
-      required this.onTap,
-      required this.list,
-      required this.selectedIndex})
+class RadioButtonList<T extends ISectionsWidgetModel> extends StatelessWidget {
+  const RadioButtonList({Key? key, required this.onTap, required this.list, required this.selectedIndex})
       : super(key: key);
   final void Function(int) onTap;
-  final List<SectionsWidgetModel> list;
+  final List<T> list;
   final int? selectedIndex;
 
   @override
@@ -34,8 +30,7 @@ class RadioButtonList extends StatelessWidget {
                         height: 20,
                         width: 20,
                         child: Radio(
-                          materialTapTargetSize:
-                              MaterialTapTargetSize.shrinkWrap,
+                          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           value: index,
                           groupValue: selectedIndex,
                           onChanged: onSelect,
@@ -43,9 +38,11 @@ class RadioButtonList extends StatelessWidget {
                       ),
                       Flexible(
                         child: Padding(
-                          padding: EdgeInsets.only(
-                              left: paddingXS, bottom: paddingM),
-                          child: PriceTextWidgetWithParentheses(price: list[index].price, name: list[index].name),
+                          padding: EdgeInsets.only(left: paddingXS, bottom: paddingM),
+                          child: PriceTextWidgetWithParentheses(
+                            price: list[index].getPrice,
+                            name: list[index].getName,
+                          ),
                         ),
                       ),
                     ],

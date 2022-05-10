@@ -11,10 +11,10 @@ import '../other/PriceTextWidgetWithParentheses.dart';
 /// [list] checkBoxListTile tarafından listelenecek özelik listemiz
 /// [onTap] checkBox de item seçildiğinde oluşan feedback
 /// [maxSection] checkBoxList te max seçilebilecek item sayısı
-class MultiSectionCheckBox extends StatelessWidget {
+class MultiSectionCheckBox<T extends ISectionsWidgetModel> extends StatelessWidget {
   final String title;
   final String? subTitle;
-  final List<SectionsWidgetModel> list;
+  final List<T> list;
   final void Function(bool, int) onTap;
   final int? maxSection;
 
@@ -40,7 +40,7 @@ class MultiSectionCheckBox extends StatelessWidget {
               title: title,
               subTitle: subTitle,
               maxCount: maxSection,
-              showMark: list.indexWhere((element) => element.status!) == -1
+              showMark: list.indexWhere((element) => element.getStatus) == -1
                   ? false
                   : true,
             ),
@@ -48,7 +48,7 @@ class MultiSectionCheckBox extends StatelessWidget {
             Column(
               children: list
                   .mapIndexed<Widget>((index, element) => GestureDetector(
-                        onTap: () => onSelect(!list[index].status!, index),
+                        onTap: () => onSelect(!list[index].getStatus, index),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -61,7 +61,7 @@ class MultiSectionCheckBox extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(radiusXXXXXS),
                                 ),
                                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                value: list[index].status,
+                                value: list[index].getStatus,
                                 onChanged: (value) => onSelect(value, index),
                               ),
                             ),
@@ -69,7 +69,7 @@ class MultiSectionCheckBox extends StatelessWidget {
                               child: Padding(
                                 padding: EdgeInsets.only(
                                     left: paddingXS, bottom: paddingM),
-                                child: PriceTextWidgetWithParentheses(price: list[index].price, name: list[index].name),
+                                child: PriceTextWidgetWithParentheses(price: list[index].getPrice, name: list[index].getName),
                               ),
                             ),
                           ],
@@ -92,7 +92,7 @@ class MultiSectionCheckBox extends StatelessWidget {
         /// Kaç seçim seçilmiş diye hesaplıyoruz
         int count = 0;
         for (var loopValue in list) {
-          if (loopValue.status!) {
+          if (loopValue.getStatus) {
             count++;
           }
         }
@@ -110,7 +110,7 @@ class MultiSectionCheckBox extends StatelessWidget {
 
   void select(bool value, int index) {
     /// Seçilen seçimi fonksiyon ile feedback yapıyoruz
-    print(list[index].name);
+    debugPrint(list[index].getName);
     onTap(value, index);
   }
 }

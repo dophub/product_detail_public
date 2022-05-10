@@ -15,8 +15,8 @@ import '../other/PriceTextWidgetWithParentheses.dart';
 /// [selectedIndex] dropdown init olduğunda hangi item index'i seçili olaçak
 /// [hintText] dropdown init olduğunda ve [selectedIndex] null olduğunda dropdown'de gösterilen metin
 /// [hintText] ve [selectedIndex] null olduğunda [selectedIndex] imiz [initState] te 0 'a eşitlenecek
-class SingleSectionDropDown extends StatelessWidget {
-  final List<SectionsWidgetModel>? list;
+class SingleSectionDropDown<T extends ISectionsWidgetModel> extends StatelessWidget {
+  final List<T>? list;
   final void Function(int) onTap;
   final int? selectedIndex;
   final String? hintText;
@@ -40,9 +40,7 @@ class SingleSectionDropDown extends StatelessWidget {
             child: DropdownButtonHideUnderline(
               child: DropdownButton<int>(
                 value: selectedIndex,
-                hint: hintText == null
-                    ? null
-                    : Text(hintText!, style: s16W400Dark(context)),
+                hint: hintText == null ? null : Text(hintText!, style: s16W400Dark(context)),
                 isExpanded: true,
                 icon: const Icon(
                   CupertinoIcons.chevron_down,
@@ -57,7 +55,10 @@ class SingleSectionDropDown extends StatelessWidget {
                     .mapIndexed<DropdownMenuItem<int>>(
                       (index, element) => DropdownMenuItem(
                         value: index,
-                        child: PriceTextWidgetWithParentheses(price: element.price, name: element.name,),
+                        child: PriceTextWidgetWithParentheses(
+                          price: element.getPrice,
+                          name: element.getName,
+                        ),
                       ),
                     )
                     .toList(),

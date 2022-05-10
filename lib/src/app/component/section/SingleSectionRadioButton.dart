@@ -10,11 +10,11 @@ import 'RadioButtonList.dart';
 /// [list] RadioButonListTile tarafından listelenecek özellik listemiz
 /// [onTap] RadioButton de item seçildiğinde oluşan feedback
 /// [selectedIndex] RadioButton init olduğunda hangi item index'i seçili olaçak
-class SingleSectionRadioButton extends StatelessWidget {
+class SingleSectionRadioButton<T extends ISectionsWidgetModel> extends StatelessWidget {
   final String title;
   final String? subTitle;
   final int? selectedIndex;
-  final List<SectionsWidgetModel> list;
+  final List<T> list;
   final void Function(int) onTap;
 
   const SingleSectionRadioButton({

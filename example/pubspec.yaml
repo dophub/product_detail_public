@@ -22,8 +22,8 @@ dependencies:
   snapping_sheet: ^3.1.0
   sip_models:
     git:
-      url: https://bitbucket.org/digital-operasyon-merkezi/sip-models.git
-      ref: prod-0316
+      url: https://github.com/dophub/sip-models.git
+      ref: prod-0510
 
 dev_dependencies:
   product_detail:
