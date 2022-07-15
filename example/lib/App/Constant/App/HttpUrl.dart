@@ -1,4 +1,3 @@
-
 import 'package:sip_models/enum.dart';
 
 class HttpUrl {
@@ -17,7 +16,7 @@ class HttpUrl {
   static const ClientPointId clientId = ClientPointId.MOBILE_APP;
 
   /// GET (for get new token)
-  static const String getToken = 'gettoken/app';
+  static const String getToken = 'auth/gettoken/app';
 
   /// Ürün detay getirir
   /// app/dealer/{dealer_id}/products/{product_id}

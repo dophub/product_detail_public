@@ -1,191 +1,122 @@
-
 {
-  "id": 171,
-  "product_name": "BK Kral Burger",
-  "short_description": "BK Kral Burger BK Kral Burger",
-  "product_code": null,
+  "id": 179,
+  "product_name": "Sucuk  MÄ±sÄ±r (DikdÃ¶rtgen)",
+  "short_description": "Sucuk  MÄ±sÄ±r kÄ±sa aÃ§Ä±klama",
+  "description": "Sucuk  MÄ±sÄ±r (DikdÃ¶rtgen)  uzun aÃ§Ä±klama",
+  "product_code": "SCKM",
   "tags": [
-    "ketçap",
-    "mayonez"
+    "one",
+    "two"
   ],
-  "make_time": 45,
+  "make_time": 30,
   "calorie": 150,
-  "photo_url": "https://",
   "price": [
     {
-      "id": 65,
-      "price": 28,
-      "is_default": false,
-      "order_delivery_type_id": "TAKEOUT"
-    },
-    {
-      "id": 67,
-      "price": 39,
-      "is_default": false,
-      "order_delivery_type_id": "TAKEOUT"
-    },
-    {
-      "id": 68,
-      "price": 31,
+      "id": 69,
+      "price": 40.0,
       "is_default": true,
       "order_delivery_type_id": "TABLE"
+    },
+    {
+      "id": 70,
+      "price": 42.0,
+      "is_default": false,
+      "order_delivery_type_id": "TAKEOUT"
     }
   ],
-  "images": null,
+  "images": [
+    {
+      "id": 780,
+      "image_url": "https://siparisimcdn2.s3.eu-central-1.amazonaws.com/icdn/mobile-daily-menu-4peynirlipizza2021-big-0-29881195610829103.jpeg",
+      "list_order": 3776,
+      "image_size_id": "mobile_daily_menu"
+    },
+    {
+      "id": 781,
+      "image_url": "https://siparisimcdn2.s3.eu-central-1.amazonaws.com/icdn/mobile-list-4peynirlipizza2021-big-0-02717557333264775.jpeg",
+      "list_order": 3776,
+      "image_size_id": "mobile_list"
+    },
+    {
+      "id": 782,
+      "image_url": "https://siparisimcdn2.s3.eu-central-1.amazonaws.com/icdn/mobile-list-col-4peynirlipizza2021-big-0-7240928738193265.jpeg",
+      "list_order": 3776,
+      "image_size_id": "mobile_list_col"
+    },
+    {
+      "id": 783,
+      "image_url": "https://siparisimcdn2.s3.eu-central-1.amazonaws.com/icdn/mobile-detail-4peynirlipizza2021-big-0-21078832916919232.jpeg",
+      "list_order": 3776,
+      "image_size_id": "mobile_detail"
+    }
+  ],
   "option_groups": [
     {
-      "id": 34,
+      "id": 92,
       "options": [
         {
-          "id": 114,
+          "id": 240,
           "is_free": true,
-          "add_price": 7,
-          "is_default": true,
+          "add_price": 0.0,
+          "is_default": false,
           "list_order": 1,
-          "option_code": "BKOCODE4",
-          "option_name": "beyaz peynir"
+          "option_code": "tb002",
+          "option_name": "AcÄ±sÄ±z"
         },
         {
-          "id": 114,
+          "id": 241,
           "is_free": true,
-          "add_price": 8,
+          "add_price": 0.0,
           "is_default": true,
-          "list_order": 1,
-          "option_code": "BKOCODE4",
-          "option_name": "beyaz peynir"
-        },
-        {
-          "id": 113,
-          "is_free": true,
-          "add_price": 5,
-          "is_default": true,
-          "list_order": 3,
-          "option_code": "BKOCODE3",
-          "option_name": "cheedar"
+          "list_order": 2,
+          "option_code": "tb001",
+          "option_name": "AcÄ±lÄ±"
         }
       ],
       "max_count": 0,
-      "list_order": 10,
-      "description": "description",
-      "adding_type_id": "SELECT",
+      "list_order": 1,
+      "description": "",
+      "adding_type_id": "ADD",
       "choose_type_id": "SINGLE",
-      "option_group_name": "Peynir"
+      "option_group_name": "ACI TERCÄ°HÄ°"
     }
   ],
   "features": [
     {
-      "id": 39,
+      "id": 62,
       "items": [
         {
-          "id": 63,
-          "is_free": false,
-          "add_price": 5,
-          "is_default": false,
+          "id": 95,
+          "is_free": true,
+          "add_price": 0.0,
+          "is_default": true,
           "list_order": 1,
-          "product_name": "Hamburger"
+          "product_name": "Coca Cola - ÅiÅe"
         },
         {
-          "id": 63,
+          "id": 221,
           "is_free": false,
-          "add_price": 6.5,
+          "add_price": 2.0,
           "is_default": false,
-          "list_order": 1,
-          "product_name": "Hamburger"
+          "list_order": 2,
+          "product_name": "Soda (20 cl.)"
+        },
+        {
+          "id": 222,
+          "is_free": false,
+          "add_price": 5.2,
+          "is_default": false,
+          "list_order": 3,
+          "product_name": "Eker Ayran (1 L.)"
         }
       ],
-      "max_count": 4,
-      "list_order": 1,
-      "description": "açıklama",
-      "feature_name": "Peynir Seçimi",
+      "max_count": 1,
+      "list_order": 0,
+      "description": "deneme aÃ§Ä±klama",
+      "feature_name": "Ä°Ã§ecek Tercihi",
       "adding_type_id": "ADD",
       "choose_type_id": "SINGLE",
-      "max_free_count": 2
-    },
-    {
-      "id": 47,
-      "items": [
-        {
-          "id": 73,
-          "is_free": true,
-          "add_price": 5,
-          "is_default": true,
-          "list_order": 5,
-          "product_name": "BK Kral Burger"
-        },
-        {
-          "id": 74,
-          "is_free": true,
-          "add_price": 7,
-          "is_default": true,
-          "list_order": 6,
-          "product_name": "Acı Sos"
-        },
-        {
-          "id": 75,
-          "is_free": true,
-          "add_price": 8,
-          "is_default": true,
-          "list_order": 7,
-          "product_name": "Double Big King"
-        }
-      ],
-      "max_count": 3,
-      "list_order": 1,
-      "description": "test ",
-      "feature_name": "İçecekler",
-      "adding_type_id": "ADD",
-      "choose_type_id": "MULTIPLE",
-      "max_free_count": 5
-    },
-    {
-      "id": 40,
-      "items": [
-        {
-          "id": 64,
-          "is_free": true,
-          "add_price": 7,
-          "is_default": true,
-          "list_order": 2,
-          "product_name": "King Sundae"
-        },
-        {
-          "id": 64,
-          "is_free": true,
-          "add_price": 7.5,
-          "is_default": true,
-          "list_order": 2,
-          "product_name": "King Sundae"
-        }
-      ],
-      "max_count": 5,
-      "list_order": 2,
-      "description": "acıklama",
-      "feature_name": "Sos seçimi",
-      "adding_type_id": "DECREASE",
-      "choose_type_id": "MULTIPLE",
-      "max_free_count": 3
-    },
-    {
-      "id": 41,
-      "items": [
-        {
-          "id": 65,
-          "is_free": false,
-          "add_price": 8,
-          "is_default": false,
-          "list_order": 4,
-          "product_name": "Klasik Gurme Tavuk"
-        }
-      ],
-      "max_count": 5,
-      "list_order": 2,
-      "description": "açıklama",
-      "feature_name": "malzemeler",
-      "adding_type_id": "SELECT",
-      "choose_type_id": "SINGLE",
-      "max_free_count": 3
+      "max_free_count": 1
     }
   ]
 }
-
-

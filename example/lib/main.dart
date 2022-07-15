@@ -8,7 +8,7 @@ import 'App/Init/Theme/GetTheme.dart';
 import 'App/Init/Theme/AppDarkTheme.dart';
 import 'App/Init/Theme/AppLightTheme.dart';
 void main() {
-  HttpUrl.baseUrl = 'https://sandbox2.siparisimapi.com/';
+  HttpUrl.baseUrl = 'https://prod009.siparisim.dev/';
   runApp(const MyApp());
 }
 
@@ -47,9 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       controller.getToken(context);
     });
   }
@@ -66,11 +65,11 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
-              onPressed: () => controller.onTapGetProductBtn(context),
+              onPressed: () => controller.onTapGetProductBtn(context,675,738),
               child: const Text('Get product Detail'),
             ),
             ElevatedButton(
-              onPressed: () => controller.onTapGetPromotionProductBtn(context),
+              onPressed: () => controller.onTapGetPromotionProductBtn(context,675,80),
               child: const Text('Get Promotion product Detail'),
             ),
           ],

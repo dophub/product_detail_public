@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
+import 'package:product_detail/src/app/extension/general_extension.dart';
 import 'package:sip_models/enum.dart';
 import 'package:sip_models/request.dart';
 import 'package:sip_models/response.dart';
-import 'product_detail_general_controller.dart';
 
 
 ///
@@ -80,7 +80,7 @@ class ProductViewController extends ValueNotifier<double> {
   ItemOrder? getBasketModel(TimeoutAction timeoutAction) => _controller.getBasketModel(timeoutAction);
 }
 
-class ProductController extends GetxController with ProductDetailGeneralController {
+class ProductController extends GetxController {
 
   /// Ürün Detay modelidir
   late Rx<ProductDetailModel> _productDetailModel;
@@ -103,7 +103,7 @@ class ProductController extends GetxController with ProductDetailGeneralControll
   /// Fiyat türü
   late PriceType priceType;
 
-  /// Frame yüklendiğinde [initAfterProductDetailLoaded] i çağırmaktayiz
+  /// Frame yüklendiğinde [_initAfterProductDetailLoaded] i çağırmaktayiz
   @override
   void onReady() {
     // TODO: implement onReady
@@ -114,7 +114,7 @@ class ProductController extends GetxController with ProductDetailGeneralControll
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    initAfterProductDetailLoaded();
+    _initAfterProductDetailLoaded();
     /// Getx pakat ile [_amount] i dinleyip [onChangeAmount] metodunu tetiklemekteyiz
     ever<double>(_amount, (value) {
       onChangeAmount(value);
@@ -257,7 +257,7 @@ class ProductController extends GetxController with ProductDetailGeneralControll
   void amountUpdate() {
     double _amount = 0;
       ProductDetailModel value = productDetailModel;
-      _amount = getPrice(priceType,value.price!);
+      _amount = value.price!.getPrice(priceType);
 
       /// OptionGroupss
       value.optionGroups!.forEach((OptionGroupModel optionGroups) {
@@ -304,6 +304,7 @@ class ProductController extends GetxController with ProductDetailGeneralControll
     List<Options> options = [];
     /// optionGroups
     for (int groupIndex = 0; groupIndex < optionGroups.length; groupIndex++) {
+
       if (optionGroups[groupIndex].isSelected) {
         options.add(
           Options(
@@ -330,6 +331,10 @@ class ProductController extends GetxController with ProductDetailGeneralControll
             );
           }
         }
+      }
+      /// TODO Yeni Eklendi
+      else if (optionGroups[groupIndex].isRequire == true) {
+        throw 'Zorunlu alanları seçin.';
       }
     }
 
@@ -361,6 +366,10 @@ class ProductController extends GetxController with ProductDetailGeneralControll
           }
         }
       }
+      /// TODO Yeni Eklendi
+      else if (features[groupIndex].isRequire == true) {
+        throw 'Zorunlu alanları seçin.';
+      }
     }
     return options;
   }
@@ -384,7 +393,7 @@ class ProductController extends GetxController with ProductDetailGeneralControll
 
 
   /// Frame yüklendikten sonra section lerde olan isDefault alanına göre isSelected alanlarımızı güncelliyoruz
-  void initAfterProductDetailLoaded() {
+  void _initAfterProductDetailLoaded() {
     if(orderItem != null){
       ProductDetailModel product = orderItem!.toProductDetailModel();
       // optionGroups loop

@@ -16,7 +16,6 @@ import 'package:example/App/Widget/Dialog/LoadingProgress.dart';
 import 'package:product_detail/controller.dart';
 import 'package:product_detail/general_controller.dart';
 
-
 class PromotionProfileController extends GetxController {
   final GlobalKey scaffoldKey = GlobalKey<ScaffoldState>();
   late Rx<LoadingStatus> _loadingStatus;
@@ -45,7 +44,7 @@ class PromotionProfileController extends GetxController {
     // TODO: implement onInit
     super.onInit();
     final mainController = Get.find<Controller>();
-    imagesList = mainController.getImages(itemObject.images!,ImageSizeId.mobile_detail);
+    imagesList = mainController.getImages(itemObject.images!, ImageSizeId.mobile_detail);
   }
 
   @override
@@ -55,7 +54,7 @@ class PromotionProfileController extends GetxController {
     super.onClose();
   }
 
-  PromotionProfileController(this.dealerId,this.itemObject, this.orderItem) {
+  PromotionProfileController(this.dealerId, this.itemObject, this.orderItem) {
     _loadingStatus = LoadingStatus.Init.obs;
     _promotionMenuModel = PromotionMenuDetailModel().obs;
     _amount = 0.0.obs;
@@ -66,12 +65,11 @@ class PromotionProfileController extends GetxController {
     _flexibleSpaceBarClosed = false.obs;
   }
 
-
   bool get flexibleSpaceBarClosed => _flexibleSpaceBarClosed.value;
 
   set flexibleSpaceBarClosed(bool value) {
-    if (_flexibleSpaceBarClosed.value != value && SchedulerBinding.instance!.schedulerPhase != SchedulerPhase.idle) {
-      SchedulerBinding.instance!.endOfFrame.then((_) => _flexibleSpaceBarClosed.value = value);
+    if (_flexibleSpaceBarClosed.value != value && SchedulerBinding.instance.schedulerPhase != SchedulerPhase.idle) {
+      SchedulerBinding.instance.endOfFrame.then((_) => _flexibleSpaceBarClosed.value = value);
     }
   }
 
@@ -105,7 +103,6 @@ class PromotionProfileController extends GetxController {
     _loadingStatus.value = value;
   }
 
-
   PromotionMenuDetailModel get promotionMenuModel => _promotionMenuModel.value;
 
   set promotionMenuModel(PromotionMenuDetailModel value) {
@@ -122,7 +119,7 @@ class PromotionProfileController extends GetxController {
         if (response.status.isOk) {
           loadingStatus = LoadingStatus.Loaded;
           promotionMenuModel = response.data!;
-          optionViewController = PromotionViewController(orderItem,promotionMenuModel,PriceType.TABLE);
+          optionViewController = PromotionViewController(orderItem, promotionMenuModel, PriceType.TABLE);
           optionViewController!.addListener(() {
             amount = optionViewController!.value;
           });
@@ -138,7 +135,7 @@ class PromotionProfileController extends GetxController {
   /// Ekran yüklendikten sonra çalışan metod
   Future<void> ready() async {
     BuildContext context = scaffoldKey.currentState!.context;
-    amount = ProductDetailGeneralController().getPrice(PriceType.TABLE,itemObject.price!);
+    amount = itemObject.price!.getPrice(PriceType.TABLE);
     LoadingProgress.showLoading(context);
     await _getProductDetails();
     LoadingProgress.done(context);
@@ -158,26 +155,32 @@ class PromotionProfileController extends GetxController {
   ///  Response ten gelen resimler üzerine eklenmekte.
   void getImagesFromModel() {
     final mainController = Get.find<Controller>();
-    if (loadingStatus.isLoaded){
-        List<ImagesModel> list = mainController.getImages(promotionMenuModel.images!,ImageSizeId.mobile_detail);
-        list.removeWhere((ImagesModel element) => element.id == imagesList[0].id);
-        imagesList = imagesList + list;
+    if (loadingStatus.isLoaded) {
+      List<ImagesModel> list = mainController.getImages(promotionMenuModel.images!, ImageSizeId.mobile_detail);
+      list.removeWhere((ImagesModel element) => element.id == imagesList[0].id);
+      imagesList = imagesList + list;
     }
   }
 
   /// Sepete Buttonuna tıklandığında tetiklenen Fon.
   Future<void> onTapAddToCartBtn(TimeoutAction timeoutAction) async {
     BuildContext context = scaffoldKey.currentContext!;
-    LoadingProgress.showLoading(context);
-    var item = optionViewController!.getBasketModel(TimeoutAction.Add);
-    await Future.delayed(Duration(seconds: 1));// Http işlemi
-    LoadingProgress.done(context);
-    showToastMessage(context,textMessage: 'Ürün sepete eklendi');
+    try {
+      LoadingProgress.showLoading(context);
+      var item = optionViewController!.getBasketModel(TimeoutAction.Add);
+      await Future.delayed(Duration(seconds: 1)); // Http işlemi
+      showToastMessage(context, textMessage: 'Ürün sepete eklendi');
+    } on String catch (e) {
+      showToastMessage(context, textMessage: e);
+    } catch (e) {
+    } finally {
+      LoadingProgress.done(context);
+    }
   }
 
   void onScroll(context, BoxConstraints constraints) {
-    if (constraints.biggest.height - (SizeConfig.appBarHeight + SizeConfig.statusBarHeight) < 1
-        && constraints.biggest.height - (SizeConfig.appBarHeight + SizeConfig.statusBarHeight) > -1) {
+    if (constraints.biggest.height - (SizeConfig.appBarHeight + SizeConfig.statusBarHeight) < 1 &&
+        constraints.biggest.height - (SizeConfig.appBarHeight + SizeConfig.statusBarHeight) > -1) {
       flexibleSpaceBarClosed = true;
     } else {
       flexibleSpaceBarClosed = false;

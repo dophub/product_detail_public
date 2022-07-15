@@ -69,8 +69,8 @@ class ProductProfileController extends GetxController {
   bool get flexibleSpaceBarClosed => _flexibleSpaceBarClosed.value;
 
   set flexibleSpaceBarClosed(bool value) {
-    if (_flexibleSpaceBarClosed.value != value && SchedulerBinding.instance!.schedulerPhase != SchedulerPhase.idle) {
-      SchedulerBinding.instance!.endOfFrame.then((_) => _flexibleSpaceBarClosed.value = value);
+    if (_flexibleSpaceBarClosed.value != value && SchedulerBinding.instance.schedulerPhase != SchedulerPhase.idle) {
+      SchedulerBinding.instance.endOfFrame.then((_) => _flexibleSpaceBarClosed.value = value);
     }
   }
 
@@ -133,7 +133,7 @@ class ProductProfileController extends GetxController {
   /// Ekran yüklendikten sonra çalışan metod
   Future<void> ready() async {
     BuildContext context = scaffoldKey.currentState!.context;
-    amount = ProductDetailGeneralController().getPrice(PriceType.TABLE,itemObject.price!);
+    amount = itemObject.price!.getPrice(PriceType.TABLE);
     LoadingProgress.showLoading(context);
     await _getProductDetails();
     LoadingProgress.done(context);

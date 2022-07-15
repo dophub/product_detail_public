@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/foundation.dart';
 import 'package:sip_models/enum.dart';
 import 'package:sip_models/response.dart';
@@ -12,6 +13,7 @@ class ProductDetailGeneralController  {
   /// Gelen listede kullanılan modülün fiyat türü yok ise [PriceType.TABLE] fiyatını döndürmekte.
   double getPrice(PriceType priceType,List<PriceModel> list) {
     //Todo : İsDefault alanı kontrol edilmesi gerek
+
     late double tablePrice;
     double? getInPrice;
     double? tekOutPrice;
@@ -56,3 +58,4 @@ class ProductDetailGeneralController  {
   }
 }
 
+*/
