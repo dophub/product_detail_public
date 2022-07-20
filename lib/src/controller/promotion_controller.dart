@@ -326,14 +326,14 @@ class PromotionController extends GetxController {
     /// Yeni ürün olduğuda 0 önceden eklenen ürünü güncelliyorsak order de dönen id yi veriyoruz
     var item = ItemOrder(id: 0);
     item.id = orderItem == null ? 0 : orderItem!.id!;
-    item.timeoutAction = describeEnum(timeoutAction);
+    item.timeoutAction = timeoutAction.name;
     item.note = '';
     item.count = count;
     item.itemAmount = amount;
     item.totalAmount = amount / count;
     item.note = cNote.text;
     item.promotionMenu = PromotionMenu();
-    item.itemType = describeEnum(ItemType.PROMOTION_MENU);
+    item.itemType = ItemType.PROMOTION_MENU.name;
     item.promotionMenu!.itemId = promotion.id;
     item.promotionMenu!.promotionName = promotion.promotionMenuName;
     item.promotionMenu!.sections = [];
