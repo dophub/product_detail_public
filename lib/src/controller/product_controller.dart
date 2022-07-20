@@ -38,7 +38,6 @@ import 'package:sip_models/response.dart';
 /// Dispose işlemi
 /// @override
 /// void onClose() {
-///   /// TODO: implement onClose
 ///   promotionViewController.dispose();
 ///   super.onClose();
 /// }
@@ -106,13 +105,11 @@ class ProductController extends GetxController {
   /// Frame yüklendiğinde [_initAfterProductDetailLoaded] i çağırmaktayiz
   @override
   void onReady() {
-    // TODO: implement onReady
     super.onReady();
   }
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     _initAfterProductDetailLoaded();
     /// Getx pakat ile [_amount] i dinleyip [onChangeAmount] metodunu tetiklemekteyiz

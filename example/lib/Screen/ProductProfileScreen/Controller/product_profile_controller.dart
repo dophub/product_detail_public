@@ -13,7 +13,6 @@ import 'package:get/get.dart';
 import 'package:example/App/Widget/Message/ToastMessage.dart';
 import 'package:example/App/Widget/Dialog/LoadingProgress.dart';
 import 'package:product_detail/controller.dart';
-import 'package:product_detail/general_controller.dart';
 
 
 class ProductProfileController extends GetxController {
@@ -34,14 +33,12 @@ class ProductProfileController extends GetxController {
 
   @override
   void onReady() {
-    // TODO: implement onReady
     super.onReady();
     ready();
   }
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     final mainController = Get.find<Controller>();
     imagesList = mainController.getImages(itemObject.images!,ImageSizeId.mobile_detail);
@@ -49,7 +46,6 @@ class ProductProfileController extends GetxController {
 
   @override
   void onClose() {
-    // TODO: implement onClose
     optionViewController?.dispose();
     super.onClose();
   }

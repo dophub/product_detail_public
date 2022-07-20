@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
@@ -37,7 +36,6 @@ import 'package:sip_models/response.dart';
 /// Dispose işlemi
 ///  @override
 ///  void onClose() {
-///    // TODO: implement onClose
 ///    promotionViewController.dispose();
 ///    super.onClose();
 ///  }
@@ -105,13 +103,11 @@ class PromotionController extends GetxController {
   /// Frame yüklendiğinde [initAfterProductDetailLoaded] i çağırmaktayiz
   @override
   void onReady() {
-    // TODO: implement onReady
     super.onReady();
   }
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     initAfterProductDetailLoaded();
 
