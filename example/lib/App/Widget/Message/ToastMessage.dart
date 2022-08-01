@@ -8,15 +8,15 @@ import 'package:example/App/Theme/TSTextStyle.dart';
 /// [textMessage] eğer [widget] null olupta bu Text metini default Toast message'nde gösterilecektir
 ToastFuture showToastMessage(BuildContext context,
     {Widget? widget, int? duration, String? textMessage}) {
-  if (widget == null && textMessage == null)
+  if (widget == null && textMessage == null) {
     throw "Toast Message de widget ve textMassage parametreleri ikisi birden null olamaz.\n"
         "if(widget == null && textMessage == null) Doğru değil.";
-  else
+  } else {
     return showToastWidget(
       widget ??
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 18.0, vertical: 12),
-            margin: EdgeInsets.symmetric(horizontal: 50.0),
+            padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 12),
+            margin: const EdgeInsets.symmetric(horizontal: 50.0),
             decoration: ShapeDecoration(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(radiusXS),
@@ -32,12 +32,13 @@ ToastFuture showToastMessage(BuildContext context,
       isIgnoring: false,
       animation: StyledToastAnimation.slideFromTopFade,
       reverseAnimation: StyledToastAnimation.slideToTopFade,
-      position: StyledToastPosition(align: Alignment.topCenter, offset: 0.0),
-      startOffset: Offset(0.0, -3.0),
-      reverseEndOffset: Offset(0.0, -3.0),
+      position: const StyledToastPosition(align: Alignment.topCenter, offset: 0.0),
+      startOffset: const Offset(0.0, -3.0),
+      reverseEndOffset: const Offset(0.0, -3.0),
       duration: Duration(seconds: duration ?? 3),
-      animDuration: Duration(seconds: 1),
+      animDuration: const Duration(seconds: 1),
       curve: Curves.fastLinearToSlowEaseIn,
       reverseCurve: Curves.fastOutSlowIn,
     );
+  }
 }

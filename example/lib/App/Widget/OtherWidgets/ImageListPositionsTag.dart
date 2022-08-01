@@ -24,7 +24,7 @@ class ImageListPositionsTag extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.bottomCenter,
-      child: Container(
+      child: SizedBox(
         // radiusL yi eklememizin sebebi bottom sheetin yan taraflarının radius i olmasından dolayı
         height: width,
         child: ListView.separated(
@@ -48,8 +48,8 @@ class ImageListPositionsTag extends StatelessWidget {
               );
           },
           separatorBuilder: (BuildContext context, int index) {
-            return SizedBox(
-              width: 5,
+            return const SizedBox(
+              width: paddingXXS,
             );
           },
         ),

@@ -38,7 +38,7 @@ class IconAndAmountButton extends StatelessWidget {
                       height: 21,
                       color: Colors.white,
                     ),
-                    SizedBox(width: paddingM),
+                    const SizedBox(width: paddingM),
                     Flexible(
                       child: PriceTextWidget(
                           price: amount,

@@ -15,11 +15,14 @@ import '../Widgets/product_profile_image.dart';
 class ProductDetailBottomSheet extends StatelessWidget {
   final ScrollController _scrollController = ScrollController();
 
+  ProductDetailBottomSheet({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<ProductProfileController>();
     final SnappingPosition minPosition = SnappingPosition.pixels(
       snappingCurve: Curves.decelerate,
+
       /// Ekranın 3 te ikisini kaplayacak şekilde
       positionPixels: (SizeConfig.screenHeight / 3 * 2),
       grabbingContentOffset: GrabbingContentOffset.top,
@@ -29,7 +32,6 @@ class ProductDetailBottomSheet extends StatelessWidget {
       initialSnappingPosition: minPosition,
       controller: controller.bottomSheetScrollController,
       onSheetMoved: (positionData) {
-        print(positionData.relativeToSheetHeight);
         controller.bottomSheetPosition = positionData.relativeToSheetHeight;
       },
       snappingPositions: [
@@ -40,6 +42,30 @@ class ProductDetailBottomSheet extends StatelessWidget {
         ),
         minPosition,
       ],
+
+      /// Bottom Sheet Foreground
+      sheetBelow: SnappingSheetContent(
+        childScrollController: _scrollController,
+        draggable: true,
+        child: Column(
+          children: [
+            SizedBox(height: SizeConfig.statusBarHeight),
+            Expanded(child: ProductDetails(scrollController: _scrollController)),
+            Padding(
+              padding: EdgeInsets.only(bottom: SizeConfig.safeAreaPadding.bottom),
+              child: Obx(
+                () => AddToCartButton(
+                  text: controller.orderItem == null ? null : 'Sepeti Güncelle',
+                  price: controller.amount,
+                  onTap:
+                      controller.loadingStatus.isLoaded ? () => controller.onTapAddToCartBtn(TimeoutAction.None) : null,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+
       /// Bottom Sheet background
       child: Column(
         children: [
@@ -56,29 +82,6 @@ class ProductDetailBottomSheet extends StatelessWidget {
             ),
           ),
         ],
-      ),
-      /// Bottom Sheet Foreground
-      sheetBelow: SnappingSheetContent(
-        childScrollController: _scrollController,
-        draggable: true,
-        child: Column(
-          children: [
-            SizedBox(height: SizeConfig.statusBarHeight),
-            Expanded(child: ProductDetails(scrollController: _scrollController)),
-            Padding(
-              padding: EdgeInsets.only(bottom: SizeConfig.safeAreaPadding.bottom),
-              child: Obx(
-                () => AddToCartButton(
-                  text: controller.orderItem == null ? null : 'Sepeti Güncelle',
-                  price: controller.amount,
-                  onTap: controller.loadingStatus.isLoaded
-                      ? () => controller.onTapAddToCartBtn(TimeoutAction.None)
-                      : null,
-                ),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

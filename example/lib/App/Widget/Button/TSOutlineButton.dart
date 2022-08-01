@@ -31,7 +31,7 @@ class TSOutlineButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: padding ??
-          EdgeInsets.only(
+          const EdgeInsets.only(
             left: paddingM,
             right: paddingM,
             bottom: paddingM,

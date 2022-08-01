@@ -13,7 +13,7 @@ import 'package:sip_models/status.dart';
 ///
 class General {
 
-  Map<String,String> getHeader() => {'authorization':'Bearer ' + HttpUrl.token};
+  Map<String,String> getHeader() => {'authorization':'Bearer ${HttpUrl.token}'};
 
   /// Token çekmek için yazıldı
   Future<BaseHttpModel<TokenModel>> getToken(String userSsoId) async {

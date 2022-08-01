@@ -30,11 +30,11 @@ class PromotionFeatureAndOption extends StatelessWidget {
       children: [
         /// Product Option
         Padding(
-          padding: EdgeInsets.only(top: optionGroupsList.length == 0 ? 0 : paddingM),
+          padding: EdgeInsets.only(top: optionGroupsList.length == 0 ? 0 : paddingS),
           child: ListView.separated(
             padding: EdgeInsets.zero,
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: optionGroupsList.length,
             itemBuilder: (BuildContext context, int optionGroupsIndex) {
               var optionGroup = optionGroupsList[optionGroupsIndex];
@@ -48,6 +48,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   onTap: (int selectedIndex) =>
                       controller.singleOptionSelection(sectionIndex, optionGroupsIndex, selectedIndex),
                   list: optionGroup.options!,
+                  showErrorOutline: controller.validate && !optionGroup.isSelected && optionGroup.isRequire!,
                 );
               } else if (optionGroup.addingTypeId == describeEnum(AddingTypeId.DECREASE) &&
                   optionGroup.chooseTypeId == describeEnum(ChooseTypeId.MULTIPLE)) {
@@ -58,6 +59,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   onTap: (OptionModel obj, int selectedIndex) => controller.multiDecreaseOptionSelection(
                       sectionIndex, obj.getStatus, optionGroupsIndex, selectedIndex),
                   list: optionGroup.options!,
+                  showErrorOutline: controller.validate && !optionGroup.isSelected && optionGroup.isRequire!,
                 );
               } else if (optionGroup.addingTypeId == describeEnum(AddingTypeId.ADD) &&
                   optionGroup.chooseTypeId == describeEnum(ChooseTypeId.SINGLE)) {
@@ -70,6 +72,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   selectedIndex: controller.getIndexForSelectedOption(sectionIndex, optionGroupsIndex),
                   onTap: (int selectedIndex) =>
                       controller.singleOptionSelection(sectionIndex, optionGroupsIndex, selectedIndex),
+                  showErrorOutline: controller.validate && !optionGroup.isSelected && optionGroup.isRequire!,
                 );
               } else if ((optionGroup.addingTypeId == describeEnum(AddingTypeId.ADD) ||
                       optionGroup.addingTypeId == describeEnum(AddingTypeId.SELECT)) &&
@@ -83,19 +86,20 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   onTap: (bool value, int selectedIndex) =>
                       controller.multiAddOptionSelection(sectionIndex, value, optionGroupsIndex, selectedIndex),
                   maxSection: optionGroup.maxCount,
+                  showErrorOutline: controller.validate && !optionGroup.isSelected && optionGroup.isRequire!,
                 );
               } else
                 return SizedBox();
             },
             separatorBuilder: (BuildContext context, int index) {
-              return SizedBox(height: paddingM);
+              return SizedBox(height: paddingS);
             },
           ),
         ),
 
         /// Product Features
         Padding(
-          padding: EdgeInsets.only(top: featuresList.length == 0 ? 0 : paddingM),
+          padding: EdgeInsets.only(top: featuresList.length == 0 ? 0 : paddingS),
           child: ListView.separated(
             shrinkWrap: true,
             padding: EdgeInsets.zero,
@@ -113,6 +117,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   onTap: (int selectedIndex) =>
                       controller.singleFeatureSelection(sectionIndex, featureIndex, selectedIndex),
                   list: features.items!,
+                  showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
                 );
               } else if (features.addingTypeId == describeEnum(AddingTypeId.DECREASE) &&
                   features.chooseTypeId == describeEnum(ChooseTypeId.MULTIPLE)) {
@@ -123,6 +128,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   onTap: (ItemModel obj, int selectedIndex) => controller.multiDecreaseFeatureSelection(
                       sectionIndex, obj.getStatus, featureIndex, selectedIndex),
                   list: features.items!,
+                  showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
                 );
               } else if (features.addingTypeId == describeEnum(AddingTypeId.ADD) &&
                   features.chooseTypeId == describeEnum(ChooseTypeId.SINGLE)) {
@@ -135,6 +141,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   selectedIndex: controller.getIndexForSelectedFeatureItem(sectionIndex, featureIndex),
                   onTap: (int selectedIndex) =>
                       controller.singleFeatureSelection(sectionIndex, featureIndex, selectedIndex),
+                  showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
                 );
               } else if ((features.addingTypeId == describeEnum(AddingTypeId.ADD) ||
                       features.addingTypeId == describeEnum(AddingTypeId.SELECT)) &&
@@ -148,12 +155,13 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   onTap: (bool value, int selectedIndex) =>
                       controller.multiAddFeatureSelection(sectionIndex, value, featureIndex, selectedIndex),
                   maxSection: features.maxCount,
+                  showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
                 );
               } else
                 return SizedBox();
             },
             separatorBuilder: (BuildContext context, int index) {
-              return SizedBox(height: paddingM);
+              return SizedBox(height: paddingS);
             },
           ),
         ),

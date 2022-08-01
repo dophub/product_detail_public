@@ -33,7 +33,7 @@ class Controller extends GetxController {
   /// Token çekmek için yazıldı
   Future<void> getToken(BuildContext context) async {
     LoadingProgress.showLoading(context);
-    sessionId = Uuid().v4();
+    sessionId = const Uuid().v4();
     BaseHttpModel response = await General().getToken(sessionId);
     if (response.status.isOk) {
       HttpUrl.token = response.data.accessToken;

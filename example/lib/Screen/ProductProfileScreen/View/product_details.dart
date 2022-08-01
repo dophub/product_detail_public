@@ -33,7 +33,7 @@ class ProductDetails extends StatelessWidget {
             detail: controller.productDetailModel.description,
           showCloseButton: controller.bottomSheetPosition == 1,
           ),
-        SizedBox(height: paddingXXXS),
+        const SizedBox(height: paddingXXXS),
         controller.loadingStatus.isLoaded
               ? Column(
                   children: [
@@ -46,17 +46,17 @@ class ProductDetails extends StatelessWidget {
                         calorie: controller.itemObject.calorie,
                       ),
                     ),
-                    SizedBox(height: paddingM),
+                    const SizedBox(height: paddingM),
                     // Miktar Button
-                    QuantityRowAndButton(),
+                    const QuantityRowAndButton(),
                     Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: paddingM).copyWith(top: paddingM),
+                          padding: const EdgeInsets.symmetric(horizontal: paddingM).copyWith(top: paddingS),
                           child: ProductDetailView(
                              controller: controller.optionViewController!,
                           ),
                         ),
                   ],
-                ) : SizedBox(),
+                ) : const SizedBox(),
       ],
     ));
   }

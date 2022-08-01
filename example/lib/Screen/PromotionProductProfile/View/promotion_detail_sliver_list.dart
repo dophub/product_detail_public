@@ -23,10 +23,10 @@ class PromotionDetailSliverList extends StatelessWidget {
         Expanded(
           child: CustomScrollView(
             controller: _scrollController,
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             slivers: [
               SliverAppBar(
-                leading: TSCloseButton(),
+                leading: const TSCloseButton(),
                 pinned: true,
                 elevation: 0,
                 expandedHeight: SizeConfig.screenHeight / 3,
@@ -37,7 +37,7 @@ class PromotionDetailSliverList extends StatelessWidget {
                           style: s16W700Dark(context)
                               .copyWith(color: Colors.white),
                         )
-                      : SizedBox(),
+                      : const SizedBox(),
                 ),
                 flexibleSpace: LayoutBuilder(
                     builder: (context, BoxConstraints constraints) {
@@ -76,7 +76,7 @@ class PromotionDetailSliverList extends StatelessWidget {
                         ),
                         child: PromotionDetails(
                             scrollController: _scrollController)),
-                    SizedBox(height: 15)
+                    const SizedBox(height: 15)
                   ],
                 ),
               ),

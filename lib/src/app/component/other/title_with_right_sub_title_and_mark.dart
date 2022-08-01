@@ -8,7 +8,6 @@ import 'package:product_detail/src/app/const/app_text_style.dart';
 /// [subTitle] başlığın alt kısmında cıkan altBaşlık
 /// [showMark] başlık sağ kısmında gösterilen [turkcellYellow] renginde işaret. [SingleSectionRadioButton],[MultiSectionCheckBox] ..vs tarafından item seçildimi diye gösteren bi işaret
 class TitleWithRightSubTitleAndMark extends StatelessWidget {
-  final bool? showMark;
   final String? subTitle;
   final String title;
   final int? maxCount;
@@ -16,7 +15,6 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
 
   const TitleWithRightSubTitleAndMark({
     Key? key,
-    this.showMark,
     this.subTitle,
     required this.title,
     this.maxCount, this.titleStyle,
@@ -49,17 +47,6 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(width: paddingXXXS),
-              Visibility(
-                visible: showMark ?? false,
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.width * 0.05,
-                  child: CircleAvatar(
-                    radius: radiusXXXS,
-                    backgroundColor: AppColor.turkcellYellow,
-                  ),
-                ),
-              )
             ],
           ),
           Visibility(

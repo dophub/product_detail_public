@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:example/Screen/PromotionProductProfile/Controller/promotion_profile_controller.dart';
 
 class PromotionProfile extends StatefulWidget {
-  PromotionProfile({Key? key}) : super(key: key);
+  const PromotionProfile({Key? key}) : super(key: key);
 
   @override
   State<PromotionProfile> createState() => _PromotionProfileState();

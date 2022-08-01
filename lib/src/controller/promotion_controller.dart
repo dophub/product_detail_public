@@ -100,6 +100,8 @@ class PromotionController extends GetxController {
   /// Fiyat Türü
   late PriceType priceType;
 
+  RxBool _validate = false.obs;
+
   /// Frame yüklendiğinde [initAfterProductDetailLoaded] i çağırmaktayiz
   @override
   void onReady() {
@@ -128,6 +130,13 @@ class PromotionController extends GetxController {
     /// [orderItem] olduğunda sepette olan ürünün adedini setlemekte
     /// yoksa 1 olaçaktır
     _count = orderItem == null ? 1.obs : orderItem!.count!.obs;
+  }
+
+  bool get validate => _validate.value;
+
+  set validate(bool value) {
+    _validate.value = value;
+    update(['promotionDetailModelUpdate']);
   }
 
   int get count => _count.value;
@@ -341,6 +350,7 @@ class PromotionController extends GetxController {
       /// TODO Yeni Eklendi
       /// Sectionlar zorunlu seçmelidir
       if (promotion.sections![sectionIndex].isSelected == false) {
+        validate = true;
         throw 'Zorunlu alanları seçin.';
       }
       item.promotionMenu!.sections!.add(
@@ -353,9 +363,13 @@ class PromotionController extends GetxController {
       int sectionLastIndex = item.promotionMenu!.sections!.length - 1;
       for (int productIndex = 0; productIndex < promotion.sections![sectionIndex].products!.length; productIndex++) {
         if (promotion.sections![sectionIndex].products![productIndex].isSelected == true) {
-          item.promotionMenu!.sections![sectionLastIndex].sectionItem!.itemId = promotion.sections![sectionIndex].products![productIndex].id;
-          item.promotionMenu!.sections![sectionLastIndex].sectionItem!.productName = promotion.sections![sectionIndex].products![productIndex].productName;
-          item.promotionMenu!.sections![sectionLastIndex].sectionItem!.options = _getSelectedOption(promotion.sections![sectionIndex].products![productIndex].optionGroups!, promotion.sections![sectionIndex].products![productIndex].features!);
+          item.promotionMenu!.sections![sectionLastIndex].sectionItem!.itemId =
+              promotion.sections![sectionIndex].products![productIndex].id;
+          item.promotionMenu!.sections![sectionLastIndex].sectionItem!.productName =
+              promotion.sections![sectionIndex].products![productIndex].productName;
+          item.promotionMenu!.sections![sectionLastIndex].sectionItem!.options = _getSelectedOption(
+              promotion.sections![sectionIndex].products![productIndex].optionGroups!,
+              promotion.sections![sectionIndex].products![productIndex].features!);
         }
       }
     }
@@ -399,6 +413,7 @@ class PromotionController extends GetxController {
 
       /// TODO Yeni Eklendi
       else if (optionGroups[groupIndex].isRequire == true) {
+        validate = true;
         throw 'Zorunlu alanları seçin.';
       }
     }
@@ -435,6 +450,7 @@ class PromotionController extends GetxController {
 
       /// TODO Yeni Eklendi
       else if (features[groupIndex].isRequire == true) {
+        validate = true;
         throw 'Zorunlu alanları seçin.';
       }
     }

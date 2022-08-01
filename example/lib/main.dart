@@ -8,7 +8,7 @@ import 'App/Init/Theme/GetTheme.dart';
 import 'App/Init/Theme/AppDarkTheme.dart';
 import 'App/Init/Theme/AppLightTheme.dart';
 void main() {
-  HttpUrl.baseUrl = 'https://prod009.siparisim.dev/';
+  HttpUrl.baseUrl = 'https://sandbox.siparisim.dev/';
   runApp(const MyApp());
 }
 
@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
-              onPressed: () => controller.onTapGetProductBtn(context,675,738),
+              onPressed: () => controller.onTapGetProductBtn(context,675,736),
               child: const Text('Get product Detail'),
             ),
             ElevatedButton(

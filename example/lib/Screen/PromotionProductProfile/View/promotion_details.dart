@@ -34,7 +34,7 @@ class PromotionDetails extends StatelessWidget {
             detail: controller.promotionMenuModel.description,
           showCloseButton: controller.bottomSheetPosition == 1,
           ),
-        SizedBox(height: paddingXXXS),
+        const SizedBox(height: paddingXXXS),
         controller.loadingStatus.isLoaded ? Column(
                   children: [
                     Visibility(
@@ -46,13 +46,13 @@ class PromotionDetails extends StatelessWidget {
                           calorie: controller.itemObject.calorie,
                         ),
                     ),
-                    SizedBox(height: paddingM),
+                    const SizedBox(height: paddingM),
                     // Miktar Button
-                    PromotionQuantityRowAndButton(),
+                    const PromotionQuantityRowAndButton(),
                     // Promotion ürün ise
                     PromotionProductDetailView(controller: controller.optionViewController!),
                   ],
-                ):SizedBox()
+                ):const SizedBox()
       ],
     ));
   }

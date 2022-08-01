@@ -49,10 +49,10 @@ class ProductProfileFeature extends StatelessWidget {
             ),
             Row(
             children: list.mapIndexed((index, element) => Padding(
-                padding: EdgeInsets.symmetric(vertical: paddingXXXS),
+                padding: const EdgeInsets.symmetric(vertical: paddingXXXS),
                 child: Row(
                   children: [
-                    SizedBox(width: paddingM),
+                    const SizedBox(width: paddingM),
                     AspectRatio(
                       aspectRatio: 1,
                       child: Card(
@@ -62,13 +62,13 @@ class ProductProfileFeature extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Spacer(),
+                            const Spacer(),
                             TSImageNetwork(
                               imageUrl: element,
                               width: SizeConfig.blockSizeHorizontal * 9,
                               height: SizeConfig.blockSizeHorizontal * 9,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Text(
                               '143dk',
                               style: s12W400Dark(context)
@@ -76,7 +76,7 @@ class ProductProfileFeature extends StatelessWidget {
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
-                            SizedBox(height: paddingXXXS),
+                            const SizedBox(height: paddingXXXS),
                           ],
                         ),
                       ),
@@ -106,10 +106,10 @@ class MiniCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: paddingXXXS),
+      padding: const EdgeInsets.symmetric(vertical: paddingXXXS),
       child: Row(
         children: [
-          SizedBox(width: paddingM),
+          const SizedBox(width: paddingM),
           AspectRatio(
             aspectRatio: 1,
             child: Card(
@@ -119,21 +119,21 @@ class MiniCard extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Spacer(),
+                  const Spacer(),
                   SvgPicture.asset(
                     assets,
                     width: SizeConfig.blockSizeHorizontal * 9,
                     height: SizeConfig.blockSizeHorizontal * 9,
                     color: AppColor.primaryVariant,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                     txt,
                     style: s12W400Dark(context).copyWith(color: AppColor.primaryVariant),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(height: paddingXXXS),
+                  const SizedBox(height: paddingXXXS),
                 ],
               ),
             ),

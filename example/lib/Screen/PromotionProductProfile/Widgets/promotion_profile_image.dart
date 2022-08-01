@@ -26,8 +26,8 @@ class PromotionProfileImage extends StatelessWidget {
         /// Image List
         PageView.builder(
           itemCount: list.length,
-          onPageChanged: (int _index) {
-            controller.imagePositionIndex = _index;
+          onPageChanged: (int value) {
+            controller.imagePositionIndex = value;
           },
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(

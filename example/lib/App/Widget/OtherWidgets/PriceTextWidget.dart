@@ -24,7 +24,7 @@ class PriceTextWidget extends StatelessWidget {
             : textStyle!.copyWith(fontFamily: '', color: color ?? AppColor.darkText),
         children: <TextSpan>[
           TextSpan(
-            text: ' ' + price.toStringAsFixed(2),
+            text: ' ${price.toStringAsFixed(2)}',
             style: textStyle == null
                 ? s12W700Dark(context).copyWith(color: color ?? AppColor.darkText)
                 : textStyle!.copyWith(color: color ?? AppColor.darkText),

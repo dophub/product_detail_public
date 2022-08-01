@@ -137,9 +137,9 @@ class ProductProfileController extends GetxController {
   }
 
   /// Miktar buttonuna tıklandığı zaman çalışan metod
-  void onTapQuantityBtn(int _count) {
-    count = _count;
-    optionViewController!.count = _count;
+  void onTapQuantityBtn(int value) {
+    count = value;
+    optionViewController!.count = value;
   }
 
   /// Api den Gelen response teki resim listesinden Size Id si [ImageSizeId.mobile_detail] olan cekiyor.
@@ -161,7 +161,7 @@ class ProductProfileController extends GetxController {
     BuildContext context = scaffoldKey.currentContext!;
     LoadingProgress.showLoading(context);
     var item = optionViewController!.getBasketModel(TimeoutAction.Add);
-    await Future.delayed(Duration(seconds: 1));// Http işlemi
+    await Future.delayed(const Duration(seconds: 1));// Http işlemi
     LoadingProgress.done(context);
     showToastMessage(context,textMessage: 'Ürün sepete eklendi');
   }

@@ -39,14 +39,14 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
                   children: <TextSpan>[
                     TextSpan(
                         text: maxCount != null && maxCount != 0
-                            ? ' (En Fazla: ' + maxCount.toString() + ' Seçim)'
+                            ? ' (En Fazla: $maxCount Seçim)'
                             : null,
                         style:
                             s14W400Dark(context).copyWith(color: Colors.red)),
                   ],
                 ),
               ),
-              SizedBox(width: paddingXXXS),
+              const SizedBox(width: paddingXXXS),
               Visibility(
                 visible: showMark ?? false,
                 child: CircleAvatar(
@@ -61,7 +61,7 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Divider(
+                const Divider(
                   height: paddingM,
                   color: AppColor.primaryVariant,
                 ),

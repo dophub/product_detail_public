@@ -28,7 +28,7 @@ class PromotionProfileScreen extends StatelessWidget {
     SizeConfig.init(context);
     return GetBuilder(
       init: PromotionProfileController(dealerId, itemObject, order),
-      builder: (_) => PromotionProfile(),
+      builder: (_) => const PromotionProfile(),
     );
   }
 }

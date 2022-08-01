@@ -22,12 +22,15 @@ class MultiSectionDecreaseSection<T extends ISectionsWidgetModel> extends Statel
 
   final void Function(T, int) onTap;
 
+  final bool showErrorOutline;
+
   const MultiSectionDecreaseSection({
     Key? key,
     required this.title,
     this.subTitle,
     required this.onTap,
     required this.list,
+    required this.showErrorOutline,
   }) : super(key: key);
 
   /// [selected] = true malzeme üründe olsun
@@ -37,6 +40,12 @@ class MultiSectionDecreaseSection<T extends ISectionsWidgetModel> extends Statel
   Widget build(BuildContext context) {
     return Card(
       color: Theme.of(context).cardColor,
+      shape: showErrorOutline
+          ? RoundedRectangleBorder(
+              side: BorderSide(color: AppColor.cardOutlineErrorColor,width: 1),
+              borderRadius: BorderRadius.circular(radiusXS),
+            )
+          : null,
       child: Padding(
         padding: const EdgeInsets.all(paddingM),
         child: Column(
@@ -45,7 +54,6 @@ class MultiSectionDecreaseSection<T extends ISectionsWidgetModel> extends Statel
             TitleWithRightSubTitleAndMark(
               title: title,
               subTitle: subTitle,
-              showMark: list.indexWhere((element) => element.getStatus) == -1 ? false : true,
             ),
             SizedBox(height: paddingM),
             Wrap(

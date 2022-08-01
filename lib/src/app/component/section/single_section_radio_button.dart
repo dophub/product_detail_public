@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:product_detail/src/app/component/other/title_with_right_sub_title_and_mark.dart';
 import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
 import 'package:sip_models/widget.dart';
+import '../../const/app_colors.dart';
 import 'radio_button_list.dart';
 
 /// Tek seçmelide kullanılan RadioButtonList
@@ -16,6 +17,7 @@ class SingleSectionRadioButton<T extends ISectionsWidgetModel> extends Stateless
   final int? selectedIndex;
   final List<T> list;
   final void Function(int) onTap;
+  final bool showErrorOutline;
 
   const SingleSectionRadioButton({
     Key? key,
@@ -24,12 +26,19 @@ class SingleSectionRadioButton<T extends ISectionsWidgetModel> extends Stateless
     required this.list,
     required this.onTap,
     required this.selectedIndex,
+    required this.showErrorOutline,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
       color: Theme.of(context).cardColor,
+      shape: showErrorOutline
+          ? RoundedRectangleBorder(
+              side: BorderSide(color: AppColor.cardOutlineErrorColor,width: 1),
+              borderRadius: BorderRadius.circular(radiusXS),
+            )
+          : null,
       child: Padding(
         padding: const EdgeInsets.all(paddingM).copyWith(bottom: 0),
         child: Column(
@@ -40,7 +49,6 @@ class SingleSectionRadioButton<T extends ISectionsWidgetModel> extends Stateless
             TitleWithRightSubTitleAndMark(
               title: title,
               subTitle: subTitle,
-              showMark: selectedIndex == null ? false : true,
             ),
             SizedBox(height: paddingM),
             Align(
@@ -65,4 +73,3 @@ class SingleSectionRadioButton<T extends ISectionsWidgetModel> extends Stateless
     }
   }
 }
-

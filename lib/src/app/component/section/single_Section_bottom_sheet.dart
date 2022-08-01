@@ -5,6 +5,7 @@ import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
 import 'package:product_detail/src/app/const/app_text_style.dart';
 import 'package:sip_models/widget.dart';
 import '../other/bottom_sheet_hold_and_drag_widget.dart';
+import '../../../app/const/app_colors.dart';
 import 'bottom_sheet_Radio_button_list.dart';
 
 /// Tekli seçmelide kullanılan dropdown
@@ -24,6 +25,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
   final int? selectedIndex;
   final String? hintText;
   final Color? selectedCardColor;
+  final bool showErrorOutline;
 
   const SingleSectionBottomSheet({
     Key? key,
@@ -34,6 +36,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
     this.selectedIndex,
     this.hintText,
     this.selectedCardColor,
+    required this.showErrorOutline,
   }) : super(key: key);
 
   @override
@@ -41,7 +44,13 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
     return GestureDetector(
       onTap: () => onSelect(context),
       child: Card(
-        color: selectedIndex != null ? selectedCardColor ?? Theme.of(context).cardColor :  Theme.of(context).cardColor,
+        color: selectedIndex != null ? selectedCardColor ?? Theme.of(context).cardColor : Theme.of(context).cardColor,
+        shape: showErrorOutline
+            ? RoundedRectangleBorder(
+                side: BorderSide(color: AppColor.cardOutlineErrorColor,width: 1),
+                borderRadius: BorderRadius.circular(radiusXS),
+              )
+            : null,
         child: Padding(
           padding: const EdgeInsets.all(paddingM),
           child: Row(
@@ -60,9 +69,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
                   children: [
                     Flexible(
                       child: Text(
-                        selectedIndex == null
-                            ? 'Seçiniz'
-                            : list[selectedIndex!].getName,
+                        selectedIndex == null ? 'Seçiniz' : list[selectedIndex!].getName,
                         softWrap: true,
                         style: s16W700Dark(context),
                         maxLines: 1,
@@ -101,7 +108,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
       builder: (BuildContext context) {
         return SafeArea(
             child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: paddingL,vertical: paddingM),
+          padding: const EdgeInsets.symmetric(horizontal: paddingL, vertical: paddingM),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -117,15 +124,15 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
                       title,
                       style: s18W700Dark(context),
                     ),
-                    subTitle != null && subTitle!.isNotEmpty?
-                   Padding(
-                     padding: const EdgeInsets.only(top: paddingXS),
-                     child: Text(
+                    subTitle != null && subTitle!.isNotEmpty
+                        ? Padding(
+                            padding: const EdgeInsets.only(top: paddingXS),
+                            child: Text(
                               subTitle!,
                               style: s14W400Dark(context),
                             ),
-                   )
-                   : SizedBox(),
+                          )
+                        : SizedBox(),
                   ],
                 ),
               ),

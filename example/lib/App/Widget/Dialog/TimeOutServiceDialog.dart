@@ -19,13 +19,13 @@ class TimeOutServiceDialog {
         width: double.infinity,
         child: Column(
           children: [
-            SizedBox(height: paddingS),
+            const SizedBox(height: paddingS),
             Text(
               message,
               style: s18W400Dark(context),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: paddingL),
+            const SizedBox(height: paddingL),
             SizedBox(
               width: double.infinity,
               child: TSOutlineButton(
@@ -33,7 +33,7 @@ class TimeOutServiceDialog {
                 widget: Row(
                   children: [
                     SvgPicture.asset(forkSpoonIcon),
-                    SizedBox(width: paddingS),
+                    const SizedBox(width: paddingS),
                     Flexible(child: Text('Bana yeni bir servis aç', style: s16W400Dark(context).copyWith(color: AppColor.primaryVariant)))
                   ],
                 ),
@@ -46,7 +46,7 @@ class TimeOutServiceDialog {
                 widget: Row(
                   children: [
                     SvgPicture.asset(addPersonIcon),
-                    SizedBox(width: paddingS),
+                    const SizedBox(width: paddingS),
                     Flexible(
                         child: Text('Masadaki arkadaşlarıma katılacağım',
                             style: s16W400Dark(context).copyWith(color: AppColor.primaryVariant)))

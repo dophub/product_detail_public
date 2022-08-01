@@ -37,9 +37,9 @@ class CircleDecreaseButton extends StatelessWidget {
           border: Border.all(width: 1, color: AppColor.primaryVariant),
         ),
         child: AnimatedSwitcher(
-          duration: Duration(milliseconds:350),
+          duration: const Duration(milliseconds:350),
           switchInCurve: Curves.bounceOut,
-          reverseDuration: Duration(milliseconds:0),
+          reverseDuration: const Duration(milliseconds:0),
           transitionBuilder: (Widget child, Animation<double> animation) =>
               quantity == 1
                   ? ScaleTransition(
@@ -53,13 +53,13 @@ class CircleDecreaseButton extends StatelessWidget {
           child: quantity == 1 && deleteAble
               ? Icon(
                   CupertinoIcons.delete,
-                  key: ValueKey('CircleDecreaseButtonDelete'),
+                  key: const ValueKey('CircleDecreaseButtonDelete'),
                   size: iconSize ?? 18,
                   color: AppColor.primaryVariant,
                 )
               : Icon(
                   CupertinoIcons.minus,
-                  key: ValueKey('CircleDecreaseButtonDeleteMinus'),
+                  key: const ValueKey('CircleDecreaseButtonDeleteMinus'),
                   size: iconSize ?? 18,
                   color: AppColor.primaryVariant,
                 ),

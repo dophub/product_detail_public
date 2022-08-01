@@ -20,7 +20,7 @@ class DoneMessageDialog {
                 outlineDoneIcon,
                 height: 63,
               ),
-              SizedBox(height: paddingM),
+              const SizedBox(height: paddingM),
               text != null
                   ? Column(
                       children: [
@@ -29,10 +29,10 @@ class DoneMessageDialog {
                           style: s18W700Dark(context),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(height: paddingM),
+                        const SizedBox(height: paddingM),
                       ],
                     )
-                  : SizedBox(),
+                  : const SizedBox(),
               TSOutlineButton(
                 contactPadding: const EdgeInsets.symmetric(horizontal: paddingL),
                 onTap: onTap ?? () => Navigator.of(context,rootNavigator: true).maybePop(),

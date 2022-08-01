@@ -26,22 +26,22 @@ class ProductTitleAndDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: paddingM),
+      padding: const EdgeInsets.symmetric(horizontal: paddingM),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            constraints: BoxConstraints(minHeight: 46),
+            constraints: const BoxConstraints(minHeight: 46),
             child: Row(
               children: [
                 ///Bottom sheet tam ekran olduğunda Geri dönme butonu gözükecek
                 showCloseButton
-                    ? Padding(
-                      padding: const EdgeInsets.only(right: paddingXS),
+                    ? const Padding(
+                      padding: EdgeInsets.only(right: paddingXS),
                       child: TSCloseButton(sizeType: SizeType.S,),
                     )
-                    : SizedBox(),
+                    : const SizedBox(),
                 Flexible(
                   child: Text(
                     title,
@@ -52,7 +52,7 @@ class ProductTitleAndDetail extends StatelessWidget {
             ),
           ),
           subTitle == null || subTitle!.isEmpty
-              ? SizedBox()
+              ? const SizedBox()
               : Padding(
                 padding: const EdgeInsets.only(bottom:paddingS),
                 child: Text(
@@ -61,7 +61,7 @@ class ProductTitleAndDetail extends StatelessWidget {
                   ),
               ),
           detail == null || detail!.isEmpty
-              ? SizedBox()
+              ? const SizedBox()
               : Padding(
                 padding: const EdgeInsets.only(bottom:paddingS),
                 child: Text(

@@ -7,9 +7,11 @@ class LoadingProgress {
       context,
       barrierColor: Colors.black38,
       barrierDismissible: true,
-      widget: FittedBox(
+      widget: const FittedBox(
         fit: BoxFit.scaleDown,
-        child: CircularProgressIndicator(strokeWidth: 3,),
+        child: CircularProgressIndicator(
+          strokeWidth: 3,
+        ),
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:product_detail/src/app/component/other/title_with_right_sub_title_and_mark.dart';
 import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
 import 'package:sip_models/widget.dart';
+import '../../const/app_colors.dart';
 import '../other/price_text_widget_with_parentheses.dart';
 
 /// Birden falza seçmelide kullanılan checkBox list
@@ -17,6 +18,7 @@ class MultiSectionCheckBox<T extends ISectionsWidgetModel> extends StatelessWidg
   final List<T> list;
   final void Function(bool, int) onTap;
   final int? maxSection;
+  final bool showErrorOutline;
 
   const MultiSectionCheckBox({
     Key? key,
@@ -25,12 +27,19 @@ class MultiSectionCheckBox<T extends ISectionsWidgetModel> extends StatelessWidg
     required this.list,
     required this.onTap,
     this.maxSection,
+    required this.showErrorOutline,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
       color: Theme.of(context).cardColor,
+      shape: showErrorOutline
+          ? RoundedRectangleBorder(
+              side: BorderSide(color: AppColor.cardOutlineErrorColor,width: 1),
+              borderRadius: BorderRadius.circular(radiusXS),
+            )
+          : null,
       child: Padding(
         padding: const EdgeInsets.all(paddingM).copyWith(bottom: 0),
         child: Column(
@@ -40,15 +49,12 @@ class MultiSectionCheckBox<T extends ISectionsWidgetModel> extends StatelessWidg
               title: title,
               subTitle: subTitle,
               maxCount: maxSection,
-              showMark: list.indexWhere((element) => element.getStatus) == -1
-                  ? false
-                  : true,
             ),
             SizedBox(height: paddingM),
             Column(
               children: list
                   .mapIndexed<Widget>((index, element) => GestureDetector(
-                        onTap: () => onSelect(!list[index].getStatus, index),
+                        onTap: () => onSelect(context,!list[index].getStatus, index),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -62,14 +68,14 @@ class MultiSectionCheckBox<T extends ISectionsWidgetModel> extends StatelessWidg
                                 ),
                                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                 value: list[index].getStatus,
-                                onChanged: (value) => onSelect(value, index),
+                                onChanged: (value) => onSelect(context,value, index),
                               ),
                             ),
                             Flexible(
                               child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: paddingXS, bottom: paddingM),
-                                child: PriceTextWidgetWithParentheses(price: list[index].getPrice, name: list[index].getName),
+                                padding: EdgeInsets.only(left: paddingXS, bottom: paddingM),
+                                child: PriceTextWidgetWithParentheses(
+                                    price: list[index].getPrice, name: list[index].getName),
                               ),
                             ),
                           ],
@@ -83,10 +89,10 @@ class MultiSectionCheckBox<T extends ISectionsWidgetModel> extends StatelessWidg
     );
   }
 
-  void onSelect(bool? value, int index) {
+  void onSelect(BuildContext context,bool? value, int index) {
     if (value != null) {
       /// Eğer Max seçim girilmemiş ise
-      if (maxSection == null ||maxSection == 0 || !value) {
+      if (maxSection == null || maxSection == 0 || !value) {
         select(value, index);
       } else {
         /// Kaç seçim seçilmiş diye hesaplıyoruz
@@ -102,7 +108,7 @@ class MultiSectionCheckBox<T extends ISectionsWidgetModel> extends StatelessWidg
           select(value, index);
         } else {
           /// Eğer büyük ise kullanıcın seçmesine izin vermiyoruz
-          print('Max Seçim aşıldı');
+          debugPrint('En fazla $maxSection seçim yapabilirsiniz.');
         }
       }
     }

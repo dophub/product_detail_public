@@ -19,15 +19,15 @@ class HttpClient {
       var bodyValue = '';
       //we convert the parameters in maps to get mathod
       apiParameters.forEach((key, value) {
-        bodyValue += '&' + key.toString() + '=' + value.toString();
+        bodyValue += '&$key=$value';
       });
       //we delete the first character
       if (bodyValue != '') bodyValue = bodyValue.substring(1);
       bodyValue = bodyValue.replaceAll('(', '');
       bodyValue = bodyValue.replaceAll(')', '');
-      body = '?' + bodyValue;
+      body = '?$bodyValue';
     } else if (body != '') {
-      body = '/' + body;
+      body = '/$body';
     }
     // Sends an HTTP get
     var response = await http.get(Uri.parse(HttpUrl.baseUrl + method + body),
@@ -98,8 +98,8 @@ class HttpClient {
 
 void _logS(String url, Map<String, String>? header,String responseBody) {
   log('__________________________________ Http Start ___________________________________',name: 'Http');
-  log('Api Request Url: ' + url,name: 'Http');
-  log('Header: ' + jsonEncode(header),name: 'Http');
-  log('Rsponse: ' + responseBody,name: 'Http');
+  log('Api Request Url: $url',name: 'Http');
+  log('Header: ${jsonEncode(header)}',name: 'Http');
+  log('Rsponse: $responseBody',name: 'Http');
   log('___________________________________ Http End ____________________________________',name: 'Http');
 }

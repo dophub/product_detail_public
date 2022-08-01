@@ -15,14 +15,14 @@ class QuantityRowAndButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<ProductProfileController>();
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: paddingM),
+      padding: const EdgeInsets.symmetric(horizontal: paddingM),
       child: SizedBox(
         width: double.infinity,
         height: 48,
         child: Card(
           color: Theme.of(context).cardColor,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: paddingM),
+            padding: const EdgeInsets.symmetric(horizontal: paddingM),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

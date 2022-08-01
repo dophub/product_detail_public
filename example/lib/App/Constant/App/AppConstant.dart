@@ -1,6 +1,3 @@
-
-
-
 /// Türk Para Birimi
 const String priceUnit = '₺';
 

@@ -29,11 +29,10 @@ class PromotionDetails extends StatelessWidget {
               Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: paddingM)
-                        .copyWith(top: paddingM),
+                    padding: const EdgeInsets.symmetric(horizontal: paddingM).copyWith(top: paddingS),
                     child: ListView.separated(
                       // Promotion Menü (Section,Option ve Feature)
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       itemCount: controller.promotionMenuModel.sections!.length,
@@ -46,12 +45,13 @@ class PromotionDetails extends StatelessWidget {
                               list: sections[sectionIndex].products!,
                               hintText: 'Seçiniz',
                               selectedIndex: controller.getIndexForSelectedProduct(sectionIndex),
-                              onTap: (int selectedIndex) => controller.sectionBottomSheetOnChange(sectionIndex, selectedIndex),
+                              onTap: (int selectedIndex) =>
+                                  controller.sectionBottomSheetOnChange(sectionIndex, selectedIndex),
                               selectedCardColor: AppColor.turkcellYellow,
+                              showErrorOutline: controller.validate && !sections[sectionIndex].isSelected,
                             ),
                             // Section secilmiş mi
-                            controller.promotionMenuModel
-                                    .sections![sectionIndex].isSelected
+                            controller.promotionMenuModel.sections![sectionIndex].isSelected
                                 ? PromotionFeatureAndOption(
                                     featuresList: controller.getFeaturesForSelectedProduct(sectionIndex) ?? [],
                                     optionGroupsList: controller.getOptionsForSelectedProduct(sectionIndex) ?? [],
@@ -62,7 +62,7 @@ class PromotionDetails extends StatelessWidget {
                         );
                       },
                       separatorBuilder: (BuildContext context, int index) {
-                        return SizedBox(height: paddingM);
+                        return SizedBox(height: paddingS);
                       },
                     ),
                   ),
@@ -72,16 +72,15 @@ class PromotionDetails extends StatelessWidget {
                       child: GestureDetector(
                         onTap: () {
                           NoteDialog().showMenuDialog(
-                              context,
-                              text: controller.cNote.text,
-                              onClose: controller.onCloseNotDialog,
-                            );
+                            context,
+                            text: controller.cNote.text,
+                            onClose: controller.onCloseNotDialog,
+                          );
                         },
                         child: TextFormField(
                           controller: controller.cNote,
                           decoration: InputDecoration(
-                              hintText: 'Ürün Notu',
-                              fillColor: Theme.of(context).colorScheme.background),
+                              hintText: 'Ürün Notu', fillColor: Theme.of(context).colorScheme.background),
                           textCapitalization: TextCapitalization.sentences,
                           maxLines: 3,
                           enabled: false,

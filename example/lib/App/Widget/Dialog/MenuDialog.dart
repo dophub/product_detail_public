@@ -23,13 +23,13 @@ class MenuDialog {
           SizedBox(
             width: SizeConfig.safeBlockHorizontal * 100,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: paddingM),
+              padding: const EdgeInsets.symmetric(horizontal: paddingM),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    SizedBox(height: paddingM),
+                    const SizedBox(height: paddingM),
                     ListView.separated(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: list.length,
                       itemBuilder: (BuildContext context, int index) {
@@ -56,7 +56,7 @@ class MenuDialog {
                                       Container(
                                         color: AppColor.cardBarrierColor,
                                         alignment: Alignment.center,
-                                        padding: EdgeInsets.symmetric(
+                                        padding: const EdgeInsets.symmetric(
                                             horizontal: paddingXXS),
                                         child: Text(
                                           list[index].menuName!,
@@ -78,10 +78,10 @@ class MenuDialog {
                         );
                       },
                       separatorBuilder: (BuildContext context, int index) {
-                        return SizedBox(height: paddingM);
+                        return const SizedBox(height: paddingM);
                       },
                     ),
-                    SizedBox(height: paddingM),
+                    const SizedBox(height: paddingM),
                   ],
                 ),
               ),

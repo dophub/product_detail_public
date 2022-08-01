@@ -12,7 +12,7 @@ class QuantityButton extends StatelessWidget {
   final bool deleteAble;
   final double? iconSize;
 
-  QuantityButton({
+  const QuantityButton({
     Key? key,
     required this.onChange,
     this.deleteAble = false,
@@ -28,9 +28,9 @@ class QuantityButton extends StatelessWidget {
           deleteAble: deleteAble,
           quantity: quantity,
           onTap: () {
-            if (quantity > 1)
+            if (quantity > 1) {
               onChange(quantity - 1);
-            else {
+            } else {
               if(deleteAble) onChange(0);
             }
           },

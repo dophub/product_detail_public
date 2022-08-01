@@ -28,7 +28,7 @@ class ProductProfileScreen extends StatelessWidget {
     SizeConfig.init(context);
     return GetBuilder(
       init: ProductProfileController(dealerId, itemObject, order),
-      builder: (_) => ProductProfile(),
+      builder: (_) => const ProductProfile(),
     );
   }
 }

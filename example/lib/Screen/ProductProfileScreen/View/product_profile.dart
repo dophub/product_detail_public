@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:example/Screen/ProductProfileScreen/Controller/product_profile_controller.dart';
 
 class ProductProfile extends StatefulWidget {
-  ProductProfile({Key? key}) : super(key: key);
+  const ProductProfile({Key? key}) : super(key: key);
 
   @override
   State<ProductProfile> createState() => _ProductProfileState();
