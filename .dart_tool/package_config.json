@@ -8,12 +8,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "background_json_parser",
-      "rootUri": "file:///Users/mto/src/flutter/.pub-cache/hosted/pub.dartlang.org/background_json_parser-1.0.3",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "boolean_selector",
       "rootUri": "file:///Users/mto/src/flutter/.pub-cache/hosted/pub.dartlang.org/boolean_selector-2.1.0",
       "packageUri": "lib/",
@@ -164,12 +158,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "sip_models",
-      "rootUri": "file:///Users/mto/src/flutter/.pub-cache/git/sip-models-61bd414fce202ae195dcf9279df91d944e75a08b/",
-      "packageUri": "lib/",
-      "languageVersion": "2.15"
-    },
-    {
       "name": "sky_engine",
       "rootUri": "file:///Users/mto/src/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -230,7 +218,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2022-08-01T08:26:17.030176Z",
+  "generated": "2022-08-01T14:21:16.591046Z",
   "generator": "pub",
   "generatorVersion": "2.17.1"
 }
