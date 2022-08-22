@@ -47,7 +47,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
         color: selectedIndex != null ? selectedCardColor ?? Theme.of(context).cardColor : Theme.of(context).cardColor,
         shape: showErrorOutline
             ? RoundedRectangleBorder(
-                side: BorderSide(color: AppColor.cardOutlineErrorColor,width: 1),
+                side: BorderSide(color: AppColor.cardOutlineErrorColor, width: 1),
                 borderRadius: BorderRadius.circular(radiusXS),
               )
             : null,
@@ -77,9 +77,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
                         textWidthBasis: TextWidthBasis.longestLine,
                       ),
                     ),
-                    SizedBox(
-                      width: paddingXXS,
-                    ),
+                    const SizedBox(width: paddingXXS),
                     SvgPicture.asset(
                       arrowIcon,
                       height: 6,
