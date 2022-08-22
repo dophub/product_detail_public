@@ -23,4 +23,4 @@ dev_dependencies:
 
 flutter:
   assets:
-    - assets/images/
+    - product_detail_public/assets/images/
