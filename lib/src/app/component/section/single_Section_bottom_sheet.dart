@@ -81,6 +81,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
                     SvgPicture.asset(
                       arrowIcon,
                       height: 6,
+                      package: 'product_detail',
                     ),
                   ],
                 ),
