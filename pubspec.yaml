@@ -1,7 +1,7 @@
 name: product_detail
 description: Turkcell Siparisim ürün detay ekranı
 publish_to: 'none'
-.0.1
+version: 1.0.1
 homepage:
 
 environment:
