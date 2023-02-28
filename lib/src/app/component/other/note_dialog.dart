@@ -7,11 +7,13 @@ import 'app_dialog.dart';
 
 /// Note TextFilede tıklandığında çıkan Note Dialoğu
 class NoteDialog {
-  final TextEditingController _cNote = TextEditingController();
+  final _cNote = TextEditingController();
 
-  Future showMenuDialog(BuildContext context,
-      {String text = '', required Function(String) onClose}) {
-    _cNote.text = text;
+  Future showMenuDialog(
+    BuildContext context, {
+    String text = '',
+    required Function(String) onClose,
+  }) {
     return AppDialog().showDynamicDialog(
       context,
       barrierColor: Colors.black45,
@@ -32,8 +34,7 @@ class NoteDialog {
           elevation: 0,
           backgroundColor: Colors.transparent,
           contentPadding: EdgeInsets.zero,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(radiusXS)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radiusXS)),
           children: [
             SizedBox(
               width: MediaQuery.of(context).size.height,
@@ -45,10 +46,11 @@ class NoteDialog {
                       SizedBox(height: paddingM),
                       TextFormField(
                         controller: _cNote,
+                        autofocus: true,
                         decoration: InputDecoration(
-                            hintText: 'Ürün Notu',
-                            fillColor:
-                                Theme.of(context).colorScheme.background),
+                          hintText: 'Ürün Notu',
+                          fillColor: Theme.of(context).colorScheme.background,
+                        ),
                         textCapitalization: TextCapitalization.sentences,
                         maxLines: 3,
                         textInputAction: TextInputAction.done,
@@ -56,7 +58,7 @@ class NoteDialog {
                         // validator: (str) => str!.trim().isName(),
                         onFieldSubmitted: (_) {
                           onClose(_cNote.text.trim());
-                          Navigator.of(context,rootNavigator: true).pop();
+                          Navigator.of(context, rootNavigator: true).pop();
                         },
                       ),
                       SizedBox(
@@ -67,7 +69,7 @@ class NoteDialog {
                               child: AppButton(
                                 padding: EdgeInsets.zero,
                                 buttonPadding: EdgeInsets.zero,
-                                onTap: () => Navigator.of(context,rootNavigator: true).pop(),
+                                onTap: () => Navigator.of(context, rootNavigator: true).pop(),
                                 txt: 'Kapat',
                               ),
                             ),
@@ -78,8 +80,8 @@ class NoteDialog {
                                 buttonPadding: EdgeInsets.zero,
                                 onTap: () {
                                   onClose(_cNote.text.trim());
-                                  Navigator.of(context,rootNavigator: true).pop();
-                                  },
+                                  Navigator.of(context, rootNavigator: true).pop();
+                                },
                                 txt: 'Not Ekle',
                               ),
                             ),
