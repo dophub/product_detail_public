@@ -24,7 +24,7 @@ dependencies:
   sip_models:
     git:
       url: https://github.com/dophub/sip-models.git
-      ref: prod-0715
+      ref: prod
 
 dev_dependencies:
   product_detail:

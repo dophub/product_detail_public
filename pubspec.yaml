@@ -5,7 +5,7 @@ version: 1.0.1
 homepage:
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
@@ -13,6 +13,11 @@ dependencies:
   flutter_svg: any
   connectivity: any
   intl: any
+
+  sip_models:
+    git:
+      url: https://github.com/dophub/sip-models.git
+      ref: prod
 
   flutter:
     sdk: flutter

@@ -75,7 +75,7 @@ class ProductViewController extends ValueNotifier<double> {
 
   /// Sepete Modelini oluşturmak için kullanımakta
   /// Sepete buttonuna tıklandığında çağırılıp sepete eklemek için post edilimekte
-  ItemOrder? getBasketModel(TimeoutAction timeoutAction) => _controller.getBasketModel(timeoutAction);
+  ItemOrder? getBasketModel(TimeoutAction timeoutAction) => _controller._getBasketModel(timeoutAction);
 }
 
 class ProductController extends GetxController {
@@ -281,17 +281,42 @@ class ProductController extends GetxController {
   }
 
   /// Sepete Buttonuna tıklandığında tetiklenen Fon.
-  ItemOrder? getBasketModel(TimeoutAction timeoutAction) {
+  ItemOrder? _getBasketModel(TimeoutAction timeoutAction) {
+    try {
+      final item = getBasketModel(
+        productDetailModel: productDetailModel,
+        orderItemId: orderItem?.id,
+        count: count,
+        amount: amount,
+        note: cNote.text,
+        timeoutAction: timeoutAction,
+      );
+      return item;
+    } on int catch (e) {
+      validate = true;
+      throw 'Zorunlu alanları seçin.';
+    }
+  }
+
+  /// Sepete Buttonuna tıklandığında tetiklenen Fon.
+  ItemOrder? getBasketModel({
+    required ProductDetailModel productDetailModel,
+    orderItemId,
+    required int count,
+    required double amount,
+    required String note,
+    required TimeoutAction timeoutAction,
+  }) {
     var item = ItemOrder(id: 0);
 
     /// Yeni ürün olduğuda 0 önceden eklenen ürünü güncelliyorsak order de dönen id yi veriyoruz
-    item.id = orderItem == null ? 0 : orderItem!.id!;
+    item.id = orderItemId ?? 0;
     item.timeoutAction = describeEnum(timeoutAction);
     item.note = '';
     item.count = count;
     item.itemAmount = amount;
     item.totalAmount = amount / count;
-    item.note = cNote.text;
+    item.note = note;
     item.product = Product();
     item.itemType = describeEnum(ItemType.PRODUCT);
     item.product!.itemId = productDetailModel.id;
@@ -337,8 +362,7 @@ class ProductController extends GetxController {
 
       /// TODO Yeni Eklendi
       else if (optionGroups[groupIndex].isRequire == true) {
-        validate = true;
-        throw 'Zorunlu alanları seçin.';
+        throw -1;
       }
     }
 
@@ -374,8 +398,7 @@ class ProductController extends GetxController {
 
       /// TODO Yeni Eklendi
       else if (features[groupIndex].isRequire == true) {
-        validate = true;
-        throw 'Zorunlu alanları seçin.';
+        throw -1;
       }
     }
     return options;

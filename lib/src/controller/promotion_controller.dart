@@ -75,7 +75,7 @@ class PromotionViewController extends ValueNotifier<double> {
 
   /// Sepete Modelini oluşturmak için kullanımakta
   /// Sepete buttonuna tıklandığında çağırılıp sepete eklemek için post edilimekte
-  ItemOrder? getBasketModel(TimeoutAction timeoutAction) => _controller.getBasketModel(timeoutAction);
+  ItemOrder? getBasketModel(TimeoutAction timeoutAction) => _controller._getBasketModel(timeoutAction);
 }
 
 class PromotionController extends GetxController {
@@ -329,18 +329,43 @@ class PromotionController extends GetxController {
   }
 
   /// Sepete Buttonuna tıklandığında tetiklenen Fon.
-  ItemOrder? getBasketModel(TimeoutAction timeoutAction) {
-    var promotion = promotionMenuModel;
+  ItemOrder? _getBasketModel(TimeoutAction timeoutAction) {
+    try {
+      final item = getBasketModel(
+        promotionMenuModel: promotionMenuModel,
+        orderItemId: orderItem?.id,
+        count: count,
+        amount: amount,
+        note: cNote.text,
+        timeoutAction: timeoutAction,
+      );
+      return item;
+    } on int catch (e) {
+      validate = true;
+      throw 'Zorunlu alanları seçin.';
+    }
+  }
+
+  /// Sepete Buttonuna tıklandığında tetiklenen Fon.
+  ItemOrder? getBasketModel({
+    required PromotionMenuDetailModel promotionMenuModel,
+    orderItemId,
+    required int count,
+    required double amount,
+    required String note,
+    required TimeoutAction timeoutAction,
+  }) {
+    final promotion = promotionMenuModel;
 
     /// Yeni ürün olduğuda 0 önceden eklenen ürünü güncelliyorsak order de dönen id yi veriyoruz
-    var item = ItemOrder(id: 0);
-    item.id = orderItem == null ? 0 : orderItem!.id!;
+    final item = ItemOrder(id: 0);
+    item.id = orderItemId ?? 0;
     item.timeoutAction = timeoutAction.name;
     item.note = '';
     item.count = count;
     item.itemAmount = amount;
     item.totalAmount = amount / count;
-    item.note = cNote.text;
+    item.note = note;
     item.promotionMenu = PromotionMenu();
     item.itemType = ItemType.PROMOTION_MENU.name;
     item.promotionMenu!.itemId = promotion.id;
@@ -350,8 +375,7 @@ class PromotionController extends GetxController {
       /// TODO Yeni Eklendi
       /// Sectionlar zorunlu seçmelidir
       if (promotion.sections![sectionIndex].isSelected == false) {
-        validate = true;
-        throw 'Zorunlu alanları seçin.';
+        throw -1;
       }
       item.promotionMenu!.sections!.add(
         Section(
@@ -413,8 +437,7 @@ class PromotionController extends GetxController {
 
       /// TODO Yeni Eklendi
       else if (optionGroups[groupIndex].isRequire == true) {
-        validate = true;
-        throw 'Zorunlu alanları seçin.';
+        throw -1;
       }
     }
 
@@ -450,8 +473,7 @@ class PromotionController extends GetxController {
 
       /// TODO Yeni Eklendi
       else if (features[groupIndex].isRequire == true) {
-        validate = true;
-        throw 'Zorunlu alanları seçin.';
+        throw -1;
       }
     }
     return options;
