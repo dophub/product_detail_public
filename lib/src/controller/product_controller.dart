@@ -112,7 +112,8 @@ class ProductController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _initAfterProductDetailLoaded();
+    productDetailModel.initAfterProductDetailLoaded(orderItem: orderItem);
+    amountUpdate();
 
     /// Getx pakat ile [_amount] i dinleyip [onChangeAmount] metodunu tetiklemekteyiz
     ever<double>(_amount, (value) {
@@ -259,26 +260,7 @@ class ProductController extends GetxController {
 
   /// Secilen SECTION lere göre toplam tutarı güncellemekte
   void amountUpdate() {
-    double _amount = 0;
-    ProductDetailModel value = productDetailModel;
-    _amount = value.price!.getPrice(priceType);
-
-    /// OptionGroupss
-    value.optionGroups!.forEach((OptionGroupModel optionGroups) {
-      if (optionGroups.isSelected)
-        optionGroups.options!.forEach((OptionModel options) {
-          if (options.isSelected && !options.isFree!) _amount = _amount + options.addPrice!;
-        });
-    });
-
-    /// Feature
-    value.features!.forEach((FeatureModel feature) {
-      if (feature.isSelected)
-        feature.items!.forEach((ItemModel item) {
-          if (item.isSelected && !item.isFree!) _amount = _amount + item.addPrice!;
-        });
-    });
-    amount = _amount * count;
+    amount = productDetailModel.getTotalAmount(priceType: priceType, quantity: count);
   }
 
   /// Sepete Buttonuna tıklandığında tetiklenen Fon.
@@ -312,71 +294,6 @@ class ProductController extends GetxController {
     int value;
     value = productDetailModel.optionGroups![optionGroupsIndex].options!.indexWhere((element) => element.isSelected);
     return value == -1 ? null : value;
-  }
-
-  /// Frame yüklendikten sonra section lerde olan isDefault alanına göre isSelected alanlarımızı güncelliyoruz
-  void _initAfterProductDetailLoaded() {
-    if (orderItem != null) {
-      ProductDetailModel product = orderItem!.toProductDetailModel();
-      // optionGroups loop
-      for (int groupIndex = 0; groupIndex < productDetailModel.optionGroups!.length; groupIndex++) {
-        var i = product.optionGroups!
-            .indexWhere((element) => element.id == productDetailModel.optionGroups![groupIndex].id);
-        if (i != -1) {
-          // options loop
-          for (int optionsIndex = 0;
-              optionsIndex < productDetailModel.optionGroups![groupIndex].options!.length;
-              optionsIndex++) {
-            if (product.optionGroups![i].options!.any(
-                (element) => element.id == productDetailModel.optionGroups![groupIndex].options![optionsIndex].id)) {
-              productDetailModel.optionGroups![groupIndex].options![optionsIndex].isSelected = true;
-              productDetailModel.optionGroups![groupIndex].isSelected = true;
-            }
-          }
-        }
-      }
-      // features loop
-      for (int featuresIndex = 0; featuresIndex < productDetailModel.features!.length; featuresIndex++) {
-        var i = product.features!.indexWhere((element) => element.id == productDetailModel.features![featuresIndex].id);
-        if (i != -1) {
-          // items loop
-          for (int itemsIndex = 0;
-              itemsIndex < productDetailModel.features![featuresIndex].items!.length;
-              itemsIndex++) {
-            if (product.features![i].items!
-                .any((element) => element.id == productDetailModel.features![featuresIndex].items![itemsIndex].id)) {
-              productDetailModel.features![featuresIndex].items![itemsIndex].isSelected = true;
-              productDetailModel.features![featuresIndex].isSelected = true;
-            }
-          }
-        }
-      }
-    } else {
-      /// Normal ürün
-      // optionGroups loop
-      for (int groupIndex = 0; groupIndex < productDetailModel.optionGroups!.length; groupIndex++) {
-        // options loop
-        for (int optionsIndex = 0;
-            optionsIndex < productDetailModel.optionGroups![groupIndex].options!.length;
-            optionsIndex++) {
-          if (productDetailModel.optionGroups![groupIndex].options![optionsIndex].isDefault!) {
-            productDetailModel.optionGroups![groupIndex].options![optionsIndex].isSelected = true;
-            productDetailModel.optionGroups![groupIndex].isSelected = true;
-          }
-        }
-      }
-      // features loop
-      for (int featuresIndex = 0; featuresIndex < productDetailModel.features!.length; featuresIndex++) {
-        // items loop
-        for (int itemsIndex = 0; itemsIndex < productDetailModel.features![featuresIndex].items!.length; itemsIndex++) {
-          if (productDetailModel.features![featuresIndex].items![itemsIndex].isDefault!) {
-            productDetailModel.features![featuresIndex].items![itemsIndex].isSelected = true;
-            productDetailModel.features![featuresIndex].isSelected = true;
-          }
-        }
-      }
-    }
-    amountUpdate();
   }
 
   /// Note Dialog u kapandığında çalışan Fonk.

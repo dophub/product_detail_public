@@ -112,7 +112,8 @@ class PromotionController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    initAfterProductDetailLoaded();
+    promotionMenuModel.initAfterProductDetailLoaded(orderItem: orderItem);
+    amountUpdate();
 
     /// Getx pakat ile [_amount] i dinleyip [onChangeAmount] metodunu tetiklemekteyiz
     ever<double>(_amount, (value) {
@@ -298,35 +299,7 @@ class PromotionController extends GetxController {
 
   /// Secilen SECTION lere göre toplam tutarı güncellemekte
   void amountUpdate() {
-    double _amount = 0;
-    PromotionMenuDetailModel value = promotionMenuModel;
-    _amount = value.price!.getPrice(priceType);
-
-    /// section
-    value.sections!.forEach((SectionModel section) {
-      /// Products
-      if (section.isSelected)
-        section.products!.forEach((ProductDetailModel product) {
-          if (product.isSelected) {
-            /// OptionGroups
-            product.optionGroups!.forEach((OptionGroupModel optionGroups) {
-              if (optionGroups.isSelected)
-                optionGroups.options!.forEach((OptionModel options) {
-                  if (options.isSelected && !options.isFree!) _amount = _amount + options.addPrice!;
-                });
-            });
-
-            /// Feature
-            product.features!.forEach((FeatureModel feature) {
-              if (feature.isSelected)
-                feature.items!.forEach((ItemModel item) {
-                  if (item.isSelected && !item.isFree!) _amount = _amount + item.addPrice!;
-                });
-            });
-          }
-        });
-    });
-    amount = _amount * count;
+    amount = promotionMenuModel.getTotalAmount(priceType: priceType, quantity: count);
   }
 
   /// Sepete Buttonuna tıklandığında tetiklenen Fon.
@@ -384,95 +357,6 @@ class PromotionController extends GetxController {
     return promotionMenuModel.sections![sectionIndex].products!
         .firstWhere((element) => element.isSelected, orElse: () => ProductDetailModel())
         .features;
-  }
-
-  /// Frame yüklendikten sonra section lerde olan isDefault alanına göre isSelected alanlarımızı güncelliyoruz
-  void initAfterProductDetailLoaded() {
-    // sections loop
-    if (orderItem != null) {
-      PromotionMenuDetailModel product = orderItem!.toPromotionModel();
-      for (int sectionsIndex = 0; sectionsIndex < promotionMenuModel.sections!.length; sectionsIndex++) {
-        var sections = promotionMenuModel.sections![sectionsIndex];
-        var orderSections =
-            product.sections!.firstWhere((element) => element.id == sections.id, orElse: () => SectionModel());
-        if (orderSections.id != null) {
-          sections.isSelected = true;
-          for (int productsIndex = 0; productsIndex < sections.products!.length; productsIndex++) {
-            var products = sections.products![productsIndex];
-            var orderProducts = orderSections.products!
-                .firstWhere((element) => element.id == products.id, orElse: () => ProductDetailModel());
-            if (orderProducts.id != null) {
-              products.isSelected = true;
-              // optionGroups loop
-              for (int groupIndex = 0; groupIndex < products.optionGroups!.length; groupIndex++) {
-                var optionGroups = products.optionGroups![groupIndex];
-                var orderOptionGroups = orderProducts.optionGroups!
-                    .firstWhere((element) => element.id == optionGroups.id, orElse: () => OptionGroupModel());
-                // options loop
-                if (orderOptionGroups.id != null) {
-                  for (int optionsIndex = 0; optionsIndex < optionGroups.options!.length; optionsIndex++) {
-                    var orderOption = orderOptionGroups.options!.firstWhere(
-                        (element) => element.id == optionGroups.options![optionsIndex].id,
-                        orElse: () => OptionModel());
-                    if (orderOption.id != null) {
-                      optionGroups.options![optionsIndex].isSelected = true;
-                      optionGroups.isSelected = true;
-                    }
-                  }
-                }
-              }
-              // features loop
-              for (int featuresIndex = 0; featuresIndex < products.features!.length; featuresIndex++) {
-                var features = products.features![featuresIndex];
-                var orderFeatures = orderProducts.features!
-                    .firstWhere((element) => element.id == features.id, orElse: () => FeatureModel());
-                // items loop
-                if (orderFeatures.id != null) {
-                  for (int itemsIndex = 0; itemsIndex < features.items!.length; itemsIndex++) {
-                    var orderFeatureItem = orderFeatures.items!.firstWhere(
-                        (element) => element.id == features.items![itemsIndex].id,
-                        orElse: () => ItemModel());
-                    if (orderFeatureItem.id != null) {
-                      features.items![itemsIndex].isSelected = true;
-                      features.isSelected = true;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    } else
-      for (int sectionsIndex = 0; sectionsIndex < promotionMenuModel.sections!.length; sectionsIndex++) {
-        var sections = promotionMenuModel.sections![sectionsIndex];
-        for (int productsIndex = 0; productsIndex < sections.products!.length; productsIndex++) {
-          var products = sections.products![productsIndex];
-          // optionGroups loop
-          for (int groupIndex = 0; groupIndex < products.optionGroups!.length; groupIndex++) {
-            var optionGroups = products.optionGroups![groupIndex];
-            // options loop
-            for (int optionsIndex = 0; optionsIndex < optionGroups.options!.length; optionsIndex++) {
-              if (optionGroups.options![optionsIndex].isDefault!) {
-                optionGroups.options![optionsIndex].isSelected = true;
-                optionGroups.isSelected = true;
-              }
-            }
-          }
-          // features loop
-          for (int featuresIndex = 0; featuresIndex < products.features!.length; featuresIndex++) {
-            var features = products.features![featuresIndex];
-            // items loop
-            for (int itemsIndex = 0; itemsIndex < features.items!.length; itemsIndex++) {
-              if (features.items![itemsIndex].isDefault!) {
-                features.items![itemsIndex].isSelected = true;
-                features.isSelected = true;
-              }
-            }
-          }
-        }
-      }
-    amountUpdate();
   }
 
   /// Note Dialog u kapandığında çalışan Fonk.

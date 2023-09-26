@@ -1,4 +1,6 @@
+import 'package:product_detail/src/app/extension/general_extension.dart';
 import 'package:sip_models/enum.dart';
+import 'package:sip_models/request.dart';
 import 'package:sip_models/response.dart';
 
 extension OrderModelExtension on ProductDetailModel {
@@ -29,6 +31,86 @@ extension OrderModelExtension on ProductDetailModel {
     selectedOptions.addAll(this.features!.getSelected());
     item.product!.options = selectedOptions;
     return item;
+  }
+
+  /// Secilen SECTION lere göre toplam tutarı güncellemekte
+  double getTotalAmount({required PriceType priceType, required int quantity}) {
+    double _amount = 0;
+    _amount = this.price!.getPrice(priceType);
+
+    /// OptionGroupss
+    this.optionGroups!.forEach((OptionGroupModel optionGroups) {
+      if (optionGroups.isSelected)
+        optionGroups.options!.forEach((OptionModel options) {
+          if (options.isSelected && !options.isFree!) _amount = _amount + options.addPrice!;
+        });
+    });
+
+    /// Feature
+    this.features!.forEach((FeatureModel feature) {
+      if (feature.isSelected)
+        feature.items!.forEach((ItemModel item) {
+          if (item.isSelected && !item.isFree!) _amount = _amount + item.addPrice!;
+        });
+    });
+    return _amount * quantity;
+  }
+
+  /// Frame yüklendikten sonra section lerde olan isDefault alanına göre isSelected alanlarımızı güncelliyoruz
+  void initAfterProductDetailLoaded({required OrderItem? orderItem}) {
+    if (orderItem != null) {
+      ProductDetailModel product = orderItem.toProductDetailModel();
+      // optionGroups loop
+      for (int groupIndex = 0; groupIndex < this.optionGroups!.length; groupIndex++) {
+        var i = product.optionGroups!.indexWhere((element) => element.id == this.optionGroups![groupIndex].id);
+        if (i != -1) {
+          // options loop
+          for (int optionsIndex = 0; optionsIndex < this.optionGroups![groupIndex].options!.length; optionsIndex++) {
+            if (product.optionGroups![i].options!
+                .any((element) => element.id == this.optionGroups![groupIndex].options![optionsIndex].id)) {
+              this.optionGroups![groupIndex].options![optionsIndex].isSelected = true;
+              this.optionGroups![groupIndex].isSelected = true;
+            }
+          }
+        }
+      }
+      // features loop
+      for (int featuresIndex = 0; featuresIndex < this.features!.length; featuresIndex++) {
+        var i = product.features!.indexWhere((element) => element.id == this.features![featuresIndex].id);
+        if (i != -1) {
+          // items loop
+          for (int itemsIndex = 0; itemsIndex < this.features![featuresIndex].items!.length; itemsIndex++) {
+            if (product.features![i].items!
+                .any((element) => element.id == this.features![featuresIndex].items![itemsIndex].id)) {
+              this.features![featuresIndex].items![itemsIndex].isSelected = true;
+              this.features![featuresIndex].isSelected = true;
+            }
+          }
+        }
+      }
+    } else {
+      /// Normal ürün
+      // optionGroups loop
+      for (int groupIndex = 0; groupIndex < this.optionGroups!.length; groupIndex++) {
+        // options loop
+        for (int optionsIndex = 0; optionsIndex < this.optionGroups![groupIndex].options!.length; optionsIndex++) {
+          if (this.optionGroups![groupIndex].options![optionsIndex].isDefault!) {
+            this.optionGroups![groupIndex].options![optionsIndex].isSelected = true;
+            this.optionGroups![groupIndex].isSelected = true;
+          }
+        }
+      }
+      // features loop
+      for (int featuresIndex = 0; featuresIndex < this.features!.length; featuresIndex++) {
+        // items loop
+        for (int itemsIndex = 0; itemsIndex < this.features![featuresIndex].items!.length; itemsIndex++) {
+          if (this.features![featuresIndex].items![itemsIndex].isDefault!) {
+            this.features![featuresIndex].items![itemsIndex].isSelected = true;
+            this.features![featuresIndex].isSelected = true;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -83,6 +165,129 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
       }
     }
     return item;
+  }
+
+  double getTotalAmount({required PriceType priceType, required int quantity}) {
+    double _amount = 0;
+    _amount = this.price!.getPrice(priceType);
+
+    /// section
+    for (var section in this.sections!) {
+      /// Products
+      if (section.isSelected) {
+        for (var product in section.products!) {
+          if (product.isSelected) {
+            /// OptionGroups
+            for (var optionGroups in product.optionGroups!) {
+              if (optionGroups.isSelected) {
+                for (var options in optionGroups.options!) {
+                  if (options.isSelected && !options.isFree!) _amount = _amount + options.addPrice!;
+                }
+              }
+            }
+
+            /// Feature
+            for (var feature in product.features!) {
+              if (feature.isSelected) {
+                for (var item in feature.items!) {
+                  if (item.isSelected && !item.isFree!) _amount = _amount + item.addPrice!;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return _amount * quantity;
+  }
+
+  /// Frame yüklendikten sonra section lerde olan isDefault alanına göre isSelected alanlarımızı güncelliyoruz
+  void initAfterProductDetailLoaded({required OrderItem? orderItem}) {
+    // sections loop
+    if (orderItem != null) {
+      PromotionMenuDetailModel product = orderItem.toPromotionModel();
+      for (int sectionsIndex = 0; sectionsIndex < this.sections!.length; sectionsIndex++) {
+        final sections = this.sections![sectionsIndex];
+        final orderSections =
+            product.sections!.firstWhere((element) => element.id == sections.id, orElse: () => SectionModel());
+        if (orderSections.id != null) {
+          sections.isSelected = true;
+          for (int productsIndex = 0; productsIndex < sections.products!.length; productsIndex++) {
+            var products = sections.products![productsIndex];
+            var orderProducts = orderSections.products!
+                .firstWhere((element) => element.id == products.id, orElse: () => ProductDetailModel());
+            if (orderProducts.id != null) {
+              products.isSelected = true;
+              // optionGroups loop
+              for (int groupIndex = 0; groupIndex < products.optionGroups!.length; groupIndex++) {
+                var optionGroups = products.optionGroups![groupIndex];
+                var orderOptionGroups = orderProducts.optionGroups!
+                    .firstWhere((element) => element.id == optionGroups.id, orElse: () => OptionGroupModel());
+                // options loop
+                if (orderOptionGroups.id != null) {
+                  for (int optionsIndex = 0; optionsIndex < optionGroups.options!.length; optionsIndex++) {
+                    var orderOption = orderOptionGroups.options!.firstWhere(
+                        (element) => element.id == optionGroups.options![optionsIndex].id,
+                        orElse: () => OptionModel());
+                    if (orderOption.id != null) {
+                      optionGroups.options![optionsIndex].isSelected = true;
+                      optionGroups.isSelected = true;
+                    }
+                  }
+                }
+              }
+              // features loop
+              for (int featuresIndex = 0; featuresIndex < products.features!.length; featuresIndex++) {
+                var features = products.features![featuresIndex];
+                var orderFeatures = orderProducts.features!
+                    .firstWhere((element) => element.id == features.id, orElse: () => FeatureModel());
+                // items loop
+                if (orderFeatures.id != null) {
+                  for (int itemsIndex = 0; itemsIndex < features.items!.length; itemsIndex++) {
+                    var orderFeatureItem = orderFeatures.items!.firstWhere(
+                        (element) => element.id == features.items![itemsIndex].id,
+                        orElse: () => ItemModel());
+                    if (orderFeatureItem.id != null) {
+                      features.items![itemsIndex].isSelected = true;
+                      features.isSelected = true;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    } else {
+      for (int sectionsIndex = 0; sectionsIndex < this.sections!.length; sectionsIndex++) {
+        var sections = this.sections![sectionsIndex];
+        for (int productsIndex = 0; productsIndex < sections.products!.length; productsIndex++) {
+          var products = sections.products![productsIndex];
+          // optionGroups loop
+          for (int groupIndex = 0; groupIndex < products.optionGroups!.length; groupIndex++) {
+            var optionGroups = products.optionGroups![groupIndex];
+            // options loop
+            for (int optionsIndex = 0; optionsIndex < optionGroups.options!.length; optionsIndex++) {
+              if (optionGroups.options![optionsIndex].isDefault!) {
+                optionGroups.options![optionsIndex].isSelected = true;
+                optionGroups.isSelected = true;
+              }
+            }
+          }
+          // features loop
+          for (int featuresIndex = 0; featuresIndex < products.features!.length; featuresIndex++) {
+            var features = products.features![featuresIndex];
+            // items loop
+            for (int itemsIndex = 0; itemsIndex < features.items!.length; itemsIndex++) {
+              if (features.items![itemsIndex].isDefault!) {
+                features.items![itemsIndex].isSelected = true;
+                features.isSelected = true;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
