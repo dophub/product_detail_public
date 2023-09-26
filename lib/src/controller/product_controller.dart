@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
 import 'package:product_detail/src/app/extension/general_extension.dart';
+import 'package:product_detail/src/app/extension/order_model_extension.dart';
 import 'package:sip_models/enum.dart';
 import 'package:sip_models/request.dart';
 import 'package:sip_models/response.dart';
@@ -283,8 +284,7 @@ class ProductController extends GetxController {
   /// Sepete Buttonuna tıklandığında tetiklenen Fon.
   ItemOrder? _getBasketModel(TimeoutAction timeoutAction) {
     try {
-      final item = getBasketModel(
-        productDetailModel: productDetailModel,
+      final item = productDetailModel.getBasketModel(
         orderItemId: orderItem?.id,
         count: count,
         amount: amount,
@@ -296,112 +296,6 @@ class ProductController extends GetxController {
       validate = true;
       throw 'Zorunlu alanları seçin.';
     }
-  }
-
-  /// Sepete Buttonuna tıklandığında tetiklenen Fon.
-  ItemOrder? getBasketModel({
-    required ProductDetailModel productDetailModel,
-    orderItemId,
-    required int count,
-    required double amount,
-    required String note,
-    required TimeoutAction timeoutAction,
-  }) {
-    var item = ItemOrder(id: 0);
-
-    /// Yeni ürün olduğuda 0 önceden eklenen ürünü güncelliyorsak order de dönen id yi veriyoruz
-    item.id = orderItemId ?? 0;
-    item.timeoutAction = describeEnum(timeoutAction);
-    item.note = '';
-    item.count = count;
-    item.itemAmount = amount;
-    item.totalAmount = amount / count;
-    item.note = note;
-    item.product = Product();
-    item.itemType = describeEnum(ItemType.PRODUCT);
-    item.product!.itemId = productDetailModel.id;
-    item.product!.productName = productDetailModel.productName;
-    item.product!.options = _getSelectedOption(productDetailModel.optionGroups!, productDetailModel.features!);
-    return item;
-  }
-
-  /// Ürünün seçilen opsiyonlsarını getirmek için yazıldı.
-  /// Ürünü sepette eklerken çalışmakta olup [getBasketModel] metodında çağrılmakta.
-  List<Options> _getSelectedOption(List<OptionGroupModel> optionGroups, List<FeatureModel> features) {
-    List<Options> options = [];
-
-    /// optionGroups
-    for (int groupIndex = 0; groupIndex < optionGroups.length; groupIndex++) {
-      if (optionGroups[groupIndex].isSelected) {
-        options.add(
-          Options(
-            optionType: describeEnum(OptionType.OPTION),
-            id: optionGroups[groupIndex].id,
-            title: optionGroups[groupIndex].optionGroupName,
-            addingType: optionGroups[groupIndex].addingTypeId,
-            totalPrice: 0.0,
-            items: [],
-          ),
-        );
-        int lastOptionIndex = options.length - 1;
-
-        /// Options
-        for (int optionIndex = 0; optionIndex < optionGroups[groupIndex].options!.length; optionIndex++) {
-          if (optionGroups[groupIndex].options![optionIndex].isSelected) {
-            options[lastOptionIndex].items!.add(
-                  Items(
-                    id: optionGroups[groupIndex].options![optionIndex].id,
-                    title: optionGroups[groupIndex].options![optionIndex].optionName,
-                    price: optionGroups[groupIndex].options![optionIndex].addPrice,
-                    productId: 0,
-                  ),
-                );
-          }
-        }
-      }
-
-      /// TODO Yeni Eklendi
-      else if (optionGroups[groupIndex].isRequire == true) {
-        throw -1;
-      }
-    }
-
-    /// feature
-    for (int groupIndex = 0; groupIndex < features.length; groupIndex++) {
-      if (features[groupIndex].isSelected) {
-        options.add(
-          Options(
-            optionType: describeEnum(OptionType.FEATURE),
-            id: features[groupIndex].id,
-            title: features[groupIndex].featureName,
-            addingType: features[groupIndex].addingTypeId,
-            totalPrice: 0.0,
-            items: [],
-          ),
-        );
-        int lastFeatureIndex = options.length - 1;
-
-        /// Options
-        for (int optionIndex = 0; optionIndex < features[groupIndex].items!.length; optionIndex++) {
-          if (features[groupIndex].items![optionIndex].isSelected) {
-            options[lastFeatureIndex].items!.add(
-                  Items(
-                    id: features[groupIndex].items![optionIndex].id,
-                    title: features[groupIndex].items![optionIndex].productName,
-                    price: features[groupIndex].items![optionIndex].addPrice,
-                    productId: 1,
-                  ),
-                );
-          }
-        }
-      }
-
-      /// TODO Yeni Eklendi
-      else if (features[groupIndex].isRequire == true) {
-        throw -1;
-      }
-    }
-    return options;
   }
 
   /// Daha önceden seçilen özelik index i Getirmek için yazıldı.

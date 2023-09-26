@@ -14,10 +14,7 @@ dependencies:
   connectivity: any
   intl: any
 
-  sip_models:
-    git:
-      url: https://github.com/dophub/sip-models.git
-      ref: prod
+
 
   flutter:
     sdk: flutter
