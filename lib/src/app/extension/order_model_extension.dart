@@ -177,6 +177,9 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
       if (section.isSelected) {
         for (var product in section.products!) {
           if (product.isSelected) {
+            /// selected section price
+            _amount = _amount + (product.additionalPrice ?? 0.0);
+
             /// OptionGroups
             for (var optionGroups in product.optionGroups!) {
               if (optionGroups.isSelected) {
