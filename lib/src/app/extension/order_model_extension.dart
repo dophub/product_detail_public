@@ -512,7 +512,7 @@ extension SectionExtension on SectionModel {
   }
 
   /// Promosiyonlı ürünler de seçilen ürünün opsiyonlarını getirmek için yazıldı
-  ProductDetailModel? getSelectedProduct(int sectionIndex) {
+  ProductDetailModel? getSelectedProduct() {
     final value = products!.indexWhere((element) => element.isSelected);
     return value == -1 ? null : products![value];
   }
