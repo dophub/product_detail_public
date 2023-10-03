@@ -167,89 +167,45 @@ class ProductController extends GetxController {
 
   /// Tekli opsiyon Seçimlerde çalışan metod
   void singleOptionSelection(int optionGroupsIndex, int selectedIndex) {
-    ProductDetailModel value = productDetailModel;
-    for (int i = 0; i < value.optionGroups![optionGroupsIndex].options!.length; i++) {
-      value.optionGroups![optionGroupsIndex].options![i].isSelected = false;
-    }
-    value.optionGroups![optionGroupsIndex].options![selectedIndex].isSelected = true;
-    value.optionGroups![optionGroupsIndex].isSelected = true;
-    productDetailModel = value;
+    productDetailModel.optionGroups![optionGroupsIndex].singleOptionSelection(selectedIndex);
+    productDetailModel = productDetailModel;
     amountUpdate();
   }
 
   /// Tekli özelik Seçimlerde çalışan metod
   void singleFeatureSelection(int featureIndex, int selectedIndex) {
-    ProductDetailModel value = productDetailModel;
-    for (int i = 0; i < value.features![featureIndex].items!.length; i++) {
-      value.features![featureIndex].items![i].isSelected = false;
-    }
-    value.features![featureIndex].items![selectedIndex].isSelected = true;
-    value.features![featureIndex].isSelected = true;
-    productDetailModel = value;
+    productDetailModel.features![featureIndex].singleFeatureSelection(selectedIndex);
+    productDetailModel = productDetailModel;
     amountUpdate();
   }
 
   /// Özelik Cıkarma section lerde çalışan metod.
   /// Birden fazla seçimlerde
   void multiDecreaseFeatureSelection(bool status, int featureIndex, int selectedIndex) {
-    ProductDetailModel value = productDetailModel;
-    value.features![featureIndex].items![selectedIndex].isSelected = status;
-    value.features![featureIndex].isSelected = true;
-    productDetailModel = value;
+    productDetailModel.features![featureIndex].multiDecreaseFeatureSelection(status, selectedIndex);
+    productDetailModel = productDetailModel;
   }
 
   /// Opsiyon Cıkarma section lerde çalışan metod.
   /// Birden fazla seçimlerde
   void multiDecreaseOptionSelection(bool status, int optionGroupsIndex, int selectedIndex) {
-    ProductDetailModel value = productDetailModel;
-    value.optionGroups![optionGroupsIndex].options![selectedIndex].isSelected = status;
-    value.optionGroups![optionGroupsIndex].isSelected = true;
-    productDetailModel = value;
+    productDetailModel.optionGroups![optionGroupsIndex].multiDecreaseOptionSelection(status, selectedIndex);
+    productDetailModel = productDetailModel;
   }
 
   /// Özelik Ekleme section lerde çalışan metod.
   /// Birden fazla seçimlerde.
   void multiAddFeatureSelection(bool status, int featureIndex, int selectedIndex) {
-    debugPrint(status.toString());
-    ProductDetailModel value = productDetailModel;
-    value.features![featureIndex].items![selectedIndex].isSelected = status;
-    if (status) {
-      value.features![featureIndex].isSelected = true;
-    } else {
-      int itemsLength = value.features![featureIndex].items!.length;
-      for (int i = 0; i < itemsLength; i++) {
-        if (value.features![featureIndex].items![i].isSelected) {
-          value.features![featureIndex].isSelected = true;
-          break;
-        } else if (i == itemsLength - 1) {
-          value.features![featureIndex].isSelected = false;
-        }
-      }
-    }
-    productDetailModel = value;
+    productDetailModel.features![featureIndex].multiAddFeatureSelection(status, selectedIndex);
+    productDetailModel = productDetailModel;
     amountUpdate();
   }
 
   /// Opsiyon Ekleme section lerde çalışan metod.
   /// Birden fazla seçimlerde.
   void multiAddOptionSelection(bool status, int optionGroupsIndex, int selectedIndex) {
-    debugPrint(status.toString());
-    ProductDetailModel value = productDetailModel;
-    value.optionGroups![optionGroupsIndex].options![selectedIndex].isSelected = status;
-    if (status) {
-      value.optionGroups![optionGroupsIndex].isSelected = true;
-    } else {
-      int itemsLength = value.optionGroups![optionGroupsIndex].options!.length;
-      for (int i = 0; i < itemsLength; i++) {
-        if (value.optionGroups![optionGroupsIndex].options![i].isSelected) {
-          value.optionGroups![optionGroupsIndex].isSelected = true;
-          break;
-        } else if (i == itemsLength - 1) {
-          value.optionGroups![optionGroupsIndex].isSelected = false;
-        }
-      }
-    }
-    productDetailModel = value;
+    productDetailModel.optionGroups![optionGroupsIndex].multiAddOptionSelection(status, selectedIndex);
+    productDetailModel = productDetailModel;
     amountUpdate();
   }
 
@@ -284,16 +240,15 @@ class ProductController extends GetxController {
   /// Daha önceden seçilen özelik index i Getirmek için yazıldı.
   /// isSelected alanını kontrol etmekte.
   int? getIndexForSelectedFeatureItem(int featureIndex) {
-    int value;
-    value = productDetailModel.features![featureIndex].items!.indexWhere((element) => element.isSelected);
+    final value = productDetailModel.features![featureIndex].items!.indexWhere((element) => element.isSelected);
     return value == -1 ? null : value;
   }
 
   /// Daha önceden seçilen opsiyon index i Getirmek için yazıldı.
   /// isSelected alanını kontrol etmekte.
   int? getIndexForSelectedOption(int optionGroupsIndex) {
-    int value;
-    value = productDetailModel.optionGroups![optionGroupsIndex].options!.indexWhere((element) => element.isSelected);
+    final value =
+        productDetailModel.optionGroups![optionGroupsIndex].options!.indexWhere((element) => element.isSelected);
     return value == -1 ? null : value;
   }
 

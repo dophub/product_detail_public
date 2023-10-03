@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:product_detail/extension.dart';
 import 'package:product_detail/src/app/component/section/multi_section_check_box.dart';
 import 'package:product_detail/src/app/component/section/product_decrise_section.dart';
 import 'package:product_detail/src/app/component/section/single_Section_bottom_sheet.dart';
@@ -44,7 +45,8 @@ class PromotionFeatureAndOption extends StatelessWidget {
                 return SingleSectionRadioButton(
                   title: optionGroup.optionGroupName!,
                   subTitle: optionGroup.description,
-                  selectedIndex: controller.getIndexForSelectedOption(sectionIndex, optionGroupsIndex),
+                  selectedIndex: controller.promotionMenuModel.sections![sectionIndex]
+                      .getIndexForSelectedOption(optionGroupsIndex),
                   onTap: (int selectedIndex) =>
                       controller.singleOptionSelection(sectionIndex, optionGroupsIndex, selectedIndex),
                   list: optionGroup.options!,
@@ -69,7 +71,8 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   subTitle: optionGroup.description,
                   list: optionGroup.options!,
                   hintText: 'Seçiniz',
-                  selectedIndex: controller.getIndexForSelectedOption(sectionIndex, optionGroupsIndex),
+                  selectedIndex: controller.promotionMenuModel.sections![sectionIndex]
+                      .getIndexForSelectedOption(optionGroupsIndex),
                   onTap: (int selectedIndex) =>
                       controller.singleOptionSelection(sectionIndex, optionGroupsIndex, selectedIndex),
                   showErrorOutline: controller.validate && !optionGroup.isSelected && optionGroup.isRequire!,
@@ -114,7 +117,8 @@ class PromotionFeatureAndOption extends StatelessWidget {
                 return SingleSectionRadioButton(
                   title: features.featureName!,
                   subTitle: features.description,
-                  selectedIndex: controller.getIndexForSelectedFeatureItem(sectionIndex, featureIndex),
+                  selectedIndex: controller.promotionMenuModel.sections![sectionIndex]
+                      .getIndexForSelectedFeatureItem(featureIndex),
                   onTap: (int selectedIndex) =>
                       controller.singleFeatureSelection(sectionIndex, featureIndex, selectedIndex),
                   list: features.items!,
@@ -139,7 +143,8 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   subTitle: features.description!,
                   list: features.items!,
                   hintText: 'Seçiniz',
-                  selectedIndex: controller.getIndexForSelectedFeatureItem(sectionIndex, featureIndex),
+                  selectedIndex: controller.promotionMenuModel.sections![sectionIndex]
+                      .getIndexForSelectedFeatureItem(featureIndex),
                   onTap: (int selectedIndex) =>
                       controller.singleFeatureSelection(sectionIndex, featureIndex, selectedIndex),
                   showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,

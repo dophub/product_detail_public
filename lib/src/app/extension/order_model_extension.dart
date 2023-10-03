@@ -296,7 +296,7 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
   }
 }
 
-extension OptionExtension on List<OptionGroupModel> {
+extension OptionGroupListExtension on List<OptionGroupModel> {
   /// Ürünün seçilen opsiyonlsarını getirmek için yazıldı.
   /// Ürünü sepette eklerken çalışmakta olup [getBasketModel] metodında çağrılmakta.
   List<Options> getSelected() {
@@ -341,7 +341,7 @@ extension OptionExtension on List<OptionGroupModel> {
   }
 }
 
-extension FeatureExtension on List<FeatureModel> {
+extension FeatureListExtension on List<FeatureModel> {
   /// Ürünün seçilen opsiyonlsarını getirmek için yazıldı.
   /// Ürünü sepette eklerken çalışmakta olup [getBasketModel] metodında çağrılmakta.
   List<Options> getSelected() {
@@ -407,5 +407,117 @@ extension ProductModelExtension on ProductModel {
     item.product!.productName = productName;
     item.product!.options = null;
     return item;
+  }
+}
+
+extension OptionGroupExtension on OptionGroupModel {
+  /// Tekli opsiyon Seçimlerde çalışan metod
+  void singleOptionSelection(int selectedIndex) {
+    for (int i = 0; i < options!.length; i++) {
+      options![i].isSelected = false;
+    }
+    options![selectedIndex].isSelected = true;
+    isSelected = true;
+  }
+
+  /// Opsiyon Cıkarma section lerde çalışan metod.
+  /// Birden fazla seçimlerde
+  void multiDecreaseOptionSelection(bool status, int selectedIndex) {
+    options![selectedIndex].isSelected = status;
+    isSelected = true;
+  }
+
+  /// Opsiyon Ekleme section lerde çalışan metod.
+  /// Birden fazla seçimlerde.
+  void multiAddOptionSelection(bool status, int selectedIndex) {
+    options![selectedIndex].isSelected = status;
+    if (status) {
+      isSelected = true;
+    } else {
+      int itemsLength = options!.length;
+      for (int i = 0; i < itemsLength; i++) {
+        if (options![i].isSelected) {
+          isSelected = true;
+          break;
+        } else if (i == itemsLength - 1) {
+          isSelected = false;
+        }
+      }
+    }
+  }
+}
+
+extension FeatureExtension on FeatureModel {
+  /// Tekli özelik Seçimlerde çalışan metod
+  void singleFeatureSelection(int selectedIndex) {
+    for (int i = 0; i < items!.length; i++) {
+      items![i].isSelected = false;
+    }
+    items![selectedIndex].isSelected = true;
+    isSelected = true;
+  }
+
+  /// Özelik Cıkarma section lerde çalışan metod.
+  /// Birden fazla seçimlerde
+  void multiDecreaseFeatureSelection(bool status, int selectedIndex) {
+    items![selectedIndex].isSelected = status;
+    isSelected = true;
+  }
+
+  /// Özelik Ekleme section lerde çalışan metod.
+  /// Birden fazla seçimlerde.
+  void multiAddFeatureSelection(bool status, int selectedIndex) {
+    items![selectedIndex].isSelected = status;
+    if (status) {
+      isSelected = true;
+    } else {
+      int itemsLength = items!.length;
+      for (int i = 0; i < itemsLength; i++) {
+        if (items![i].isSelected) {
+          isSelected = true;
+          break;
+        } else if (i == itemsLength - 1) {
+          isSelected = false;
+        }
+      }
+    }
+  }
+}
+
+extension SectionExtension on SectionModel {
+  /// Promosyon ürünlerde Seçilen ürünün indexini getirmek için yzaıldı.
+  int? getIndexForSelectedProduct() {
+    final value = products!.indexWhere((element) => element.isSelected);
+    return value == -1 ? null : value;
+  }
+
+  /// Daha önceden seçilen özelik index i Getirmek için yazıldı.
+  /// isSelected alanını kontrol etmekte.
+  int? getIndexForSelectedFeatureItem(int featureIndex) {
+    final value = products![getIndexForSelectedProduct()!]
+        .features![featureIndex]
+        .items!
+        .indexWhere((element) => element.isSelected);
+    return value == -1 ? null : value;
+  }
+
+  /// Daha önceden seçilen opsiyon index i Getirmek için yazıldı.
+  /// isSelected alanını kontrol etmekte.
+  int? getIndexForSelectedOption(int optionGroupsIndex) {
+    final value = products![getIndexForSelectedProduct()!]
+        .optionGroups![optionGroupsIndex]
+        .options!
+        .indexWhere((element) => element.isSelected);
+    return value == -1 ? null : value;
+  }
+
+  /// Promosiyonlı ürünler de seçilen ürünün opsiyonlarını getirmek için yazıldı
+  List<OptionGroupModel>? getOptionsForSelectedProduct(int sectionIndex) {
+    return products!.firstWhere((element) => element.isSelected, orElse: () => ProductDetailModel()).optionGroups;
+  }
+
+  /// Promosiyonlı ürünler de seçilen ürünün özeliklerini getirmek için yazıldı
+  List<FeatureModel>? getFeaturesForSelectedProduct(int sectionIndex) {
+    return products!.firstWhere((element) => element.isSelected, orElse: () => ProductDetailModel()).features;
   }
 }

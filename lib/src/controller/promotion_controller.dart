@@ -187,110 +187,57 @@ class PromotionController extends GetxController {
 
   /// Tekli opsiyon Seçimlerde çalışan metod
   void singleOptionSelection(int sectionIndex, int optionGroupsIndex, int selectedIndex) {
-    PromotionMenuDetailModel value = promotionMenuModel;
-    int productIndex = getIndexForSelectedProduct(sectionIndex)!;
-    for (int i = 0;
-        i < value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].options!.length;
-        i++) {
-      value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].options![i].isSelected =
-          false;
-    }
-    value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].options![selectedIndex]
-        .isSelected = true;
-    value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].isSelected = true;
-    promotionMenuModel = value;
+    int productIndex = promotionMenuModel.sections![sectionIndex].getIndexForSelectedProduct()!;
+    promotionMenuModel.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex]
+        .singleOptionSelection(selectedIndex);
+    promotionMenuModel = promotionMenuModel;
     amountUpdate();
   }
 
   /// Tekli özelik Seçimlerde çalışan metod
   void singleFeatureSelection(int sectionIndex, int featureIndex, int selectedIndex) {
-    PromotionMenuDetailModel value = promotionMenuModel;
-    int productIndex = getIndexForSelectedProduct(sectionIndex)!;
-    for (int i = 0;
-        i < value.sections![sectionIndex].products![productIndex].features![featureIndex].items!.length;
-        i++) {
-      value.sections![sectionIndex].products![productIndex].features![featureIndex].items![i].isSelected = false;
-    }
-    value.sections![sectionIndex].products![productIndex].features![featureIndex].items![selectedIndex].isSelected =
-        true;
-    value.sections![sectionIndex].products![productIndex].features![featureIndex].isSelected = true;
-    promotionMenuModel = value;
+    int productIndex = promotionMenuModel.sections![sectionIndex].getIndexForSelectedProduct()!;
+    promotionMenuModel.sections![sectionIndex].products![productIndex].features![featureIndex]
+        .singleFeatureSelection(selectedIndex);
+    promotionMenuModel = promotionMenuModel;
     amountUpdate();
   }
 
   /// Özelik Cıkarma section lerde çalışan metod.
   /// Birden fazla seçimlerde
   void multiDecreaseFeatureSelection(int sectionIndex, bool status, int featureIndex, int selectedIndex) {
-    debugPrint(status.toString());
-    PromotionMenuDetailModel value = promotionMenuModel;
-    int productIndex = getIndexForSelectedProduct(sectionIndex)!;
-    value.sections![sectionIndex].products![productIndex].features![featureIndex].items![selectedIndex].isSelected =
-        status;
-    value.sections![sectionIndex].products![productIndex].features![featureIndex].isSelected = true;
-    promotionMenuModel = value;
+    int productIndex = promotionMenuModel.sections![sectionIndex].getIndexForSelectedProduct()!;
+    promotionMenuModel.sections![sectionIndex].products![productIndex].features![featureIndex]
+        .multiDecreaseFeatureSelection(status, selectedIndex);
+    promotionMenuModel = promotionMenuModel;
   }
 
   /// Opsiyon Cıkarma section lerde çalışan metod.
   /// Birden fazla seçimlerde
   void multiDecreaseOptionSelection(int sectionIndex, bool status, int optionGroupsIndex, int selectedIndex) {
-    debugPrint(status.toString());
-    PromotionMenuDetailModel value = promotionMenuModel;
-    int productIndex = getIndexForSelectedProduct(sectionIndex)!;
-    value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].options![selectedIndex]
-        .isSelected = status;
-    value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].isSelected = true;
-    promotionMenuModel = value;
+    int productIndex = promotionMenuModel.sections![sectionIndex].getIndexForSelectedProduct()!;
+    promotionMenuModel.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex]
+        .multiDecreaseOptionSelection(status, selectedIndex);
+    promotionMenuModel = promotionMenuModel;
   }
 
   /// Özelik Ekleme section lerde çalışan metod.
   /// Birden fazla seçimlerde.
   void multiAddFeatureSelection(int sectionIndex, bool status, int featureIndex, int selectedIndex) {
-    debugPrint(status.toString());
-    PromotionMenuDetailModel value = promotionMenuModel;
-    int productIndex = getIndexForSelectedProduct(sectionIndex)!;
-    value.sections![sectionIndex].products![productIndex].features![featureIndex].items![selectedIndex].isSelected =
-        status;
-    if (status) {
-      value.sections![sectionIndex].products![productIndex].features![featureIndex].isSelected = true;
-    } else {
-      int itemsLength = value.sections![sectionIndex].products![productIndex].features![featureIndex].items!.length;
-      for (int i = 0; i < itemsLength; i++) {
-        if (value.sections![sectionIndex].products![productIndex].features![featureIndex].items![i].isSelected) {
-          value.sections![sectionIndex].products![productIndex].features![featureIndex].isSelected = true;
-          break;
-        } else if (i == itemsLength - 1) {
-          value.sections![sectionIndex].products![productIndex].features![featureIndex].isSelected = false;
-        }
-      }
-    }
-    promotionMenuModel = value;
+    int productIndex = promotionMenuModel.sections![sectionIndex].getIndexForSelectedProduct()!;
+    promotionMenuModel.sections![sectionIndex].products![productIndex].features![featureIndex]
+        .multiAddFeatureSelection(status, selectedIndex);
+    promotionMenuModel = promotionMenuModel;
     amountUpdate();
   }
 
   /// Opsiyon Ekleme section lerde çalışan metod.
   /// Birden fazla seçimlerde.
   void multiAddOptionSelection(int sectionIndex, bool status, int optionGroupsIndex, int selectedIndex) {
-    debugPrint(status.toString());
-    PromotionMenuDetailModel value = promotionMenuModel;
-    int productIndex = getIndexForSelectedProduct(sectionIndex)!;
-    value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].options![selectedIndex]
-        .isSelected = status;
-    if (status) {
-      value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].isSelected = true;
-    } else {
-      int itemsLength =
-          value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].options!.length;
-      for (int i = 0; i < itemsLength; i++) {
-        if (value
-            .sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].options![i].isSelected) {
-          value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].isSelected = true;
-          break;
-        } else if (i == itemsLength - 1) {
-          value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].isSelected = false;
-        }
-      }
-    }
-    promotionMenuModel = value;
+    int productIndex = promotionMenuModel.sections![sectionIndex].getIndexForSelectedProduct()!;
+    promotionMenuModel.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex]
+        .multiAddOptionSelection(status, selectedIndex);
+    promotionMenuModel = promotionMenuModel;
     amountUpdate();
   }
 
@@ -320,46 +267,6 @@ class PromotionController extends GetxController {
       validate = true;
       throw 'Zorunlu alanları seçin.';
     }
-  }
-
-  /// Promosyon ürünlerde Seçilen ürünün indexini getirmek için yzaıldı.
-  int? getIndexForSelectedProduct(int sectionIndex) {
-    int value = promotionMenuModel.sections![sectionIndex].products!.indexWhere((element) => element.isSelected);
-    return value == -1 ? null : value;
-  }
-
-  /// Daha önceden seçilen özelik index i Getirmek için yazıldı.
-  /// isSelected alanını kontrol etmekte.
-  int? getIndexForSelectedFeatureItem(int? sectionIndex, int featureIndex) {
-    int value;
-    value = promotionMenuModel
-        .sections![sectionIndex!].products![getIndexForSelectedProduct(sectionIndex)!].features![featureIndex].items!
-        .indexWhere((element) => element.isSelected);
-    return value == -1 ? null : value;
-  }
-
-  /// Daha önceden seçilen opsiyon index i Getirmek için yazıldı.
-  /// isSelected alanını kontrol etmekte.
-  int? getIndexForSelectedOption(int? sectionIndex, int optionGroupsIndex) {
-    int value;
-    value = promotionMenuModel.sections![sectionIndex!].products![getIndexForSelectedProduct(sectionIndex)!]
-        .optionGroups![optionGroupsIndex].options!
-        .indexWhere((element) => element.isSelected);
-    return value == -1 ? null : value;
-  }
-
-  /// Promosiyonlı ürünler de seçilen ürünün opsiyonlarını getirmek için yazıldı
-  List<OptionGroupModel>? getOptionsForSelectedProduct(int sectionIndex) {
-    return promotionMenuModel.sections![sectionIndex].products!
-        .firstWhere((element) => element.isSelected, orElse: () => ProductDetailModel())
-        .optionGroups;
-  }
-
-  /// Promosiyonlı ürünler de seçilen ürünün özeliklerini getirmek için yazıldı
-  List<FeatureModel>? getFeaturesForSelectedProduct(int sectionIndex) {
-    return promotionMenuModel.sections![sectionIndex].products!
-        .firstWhere((element) => element.isSelected, orElse: () => ProductDetailModel())
-        .features;
   }
 
   /// Note Dialog u kapandığında çalışan Fonk.
