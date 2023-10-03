@@ -6,6 +6,7 @@ import 'package:product_detail/src/app/const/app_text_style.dart';
 import 'package:sip_models/widget.dart';
 import '../other/bottom_sheet_hold_and_drag_widget.dart';
 import '../../../app/const/app_colors.dart';
+import '../other/price_text_widget_with_parentheses.dart';
 import 'bottom_sheet_Radio_button_list.dart';
 
 /// Tekli seçmelide kullanılan dropdown
@@ -56,11 +57,14 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                title,
-                style: s16W400Dark(context),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+              Padding(
+                padding: const EdgeInsets.only(right: paddingXXS),
+                child: Text(
+                  title,
+                  style: s16W400Dark(context),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
               Flexible(
                 child: Row(
@@ -68,14 +72,20 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Flexible(
-                      child: Text(
-                        selectedIndex == null ? 'Seçiniz' : list[selectedIndex!].getName,
-                        softWrap: true,
-                        style: s16W700Dark(context),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        textWidthBasis: TextWidthBasis.longestLine,
-                      ),
+                      child: selectedIndex == null
+                          ? Text(
+                              'Seçiniz',
+                              softWrap: true,
+                              style: s16W700Dark(context),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              textWidthBasis: TextWidthBasis.longestLine,
+                            )
+                          : PriceTextWidgetWithParentheses(
+                              price: list[selectedIndex!].getPrice,
+                              name: list[selectedIndex!].getName,
+                              maxLines: 1,
+                            ),
                     ),
                     const SizedBox(width: paddingXXS),
                     SvgPicture.asset(
@@ -97,7 +107,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
     return showModalBottomSheet(
       context: context,
       isScrollControlled: false,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(radiusXL),
         ),
@@ -111,8 +121,8 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              BottomSheetHoldAndDragWidget(),
-              SizedBox(height: paddingM),
+              const BottomSheetHoldAndDragWidget(),
+              const SizedBox(height: paddingM),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Column(
@@ -131,11 +141,11 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
                               style: s14W400Dark(context),
                             ),
                           )
-                        : SizedBox(),
+                        : const SizedBox(),
                   ],
                 ),
               ),
-              SizedBox(height: paddingM),
+              const SizedBox(height: paddingM),
               Flexible(
                 child: SingleChildScrollView(
                   child: BottomSheetRadioButtonList(

@@ -14,7 +14,6 @@ import 'package:example/App/Widget/Message/ToastMessage.dart';
 import 'package:example/App/Widget/Dialog/LoadingProgress.dart';
 import 'package:product_detail/controller.dart';
 
-
 class ProductProfileController extends GetxController {
   final GlobalKey scaffoldKey = GlobalKey<ScaffoldState>();
   late Rx<LoadingStatus> _loadingStatus;
@@ -41,7 +40,7 @@ class ProductProfileController extends GetxController {
   void onInit() {
     super.onInit();
     final mainController = Get.find<Controller>();
-    imagesList = mainController.getImages(itemObject.images!,ImageSizeId.mobile_detail);
+    imagesList = mainController.getImages(itemObject.images!, ImageSizeId.mobile_detail);
   }
 
   @override
@@ -50,7 +49,7 @@ class ProductProfileController extends GetxController {
     super.onClose();
   }
 
-  ProductProfileController(this.dealerId,this.itemObject, this.orderItem) {
+  ProductProfileController(this.dealerId, this.itemObject, this.orderItem) {
     _loadingStatus = LoadingStatus.Init.obs;
     _productDetailModel = ProductDetailModel().obs;
     _amount = 0.0.obs;
@@ -60,7 +59,6 @@ class ProductProfileController extends GetxController {
     imagesList = <ImagesModel>[];
     _flexibleSpaceBarClosed = false.obs;
   }
-
 
   bool get flexibleSpaceBarClosed => _flexibleSpaceBarClosed.value;
 
@@ -114,7 +112,7 @@ class ProductProfileController extends GetxController {
       BaseHttpModel response = await General().getProductDetail(dealerId, itemObject.id!);
       if (response.status.isOk) {
         productDetailModel = response.data!;
-        optionViewController = ProductViewController(orderItem,productDetailModel,PriceType.TABLE);
+        optionViewController = ProductViewController(orderItem, productDetailModel, PriceType.TABLE);
         optionViewController!.addListener(() {
           amount = optionViewController!.value;
         });
@@ -149,10 +147,10 @@ class ProductProfileController extends GetxController {
   ///  Response ten gelen resimler üzerine eklenmekte.
   void getImagesFromModel() {
     final mainController = Get.find<Controller>();
-    if (loadingStatus.isLoaded){
-        List<ImagesModel> list = mainController.getImages(productDetailModel.images!,ImageSizeId.mobile_detail);
-        list.removeWhere((ImagesModel element) => element.id == imagesList[0].id);
-        imagesList = imagesList + list;
+    if (loadingStatus.isLoaded) {
+      List<ImagesModel> list = mainController.getImages(productDetailModel.images!, ImageSizeId.mobile_detail);
+      list.removeWhere((ImagesModel element) => element.id == imagesList[0].id);
+      imagesList = imagesList + list;
     }
   }
 
@@ -161,13 +159,14 @@ class ProductProfileController extends GetxController {
     BuildContext context = scaffoldKey.currentContext!;
     LoadingProgress.showLoading(context);
     var item = optionViewController!.getBasketModel(TimeoutAction.Add);
-    await Future.delayed(const Duration(seconds: 1));// Http işlemi
+    await Future.delayed(const Duration(seconds: 1)); // Http işlemi
     LoadingProgress.done(context);
-    showToastMessage(context,textMessage: 'Ürün sepete eklendi');
+    showToastMessage(context, textMessage: 'Ürün sepete eklendi');
   }
 
   void onScroll(context, BoxConstraints constraints) {
-    if (constraints.biggest.height - (SizeConfig.appBarHeight + SizeConfig.statusBarHeight) < 1 && constraints.biggest.height - (SizeConfig.appBarHeight + SizeConfig.statusBarHeight) > -1) {
+    if (constraints.biggest.height - (SizeConfig.appBarHeight + SizeConfig.statusBarHeight) < 1 &&
+        constraints.biggest.height - (SizeConfig.appBarHeight + SizeConfig.statusBarHeight) > -1) {
       flexibleSpaceBarClosed = true;
     } else {
       flexibleSpaceBarClosed = false;

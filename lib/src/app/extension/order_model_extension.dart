@@ -24,11 +24,11 @@ extension OrderModelExtension on ProductDetailModel {
     item.note = note;
     item.product = Product();
     item.itemType = ItemType.PRODUCT.name;
-    item.product!.itemId = this.id;
-    item.product!.productName = this.productName;
+    item.product!.itemId = id;
+    item.product!.productName = productName;
     final List<Options> selectedOptions = [];
-    selectedOptions.addAll(this.optionGroups!.getSelected());
-    selectedOptions.addAll(this.features!.getSelected());
+    selectedOptions.addAll(optionGroups!.getSelected());
+    selectedOptions.addAll(features!.getSelected());
     item.product!.options = selectedOptions;
     return item;
   }
@@ -36,23 +36,25 @@ extension OrderModelExtension on ProductDetailModel {
   /// Secilen SECTION lere göre toplam tutarı güncellemekte
   double getTotalAmount({required PriceType priceType, required int quantity}) {
     double _amount = 0;
-    _amount = this.price!.getPrice(priceType);
+    _amount = price!.getPrice(priceType);
 
     /// OptionGroupss
-    this.optionGroups!.forEach((OptionGroupModel optionGroups) {
-      if (optionGroups.isSelected)
-        optionGroups.options!.forEach((OptionModel options) {
+    for (var optionGroups in optionGroups!) {
+      if (optionGroups.isSelected) {
+        for (var options in optionGroups.options!) {
           if (options.isSelected && !options.isFree!) _amount = _amount + options.addPrice!;
-        });
-    });
+        }
+      }
+    }
 
     /// Feature
-    this.features!.forEach((FeatureModel feature) {
-      if (feature.isSelected)
-        feature.items!.forEach((ItemModel item) {
+    for (var feature in features!) {
+      if (feature.isSelected) {
+        for (var item in feature.items!) {
           if (item.isSelected && !item.isFree!) _amount = _amount + item.addPrice!;
-        });
-    });
+        }
+      }
+    }
     return _amount * quantity;
   }
 
@@ -61,29 +63,29 @@ extension OrderModelExtension on ProductDetailModel {
     if (orderItem != null) {
       ProductDetailModel product = orderItem.toProductDetailModel();
       // optionGroups loop
-      for (int groupIndex = 0; groupIndex < this.optionGroups!.length; groupIndex++) {
-        var i = product.optionGroups!.indexWhere((element) => element.id == this.optionGroups![groupIndex].id);
+      for (int groupIndex = 0; groupIndex < optionGroups!.length; groupIndex++) {
+        var i = product.optionGroups!.indexWhere((element) => element.id == optionGroups![groupIndex].id);
         if (i != -1) {
           // options loop
-          for (int optionsIndex = 0; optionsIndex < this.optionGroups![groupIndex].options!.length; optionsIndex++) {
+          for (int optionsIndex = 0; optionsIndex < optionGroups![groupIndex].options!.length; optionsIndex++) {
             if (product.optionGroups![i].options!
-                .any((element) => element.id == this.optionGroups![groupIndex].options![optionsIndex].id)) {
-              this.optionGroups![groupIndex].options![optionsIndex].isSelected = true;
-              this.optionGroups![groupIndex].isSelected = true;
+                .any((element) => element.id == optionGroups![groupIndex].options![optionsIndex].id)) {
+              optionGroups![groupIndex].options![optionsIndex].isSelected = true;
+              optionGroups![groupIndex].isSelected = true;
             }
           }
         }
       }
       // features loop
-      for (int featuresIndex = 0; featuresIndex < this.features!.length; featuresIndex++) {
-        var i = product.features!.indexWhere((element) => element.id == this.features![featuresIndex].id);
+      for (int featuresIndex = 0; featuresIndex < features!.length; featuresIndex++) {
+        var i = product.features!.indexWhere((element) => element.id == features![featuresIndex].id);
         if (i != -1) {
           // items loop
-          for (int itemsIndex = 0; itemsIndex < this.features![featuresIndex].items!.length; itemsIndex++) {
+          for (int itemsIndex = 0; itemsIndex < features![featuresIndex].items!.length; itemsIndex++) {
             if (product.features![i].items!
-                .any((element) => element.id == this.features![featuresIndex].items![itemsIndex].id)) {
-              this.features![featuresIndex].items![itemsIndex].isSelected = true;
-              this.features![featuresIndex].isSelected = true;
+                .any((element) => element.id == features![featuresIndex].items![itemsIndex].id)) {
+              features![featuresIndex].items![itemsIndex].isSelected = true;
+              features![featuresIndex].isSelected = true;
             }
           }
         }
@@ -91,22 +93,22 @@ extension OrderModelExtension on ProductDetailModel {
     } else {
       /// Normal ürün
       // optionGroups loop
-      for (int groupIndex = 0; groupIndex < this.optionGroups!.length; groupIndex++) {
+      for (int groupIndex = 0; groupIndex < optionGroups!.length; groupIndex++) {
         // options loop
-        for (int optionsIndex = 0; optionsIndex < this.optionGroups![groupIndex].options!.length; optionsIndex++) {
-          if (this.optionGroups![groupIndex].options![optionsIndex].isDefault!) {
-            this.optionGroups![groupIndex].options![optionsIndex].isSelected = true;
-            this.optionGroups![groupIndex].isSelected = true;
+        for (int optionsIndex = 0; optionsIndex < optionGroups![groupIndex].options!.length; optionsIndex++) {
+          if (optionGroups![groupIndex].options![optionsIndex].isDefault!) {
+            optionGroups![groupIndex].options![optionsIndex].isSelected = true;
+            optionGroups![groupIndex].isSelected = true;
           }
         }
       }
       // features loop
-      for (int featuresIndex = 0; featuresIndex < this.features!.length; featuresIndex++) {
+      for (int featuresIndex = 0; featuresIndex < features!.length; featuresIndex++) {
         // items loop
-        for (int itemsIndex = 0; itemsIndex < this.features![featuresIndex].items!.length; itemsIndex++) {
-          if (this.features![featuresIndex].items![itemsIndex].isDefault!) {
-            this.features![featuresIndex].items![itemsIndex].isSelected = true;
-            this.features![featuresIndex].isSelected = true;
+        for (int itemsIndex = 0; itemsIndex < features![featuresIndex].items!.length; itemsIndex++) {
+          if (features![featuresIndex].items![itemsIndex].isDefault!) {
+            features![featuresIndex].items![itemsIndex].isSelected = true;
+            features![featuresIndex].isSelected = true;
           }
         }
       }
@@ -134,32 +136,32 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
     item.note = note;
     item.promotionMenu = PromotionMenu();
     item.itemType = ItemType.PROMOTION_MENU.name;
-    item.promotionMenu!.itemId = this.id;
-    item.promotionMenu!.promotionName = this.promotionMenuName;
+    item.promotionMenu!.itemId = id;
+    item.promotionMenu!.promotionName = promotionMenuName;
     item.promotionMenu!.sections = [];
-    for (int sectionIndex = 0; sectionIndex < this.sections!.length; sectionIndex++) {
+    for (int sectionIndex = 0; sectionIndex < sections!.length; sectionIndex++) {
       /// TODO Yeni Eklendi
       /// Sectionlar zorunlu seçmelidir
-      if (this.sections![sectionIndex].isSelected == false) {
+      if (sections![sectionIndex].isSelected == false) {
         throw -1;
       }
       item.promotionMenu!.sections!.add(
         Section(
-          sectionId: this.sections![sectionIndex].id,
-          sectionTitle: this.sections![sectionIndex].sectionName,
+          sectionId: sections![sectionIndex].id,
+          sectionTitle: sections![sectionIndex].sectionName,
           sectionItem: Product(),
         ),
       );
       int sectionLastIndex = item.promotionMenu!.sections!.length - 1;
-      for (int productIndex = 0; productIndex < this.sections![sectionIndex].products!.length; productIndex++) {
-        if (this.sections![sectionIndex].products![productIndex].isSelected == true) {
+      for (int productIndex = 0; productIndex < sections![sectionIndex].products!.length; productIndex++) {
+        if (sections![sectionIndex].products![productIndex].isSelected == true) {
           item.promotionMenu!.sections![sectionLastIndex].sectionItem!.itemId =
-              this.sections![sectionIndex].products![productIndex].id;
+              sections![sectionIndex].products![productIndex].id;
           item.promotionMenu!.sections![sectionLastIndex].sectionItem!.productName =
-              this.sections![sectionIndex].products![productIndex].productName;
+              sections![sectionIndex].products![productIndex].productName;
           final List<Options> selectedOptions = [];
-          selectedOptions.addAll(this.sections![sectionIndex].products![productIndex].optionGroups!.getSelected());
-          selectedOptions.addAll(this.sections![sectionIndex].products![productIndex].features!.getSelected());
+          selectedOptions.addAll(sections![sectionIndex].products![productIndex].optionGroups!.getSelected());
+          selectedOptions.addAll(sections![sectionIndex].products![productIndex].features!.getSelected());
           item.promotionMenu!.sections![sectionLastIndex].sectionItem!.options = selectedOptions;
         }
       }
@@ -169,10 +171,10 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
 
   double getTotalAmount({required PriceType priceType, required int quantity}) {
     double _amount = 0;
-    _amount = this.price!.getPrice(priceType);
+    _amount = price!.getPrice(priceType);
 
     /// section
-    for (var section in this.sections!) {
+    for (var section in sections!) {
       /// Products
       if (section.isSelected) {
         for (var product in section.products!) {
@@ -209,7 +211,7 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
     // sections loop
     if (orderItem != null) {
       PromotionMenuDetailModel product = orderItem.toPromotionModel();
-      for (int sectionsIndex = 0; sectionsIndex < this.sections!.length; sectionsIndex++) {
+      for (int sectionsIndex = 0; sectionsIndex < sections!.length; sectionsIndex++) {
         final sections = this.sections![sectionsIndex];
         final orderSections =
             product.sections!.firstWhere((element) => element.id == sections.id, orElse: () => SectionModel());
@@ -262,7 +264,7 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
         }
       }
     } else {
-      for (int sectionsIndex = 0; sectionsIndex < this.sections!.length; sectionsIndex++) {
+      for (int sectionsIndex = 0; sectionsIndex < sections!.length; sectionsIndex++) {
         var sections = this.sections![sectionsIndex];
         for (int productsIndex = 0; productsIndex < sections.products!.length; productsIndex++) {
           var products = sections.products![productsIndex];
@@ -301,7 +303,7 @@ extension OptionExtension on List<OptionGroupModel> {
     List<Options> options = [];
 
     /// optionGroups
-    for (int groupIndex = 0; groupIndex < this.length; groupIndex++) {
+    for (int groupIndex = 0; groupIndex < length; groupIndex++) {
       if (this[groupIndex].isSelected) {
         options.add(
           Options(
@@ -346,7 +348,7 @@ extension FeatureExtension on List<FeatureModel> {
     List<Options> options = [];
 
     /// feature
-    for (int groupIndex = 0; groupIndex < this.length; groupIndex++) {
+    for (int groupIndex = 0; groupIndex < length; groupIndex++) {
       if (this[groupIndex].isSelected) {
         options.add(
           Options(
@@ -381,5 +383,29 @@ extension FeatureExtension on List<FeatureModel> {
       }
     }
     return options;
+  }
+}
+
+extension ProductModelExtension on ProductModel {
+  /// Opsiyonsuz Order modeli oluşturmak için yazıldı.
+  /// Opsiyonu olmayan ProductCard e olan sepete ekle buttonuna tıklandığında modeli oluşturmak için kullanılmakta.
+  ItemOrder? getBasketModelWithOutOption(PriceType priceType, TimeoutAction timeoutAction) {
+    final amount = price!.getPrice(priceType);
+    final item = ItemOrder(id: 0);
+
+    /// Yeni ürün olduğuda 0 önceden eklenen ürünü güncelliyorsak order de dönen id yi veriyoruz
+    item.id = 0;
+    item.timeoutAction = timeoutAction.name;
+    item.note = '';
+    item.count = 1;
+    item.itemAmount = amount;
+    item.totalAmount = amount;
+    item.note = '';
+    item.product = Product();
+    item.itemType = ItemType.PRODUCT.name;
+    item.product!.itemId = id;
+    item.product!.productName = productName;
+    item.product!.options = null;
+    return item;
   }
 }

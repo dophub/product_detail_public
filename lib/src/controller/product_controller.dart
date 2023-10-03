@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter/foundation.dart';
-import 'package:product_detail/src/app/extension/general_extension.dart';
 import 'package:product_detail/src/app/extension/order_model_extension.dart';
 import 'package:sip_models/enum.dart';
 import 'package:sip_models/request.dart';
@@ -64,6 +62,7 @@ class ProductViewController extends ValueNotifier<double> {
   /// Oluşturulan tüm Get state lerini silmekte
   /// Dispose metodunda çağırılmalıdır
   /// çağırılmama durumda state hafızada tutulup bi sonraki girişte durmunu güncellemeyecektir
+  @override
   void dispose() {
     Get.delete<ProductController>(force: true);
     super.dispose();
@@ -101,7 +100,7 @@ class ProductController extends GetxController {
   /// Fiyat türü
   late PriceType priceType;
 
-  RxBool _validate = false.obs;
+  final RxBool _validate = false.obs;
 
   /// Frame yüklendiğinde [_initAfterProductDetailLoaded] i çağırmaktayiz
   @override
@@ -169,8 +168,9 @@ class ProductController extends GetxController {
   /// Tekli opsiyon Seçimlerde çalışan metod
   void singleOptionSelection(int optionGroupsIndex, int selectedIndex) {
     ProductDetailModel value = productDetailModel;
-    for (int i = 0; i < value.optionGroups![optionGroupsIndex].options!.length; i++)
+    for (int i = 0; i < value.optionGroups![optionGroupsIndex].options!.length; i++) {
       value.optionGroups![optionGroupsIndex].options![i].isSelected = false;
+    }
     value.optionGroups![optionGroupsIndex].options![selectedIndex].isSelected = true;
     value.optionGroups![optionGroupsIndex].isSelected = true;
     productDetailModel = value;
@@ -180,8 +180,9 @@ class ProductController extends GetxController {
   /// Tekli özelik Seçimlerde çalışan metod
   void singleFeatureSelection(int featureIndex, int selectedIndex) {
     ProductDetailModel value = productDetailModel;
-    for (int i = 0; i < value.features![featureIndex].items!.length; i++)
+    for (int i = 0; i < value.features![featureIndex].items!.length; i++) {
       value.features![featureIndex].items![i].isSelected = false;
+    }
     value.features![featureIndex].items![selectedIndex].isSelected = true;
     value.features![featureIndex].isSelected = true;
     productDetailModel = value;
@@ -209,12 +210,12 @@ class ProductController extends GetxController {
   /// Özelik Ekleme section lerde çalışan metod.
   /// Birden fazla seçimlerde.
   void multiAddFeatureSelection(bool status, int featureIndex, int selectedIndex) {
-    print(status);
+    debugPrint(status.toString());
     ProductDetailModel value = productDetailModel;
     value.features![featureIndex].items![selectedIndex].isSelected = status;
-    if (status)
+    if (status) {
       value.features![featureIndex].isSelected = true;
-    else {
+    } else {
       int itemsLength = value.features![featureIndex].items!.length;
       for (int i = 0; i < itemsLength; i++) {
         if (value.features![featureIndex].items![i].isSelected) {
@@ -232,12 +233,12 @@ class ProductController extends GetxController {
   /// Opsiyon Ekleme section lerde çalışan metod.
   /// Birden fazla seçimlerde.
   void multiAddOptionSelection(bool status, int optionGroupsIndex, int selectedIndex) {
-    print(status);
+    debugPrint(status.toString());
     ProductDetailModel value = productDetailModel;
     value.optionGroups![optionGroupsIndex].options![selectedIndex].isSelected = status;
-    if (status)
+    if (status) {
       value.optionGroups![optionGroupsIndex].isSelected = true;
-    else {
+    } else {
       int itemsLength = value.optionGroups![optionGroupsIndex].options!.length;
       for (int i = 0; i < itemsLength; i++) {
         if (value.optionGroups![optionGroupsIndex].options![i].isSelected) {
@@ -274,7 +275,7 @@ class ProductController extends GetxController {
         timeoutAction: timeoutAction,
       );
       return item;
-    } on int catch (e) {
+    } on int catch (_) {
       validate = true;
       throw 'Zorunlu alanları seçin.';
     }
@@ -300,6 +301,6 @@ class ProductController extends GetxController {
   /// Girilen Notu Text Field kontrollune attıyor.
   void onCloseNotDialog(String note) {
     cNote.text = note;
-    print(note);
+    debugPrint(note);
   }
 }

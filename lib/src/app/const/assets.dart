@@ -2,5 +2,5 @@
 
 String assets = 'assets/images/';
 
-String arrowIcon = assets + 'arrow_icon.svg';
+String arrowIcon = '${assets}arrow_icon.svg';
 

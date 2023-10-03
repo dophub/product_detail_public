@@ -1,1 +1,0 @@
-export 'src/controller/product_detail_general_controller.dart';

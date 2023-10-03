@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text('Get product Detail'),
             ),
             ElevatedButton(
-              onPressed: () => controller.onTapGetPromotionProductBtn(context,675,80),
+              onPressed: () => controller.onTapGetPromotionProductBtn(context,705,191),
               child: const Text('Get Promotion product Detail'),
             ),
           ],

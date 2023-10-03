@@ -88,11 +88,12 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   maxSection: optionGroup.maxCount,
                   showErrorOutline: controller.validate && !optionGroup.isSelected && optionGroup.isRequire!,
                 );
-              } else
-                return SizedBox();
+              } else {
+                return const SizedBox();
+              }
             },
             separatorBuilder: (BuildContext context, int index) {
-              return SizedBox(height: paddingS);
+              return const SizedBox(height: paddingS);
             },
           ),
         ),
@@ -103,7 +104,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
           child: ListView.separated(
             shrinkWrap: true,
             padding: EdgeInsets.zero,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: featuresList.length,
             itemBuilder: (BuildContext context, int featureIndex) {
               var features = featuresList[featureIndex];
@@ -157,11 +158,12 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   maxSection: features.maxCount,
                   showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
                 );
-              } else
-                return SizedBox();
+              } else {
+                return const SizedBox();
+              }
             },
             separatorBuilder: (BuildContext context, int index) {
-              return SizedBox(height: paddingS);
+              return const SizedBox(height: paddingS);
             },
           ),
         ),

@@ -36,7 +36,7 @@ class SingleSectionDropDown<T extends ISectionsWidgetModel> extends StatelessWid
         Card(
           color: Theme.of(context).cardColor,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: paddingM),
+            padding: const EdgeInsets.symmetric(horizontal: paddingM),
             child: DropdownButtonHideUnderline(
               child: DropdownButton<int>(
                 value: selectedIndex,

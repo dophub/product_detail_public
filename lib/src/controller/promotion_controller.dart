@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter/foundation.dart';
-import 'package:product_detail/src/app/extension/general_extension.dart';
 import 'package:product_detail/src/app/extension/order_model_extension.dart';
 import 'package:sip_models/enum.dart';
 import 'package:sip_models/request.dart';
@@ -64,6 +62,7 @@ class PromotionViewController extends ValueNotifier<double> {
   /// Oluşturulan tüm Get state lerini silmekte
   /// Dispose metodunda çağırılmalıdır
   /// çağırılmama durumda state hafızada tutulup bi sonraki girişte durmunu güncellemeyecektir
+  @override
   void dispose() {
     Get.delete<PromotionController>(force: true);
     super.dispose();
@@ -101,7 +100,7 @@ class PromotionController extends GetxController {
   /// Fiyat Türü
   late PriceType priceType;
 
-  RxBool _validate = false.obs;
+  final RxBool _validate = false.obs;
 
   /// Frame yüklendiğinde [initAfterProductDetailLoaded] i çağırmaktayiz
   @override
@@ -173,8 +172,9 @@ class PromotionController extends GetxController {
     PromotionMenuDetailModel value = promotionMenuModel;
 
     /// Tümünü sıfırla
-    for (int i = 0; i < value.sections![sectionIndex].products!.length; i++)
+    for (int i = 0; i < value.sections![sectionIndex].products!.length; i++) {
       value.sections![sectionIndex].products![i].isSelected = false;
+    }
 
     /// Seçileni true yap
     value.sections![sectionIndex].products![selectedIndex].isSelected = true;
@@ -191,9 +191,10 @@ class PromotionController extends GetxController {
     int productIndex = getIndexForSelectedProduct(sectionIndex)!;
     for (int i = 0;
         i < value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].options!.length;
-        i++)
+        i++) {
       value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].options![i].isSelected =
           false;
+    }
     value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].options![selectedIndex]
         .isSelected = true;
     value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].isSelected = true;
@@ -207,7 +208,9 @@ class PromotionController extends GetxController {
     int productIndex = getIndexForSelectedProduct(sectionIndex)!;
     for (int i = 0;
         i < value.sections![sectionIndex].products![productIndex].features![featureIndex].items!.length;
-        i++) value.sections![sectionIndex].products![productIndex].features![featureIndex].items![i].isSelected = false;
+        i++) {
+      value.sections![sectionIndex].products![productIndex].features![featureIndex].items![i].isSelected = false;
+    }
     value.sections![sectionIndex].products![productIndex].features![featureIndex].items![selectedIndex].isSelected =
         true;
     value.sections![sectionIndex].products![productIndex].features![featureIndex].isSelected = true;
@@ -218,7 +221,7 @@ class PromotionController extends GetxController {
   /// Özelik Cıkarma section lerde çalışan metod.
   /// Birden fazla seçimlerde
   void multiDecreaseFeatureSelection(int sectionIndex, bool status, int featureIndex, int selectedIndex) {
-    print(status);
+    debugPrint(status.toString());
     PromotionMenuDetailModel value = promotionMenuModel;
     int productIndex = getIndexForSelectedProduct(sectionIndex)!;
     value.sections![sectionIndex].products![productIndex].features![featureIndex].items![selectedIndex].isSelected =
@@ -230,7 +233,7 @@ class PromotionController extends GetxController {
   /// Opsiyon Cıkarma section lerde çalışan metod.
   /// Birden fazla seçimlerde
   void multiDecreaseOptionSelection(int sectionIndex, bool status, int optionGroupsIndex, int selectedIndex) {
-    print(status);
+    debugPrint(status.toString());
     PromotionMenuDetailModel value = promotionMenuModel;
     int productIndex = getIndexForSelectedProduct(sectionIndex)!;
     value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].options![selectedIndex]
@@ -242,14 +245,14 @@ class PromotionController extends GetxController {
   /// Özelik Ekleme section lerde çalışan metod.
   /// Birden fazla seçimlerde.
   void multiAddFeatureSelection(int sectionIndex, bool status, int featureIndex, int selectedIndex) {
-    print(status);
+    debugPrint(status.toString());
     PromotionMenuDetailModel value = promotionMenuModel;
     int productIndex = getIndexForSelectedProduct(sectionIndex)!;
     value.sections![sectionIndex].products![productIndex].features![featureIndex].items![selectedIndex].isSelected =
         status;
-    if (status)
+    if (status) {
       value.sections![sectionIndex].products![productIndex].features![featureIndex].isSelected = true;
-    else {
+    } else {
       int itemsLength = value.sections![sectionIndex].products![productIndex].features![featureIndex].items!.length;
       for (int i = 0; i < itemsLength; i++) {
         if (value.sections![sectionIndex].products![productIndex].features![featureIndex].items![i].isSelected) {
@@ -267,14 +270,14 @@ class PromotionController extends GetxController {
   /// Opsiyon Ekleme section lerde çalışan metod.
   /// Birden fazla seçimlerde.
   void multiAddOptionSelection(int sectionIndex, bool status, int optionGroupsIndex, int selectedIndex) {
-    print(status);
+    debugPrint(status.toString());
     PromotionMenuDetailModel value = promotionMenuModel;
     int productIndex = getIndexForSelectedProduct(sectionIndex)!;
     value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].options![selectedIndex]
         .isSelected = status;
-    if (status)
+    if (status) {
       value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].isSelected = true;
-    else {
+    } else {
       int itemsLength =
           value.sections![sectionIndex].products![productIndex].optionGroups![optionGroupsIndex].options!.length;
       for (int i = 0; i < itemsLength; i++) {
@@ -313,7 +316,7 @@ class PromotionController extends GetxController {
         timeoutAction: timeoutAction,
       );
       return item;
-    } on int catch (e) {
+    } on int catch (_) {
       validate = true;
       throw 'Zorunlu alanları seçin.';
     }
@@ -363,6 +366,6 @@ class PromotionController extends GetxController {
   /// Girilen Notu Text Field kontrollune attıyor.
   void onCloseNotDialog(String note) {
     cNote.text = note;
-    print(note);
+    debugPrint(note);
   }
 }

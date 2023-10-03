@@ -38,7 +38,7 @@ class RadioButtonList<T extends ISectionsWidgetModel> extends StatelessWidget {
                       ),
                       Flexible(
                         child: Padding(
-                          padding: EdgeInsets.only(left: paddingXS, bottom: paddingM),
+                          padding: const EdgeInsets.only(left: paddingXS, bottom: paddingM),
                           child: PriceTextWidgetWithParentheses(
                             price: list[index].getPrice,
                             name: list[index].getName,

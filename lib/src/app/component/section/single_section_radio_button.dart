@@ -50,7 +50,7 @@ class SingleSectionRadioButton<T extends ISectionsWidgetModel> extends Stateless
               title: title,
               subTitle: subTitle,
             ),
-            SizedBox(height: paddingM),
+            const SizedBox(height: paddingM),
             Align(
               alignment: Alignment.centerLeft,
               child: Center(

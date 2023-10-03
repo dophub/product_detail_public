@@ -10,14 +10,16 @@ class PriceTextWidgetWithParentheses extends StatelessWidget {
   final TextStyle? textStyle;
   final Color? color;
   final String name;
+  final int? maxLines;
 
-  const PriceTextWidgetWithParentheses(
-      {Key? key,
-      required this.price,
-      this.textStyle,
-      this.color,
-      required this.name})
-      : super(key: key);
+  const PriceTextWidgetWithParentheses({
+    Key? key,
+    required this.price,
+    this.textStyle,
+    this.color,
+    required this.name,
+    this.maxLines,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,15 +27,23 @@ class PriceTextWidgetWithParentheses extends StatelessWidget {
         ? s16W400Dark(context).copyWith(color: color ?? AppColor.turkcellBlue)
         : textStyle!.copyWith(color: color ?? AppColor.turkcellBlue);
     var percent = NumberFormat.currency(
-        locale: Localizations.localeOf(context).languageCode,
-        symbol: '',
-        decimalDigits: 2);
+      locale: Localizations.localeOf(context).languageCode,
+      symbol: '',
+      decimalDigits: 2,
+    );
     return price == null || price == 0
-        ? Text(name,
-        style: textStyle == null ? s16W400Dark(context).copyWith(color: color ?? AppColor.darkText)
-        : textStyle!.copyWith(color: color ?? AppColor.darkText))
+        ? Text(
+            name,
+            style: textStyle == null
+                ? s16W400Dark(context).copyWith(color: color ?? AppColor.darkText)
+                : textStyle!.copyWith(color: color ?? AppColor.darkText),
+            maxLines: maxLines,
+            overflow: TextOverflow.ellipsis,
+          )
         : RichText(
             textAlign: TextAlign.start,
+            maxLines: maxLines,
+            overflow: TextOverflow.ellipsis,
             text: TextSpan(
               text: name,
               style: textStyle == null
