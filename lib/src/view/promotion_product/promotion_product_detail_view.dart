@@ -47,7 +47,8 @@ class PromotionProductDetailView extends StatelessWidget {
                             title: sections[sectionIndex].sectionName!,
                             list: sections[sectionIndex].products!,
                             hintText: 'Seçiniz',
-                            selectedIndex: controller.promotionMenuModel.sections![sectionIndex].getIndexForSelectedProduct(),
+                            selectedIndex:
+                                controller.promotionMenuModel.sections![sectionIndex].getIndexForSelectedProduct(),
                             onTap: (int selectedIndex) =>
                                 controller.sectionBottomSheetOnChange(sectionIndex, selectedIndex),
                             selectedCardColor: AppColor.turkcellYellow,
@@ -56,8 +57,14 @@ class PromotionProductDetailView extends StatelessWidget {
                           // Section secilmiş mi
                           controller.promotionMenuModel.sections![sectionIndex].isSelected
                               ? PromotionFeatureAndOption(
-                                  featuresList: controller.promotionMenuModel.sections![sectionIndex].getFeaturesForSelectedProduct(sectionIndex) ?? [],
-                                  optionGroupsList: controller.promotionMenuModel.sections![sectionIndex].getOptionsForSelectedProduct(sectionIndex) ?? [],
+                                  featuresList: controller.promotionMenuModel.sections![sectionIndex]
+                                          .getSelectedProduct(sectionIndex)
+                                          ?.features ??
+                                      [],
+                                  optionGroupsList: controller.promotionMenuModel.sections![sectionIndex]
+                                          .getSelectedProduct(sectionIndex)
+                                          ?.optionGroups ??
+                                      [],
                                   sectionIndex: sectionIndex,
                                 )
                               : const SizedBox(),

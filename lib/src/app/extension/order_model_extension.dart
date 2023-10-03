@@ -512,12 +512,8 @@ extension SectionExtension on SectionModel {
   }
 
   /// Promosiyonlı ürünler de seçilen ürünün opsiyonlarını getirmek için yazıldı
-  List<OptionGroupModel>? getOptionsForSelectedProduct(int sectionIndex) {
-    return products!.firstWhere((element) => element.isSelected, orElse: () => ProductDetailModel()).optionGroups;
-  }
-
-  /// Promosiyonlı ürünler de seçilen ürünün özeliklerini getirmek için yazıldı
-  List<FeatureModel>? getFeaturesForSelectedProduct(int sectionIndex) {
-    return products!.firstWhere((element) => element.isSelected, orElse: () => ProductDetailModel()).features;
+  ProductDetailModel? getSelectedProduct(int sectionIndex) {
+    final value = products!.indexWhere((element) => element.isSelected);
+    return value == -1 ? null : products![value];
   }
 }
