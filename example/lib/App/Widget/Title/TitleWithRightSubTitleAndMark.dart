@@ -6,7 +6,6 @@ import 'package:example/App/Theme/TSTextStyle.dart';
 /// [SingleSectionRadioButton],[MultiSectionCheckBox] ..vs kullanılan başlık
 /// [title] başlık
 /// [subTitle] başlığın alt kısmında cıkan altBaşlık
-/// [showMark] başlık sağ kısmında gösterilen [turkcellYellow] renginde işaret. [SingleSectionRadioButton],[MultiSectionCheckBox] ..vs tarafından item seçildimi diye gösteren bi işaret
 class TitleWithRightSubTitleAndMark extends StatelessWidget {
   final bool? showMark;
   final String? subTitle;

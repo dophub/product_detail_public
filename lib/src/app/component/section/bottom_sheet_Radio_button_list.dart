@@ -38,12 +38,15 @@ class BottomSheetRadioButtonList<T extends ISectionsWidgetModel> extends Statele
                     padding: const EdgeInsets.symmetric(vertical: paddingXS),
                     child: Container(
                       decoration: BoxDecoration(
-                          color:
-                              selectedIndex == index ? AppColor.turkcellYellow : Colors.transparent,
-                          borderRadius: BorderRadius.circular(radiusXS),
-                          border: selectedIndex == index
-                              ? null
-                              : Border.all(width: 1, color: AppColor.turkcellBlue)),
+                        color: selectedIndex == index ? Theme.of(context).colorScheme.secondary : Colors.transparent,
+                        borderRadius: BorderRadius.circular(radiusXS),
+                        border: selectedIndex == index
+                            ? null
+                            : Border.all(
+                                width: 1,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                      ),
                       child: Padding(
                         padding: const EdgeInsets.all(paddingS),
                         child: Row(
@@ -53,37 +56,37 @@ class BottomSheetRadioButtonList<T extends ISectionsWidgetModel> extends Statele
                                 Container(
                                   height: radioButtonSize ?? 30,
                                   width: radioButtonSize ?? 30,
-                                  padding: EdgeInsets.all(paddingXXXS),
+                                  padding: const EdgeInsets.all(paddingXXXS),
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
                                       width: 1,
                                       color: selectedIndex == index
                                           ? AppColor.darkText
-                                          : AppColor.turkcellBlue,
+                                          : Theme.of(context).colorScheme.primary,
                                     ),
                                   ),
                                   child: Visibility(
                                     visible: selectedIndex == index,
                                     child: Container(
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: AppColor.darkText,
                                         shape: BoxShape.circle,
                                       ),
                                     ),
                                   ),
                                 ),
-                            SizedBox(width: paddingS),
+                            const SizedBox(width: paddingS),
                             Flexible(
                               child: Padding(
-                                padding: EdgeInsets.only(left: paddingXS),
+                                padding: const EdgeInsets.only(left: paddingXS),
                                 child: PriceTextWidgetWithParentheses(
                                   price: list[index].getPrice,
                                   name: list[index].getName,
                                   textStyle: s16W700Dark(context),
                                   color: selectedIndex == index
                                       ? AppColor.darkText
-                                      : AppColor.turkcellBlue,
+                                      : Theme.of(context).colorScheme.primary,
                                 ),
                               ),
                             ),

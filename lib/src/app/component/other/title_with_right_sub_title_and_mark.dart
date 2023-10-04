@@ -6,7 +6,6 @@ import 'package:product_detail/src/app/const/app_text_style.dart';
 /// [SingleSectionRadioButton],[MultiSectionCheckBox] ..vs kullanılan başlık
 /// [title] başlık
 /// [subTitle] başlığın alt kısmında cıkan altBaşlık
-/// [showMark] başlık sağ kısmında gösterilen [turkcellYellow] renginde işaret. [SingleSectionRadioButton],[MultiSectionCheckBox] ..vs tarafından item seçildimi diye gösteren bi işaret
 class TitleWithRightSubTitleAndMark extends StatelessWidget {
   final String? subTitle;
   final String title;
@@ -53,9 +52,9 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Divider(
+                Divider(
                   height: paddingM,
-                  color: AppColor.turkcellBlue,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
                 Text(
                   subTitle!,

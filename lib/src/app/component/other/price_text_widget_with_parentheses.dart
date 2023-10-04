@@ -24,8 +24,8 @@ class PriceTextWidgetWithParentheses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _textStyle = textStyle == null
-        ? s16W400Dark(context).copyWith(color: color ?? AppColor.turkcellBlue)
-        : textStyle!.copyWith(color: color ?? AppColor.turkcellBlue);
+        ? s16W400Dark(context).copyWith(color: color ?? Theme.of(context).colorScheme.primary)
+        : textStyle!.copyWith(color: color ?? Theme.of(context).colorScheme.primary);
     var percent = NumberFormat.currency(
       locale: Localizations.localeOf(context).languageCode,
       symbol: '',

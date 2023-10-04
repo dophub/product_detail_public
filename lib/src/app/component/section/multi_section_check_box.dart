@@ -36,7 +36,7 @@ class MultiSectionCheckBox<T extends ISectionsWidgetModel> extends StatelessWidg
       color: Theme.of(context).cardColor,
       shape: showErrorOutline
           ? RoundedRectangleBorder(
-              side: BorderSide(color: AppColor.cardOutlineErrorColor,width: 1),
+              side: BorderSide(color: Theme.of(context).colorScheme.errorContainer,width: 1),
               borderRadius: BorderRadius.circular(radiusXS),
             )
           : null,
