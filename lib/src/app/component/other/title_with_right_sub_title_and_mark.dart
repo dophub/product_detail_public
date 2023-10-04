@@ -17,7 +17,8 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
     Key? key,
     this.subTitle,
     required this.title,
-    this.maxCount, this.titleStyle,
+    this.maxCount,
+    this.titleStyle,
   }) : super(key: key);
 
   @override
@@ -38,11 +39,9 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
                     style: titleStyle ?? s16W400Dark(context),
                     children: <TextSpan>[
                       TextSpan(
-                          text: maxCount != null && maxCount != 0
-                              ? ' (En Fazla: ' + maxCount.toString() + ' Seçim)'
-                              : null,
-                          style:
-                              s14W400Dark(context).copyWith(color: Colors.red)),
+                        text: maxCount != null && maxCount != 0 ? ' (En Fazla: $maxCount Seçim)' : null,
+                        style: s14W400Dark(context).copyWith(color: Colors.red),
+                      ),
                     ],
                   ),
                 ),
@@ -54,7 +53,7 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Divider(
+                const Divider(
                   height: paddingM,
                   color: AppColor.turkcellBlue,
                 ),
@@ -64,7 +63,7 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
                 ),
               ],
             ),
-          ) ,
+          ),
         ],
       ),
     );

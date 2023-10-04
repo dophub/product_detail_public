@@ -70,69 +70,71 @@ class AppLightTheme implements AppTheme {
   );
 
   @override
-  TextTheme textTheme = TextTheme(
-    ///HeadLine
-    headline1: TextStyle(
-      fontSize: 12,
+  TextTheme textTheme = const TextTheme(
+    displayLarge: TextStyle(
+      fontSize: 8,
       fontWeight: FontWeight.w400,
       color: AppColor.darkText,
-      fontFamily: fontFamily,
     ),
-    headline2: TextStyle(
-      fontSize: 13,
-      fontWeight: FontWeight.w700,
-      color: AppColor.darkText,
-      fontFamily: fontFamily,
-    ),
-    headline3: TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w400,
-      color: AppColor.darkText,
-      fontFamily: fontFamily,
-    ),
-    headline4: TextStyle(
-      fontSize: 15,
-      fontWeight: FontWeight.w400,
-      color: AppColor.darkText,
-      fontFamily: fontFamily,
-    ),
-    headline5: TextStyle(
-      fontSize: 20,
-      fontWeight: FontWeight.w400,
-      color: AppColor.darkText,
-      fontFamily: fontFamily,
-    ),
-    headline6: TextStyle(
-      fontSize: 26,
-      fontWeight: FontWeight.w700,
-      color: AppColor.darkText,
-      fontFamily: fontFamily,
-    ),
-
-    ///BodyText
-    bodyText1: TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w400,
-      color: AppColor.darkText,
-      fontFamily: fontFamily,
-    ),
-    bodyText2: TextStyle(
+    displayMedium: TextStyle(
       fontSize: 10,
       fontWeight: FontWeight.w400,
       color: AppColor.darkText,
-      fontFamily: fontFamily,
     ),
-    subtitle1: TextStyle(
+    displaySmall: TextStyle(
+      fontSize: 11,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
+    ),
+    headlineMedium: TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
+    ),
+    headlineSmall: TextStyle(
+      fontSize: 13,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
+    ),
+    titleLarge: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
+    ),
+    titleMedium: TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
+    ),
+    titleSmall: TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
+    ),
+    bodyLarge: TextStyle(
+      fontSize: 22,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
+    ),
+    bodyMedium: TextStyle(
       fontSize: 18,
       fontWeight: FontWeight.w400,
       color: AppColor.darkText,
-      fontFamily: fontFamily,
     ),
-    subtitle2: TextStyle(
-      fontSize: 8,
-      fontWeight: FontWeight.w700,
+    bodySmall: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.w400,
       color: AppColor.darkText,
-      fontFamily: fontFamily,
+    ),
+    labelLarge: TextStyle(
+      fontSize: 26,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
+    ),
+    labelSmall: TextStyle(
+      fontSize: 28,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
     ),
   );
 
@@ -140,8 +142,7 @@ class AppLightTheme implements AppTheme {
   ElevatedButtonThemeData elevatedButtonTheme = ElevatedButtonThemeData(
     style: ButtonStyle(
       elevation: MaterialStateProperty.all(0),
-      backgroundColor:
-      MaterialStateProperty.all<Color>(AppColor.primaryVariant),
+      backgroundColor: MaterialStateProperty.all<Color>(AppColor.primaryVariant),
       textStyle: MaterialStateProperty.all<TextStyle>(
         TextStyle(
           color: Colors.white,
@@ -217,8 +218,7 @@ class AppLightTheme implements AppTheme {
   TextButtonThemeData textButtonThemeData = TextButtonThemeData(
     style: ButtonStyle(
       backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
-      foregroundColor:
-      MaterialStateProperty.all<Color>(AppColor.primaryVariant),
+      foregroundColor: MaterialStateProperty.all<Color>(AppColor.primaryVariant),
       shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
       overlayColor: MaterialStateProperty.all<Color>(Colors.transparent),
       textStyle: MaterialStateProperty.all<TextStyle>(
@@ -236,10 +236,8 @@ class AppLightTheme implements AppTheme {
   OutlinedButtonThemeData outlinedButtonThemeData = OutlinedButtonThemeData(
     style: ButtonStyle(
       backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
-      side: MaterialStateProperty.all<BorderSide>(
-          const BorderSide(color: AppColor.darkText)),
-      padding: MaterialStateProperty.all<EdgeInsets>(
-          const EdgeInsets.symmetric(vertical: paddingM)),
+      side: MaterialStateProperty.all<BorderSide>(const BorderSide(color: AppColor.darkText)),
+      padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(vertical: paddingM)),
       textStyle: MaterialStateProperty.all<TextStyle>(
         TextStyle(
           color: AppColor.darkText,
