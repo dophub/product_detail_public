@@ -51,34 +51,30 @@ class BottomSheetRadioButtonList<T extends ISectionsWidgetModel> extends Statele
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            SizedBox(
-                              height: radioButtonSize ?? 30,
-                              width: radioButtonSize ?? 30,
-                              child: Padding(
-                                padding: const EdgeInsets.all(paddingXXXS),
-                                child: radioButtonWidget ??
-                                    DecoratedBox(
+                            radioButtonWidget ??
+                                Container(
+                                  height: radioButtonSize ?? 30,
+                                  width: radioButtonSize ?? 30,
+                                  padding: const EdgeInsets.all(paddingXXXS),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      width: 1,
+                                      color: selectedIndex == index
+                                          ? Theme.of(context).colorScheme.onSecondary
+                                          : Theme.of(context).colorScheme.primary,
+                                    ),
+                                  ),
+                                  child: Visibility(
+                                    visible: selectedIndex == index,
+                                    child: Container(
                                       decoration: BoxDecoration(
+                                        color: Theme.of(context).colorScheme.onSecondary,
                                         shape: BoxShape.circle,
-                                        border: Border.all(
-                                          width: 1,
-                                          color: selectedIndex == index
-                                              ? Theme.of(context).colorScheme.onSecondary
-                                              : Theme.of(context).colorScheme.primary,
-                                        ),
-                                      ),
-                                      child: Visibility(
-                                        visible: selectedIndex == index,
-                                        child: DecoratedBox(
-                                          decoration: BoxDecoration(
-                                            color: Theme.of(context).colorScheme.onBackground,
-                                            shape: BoxShape.circle,
-                                          ),
-                                        ),
                                       ),
                                     ),
-                              ),
-                            ),
+                                  ),
+                                ),
                             const SizedBox(width: paddingS),
                             Flexible(
                               child: Padding(
@@ -88,7 +84,7 @@ class BottomSheetRadioButtonList<T extends ISectionsWidgetModel> extends Statele
                                   name: list[index].getName,
                                   textStyle: s16W700Dark(context),
                                   color: selectedIndex == index
-                                      ? Theme.of(context).colorScheme.onBackground
+                                      ? Theme.of(context).colorScheme.onSecondary
                                       : Theme.of(context).colorScheme.primary,
                                 ),
                               ),
