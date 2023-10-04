@@ -167,21 +167,10 @@ class PromotionController extends GetxController {
 
   /// Açılan Bottom Sheet te Promosyon ürünler den ürün seçildğinde çalışan metod.
   /// [sectionIndex] section Id si.
-  /// [selectedIndex] Seçilen ürünün index i
-  void sectionBottomSheetOnChange(int sectionIndex, int selectedIndex) {
-    PromotionMenuDetailModel value = promotionMenuModel;
-
-    /// Tümünü sıfırla
-    for (int i = 0; i < value.sections![sectionIndex].products!.length; i++) {
-      value.sections![sectionIndex].products![i].isSelected = false;
-    }
-
-    /// Seçileni true yap
-    value.sections![sectionIndex].products![selectedIndex].isSelected = true;
-
-    /// Seçilen Sectioni de true yap
-    value.sections![sectionIndex].isSelected = true;
-    promotionMenuModel = value;
+  /// [selectedProductIndex] Seçilen ürünün index i
+  void sectionBottomSheetOnChange(int sectionIndex, int selectedProductIndex) {
+    promotionMenuModel.onSelectedSection(sectionIndex, selectedProductIndex);
+    promotionMenuModel = promotionMenuModel;
     amountUpdate();
   }
 

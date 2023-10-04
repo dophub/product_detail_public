@@ -294,6 +294,22 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
       }
     }
   }
+
+  /// Açılan Bottom Sheet te Promosyon ürünler den ürün seçildğinde çalışan metod.
+  /// [sectionIndex] section Id si.
+  /// [selectedProductIndex] Seçilen ürünün index i
+  void onSelectedSection(int sectionIndex, int selectedProductIndex) {
+    /// Tümünü sıfırla
+    for (int i = 0; i < sections![sectionIndex].products!.length; i++) {
+      sections![sectionIndex].products![i].isSelected = false;
+    }
+
+    /// Seçileni true yap
+    sections![sectionIndex].products![selectedProductIndex].isSelected = true;
+
+    /// Seçilen Sectioni de true yap
+    sections![sectionIndex].isSelected = true;
+  }
 }
 
 extension OptionGroupListExtension on List<OptionGroupModel> {
@@ -494,20 +510,16 @@ extension SectionExtension on SectionModel {
   /// Daha önceden seçilen özelik index i Getirmek için yazıldı.
   /// isSelected alanını kontrol etmekte.
   int? getIndexForSelectedFeatureItem(int featureIndex) {
-    final value = products![getIndexForSelectedProduct()!]
-        .features![featureIndex]
-        .items!
-        .indexWhere((element) => element.isSelected);
+    final value =
+        products![getIndexForSelectedProduct()!].features![featureIndex].items!.getIndexForSelectedFeatureItem();
     return value == -1 ? null : value;
   }
 
   /// Daha önceden seçilen opsiyon index i Getirmek için yazıldı.
   /// isSelected alanını kontrol etmekte.
   int? getIndexForSelectedOption(int optionGroupsIndex) {
-    final value = products![getIndexForSelectedProduct()!]
-        .optionGroups![optionGroupsIndex]
-        .options!
-        .indexWhere((element) => element.isSelected);
+    final value =
+        products![getIndexForSelectedProduct()!].optionGroups![optionGroupsIndex].options!.getIndexForSelectedOption();
     return value == -1 ? null : value;
   }
 
@@ -515,5 +527,23 @@ extension SectionExtension on SectionModel {
   ProductDetailModel? getSelectedProduct() {
     final value = products!.indexWhere((element) => element.isSelected);
     return value == -1 ? null : products![value];
+  }
+}
+
+extension ItemModelExtension on List<ItemModel>? {
+  /// Daha önceden seçilen özelik index i Getirmek için yazıldı.
+  /// isSelected alanını kontrol etmekte.
+  int? getIndexForSelectedFeatureItem() {
+    final value = this?.indexWhere((element) => element.isSelected);
+    return value == -1 ? null : value;
+  }
+}
+
+extension OptionExtension on List<OptionModel>? {
+  /// Daha önceden seçilen opsiyon index i Getirmek için yazıldı.
+  /// isSelected alanını kontrol etmekte.
+  int? getIndexForSelectedOption() {
+    final value = this?.indexWhere((element) => element.isSelected);
+    return value == -1 ? null : value;
   }
 }

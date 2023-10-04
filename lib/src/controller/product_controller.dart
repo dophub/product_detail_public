@@ -237,21 +237,6 @@ class ProductController extends GetxController {
     }
   }
 
-  /// Daha önceden seçilen özelik index i Getirmek için yazıldı.
-  /// isSelected alanını kontrol etmekte.
-  int? getIndexForSelectedFeatureItem(int featureIndex) {
-    final value = productDetailModel.features![featureIndex].items!.indexWhere((element) => element.isSelected);
-    return value == -1 ? null : value;
-  }
-
-  /// Daha önceden seçilen opsiyon index i Getirmek için yazıldı.
-  /// isSelected alanını kontrol etmekte.
-  int? getIndexForSelectedOption(int optionGroupsIndex) {
-    final value =
-        productDetailModel.optionGroups![optionGroupsIndex].options!.indexWhere((element) => element.isSelected);
-    return value == -1 ? null : value;
-  }
-
   /// Note Dialog u kapandığında çalışan Fonk.
   /// Girilen Notu Text Field kontrollune attıyor.
   void onCloseNotDialog(String note) {

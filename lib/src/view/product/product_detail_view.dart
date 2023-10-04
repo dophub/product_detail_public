@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:product_detail/extension.dart';
 import 'package:product_detail/src/app/component/other/note_dialog.dart';
 import 'package:product_detail/src/app/component/section/multi_section_check_box.dart';
 import 'package:product_detail/src/app/component/section/product_decrise_section.dart';
@@ -43,7 +44,8 @@ class ProductDetailView extends StatelessWidget {
                     return SingleSectionRadioButton(
                       title: optionGroup.optionGroupName!,
                       subTitle: optionGroup.description,
-                      selectedIndex: controller.getIndexForSelectedOption(optionGroupsIndex),
+                      selectedIndex: controller.productDetailModel.optionGroups![optionGroupsIndex].options!
+                          .getIndexForSelectedOption(),
                       onTap: (int selectedIndex) => controller.singleOptionSelection(optionGroupsIndex, selectedIndex),
                       list: optionGroup.options!,
                       showErrorOutline: controller.validate && !optionGroup.isSelected && optionGroup.isRequire!,
@@ -67,7 +69,8 @@ class ProductDetailView extends StatelessWidget {
                       subTitle: optionGroup.description,
                       list: optionGroup.options!,
                       hintText: 'Seçiniz',
-                      selectedIndex: controller.getIndexForSelectedOption(optionGroupsIndex),
+                      selectedIndex: controller.productDetailModel.optionGroups![optionGroupsIndex].options!
+                          .getIndexForSelectedOption(),
                       onTap: (int selectedIndex) => controller.singleOptionSelection(optionGroupsIndex, selectedIndex),
                       showErrorOutline: controller.validate && !optionGroup.isSelected && optionGroup.isRequire!,
                     );
@@ -111,7 +114,8 @@ class ProductDetailView extends StatelessWidget {
                     return SingleSectionRadioButton(
                       title: features.featureName!,
                       subTitle: features.description,
-                      selectedIndex: controller.getIndexForSelectedFeatureItem(featureIndex),
+                      selectedIndex:
+                          controller.productDetailModel.features![featureIndex].items!.getIndexForSelectedFeatureItem(),
                       onTap: (int selectedIndex) => controller.singleFeatureSelection(featureIndex, selectedIndex),
                       list: features.items!,
                       showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
@@ -135,7 +139,8 @@ class ProductDetailView extends StatelessWidget {
                       subTitle: features.description!,
                       list: features.items!,
                       hintText: 'Seçiniz',
-                      selectedIndex: controller.getIndexForSelectedFeatureItem(featureIndex),
+                      selectedIndex:
+                          controller.productDetailModel.features![featureIndex].items!.getIndexForSelectedFeatureItem(),
                       onTap: (int selectedIndex) => controller.singleFeatureSelection(featureIndex, selectedIndex),
                       showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
                     );
