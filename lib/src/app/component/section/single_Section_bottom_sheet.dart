@@ -5,7 +5,6 @@ import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
 import 'package:product_detail/src/app/const/app_text_style.dart';
 import 'package:sip_models/widget.dart';
 import '../other/bottom_sheet_hold_and_drag_widget.dart';
-import '../../../app/const/app_colors.dart';
 import '../other/price_text_widget_with_parentheses.dart';
 import 'bottom_sheet_Radio_button_list.dart';
 

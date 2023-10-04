@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
-import 'package:product_detail/src/app/const/app_colors.dart';
 import 'package:product_detail/src/app/const/app_text_style.dart';
 
 /// [SingleSectionRadioButton],[MultiSectionCheckBox] ..vs kullanılan başlık

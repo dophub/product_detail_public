@@ -2,7 +2,6 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:product_detail/src/app/component/other/title_with_right_sub_title_and_mark.dart';
 import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
-import 'package:product_detail/src/app/const/app_colors.dart';
 import 'package:product_detail/src/app/const/app_text_style.dart';
 import 'package:sip_models/widget.dart';
 
@@ -71,7 +70,7 @@ class MultiSectionDecreaseSection<T extends ISectionsWidgetModel> extends Statel
                           color = Theme.of(context).colorScheme.primary;
                           titleTextDecoration = TextDecoration.none;
                         } else {
-                          color = AppColor.darkText;
+                          color = Theme.of(context).colorScheme.onBackground;
                           titleTextDecoration = TextDecoration.lineThrough;
                         }
                         return GestureDetector(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
-import 'package:product_detail/src/app/const/app_colors.dart';
 import 'package:product_detail/src/app/const/app_text_style.dart';
 
 /// section lerde gösterilen 'section Addı (+₺ 5.00)' şeklinde widget
@@ -35,8 +34,8 @@ class PriceTextWidgetWithParentheses extends StatelessWidget {
         ? Text(
             name,
             style: textStyle == null
-                ? s16W400Dark(context).copyWith(color: color ?? AppColor.darkText)
-                : textStyle!.copyWith(color: color ?? AppColor.darkText),
+                ? s16W400Dark(context).copyWith(color: color ?? Theme.of(context).colorScheme.onBackground)
+                : textStyle!.copyWith(color: color ?? Theme.of(context).colorScheme.onBackground),
             maxLines: maxLines,
             overflow: TextOverflow.ellipsis,
           )
@@ -47,8 +46,8 @@ class PriceTextWidgetWithParentheses extends StatelessWidget {
             text: TextSpan(
               text: name,
               style: textStyle == null
-                  ? s16W400Dark(context).copyWith(color: color ?? AppColor.darkText)
-                  : textStyle!.copyWith(color: color ?? AppColor.darkText),
+                  ? s16W400Dark(context).copyWith(color: color ?? Theme.of(context).colorScheme.onBackground)
+                  : textStyle!.copyWith(color: color ?? Theme.of(context).colorScheme.onBackground),
               children: <TextSpan>[
                 TextSpan(
                   text: ' (+',

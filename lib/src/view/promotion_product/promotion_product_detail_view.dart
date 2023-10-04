@@ -4,7 +4,6 @@ import 'package:product_detail/extension.dart';
 import 'package:product_detail/src/app/component/other/note_dialog.dart';
 import 'package:product_detail/src/app/component/section/single_Section_bottom_sheet.dart';
 import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
-import 'package:product_detail/src/app/const/app_colors.dart';
 import 'package:product_detail/src/controller/promotion_controller.dart';
 import 'package:sip_models/response.dart';
 
