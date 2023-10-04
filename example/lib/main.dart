@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
-              onPressed: () => controller.onTapGetProductBtn(context,675,736),
+              onPressed: () => controller.onTapGetProductBtn(context,705,4408),
               child: const Text('Get product Detail'),
             ),
             ElevatedButton(

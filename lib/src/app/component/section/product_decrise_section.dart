@@ -33,8 +33,8 @@ class MultiSectionDecreaseSection<T extends ISectionsWidgetModel> extends Statel
     required this.showErrorOutline,
   }) : super(key: key);
 
-  /// [selected] = true malzeme üründe olsun
-  /// [selected] = false malzeme üründen cıkartıldı
+  /// [selected] = true malzeme üründen cıkartıldı
+  /// [selected] = false malzeme üründe olsun
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class MultiSectionDecreaseSection<T extends ISectionsWidgetModel> extends Statel
       color: Theme.of(context).cardColor,
       shape: showErrorOutline
           ? RoundedRectangleBorder(
-              side: BorderSide(color: AppColor.cardOutlineErrorColor,width: 1),
+              side: BorderSide(color: AppColor.cardOutlineErrorColor, width: 1),
               borderRadius: BorderRadius.circular(radiusXS),
             )
           : null,
@@ -55,7 +55,7 @@ class MultiSectionDecreaseSection<T extends ISectionsWidgetModel> extends Statel
               title: title,
               subTitle: subTitle,
             ),
-            SizedBox(height: paddingM),
+            const SizedBox(height: paddingM),
             Wrap(
               runSpacing: paddingXS,
               spacing: paddingXS,
@@ -63,42 +63,41 @@ class MultiSectionDecreaseSection<T extends ISectionsWidgetModel> extends Statel
               runAlignment: WrapAlignment.start,
               children: list
                   .mapIndexed(
-                    (index, element) => Builder(builder: (context) {
-                      Color borderColor;
-                      Color titleColor;
-                      TextDecoration titleTextDecoration;
-                      if (element.getStatus) {
-                        borderColor = AppColor.paleTextColor;
-                        titleColor = AppColor.paleTextColor;
-                        titleTextDecoration = TextDecoration.none;
-                      } else {
-                        borderColor = AppColor.turkcellBlue;
-                        titleColor = AppColor.darkText;
-                        titleTextDecoration = TextDecoration.lineThrough;
-                      }
-                      return GestureDetector(
-                        onTap: () => onSelect(index),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(radiusXXXS),
-                            border: Border.all(
-                              color: borderColor,
-                              width: 1,
+                    (index, element) => Builder(
+                      builder: (context) {
+                        Color color;
+                        TextDecoration titleTextDecoration;
+                        if (element.getStatus == false) {
+                          color = Theme.of(context).colorScheme.primary;
+                          titleTextDecoration = TextDecoration.none;
+                        } else {
+                          color = AppColor.darkText;
+                          titleTextDecoration = TextDecoration.lineThrough;
+                        }
+                        return GestureDetector(
+                          onTap: () => onSelect(index),
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(radiusXXXS),
+                              border: Border.all(
+                                color: color,
+                                width: 1,
+                              ),
                             ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: paddingXS, vertical: paddingXXS),
-                            child: Text(
-                              element.getName,
-                              style: s16W400Dark(context).copyWith(
-                                color: titleColor,
-                                decoration: titleTextDecoration,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: paddingXS, vertical: paddingXXS),
+                              child: Text(
+                                element.getName,
+                                style: s16W400Dark(context).copyWith(
+                                  color: color,
+                                  decoration: titleTextDecoration,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      );
-                    }),
+                        );
+                      },
+                    ),
                   )
                   .toList(),
             ),
