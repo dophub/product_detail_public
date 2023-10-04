@@ -36,7 +36,7 @@ class MultiSectionCheckBox<T extends ISectionsWidgetModel> extends StatelessWidg
       color: Theme.of(context).cardColor,
       shape: showErrorOutline
           ? RoundedRectangleBorder(
-              side: BorderSide(color: Theme.of(context).colorScheme.errorContainer,width: 1),
+              side: BorderSide(color: Theme.of(context).colorScheme.errorContainer, width: 1),
               borderRadius: BorderRadius.circular(radiusXS),
             )
           : null,
@@ -50,37 +50,39 @@ class MultiSectionCheckBox<T extends ISectionsWidgetModel> extends StatelessWidg
               subTitle: subTitle,
               maxCount: maxSection,
             ),
-            SizedBox(height: paddingM),
+            const SizedBox(height: paddingM),
             Column(
               children: list
-                  .mapIndexed<Widget>((index, element) => GestureDetector(
-                        onTap: () => onSelect(context,!list[index].getStatus, index),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: 20,
-                              width: 20,
-                              child: Checkbox(
-                                side: Theme.of(context).checkboxTheme.side!.copyWith(width: 1),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(radiusXXXXXS),
-                                ),
-                                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                value: list[index].getStatus,
-                                onChanged: (value) => onSelect(context,value, index),
+                  .mapIndexed<Widget>(
+                    (index, element) => GestureDetector(
+                      onTap: () => onSelect(context, !list[index].getStatus, index),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 20,
+                            width: 20,
+                            child: Checkbox(
+                              side: Theme.of(context).checkboxTheme.side!.copyWith(width: 1),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(radiusXXXXXS),
                               ),
+                              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              value: list[index].getStatus,
+                              onChanged: (value) => onSelect(context, value, index),
                             ),
-                            Flexible(
-                              child: Padding(
-                                padding: EdgeInsets.only(left: paddingXS, bottom: paddingM),
-                                child: PriceTextWidgetWithParentheses(
-                                    price: list[index].getPrice, name: list[index].getName),
-                              ),
+                          ),
+                          Flexible(
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: paddingXS, bottom: paddingM),
+                              child: PriceTextWidgetWithParentheses(
+                                  price: list[index].getPrice, name: list[index].getName),
                             ),
-                          ],
-                        ),
-                      ))
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
                   .toList(),
             )
           ],
@@ -89,7 +91,7 @@ class MultiSectionCheckBox<T extends ISectionsWidgetModel> extends StatelessWidg
     );
   }
 
-  void onSelect(BuildContext context,bool? value, int index) {
+  void onSelect(BuildContext context, bool? value, int index) {
     if (value != null) {
       /// Eğer Max seçim girilmemiş ise
       if (maxSection == null || maxSection == 0 || !value) {

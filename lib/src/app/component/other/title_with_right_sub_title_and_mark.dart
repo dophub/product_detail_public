@@ -39,7 +39,7 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
                     children: <TextSpan>[
                       TextSpan(
                         text: maxCount != null && maxCount != 0 ? ' (En Fazla: $maxCount Seçim)' : null,
-                        style: s14W400Dark(context).copyWith(color: Colors.red),
+                        style: s14W400Dark(context).copyWith(color: Theme.of(context).colorScheme.errorContainer),
                       ),
                     ],
                   ),
