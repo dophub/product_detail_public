@@ -13,6 +13,7 @@ dependencies:
   flutter_svg: any
   connectivity: any
   intl: any
+  collection: any
 
   sip_models:
     git:

@@ -39,11 +39,11 @@ class NoteDialog {
             SizedBox(
               width: MediaQuery.of(context).size.height,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: paddingM),
+                padding: const EdgeInsets.symmetric(horizontal: paddingM),
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(height: paddingM),
+                      const SizedBox(height: paddingM),
                       TextFormField(
                         controller: _cNote,
                         autofocus: true,
@@ -73,7 +73,7 @@ class NoteDialog {
                                 txt: 'Kapat',
                               ),
                             ),
-                            SizedBox(width: paddingM),
+                            const SizedBox(width: paddingM),
                             Expanded(
                               child: AppButton(
                                 padding: EdgeInsets.zero,
@@ -88,7 +88,7 @@ class NoteDialog {
                           ],
                         ),
                       ),
-                      SizedBox(height: paddingS),
+                      const SizedBox(height: paddingS),
                     ],
                   ),
                 ),

@@ -27,7 +27,7 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: padding ??
-          EdgeInsets.only(
+          const EdgeInsets.only(
             left: paddingM,
             right: paddingM,
             bottom: paddingM,
@@ -36,7 +36,7 @@ class AppButton extends StatelessWidget {
         onPressed: onTap,
         style: style,
         child: Padding(
-          padding: buttonPadding ?? EdgeInsets.symmetric(vertical: paddingM),
+          padding: buttonPadding ?? const EdgeInsets.symmetric(vertical: paddingM),
           child: widget ??
               Text(
                 txt!,

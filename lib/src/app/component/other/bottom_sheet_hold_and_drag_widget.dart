@@ -11,8 +11,9 @@ class BottomSheetHoldAndDragWidget extends StatelessWidget {
         width: 50.0,
         height: 4.0,
         decoration: BoxDecoration(
-            color: Colors.grey.shade400,
-            borderRadius: BorderRadius.all(Radius.circular(5.0))),
+          color: Colors.grey.shade400,
+          borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+        ),
       ),
     );
   }
