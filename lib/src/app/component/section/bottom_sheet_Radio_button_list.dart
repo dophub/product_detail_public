@@ -8,7 +8,7 @@ import '../other/price_text_widget_with_parentheses.dart';
 
 /// Radio Button Liste
 /// [selectedIndex] seçilen index
-class BottomSheetRadioButtonList<T extends ISectionsWidgetModel> extends StatelessWidget {
+class BottomSheetRadioButtonList<T extends ISectionsWidgetModel> extends StatefulWidget {
   final Widget? radioButtonWidget;
   final void Function(int) onTap;
   final List<T> list;
@@ -16,61 +16,90 @@ class BottomSheetRadioButtonList<T extends ISectionsWidgetModel> extends Statele
   final double? radioButtonSize;
 
   const BottomSheetRadioButtonList({
-    Key? key,
+    super.key,
     required this.onTap,
     required this.list,
     required this.selectedIndex,
     this.radioButtonSize,
     this.radioButtonWidget,
-  }) : super(key: key);
+  });
+
+  @override
+  State<BottomSheetRadioButtonList<T>> createState() => _BottomSheetRadioButtonListState<T>();
+}
+
+class _BottomSheetRadioButtonListState<T extends ISectionsWidgetModel> extends State<BottomSheetRadioButtonList<T>> {
+  int? selectedIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedIndex = widget.selectedIndex;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: list.mapIndexed<Widget>(
+      children: widget.list.mapIndexed<Widget>(
         (index, element) {
-          final color = selectedIndex == index ? Theme.of(context).colorScheme.onSecondary : Theme.of(context).colorScheme.primary;
+          final Color cardColor;
+          final Color onCardColor;
+          final Color borderColor;
+          final bool showCheckBoxBorder;
+          if (selectedIndex == index) {
+            cardColor = Theme.of(context).colorScheme.secondary;
+            onCardColor = Theme.of(context).colorScheme.onSecondary;
+            borderColor = Theme.of(context).colorScheme.secondary;
+            showCheckBoxBorder = true;
+          } else {
+            cardColor = Colors.transparent;
+            onCardColor = Theme.of(context).colorScheme.primary;
+            borderColor = Theme.of(context).colorScheme.primary;
+            showCheckBoxBorder = false;
+          }
           return GestureDetector(
             onTap: () => onSelect(index),
             child: Material(
               color: Colors.transparent,
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: paddingXS),
-                child: Container(
+                child: DecoratedBox(
                   decoration: BoxDecoration(
-                    color: selectedIndex == index ? Theme.of(context).colorScheme.secondary : Colors.transparent,
+                    color: cardColor,
                     borderRadius: BorderRadius.circular(radiusXS),
-                    border: selectedIndex == index
-                        ? null
-                        : Border.all(
-                            width: 1,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
+                    border: Border.all(
+                      width: 1,
+                      color: borderColor,
+                    ),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(paddingS),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        radioButtonWidget ??
-                            Container(
-                              height: radioButtonSize ?? 30,
-                              width: radioButtonSize ?? 30,
-                              padding: const EdgeInsets.all(paddingXXXS),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  width: 1,
-                                  color: color,
+                        widget.radioButtonWidget ??
+                            SizedBox(
+                              height: widget.radioButtonSize ?? 30,
+                              width: widget.radioButtonSize ?? 30,
+                              child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    width: 1,
+                                    color: onCardColor,
+                                  ),
                                 ),
-                              ),
-                              child: Visibility(
-                                visible: selectedIndex == index,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context).colorScheme.onSecondary,
-                                    shape: BoxShape.circle,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(paddingXXXS),
+                                  child: Visibility(
+                                    visible: showCheckBoxBorder,
+                                    child: DecoratedBox(
+                                      decoration: BoxDecoration(
+                                        color: Theme.of(context).colorScheme.onSecondary,
+                                        shape: BoxShape.circle,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -80,11 +109,11 @@ class BottomSheetRadioButtonList<T extends ISectionsWidgetModel> extends Statele
                           child: Padding(
                             padding: const EdgeInsets.only(left: paddingXS),
                             child: PriceTextWidgetWithParentheses(
-                              price: list[index].getPrice,
-                              name: list[index].getName,
+                              price: widget.list[index].getPrice,
+                              name: widget.list[index].getName,
                               textStyle: s16W700Dark(context),
-                              color: color,
-                              priceColor: color,
+                              color: onCardColor,
+                              priceColor: onCardColor,
                             ),
                           ),
                         ),
@@ -102,7 +131,9 @@ class BottomSheetRadioButtonList<T extends ISectionsWidgetModel> extends Statele
 
   Future<void> onSelect(int? index) async {
     if (index != null) {
-      onTap(index);
+      selectedIndex = index;
+      setState(() {});
+      widget.onTap(index);
     }
   }
 }
