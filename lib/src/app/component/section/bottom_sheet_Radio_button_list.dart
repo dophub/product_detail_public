@@ -28,75 +28,75 @@ class BottomSheetRadioButtonList<T extends ISectionsWidgetModel> extends Statele
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: list
-          .mapIndexed<Widget>((index, element) => GestureDetector(
-                onTap: () => onSelect(index),
-                child: Material(
-                  color: Colors.transparent,
+      children: list.mapIndexed<Widget>(
+        (index, element) {
+          final color = selectedIndex == index ? Theme.of(context).colorScheme.onSecondary : Theme.of(context).colorScheme.primary;
+          return GestureDetector(
+            onTap: () => onSelect(index),
+            child: Material(
+              color: Colors.transparent,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: paddingXS),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: selectedIndex == index ? Theme.of(context).colorScheme.secondary : Colors.transparent,
+                    borderRadius: BorderRadius.circular(radiusXS),
+                    border: selectedIndex == index
+                        ? null
+                        : Border.all(
+                            width: 1,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                  ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: paddingXS),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: selectedIndex == index ? Theme.of(context).colorScheme.secondary : Colors.transparent,
-                        borderRadius: BorderRadius.circular(radiusXS),
-                        border: selectedIndex == index
-                            ? null
-                            : Border.all(
-                                width: 1,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(paddingS),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            radioButtonWidget ??
-                                Container(
-                                  height: radioButtonSize ?? 30,
-                                  width: radioButtonSize ?? 30,
-                                  padding: const EdgeInsets.all(paddingXXXS),
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                      width: 1,
-                                      color: selectedIndex == index
-                                          ? Theme.of(context).colorScheme.onSecondary
-                                          : Theme.of(context).colorScheme.primary,
-                                    ),
-                                  ),
-                                  child: Visibility(
-                                    visible: selectedIndex == index,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Theme.of(context).colorScheme.onSecondary,
-                                        shape: BoxShape.circle,
-                                      ),
-                                    ),
-                                  ),
+                    padding: const EdgeInsets.all(paddingS),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        radioButtonWidget ??
+                            Container(
+                              height: radioButtonSize ?? 30,
+                              width: radioButtonSize ?? 30,
+                              padding: const EdgeInsets.all(paddingXXXS),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  width: 1,
+                                  color: color,
                                 ),
-                            const SizedBox(width: paddingS),
-                            Flexible(
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: paddingXS),
-                                child: PriceTextWidgetWithParentheses(
-                                  price: list[index].getPrice,
-                                  name: list[index].getName,
-                                  textStyle: s16W700Dark(context),
-                                  color: selectedIndex == index
-                                      ? Theme.of(context).colorScheme.onSecondary
-                                      : Theme.of(context).colorScheme.primary,
+                              ),
+                              child: Visibility(
+                                visible: selectedIndex == index,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context).colorScheme.onSecondary,
+                                    shape: BoxShape.circle,
+                                  ),
                                 ),
                               ),
                             ),
-                          ],
+                        const SizedBox(width: paddingS),
+                        Flexible(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: paddingXS),
+                            child: PriceTextWidgetWithParentheses(
+                              price: list[index].getPrice,
+                              name: list[index].getName,
+                              textStyle: s16W700Dark(context),
+                              color: color,
+                              priceColor: color,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
                 ),
-              ))
-          .toList(),
+              ),
+            ),
+          );
+        },
+      ).toList(),
     );
   }
 

@@ -25,6 +25,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
   final int? selectedIndex;
   final String? hintText;
   final Color? selectedCardColor;
+  final Color? selectedOnCardColor;
   final bool showErrorOutline;
 
   const SingleSectionBottomSheet({
@@ -36,15 +37,22 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
     this.selectedIndex,
     this.hintText,
     this.selectedCardColor,
+    this.selectedOnCardColor,
     required this.showErrorOutline,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Color cardColor = Theme.of(context).cardColor;
+    Color onCardColor = Theme.of(context).colorScheme.onBackground;
+    if (selectedIndex != null) {
+      if (selectedCardColor != null) cardColor = selectedCardColor!;
+      if (selectedOnCardColor != null) onCardColor = selectedOnCardColor!;
+    }
     return GestureDetector(
       onTap: () => onSelect(context),
       child: Card(
-        color: selectedIndex != null ? selectedCardColor ?? Theme.of(context).cardColor : Theme.of(context).cardColor,
+        color: cardColor,
         shape: showErrorOutline
             ? RoundedRectangleBorder(
                 side: BorderSide(color: Theme.of(context).colorScheme.errorContainer, width: 1),
@@ -60,7 +68,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
                 padding: const EdgeInsets.only(right: paddingXXS),
                 child: Text(
                   title,
-                  style: s16W400Dark(context),
+                  style: s16W400Dark(context).copyWith(color: onCardColor),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -75,7 +83,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
                           ? Text(
                               'Seçiniz',
                               softWrap: true,
-                              style: s16W700Dark(context),
+                              style: s16W700Dark(context).copyWith(color: onCardColor),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               textWidthBasis: TextWidthBasis.longestLine,
@@ -84,6 +92,8 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
                               price: list[selectedIndex!].getPrice,
                               name: list[selectedIndex!].getName,
                               maxLines: 1,
+                              color: onCardColor,
+                              priceColor: onCardColor,
                             ),
                     ),
                     const SizedBox(width: paddingXXS),
@@ -91,6 +101,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
                       arrowIcon,
                       height: 6,
                       package: 'product_detail',
+                      color: onCardColor,
                     ),
                   ],
                 ),

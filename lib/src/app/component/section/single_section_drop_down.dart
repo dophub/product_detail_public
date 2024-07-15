@@ -58,6 +58,8 @@ class SingleSectionDropDown<T extends ISectionsWidgetModel> extends StatelessWid
                         child: PriceTextWidgetWithParentheses(
                           price: element.getPrice,
                           name: element.getName,
+                          color: Theme.of(context).colorScheme.onBackground,
+                          priceColor: Theme.of(context).colorScheme.primary,
                         ),
                       ),
                     )

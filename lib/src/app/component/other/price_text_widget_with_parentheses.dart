@@ -8,24 +8,26 @@ class PriceTextWidgetWithParentheses extends StatelessWidget {
   final double? price;
   final TextStyle? textStyle;
   final Color? color;
+  final Color? priceColor;
   final String name;
   final int? maxLines;
 
   const PriceTextWidgetWithParentheses({
     Key? key,
     required this.price,
-    this.textStyle,
-    this.color,
+    required this.color,
     required this.name,
+    required this.priceColor,
+    this.textStyle,
     this.maxLines,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _textStyle = textStyle == null
-        ? s16W400Dark(context).copyWith(color: color ?? Theme.of(context).colorScheme.primary)
-        : textStyle!.copyWith(color: color ?? Theme.of(context).colorScheme.primary);
-    var percent = NumberFormat.currency(
+    final _textColor = color ?? Theme.of(context).colorScheme.onBackground;
+    final _priceColor = priceColor ?? Theme.of(context).colorScheme.primary;
+    final _textStyle = textStyle == null ? s16W400Dark(context) : textStyle!;
+    final percent = NumberFormat.currency(
       locale: Localizations.localeOf(context).languageCode,
       symbol: '',
       decimalDigits: 2,
@@ -33,9 +35,7 @@ class PriceTextWidgetWithParentheses extends StatelessWidget {
     return price == null || price == 0
         ? Text(
             name,
-            style: textStyle == null
-                ? s16W400Dark(context).copyWith(color: color ?? Theme.of(context).colorScheme.onBackground)
-                : textStyle!.copyWith(color: color ?? Theme.of(context).colorScheme.onBackground),
+            style: _textStyle.copyWith(color: _textColor),
             maxLines: maxLines,
             overflow: TextOverflow.ellipsis,
           )
@@ -46,20 +46,20 @@ class PriceTextWidgetWithParentheses extends StatelessWidget {
             text: TextSpan(
               text: name,
               style: textStyle == null
-                  ? s16W400Dark(context).copyWith(color: color ?? Theme.of(context).colorScheme.onBackground)
-                  : textStyle!.copyWith(color: color ?? Theme.of(context).colorScheme.onBackground),
+                  ? s16W400Dark(context).copyWith(color: _textColor)
+                  : textStyle!.copyWith(color: _textColor),
               children: <TextSpan>[
                 TextSpan(
                   text: ' (+',
-                  style: _textStyle,
+                  style: _textStyle.copyWith(color: _priceColor),
                 ),
                 TextSpan(
                   text: priceUnit,
-                  style: _textStyle.copyWith(fontFamily: ''),
+                  style: _textStyle.copyWith(fontFamily: '', color: _priceColor),
                 ),
                 TextSpan(
                   text: '${percent.format(price!)})',
-                  style: _textStyle,
+                  style: _textStyle.copyWith(color: _priceColor),
                 ),
               ],
             ),

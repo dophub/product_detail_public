@@ -50,6 +50,7 @@ class PromotionProductDetailView extends StatelessWidget {
                             onTap: (int selectedIndex) =>
                                 controller.sectionBottomSheetOnChange(sectionIndex, selectedIndex),
                             selectedCardColor: Theme.of(context).colorScheme.secondary,
+                            selectedOnCardColor: Theme.of(context).colorScheme.onSecondary,
                             showErrorOutline: controller.validate && !sections[sectionIndex].isSelected,
                           ),
                           // Section secilmiş mi

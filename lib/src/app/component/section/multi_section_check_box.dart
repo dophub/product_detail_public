@@ -75,7 +75,11 @@ class MultiSectionCheckBox<T extends ISectionsWidgetModel> extends StatelessWidg
                             child: Padding(
                               padding: const EdgeInsets.only(left: paddingXS, bottom: paddingM),
                               child: PriceTextWidgetWithParentheses(
-                                  price: list[index].getPrice, name: list[index].getName),
+                                price: list[index].getPrice,
+                                name: list[index].getName,
+                                color: Theme.of(context).colorScheme.onBackground,
+                                priceColor: Theme.of(context).colorScheme.primary,
+                              ),
                             ),
                           ),
                         ],

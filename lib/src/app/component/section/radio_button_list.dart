@@ -42,6 +42,8 @@ class RadioButtonList<T extends ISectionsWidgetModel> extends StatelessWidget {
                           child: PriceTextWidgetWithParentheses(
                             price: list[index].getPrice,
                             name: list[index].getName,
+                            color: Theme.of(context).colorScheme.onBackground,
+                            priceColor: Theme.of(context).colorScheme.primary,
                           ),
                         ),
                       ),
