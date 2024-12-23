@@ -141,9 +141,14 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
     item.promotionMenu!.sections = [];
     for (int sectionIndex = 0; sectionIndex < sections!.length; sectionIndex++) {
       /// Sectionlar zorunlu seçmelidir
-      if (sections![sectionIndex].isSelected == false && sections![sectionIndex].chooseRequired != false) {
-        throw -1;
+      if (sections![sectionIndex].isSelected == false) {
+        if (sections![sectionIndex].chooseRequired != false) {
+          throw -1;
+        } else {
+          continue;
+        }
       }
+
       item.promotionMenu!.sections!.add(
         Section(
           sectionId: sections![sectionIndex].id,
