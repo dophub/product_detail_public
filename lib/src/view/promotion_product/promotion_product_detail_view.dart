@@ -51,7 +51,7 @@ class PromotionProductDetailView extends StatelessWidget {
                                 controller.sectionBottomSheetOnChange(sectionIndex, selectedIndex),
                             selectedCardColor: Theme.of(context).colorScheme.secondary,
                             selectedOnCardColor: Theme.of(context).colorScheme.onSecondary,
-                            showErrorOutline: controller.validate && !sections[sectionIndex].isSelected,
+                            showErrorOutline: controller.validate && !sections[sectionIndex].isSelected && sections[sectionIndex].chooseRequired != false,
                           ),
                           // Section secilmiş mi
                           sections[sectionIndex].isSelected
