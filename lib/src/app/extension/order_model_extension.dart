@@ -140,9 +140,8 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
     item.promotionMenu!.promotionName = promotionMenuName;
     item.promotionMenu!.sections = [];
     for (int sectionIndex = 0; sectionIndex < sections!.length; sectionIndex++) {
-      /// TODO Yeni Eklendi
       /// Sectionlar zorunlu seçmelidir
-      if (sections![sectionIndex].isSelected == false) {
+      if (sections![sectionIndex].isSelected == false && sections![sectionIndex].chooseRequired != false) {
         throw -1;
       }
       item.promotionMenu!.sections!.add(

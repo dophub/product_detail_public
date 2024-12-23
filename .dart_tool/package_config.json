@@ -3,9 +3,9 @@
   "packages": [
     {
       "name": "args",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/args-2.5.0",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/args-2.6.0",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.3"
     },
     {
       "name": "async",
@@ -15,9 +15,9 @@
     },
     {
       "name": "background_json_parser",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/background_json_parser-1.0.4",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/background_json_parser-1.0.5",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.4"
     },
     {
       "name": "boolean_selector",
@@ -81,15 +81,15 @@
     },
     {
       "name": "flutter_lints",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/flutter_lints-4.0.0",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/flutter_lints-5.0.0",
       "packageUri": "lib/",
-      "languageVersion": "3.1"
+      "languageVersion": "3.5"
     },
     {
       "name": "flutter_svg",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/flutter_svg-2.0.10+1",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/flutter_svg-2.0.16",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.4"
     },
     {
       "name": "flutter_test",
@@ -111,7 +111,7 @@
     },
     {
       "name": "http",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/http-1.2.1",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/http-1.2.2",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -123,19 +123,19 @@
     },
     {
       "name": "intl",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/intl-0.19.0",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/intl-0.20.1",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.3"
     },
     {
       "name": "leak_tracker",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/leak_tracker-10.0.4",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/leak_tracker-10.0.5",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "leak_tracker_flutter_testing",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.3",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.5",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -147,9 +147,9 @@
     },
     {
       "name": "lints",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/lints-4.0.0",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/lints-5.0.0",
       "packageUri": "lib/",
-      "languageVersion": "3.1"
+      "languageVersion": "3.5"
     },
     {
       "name": "matcher",
@@ -159,13 +159,13 @@
     },
     {
       "name": "material_color_utilities",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/material_color_utilities-0.8.0",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/material_color_utilities-0.11.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "meta",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/meta-1.12.0",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/meta-1.15.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -177,9 +177,9 @@
     },
     {
       "name": "path_parsing",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/path_parsing-1.0.1",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/path_parsing-1.1.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.3"
     },
     {
       "name": "petitparser",
@@ -195,9 +195,9 @@
     },
     {
       "name": "sip_models",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/git/sip-models-76a37183a8e250bf42eb7b679ed056d515a1d6fc/",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/git/sip-models-8b12cc7b3a3ac88110e94a05fb0f6dd98359ee40/",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.0"
     },
     {
       "name": "sky_engine",
@@ -237,33 +237,33 @@
     },
     {
       "name": "test_api",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/test_api-0.7.0",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/test_api-0.7.2",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.2"
     },
     {
       "name": "typed_data",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/typed_data-1.3.2",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/typed_data-1.4.0",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.5"
     },
     {
       "name": "vector_graphics",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/vector_graphics-1.1.11+1",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/vector_graphics-1.1.15",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.4"
     },
     {
       "name": "vector_graphics_codec",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/vector_graphics_codec-1.1.11+1",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/vector_graphics_codec-1.1.12",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.4"
     },
     {
       "name": "vector_graphics_compiler",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/vector_graphics_compiler-1.1.11+1",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/vector_graphics_compiler-1.1.16",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.4"
     },
     {
       "name": "vector_math",
@@ -273,15 +273,15 @@
     },
     {
       "name": "vm_service",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/vm_service-14.2.1",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/vm_service-14.2.5",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "web",
-      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/web-0.5.1",
+      "rootUri": "file:///Users/mustafaturkmen/.pub-cache/hosted/pub.dev/web-1.1.0",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "3.4"
     },
     {
       "name": "xml",
@@ -296,10 +296,10 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2024-07-15T14:03:29.852815Z",
+  "generated": "2024-12-23T13:07:44.701349Z",
   "generator": "pub",
-  "generatorVersion": "3.4.1",
+  "generatorVersion": "3.5.4",
   "flutterRoot": "file:///Users/mustafaturkmen/src/flutter",
-  "flutterVersion": "3.22.1",
+  "flutterVersion": "3.24.5",
   "pubCache": "file:///Users/mustafaturkmen/.pub-cache"
 }
