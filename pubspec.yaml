@@ -11,7 +11,7 @@ environment:
 dependencies:
   get: any
   flutter_svg: any
-  connectivity: any
+  connectivity_plus: ^6.1.3
   intl: any
   collection: any
 
