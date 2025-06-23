@@ -165,15 +165,21 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
       int sectionLastIndex = item.promotionMenu!.sections!.length - 1;
       for (int productIndex = 0; productIndex < sections![sectionIndex].products!.length; productIndex++) {
         if (sections![sectionIndex].products![productIndex].isSelected == true) {
-          item.promotionMenu!.sections![sectionLastIndex].sectionItem!.itemId =
-              sections![sectionIndex].products![productIndex].id;
-          item.promotionMenu!.sections![sectionLastIndex].sectionItem!.productName =
-              sections![sectionIndex].products![productIndex].productName;
+          item.promotionMenu!.sections![sectionLastIndex].sectionItem!.itemId = sections![sectionIndex].products![productIndex].id;
+          item.promotionMenu!.sections![sectionLastIndex].sectionItem!.productName = sections![sectionIndex].products![productIndex].productName;
           final List<Options> selectedOptions = [];
-          selectedOptions.addAll(
-              sections![sectionIndex].products![productIndex].optionGroups!.getSelected(newValidation: newValidation));
-          selectedOptions.addAll(
-              sections![sectionIndex].products![productIndex].features!.getSelected(newValidation: newValidation));
+          try {
+            selectedOptions.addAll(
+              sections![sectionIndex].products![productIndex].optionGroups!.getSelected(newValidation: newValidation),
+            );
+            selectedOptions.addAll(
+              sections![sectionIndex].products![productIndex].features!.getSelected(newValidation: newValidation),
+            );
+          } on ProductDetailValidationException catch (_) {
+            throw ProductDetailValidationException(type: ItemType.PROMOTION_MENU, index: sectionIndex);
+          } on int catch (_) {
+            rethrow;
+          }
           item.promotionMenu!.sections![sectionLastIndex].sectionItem!.options = selectedOptions;
         }
       }
