@@ -3,6 +3,8 @@ import 'package:sip_models/enum.dart';
 import 'package:sip_models/request.dart';
 import 'package:sip_models/response.dart';
 
+import '../exception/exception.dart';
+
 extension OrderModelExtension on ProductDetailModel {
   /// Sepete Buttonuna tıklandığında tetiklenen Fon.
   ItemOrder? getBasketModel({
@@ -11,8 +13,9 @@ extension OrderModelExtension on ProductDetailModel {
     required double amount,
     required String note,
     required TimeoutAction timeoutAction,
+    required bool newValidation,
   }) {
-    var item = ItemOrder(id: 0);
+    final item = ItemOrder(id: 0);
 
     /// Yeni ürün olduğuda 0 önceden eklenen ürünü güncelliyorsak order de dönen id yi veriyoruz
     item.id = orderItemId ?? 0;
@@ -27,8 +30,8 @@ extension OrderModelExtension on ProductDetailModel {
     item.product!.itemId = id;
     item.product!.productName = productName;
     final List<Options> selectedOptions = [];
-    selectedOptions.addAll(optionGroups!.getSelected());
-    selectedOptions.addAll(features!.getSelected());
+    selectedOptions.addAll(optionGroups!.getSelected(newValidation: newValidation));
+    selectedOptions.addAll(features!.getSelected(newValidation: newValidation));
     item.product!.options = selectedOptions;
     return item;
   }
@@ -124,6 +127,7 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
     required double amount,
     required String note,
     required TimeoutAction timeoutAction,
+    required bool newValidation,
   }) {
     /// Yeni ürün olduğuda 0 önceden eklenen ürünü güncelliyorsak order de dönen id yi veriyoruz
     final item = ItemOrder(id: 0);
@@ -143,7 +147,9 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
       /// Sectionlar zorunlu seçmelidir
       if (sections![sectionIndex].isSelected == false) {
         if (sections![sectionIndex].chooseRequired != false) {
-          throw -1;
+          throw !newValidation
+              ? -1
+              : ProductDetailValidationException(type: ItemType.PROMOTION_MENU, index: sectionIndex);
         } else {
           continue;
         }
@@ -164,8 +170,10 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
           item.promotionMenu!.sections![sectionLastIndex].sectionItem!.productName =
               sections![sectionIndex].products![productIndex].productName;
           final List<Options> selectedOptions = [];
-          selectedOptions.addAll(sections![sectionIndex].products![productIndex].optionGroups!.getSelected());
-          selectedOptions.addAll(sections![sectionIndex].products![productIndex].features!.getSelected());
+          selectedOptions.addAll(
+              sections![sectionIndex].products![productIndex].optionGroups!.getSelected(newValidation: newValidation));
+          selectedOptions.addAll(
+              sections![sectionIndex].products![productIndex].features!.getSelected(newValidation: newValidation));
           item.promotionMenu!.sections![sectionLastIndex].sectionItem!.options = selectedOptions;
         }
       }
@@ -319,7 +327,7 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
 extension OptionGroupListExtension on List<OptionGroupModel> {
   /// Ürünün seçilen opsiyonlsarını getirmek için yazıldı.
   /// Ürünü sepette eklerken çalışmakta olup [getBasketModel] metodında çağrılmakta.
-  List<Options> getSelected() {
+  List<Options> getSelected({required bool newValidation}) {
     List<Options> options = [];
 
     /// optionGroups
@@ -354,7 +362,7 @@ extension OptionGroupListExtension on List<OptionGroupModel> {
 
       /// TODO Yeni Eklendi
       else if (this[groupIndex].isRequire == true) {
-        throw -1;
+        throw !newValidation ? -1 : ProductDetailValidationException(type: OptionType.OPTION, index: groupIndex);
       }
     }
     return options;
@@ -364,7 +372,7 @@ extension OptionGroupListExtension on List<OptionGroupModel> {
 extension FeatureListExtension on List<FeatureModel> {
   /// Ürünün seçilen opsiyonlsarını getirmek için yazıldı.
   /// Ürünü sepette eklerken çalışmakta olup [getBasketModel] metodında çağrılmakta.
-  List<Options> getSelected() {
+  List<Options> getSelected({required bool newValidation}) {
     List<Options> options = [];
 
     /// feature
@@ -399,7 +407,7 @@ extension FeatureListExtension on List<FeatureModel> {
 
       /// TODO Yeni Eklendi
       else if (this[groupIndex].isRequire == true) {
-        throw -1;
+        throw !newValidation ? -1 : ProductDetailValidationException(type: OptionType.FEATURE, index: groupIndex);
       }
     }
     return options;

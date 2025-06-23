@@ -250,6 +250,7 @@ class PromotionController extends GetxController {
         amount: amount,
         note: cNote.text,
         timeoutAction: timeoutAction,
+        newValidation: false,
       );
       return item;
     } on int catch (_) {
