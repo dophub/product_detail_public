@@ -54,10 +54,10 @@ class MultiSectionDecreaseSection<T extends ISectionsWidgetModel> extends Statel
               title: title,
               subTitle: subTitle,
             ),
-            const SizedBox(height: paddingM),
+            const SizedBox(height: paddingS),
             Wrap(
-              runSpacing: paddingXS,
-              spacing: paddingXS,
+              runSpacing: paddingXXS,
+              spacing: paddingXXS,
               alignment: WrapAlignment.start,
               runAlignment: WrapAlignment.start,
               children: list
@@ -84,7 +84,7 @@ class MultiSectionDecreaseSection<T extends ISectionsWidgetModel> extends Statel
                               ),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: paddingXS, vertical: paddingXXS),
+                              padding: const EdgeInsets.symmetric(horizontal: paddingXXS, vertical: paddingXXXS),
                               child: Text(
                                 element.getName,
                                 style: s16W400Dark(context).copyWith(

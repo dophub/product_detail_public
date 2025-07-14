@@ -31,7 +31,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
       children: [
         /// Product Option
         Padding(
-          padding: EdgeInsets.only(top: optionGroupsList.length == 0 ? 0 : paddingS),
+          padding: EdgeInsets.only(top: optionGroupsList.length == 0 ? 0 : paddingXS),
           child: ListView.separated(
             padding: EdgeInsets.zero,
             shrinkWrap: true,
@@ -96,14 +96,14 @@ class PromotionFeatureAndOption extends StatelessWidget {
               }
             },
             separatorBuilder: (BuildContext context, int index) {
-              return const SizedBox(height: paddingS);
+              return const SizedBox(height: paddingXS);
             },
           ),
         ),
 
         /// Product Features
         Padding(
-          padding: EdgeInsets.only(top: featuresList.length == 0 ? 0 : paddingS),
+          padding: EdgeInsets.only(top: featuresList.length == 0 ? 0 : paddingXS),
           child: ListView.separated(
             shrinkWrap: true,
             padding: EdgeInsets.zero,
@@ -168,7 +168,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
               }
             },
             separatorBuilder: (BuildContext context, int index) {
-              return const SizedBox(height: paddingS);
+              return const SizedBox(height: paddingXS);
             },
           ),
         ),

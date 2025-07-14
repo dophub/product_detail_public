@@ -30,7 +30,7 @@ class ProductDetailView extends StatelessWidget {
           children: [
             /// Product Option
             Padding(
-              padding: EdgeInsets.only(bottom: controller.productDetailModel.optionGroups!.length == 0 ? 0 : paddingS),
+              padding: EdgeInsets.only(bottom: controller.productDetailModel.optionGroups!.length == 0 ? 0 : paddingXS),
               child: ListView.separated(
                 padding: EdgeInsets.zero,
                 shrinkWrap: true,
@@ -93,14 +93,14 @@ class ProductDetailView extends StatelessWidget {
                   }
                 },
                 separatorBuilder: (BuildContext context, int index) {
-                  return const SizedBox(height: paddingS);
+                  return const SizedBox(height: paddingXS);
                 },
               ),
             ),
 
             /// Product Features
             Padding(
-              padding: EdgeInsets.only(bottom: controller.productDetailModel.features!.length == 0 ? 0 : paddingS),
+              padding: EdgeInsets.only(bottom: controller.productDetailModel.features!.length == 0 ? 0 : paddingXS),
               child: ListView.separated(
                 shrinkWrap: true,
                 padding: EdgeInsets.zero,
@@ -163,7 +163,7 @@ class ProductDetailView extends StatelessWidget {
                   }
                 },
                 separatorBuilder: (BuildContext context, int index) {
-                  return const SizedBox(height: paddingS);
+                  return const SizedBox(height: paddingXS);
                 },
               ),
             ),

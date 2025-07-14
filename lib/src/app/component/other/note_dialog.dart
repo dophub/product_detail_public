@@ -88,7 +88,7 @@ class NoteDialog {
                           ],
                         ),
                       ),
-                      const SizedBox(height: paddingS),
+                      const SizedBox(height: paddingXS),
                     ],
                   ),
                 ),

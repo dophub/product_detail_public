@@ -49,7 +49,7 @@ class MultiSectionCheckBox<T extends ISectionsWidgetModel> extends StatelessWidg
               subTitle: subTitle,
               maxCount: maxSection,
             ),
-            const SizedBox(height: paddingM),
+            const SizedBox(height: paddingS),
             Column(
               children: list
                   .mapIndexed<Widget>(
@@ -73,7 +73,7 @@ class MultiSectionCheckBox<T extends ISectionsWidgetModel> extends StatelessWidg
                           ),
                           Flexible(
                             child: Padding(
-                              padding: const EdgeInsets.only(left: paddingXS, bottom: paddingM),
+                              padding: const EdgeInsets.only(left: paddingXXS, bottom: paddingM),
                               child: PriceTextWidgetWithParentheses(
                                 price: list[index].getPrice,
                                 name: list[index].getName,

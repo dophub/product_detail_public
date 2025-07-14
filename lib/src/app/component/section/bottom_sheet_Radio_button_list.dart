@@ -63,7 +63,7 @@ class _BottomSheetRadioButtonListState<T extends ISectionsWidgetModel> extends S
             child: Material(
               color: Colors.transparent,
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: paddingXS),
+                padding: const EdgeInsets.symmetric(vertical: paddingXXS),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     color: cardColor,
@@ -74,7 +74,7 @@ class _BottomSheetRadioButtonListState<T extends ISectionsWidgetModel> extends S
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(paddingS),
+                    padding: const EdgeInsets.all(paddingXS),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -91,7 +91,7 @@ class _BottomSheetRadioButtonListState<T extends ISectionsWidgetModel> extends S
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(paddingXXXS),
+                                  padding: const EdgeInsets.all(paddingXXXXS),
                                   child: Visibility(
                                     visible: showCheckBoxBorder,
                                     child: DecoratedBox(
@@ -104,10 +104,10 @@ class _BottomSheetRadioButtonListState<T extends ISectionsWidgetModel> extends S
                                 ),
                               ),
                             ),
-                        const SizedBox(width: paddingS),
+                        const SizedBox(width: paddingXS),
                         Flexible(
                           child: Padding(
-                            padding: const EdgeInsets.only(left: paddingXS),
+                            padding: const EdgeInsets.only(left: 0),
                             child: PriceTextWidgetWithParentheses(
                               price: widget.list[index].getPrice,
                               name: widget.list[index].getName,

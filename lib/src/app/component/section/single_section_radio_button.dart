@@ -19,14 +19,14 @@ class SingleSectionRadioButton<T extends ISectionsWidgetModel> extends Stateless
   final bool showErrorOutline;
 
   const SingleSectionRadioButton({
-    Key? key,
+    super.key,
     required this.title,
     this.subTitle,
     required this.list,
     required this.onTap,
     required this.selectedIndex,
     required this.showErrorOutline,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class SingleSectionRadioButton<T extends ISectionsWidgetModel> extends Stateless
               title: title,
               subTitle: subTitle,
             ),
-            const SizedBox(height: paddingM),
+            const SizedBox(height: paddingS),
             Align(
               alignment: Alignment.centerLeft,
               child: Center(

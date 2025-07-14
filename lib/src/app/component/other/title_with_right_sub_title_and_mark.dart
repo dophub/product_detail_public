@@ -9,15 +9,13 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
   final String? subTitle;
   final String title;
   final int? maxCount;
-  final TextStyle? titleStyle;
 
   const TitleWithRightSubTitleAndMark({
-    Key? key,
+    super.key,
     this.subTitle,
     required this.title,
     this.maxCount,
-    this.titleStyle,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +32,11 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
                 child: RichText(
                   text: TextSpan(
                     text: title,
-                    style: titleStyle ?? s16W400Dark(context),
+                    style: s14W500Dark(context),
                     children: <TextSpan>[
                       TextSpan(
                         text: maxCount != null && maxCount != 0 ? ' (En Fazla: $maxCount Seçim)' : null,
-                        style: s14W400Dark(context).copyWith(color: Theme.of(context).colorScheme.errorContainer),
+                        style: s12W400Dark(context).copyWith(color: Theme.of(context).colorScheme.errorContainer),
                       ),
                     ],
                   ),
@@ -57,7 +55,7 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
                 ),
                 Text(
                   subTitle!,
-                  style: s14W400Dark(context),
+                  style: s12W400Dark(context),
                 ),
               ],
             ),

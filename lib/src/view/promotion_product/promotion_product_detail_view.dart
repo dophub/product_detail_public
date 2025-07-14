@@ -31,7 +31,7 @@ class PromotionProductDetailView extends StatelessWidget {
             Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: paddingM).copyWith(top: paddingS),
+                  padding: const EdgeInsets.symmetric(horizontal: paddingM).copyWith(top: paddingXS),
                   child: ListView.separated(
                     // Promotion Menü (Section,Option ve Feature)
                     physics: const NeverScrollableScrollPhysics(),
@@ -70,7 +70,7 @@ class PromotionProductDetailView extends StatelessWidget {
                       );
                     },
                     separatorBuilder: (BuildContext context, int index) {
-                      return const SizedBox(height: paddingS);
+                      return const SizedBox(height: paddingXS);
                     },
                   ),
                 ),

@@ -15,33 +15,28 @@ class PriceTextWidget extends StatelessWidget {
 
   const PriceTextWidget(
       {Key? key,
-        required this.price,
-        this.textStyle,
-        this.color,
-        this.withOutDigitNumber = false,
-        this.maxLines, this.symbol})
+      required this.price,
+      this.textStyle,
+      this.color,
+      this.withOutDigitNumber = false,
+      this.maxLines,
+      this.symbol})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var percent = NumberFormat.currency(
-        locale: Localizations.localeOf(context).languageCode,
-        symbol: '',
-        decimalDigits: withOutDigitNumber ? 0 : 2);
+        locale: Localizations.localeOf(context).languageCode, symbol: '', decimalDigits: withOutDigitNumber ? 0 : 2);
     return RichText(
       maxLines: maxLines,
       textAlign: TextAlign.center,
       text: TextSpan(
         text: symbol ?? priceUnit,
-        style: textStyle == null
-            ? s12W700Dark(context).copyWith(fontFamily: '',color: color)
-            : textStyle!.copyWith(fontFamily: '',height: 1),
+        style: textStyle == null ? s12W500Dark(context).copyWith(color: color) : textStyle!.copyWith(height: 1),
         children: <TextSpan>[
           TextSpan(
             text: percent.format(price),
-            style: textStyle == null
-                ? s12W700Dark(context).copyWith(color: color)
-                : textStyle!,
+            style: textStyle == null ? s12W500Dark(context).copyWith(color: color) : textStyle!,
           ),
         ],
       ),

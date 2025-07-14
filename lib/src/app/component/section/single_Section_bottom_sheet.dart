@@ -29,7 +29,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
   final bool showErrorOutline;
 
   const SingleSectionBottomSheet({
-    Key? key,
+    super.key,
     required this.title,
     this.subTitle,
     required this.list,
@@ -39,7 +39,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
     this.selectedCardColor,
     this.selectedOnCardColor,
     required this.showErrorOutline,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -60,15 +60,15 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
               )
             : null,
         child: Padding(
-          padding: const EdgeInsets.all(paddingM),
+          padding: const EdgeInsets.symmetric(horizontal: paddingM,vertical: paddingS),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: paddingXXS),
+                padding: const EdgeInsets.only(right: paddingXXXS),
                 child: Text(
                   title,
-                  style: s16W400Dark(context).copyWith(color: onCardColor),
+                  style: s14W400Dark(context).copyWith(color: onCardColor),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -83,7 +83,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
                           ? Text(
                               'Seçiniz',
                               softWrap: true,
-                              style: s16W700Dark(context).copyWith(color: onCardColor),
+                              style: s14W700Dark(context).copyWith(color: onCardColor),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               textWidthBasis: TextWidthBasis.longestLine,
@@ -96,7 +96,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
                               priceColor: onCardColor,
                             ),
                     ),
-                    const SizedBox(width: paddingXXS),
+                    const SizedBox(width: paddingXXXS),
                     SvgPicture.asset(
                       arrowIcon,
                       height: 6,
@@ -126,51 +126,55 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
       backgroundColor: Theme.of(context).cardTheme.color,
       builder: (BuildContext context) {
         return SafeArea(
-            child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: paddingL, vertical: paddingM),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const BottomSheetHoldAndDragWidget(),
-              const SizedBox(height: paddingM),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: s18W700Dark(context),
-                    ),
-                    subTitle != null && subTitle!.isNotEmpty
-                        ? Padding(
-                            padding: const EdgeInsets.only(top: paddingXS),
-                            child: Text(
-                              subTitle!,
-                              style: s14W400Dark(context),
-                            ),
-                          )
-                        : const SizedBox(),
-                  ],
-                ),
-              ),
-              const SizedBox(height: paddingM),
-              Flexible(
-                child: SingleChildScrollView(
-                  child: BottomSheetRadioButtonList(
-                    selectedIndex: selectedIndex,
-                    list: list,
-                    onTap: (int index) {
-                      onTap(index);
-                      Navigator.pop(context);
-                    },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: paddingL,
+              vertical: paddingM,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const BottomSheetHoldAndDragWidget(),
+                const SizedBox(height: paddingM),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: s16W700Dark(context),
+                      ),
+                      subTitle != null && subTitle!.isNotEmpty
+                          ? Padding(
+                              padding: const EdgeInsets.only(top: paddingXXXXXS),
+                              child: Text(
+                                subTitle!,
+                                style: s14W400Dark(context),
+                              ),
+                            )
+                          : const SizedBox(),
+                    ],
                   ),
                 ),
-              ),
-            ],
+                const SizedBox(height: paddingXXXS),
+                Flexible(
+                  child: SingleChildScrollView(
+                    child: BottomSheetRadioButtonList(
+                      selectedIndex: selectedIndex,
+                      list: list,
+                      onTap: (int index) {
+                        onTap(index);
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ));
+        );
       },
     );
   }

@@ -13,20 +13,20 @@ class PriceTextWidgetWithParentheses extends StatelessWidget {
   final int? maxLines;
 
   const PriceTextWidgetWithParentheses({
-    Key? key,
+    super.key,
     required this.price,
     required this.color,
     required this.name,
     required this.priceColor,
     this.textStyle,
     this.maxLines,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     final _textColor = color ?? Theme.of(context).colorScheme.onBackground;
     final _priceColor = priceColor ?? Theme.of(context).colorScheme.primary;
-    final _textStyle = textStyle == null ? s16W400Dark(context) : textStyle!;
+    final _textStyle = textStyle == null ? s14W400Dark(context) : textStyle!;
     final percent = NumberFormat.currency(
       locale: Localizations.localeOf(context).languageCode,
       symbol: '',
@@ -46,7 +46,7 @@ class PriceTextWidgetWithParentheses extends StatelessWidget {
             text: TextSpan(
               text: name,
               style: textStyle == null
-                  ? s16W400Dark(context).copyWith(color: _textColor)
+                  ? s14W400Dark(context).copyWith(color: _textColor)
                   : textStyle!.copyWith(color: _textColor),
               children: <TextSpan>[
                 TextSpan(

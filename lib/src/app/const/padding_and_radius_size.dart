@@ -2,11 +2,12 @@
 String priceUnit = '₺';
 
 /// Proje içinde kullanılan padding ler
-const double paddingXXXXS = 2;
-const double paddingXXXS = 4;
-const double paddingXXS = 6;
-const double paddingXS = 8;
-const double paddingS = 10;
+const double paddingXXXXXS = 2;
+const double paddingXXXXS = 4;
+const double paddingXXXS = 6;
+const double paddingXXS = 8;
+const double paddingXS = 10;
+const double paddingS = 12;
 const double paddingM = 15;
 const double paddingL = 25;
 const double paddingXL = 30;
