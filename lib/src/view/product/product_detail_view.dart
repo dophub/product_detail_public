@@ -12,14 +12,16 @@ import 'package:product_detail/src/controller/product_controller.dart';
 import 'package:sip_models/enum.dart';
 import 'package:sip_models/response.dart';
 
+import '../../app/i10n/i10n.dart';
+
 /// Ürün detayının View kısmınıdır
 class ProductDetailView extends StatelessWidget {
   final ProductViewController controller;
 
   const ProductDetailView({
-    Key? key,
+    super.key,
     required this.controller,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +70,7 @@ class ProductDetailView extends StatelessWidget {
                       title: optionGroup.optionGroupName!,
                       subTitle: optionGroup.description,
                       list: optionGroup.options!,
-                      hintText: 'Seçiniz',
+                      hintText: AppLocalization.getLabels(context).select,
                       selectedIndex: controller.productDetailModel.optionGroups![optionGroupsIndex].options!
                           .getIndexForSelectedOption(),
                       onTap: (int selectedIndex) => controller.singleOptionSelection(optionGroupsIndex, selectedIndex),
@@ -125,7 +127,7 @@ class ProductDetailView extends StatelessWidget {
                     /// Çoklu Çıkarma
                     return MultiSectionDecreaseSection(
                       title: features.featureName!,
-                      subTitle: '(Lütfen çıkarnak istediğiniz ürünleri seçinniz)',
+                      subTitle: '(${AppLocalization.getLabels(context).selectProductsToRemove})',
                       onTap: (ItemModel obj, int selectedIndex) =>
                           controller.multiDecreaseFeatureSelection(obj.getStatus, featureIndex, selectedIndex),
                       list: features.items!,
@@ -138,7 +140,7 @@ class ProductDetailView extends StatelessWidget {
                       title: features.featureName!,
                       subTitle: features.description!,
                       list: features.items!,
-                      hintText: 'Seçiniz',
+                      hintText: AppLocalization.getLabels(context).select,
                       selectedIndex:
                           controller.productDetailModel.features![featureIndex].items!.getIndexForSelectedFeatureItem(),
                       onTap: (int selectedIndex) => controller.singleFeatureSelection(featureIndex, selectedIndex),
@@ -178,8 +180,10 @@ class ProductDetailView extends StatelessWidget {
                 },
                 child: TextFormField(
                   controller: controller.cNote,
-                  decoration:
-                      InputDecoration(hintText: 'Ürün Notu', fillColor: Theme.of(context).colorScheme.background),
+                  decoration: InputDecoration(
+                    hintText: AppLocalization.getLabels(context).productNote,
+                    fillColor: Theme.of(context).colorScheme.background,
+                  ),
                   textCapitalization: TextCapitalization.sentences,
                   maxLines: 3,
                   enabled: false,

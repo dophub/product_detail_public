@@ -4,6 +4,7 @@ import 'package:product_detail/src/app/const/assets.dart';
 import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
 import 'package:product_detail/src/app/const/app_text_style.dart';
 import 'package:sip_models/widget.dart';
+import '../../i10n/i10n.dart';
 import '../other/bottom_sheet_hold_and_drag_widget.dart';
 import '../other/price_text_widget_with_parentheses.dart';
 import 'bottom_sheet_Radio_button_list.dart';
@@ -60,7 +61,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
               )
             : null,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: paddingM,vertical: paddingS),
+          padding: const EdgeInsets.symmetric(horizontal: paddingM, vertical: paddingS),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -81,7 +82,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
                     Flexible(
                       child: selectedIndex == null
                           ? Text(
-                              'Seçiniz',
+                              AppLocalization.getLabels(context).select,
                               softWrap: true,
                               style: s14W700Dark(context).copyWith(color: onCardColor),
                               maxLines: 1,

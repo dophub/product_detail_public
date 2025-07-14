@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
 import 'package:product_detail/src/app/const/app_text_style.dart';
+import 'package:product_detail/src/app/i10n/i10n.dart';
 
 import 'app_button.dart';
 import 'app_dialog.dart';
@@ -48,7 +49,7 @@ class NoteDialog {
                         controller: _cNote,
                         autofocus: true,
                         decoration: InputDecoration(
-                          hintText: 'Ürün Notu',
+                          hintText: AppLocalization.getLabels(context).productNote,
                           fillColor: Theme.of(context).colorScheme.background,
                         ),
                         textCapitalization: TextCapitalization.sentences,
@@ -70,7 +71,7 @@ class NoteDialog {
                                 padding: EdgeInsets.zero,
                                 buttonPadding: EdgeInsets.zero,
                                 onTap: () => Navigator.of(context, rootNavigator: true).pop(),
-                                txt: 'Kapat',
+                                txt: AppLocalization.getLabels(context).close,
                               ),
                             ),
                             const SizedBox(width: paddingM),
@@ -82,7 +83,7 @@ class NoteDialog {
                                   onClose(_cNote.text.trim());
                                   Navigator.of(context, rootNavigator: true).pop();
                                 },
-                                txt: 'Not Ekle',
+                                txt: AppLocalization.getLabels(context).addNote,
                               ),
                             ),
                           ],

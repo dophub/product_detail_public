@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
 import 'package:product_detail/src/app/const/app_text_style.dart';
 
+import '../../i10n/i10n.dart';
+
 /// [SingleSectionRadioButton],[MultiSectionCheckBox] ..vs kullanılan başlık
 /// [title] başlık
 /// [subTitle] başlığın alt kısmında cıkan altBaşlık
@@ -35,7 +37,9 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
                     style: s14W500Dark(context),
                     children: <TextSpan>[
                       TextSpan(
-                        text: maxCount != null && maxCount != 0 ? ' (En Fazla: $maxCount Seçim)' : null,
+                        text: maxCount != null && maxCount != 0
+                            ? ' ${AppLocalization.getLabels(context).maxSelection(maxCount!)}'
+                            : null,
                         style: s12W400Dark(context).copyWith(color: Theme.of(context).colorScheme.errorContainer),
                       ),
                     ],

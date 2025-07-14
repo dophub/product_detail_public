@@ -4,6 +4,7 @@ import 'package:product_detail/extension.dart';
 import 'package:product_detail/src/app/component/other/note_dialog.dart';
 import 'package:product_detail/src/app/component/section/single_Section_bottom_sheet.dart';
 import 'package:product_detail/src/app/const/padding_and_radius_size.dart';
+import 'package:product_detail/src/app/i10n/i10n.dart';
 import 'package:product_detail/src/controller/promotion_controller.dart';
 import 'package:sip_models/response.dart';
 
@@ -14,9 +15,9 @@ class PromotionProductDetailView extends StatelessWidget {
   final PromotionViewController controller;
 
   const PromotionProductDetailView({
-    Key? key,
+    super.key,
     required this.controller,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -45,13 +46,15 @@ class PromotionProductDetailView extends StatelessWidget {
                           SingleSectionBottomSheet(
                             title: sections[sectionIndex].sectionName!,
                             list: sections[sectionIndex].products!,
-                            hintText: 'Seçiniz',
+                            hintText: AppLocalization.getLabels(context).select,
                             selectedIndex: sections[sectionIndex].getIndexForSelectedProduct(),
                             onTap: (int selectedIndex) =>
                                 controller.sectionBottomSheetOnChange(sectionIndex, selectedIndex),
                             selectedCardColor: Theme.of(context).colorScheme.secondary,
                             selectedOnCardColor: Theme.of(context).colorScheme.onSecondary,
-                            showErrorOutline: controller.validate && !sections[sectionIndex].isSelected && sections[sectionIndex].chooseRequired != false,
+                            showErrorOutline: controller.validate &&
+                                !sections[sectionIndex].isSelected &&
+                                sections[sectionIndex].chooseRequired != false,
                           ),
                           // Section secilmiş mi
                           sections[sectionIndex].isSelected
@@ -87,8 +90,10 @@ class PromotionProductDetailView extends StatelessWidget {
                       },
                       child: TextFormField(
                         controller: controller.cNote,
-                        decoration:
-                            InputDecoration(hintText: 'Ürün Notu', fillColor: Theme.of(context).colorScheme.background),
+                        decoration: InputDecoration(
+                          hintText: AppLocalization.getLabels(context).productNote,
+                          fillColor: Theme.of(context).colorScheme.background,
+                        ),
                         textCapitalization: TextCapitalization.sentences,
                         maxLines: 3,
                         enabled: false,

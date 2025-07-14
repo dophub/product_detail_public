@@ -11,6 +11,8 @@ import 'package:product_detail/src/controller/promotion_controller.dart';
 import 'package:sip_models/enum.dart';
 import 'package:sip_models/response.dart';
 
+import '../../app/i10n/i10n.dart';
+
 /// product optionGroups
 class PromotionFeatureAndOption extends StatelessWidget {
   final List<OptionGroupModel> optionGroupsList;
@@ -18,11 +20,11 @@ class PromotionFeatureAndOption extends StatelessWidget {
   final List<FeatureModel> featuresList;
 
   const PromotionFeatureAndOption({
-    Key? key,
+    super.key,
     required this.optionGroupsList,
     required this.featuresList,
     this.sectionIndex = 0,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +72,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   title: optionGroup.optionGroupName!,
                   subTitle: optionGroup.description,
                   list: optionGroup.options!,
-                  hintText: 'Seçiniz',
+                  hintText: AppLocalization.getLabels(context).select,
                   selectedIndex: controller.promotionMenuModel.sections![sectionIndex]
                       .getIndexForSelectedOption(optionGroupsIndex),
                   onTap: (int selectedIndex) =>
@@ -129,7 +131,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
                 /// Çoklu Çıkarma
                 return MultiSectionDecreaseSection(
                   title: features.featureName!,
-                  subTitle: '(Lütfen çıkarnak istediğiniz ürünleri seçinniz)',
+                  subTitle: '(${AppLocalization.getLabels(context).selectProductsToRemove})',
                   onTap: (ItemModel obj, int selectedIndex) => controller.multiDecreaseFeatureSelection(
                       sectionIndex, obj.getStatus, featureIndex, selectedIndex),
                   list: features.items!,
@@ -142,7 +144,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   title: features.featureName!,
                   subTitle: features.description!,
                   list: features.items!,
-                  hintText: 'Seçiniz',
+                  hintText: AppLocalization.getLabels(context).select,
                   selectedIndex: controller.promotionMenuModel.sections![sectionIndex]
                       .getIndexForSelectedFeatureItem(featureIndex),
                   onTap: (int selectedIndex) =>

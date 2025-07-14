@@ -13,15 +13,15 @@ class PriceTextWidget extends StatelessWidget {
   final int? maxLines;
   final String? symbol;
 
-  const PriceTextWidget(
-      {Key? key,
-      required this.price,
-      this.textStyle,
-      this.color,
-      this.withOutDigitNumber = false,
-      this.maxLines,
-      this.symbol})
-      : super(key: key);
+  const PriceTextWidget({
+    super.key,
+    required this.price,
+    this.textStyle,
+    this.color,
+    this.withOutDigitNumber = false,
+    this.maxLines,
+    this.symbol,
+  });
 
   @override
   Widget build(BuildContext context) {
