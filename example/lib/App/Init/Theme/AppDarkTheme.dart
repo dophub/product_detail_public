@@ -7,41 +7,41 @@ import 'AppTheme.dart';
 
 class AppDarkTheme implements AppTheme {
   @override
-  Brightness brightness = Brightness.dark;
+  Brightness brightness = Brightness.light;
   @override
-  Color backgroundColor = Colors.black;
+  Color backgroundColor = AppColor.background;
   @override
-  Color scaffoldBackgroundColor = Colors.black;
+  Color scaffoldBackgroundColor = AppColor.background;
   @override
-  IconThemeData accentIconTheme = const IconThemeData(color: Colors.black);
+  IconThemeData accentIconTheme = const IconThemeData(color: Colors.white);
   @override
-  IconThemeData primaryIconTheme = const IconThemeData(color: Colors.black);
+  IconThemeData primaryIconTheme = const IconThemeData(color: Colors.white);
   @override
   IconThemeData iconTheme = const IconThemeData(color: Colors.black);
   @override
-  Color cardColor = Colors.black;
+  Color cardColor = AppColor.background;
   @override
-  Color bottomAppBarColor = Colors.black;
+  Color bottomAppBarColor = Colors.white;
   @override
   Color dividerColor = AppColor.lightWhite;
   @override
   Color shadowColor = Colors.black26;
 
   @override
-  ColorScheme colorScheme = const ColorScheme(
+  ColorScheme colorScheme = ColorScheme(
     primary: AppColor.primary,
-    primaryContainer: AppColor.primaryVariant,
-    secondary: Colors.white,
-    secondaryContainer: Colors.white,
-    surface: AppColor.cardColor,
-    background: AppColor.background,
-    error: Colors.red,
     onPrimary: Colors.white,
+    primaryContainer: AppColor.primaryVariant,
+    secondary: AppColor.turkcellYellow,
     onSecondary: AppColor.darkText,
-    onSurface: Colors.white,
-    onBackground: AppColor.paleTextColor,
+    secondaryContainer: AppColor.darkText,
+    surface: Colors.white,
+    onSurface: AppColor.darkText,
+    background: AppColor.background,
+    onBackground: AppColor.darkText,
+    error: Colors.red,
     onError: Colors.white,
-    brightness: Brightness.dark,
+    brightness: Brightness.light,
   );
 
   @override
@@ -64,76 +64,77 @@ class AppDarkTheme implements AppTheme {
   @override
   CardTheme cardTheme = CardTheme(
     elevation: 0,
-    shape:
-    RoundedRectangleBorder(borderRadius: BorderRadius.circular(radiusXS)),
-    color: Colors.black,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radiusXS)),
+    color: AppColor.cardColor,
     margin: EdgeInsets.zero,
   );
 
   @override
-  TextTheme textTheme = TextTheme(
-    ///HeadLine
-    headline1: TextStyle(
-      fontSize: 12,
+  TextTheme textTheme = const TextTheme(
+    displayLarge: TextStyle(
+      fontSize: 8,
       fontWeight: FontWeight.w400,
       color: AppColor.darkText,
-      fontFamily: fontFamily,
     ),
-    headline2: TextStyle(
-      fontSize: 13,
-      fontWeight: FontWeight.w700,
-      color: AppColor.darkText,
-      fontFamily: fontFamily,
-    ),
-    headline3: TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w400,
-      color: AppColor.darkText,
-      fontFamily: fontFamily,
-    ),
-    headline4: TextStyle(
-      fontSize: 15,
-      fontWeight: FontWeight.w400,
-      color: AppColor.darkText,
-      fontFamily: fontFamily,
-    ),
-    headline5: TextStyle(
-      fontSize: 20,
-      fontWeight: FontWeight.w400,
-      color: AppColor.darkText,
-      fontFamily: fontFamily,
-    ),
-    headline6: TextStyle(
-      fontSize: 26,
-      fontWeight: FontWeight.w700,
-      color: AppColor.darkText,
-      fontFamily: fontFamily,
-    ),
-
-    ///BodyText
-    bodyText1: TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w400,
-      color: AppColor.darkText,
-      fontFamily: fontFamily,
-    ),
-    bodyText2: TextStyle(
+    displayMedium: TextStyle(
       fontSize: 10,
       fontWeight: FontWeight.w400,
       color: AppColor.darkText,
-      fontFamily: fontFamily,
     ),
-    subtitle1: TextStyle(
+    displaySmall: TextStyle(
+      fontSize: 11,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
+    ),
+    headlineMedium: TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
+    ),
+    headlineSmall: TextStyle(
+      fontSize: 13,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
+    ),
+    titleLarge: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
+    ),
+    titleMedium: TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
+    ),
+    titleSmall: TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
+    ),
+    bodyLarge: TextStyle(
+      fontSize: 22,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
+    ),
+    bodyMedium: TextStyle(
       fontSize: 18,
       fontWeight: FontWeight.w400,
       color: AppColor.darkText,
-      fontFamily: fontFamily,
     ),
-    subtitle2: TextStyle(
-      fontSize: 8,
-      fontWeight: FontWeight.w700,
+    bodySmall: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.w400,
       color: AppColor.darkText,
-      fontFamily: fontFamily,
+    ),
+    labelLarge: TextStyle(
+      fontSize: 26,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
+    ),
+    labelSmall: TextStyle(
+      fontSize: 28,
+      fontWeight: FontWeight.w400,
+      color: AppColor.darkText,
     ),
   );
 
@@ -141,8 +142,7 @@ class AppDarkTheme implements AppTheme {
   ElevatedButtonThemeData elevatedButtonTheme = ElevatedButtonThemeData(
     style: ButtonStyle(
       elevation: MaterialStateProperty.all(0),
-      backgroundColor:
-      MaterialStateProperty.all<Color>(AppColor.primaryVariant),
+      backgroundColor: MaterialStateProperty.all<Color>(AppColor.primaryVariant),
       textStyle: MaterialStateProperty.all<TextStyle>(
         TextStyle(
           color: Colors.white,
@@ -194,7 +194,7 @@ class AppDarkTheme implements AppTheme {
       ),
     ),
     errorBorder: OutlineInputBorder(
-      borderSide: BorderSide.none,
+      borderSide: const BorderSide(color: Colors.red),
       borderRadius: BorderRadius.circular(
         radiusS,
       ),
@@ -218,8 +218,7 @@ class AppDarkTheme implements AppTheme {
   TextButtonThemeData textButtonThemeData = TextButtonThemeData(
     style: ButtonStyle(
       backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
-      foregroundColor:
-      MaterialStateProperty.all<Color>(AppColor.primaryVariant),
+      foregroundColor: MaterialStateProperty.all<Color>(AppColor.primaryVariant),
       shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
       overlayColor: MaterialStateProperty.all<Color>(Colors.transparent),
       textStyle: MaterialStateProperty.all<TextStyle>(
@@ -237,10 +236,8 @@ class AppDarkTheme implements AppTheme {
   OutlinedButtonThemeData outlinedButtonThemeData = OutlinedButtonThemeData(
     style: ButtonStyle(
       backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
-      side: MaterialStateProperty.all<BorderSide>(
-          const BorderSide(color: AppColor.darkText)),
-      padding: MaterialStateProperty.all<EdgeInsets>(
-          const EdgeInsets.symmetric(vertical: paddingM)),
+      side: MaterialStateProperty.all<BorderSide>(const BorderSide(color: AppColor.darkText)),
+      padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(vertical: paddingM)),
       textStyle: MaterialStateProperty.all<TextStyle>(
         TextStyle(
           color: AppColor.darkText,
@@ -290,8 +287,8 @@ class AppDarkTheme implements AppTheme {
       fontFamily: fontFamily,
     ),
     centerTitle: true,
-    actionsIconTheme: const IconThemeData(color: Colors.black),
-    iconTheme: const IconThemeData(color: Colors.black),
+    actionsIconTheme: const IconThemeData(color: Colors.white),
+    iconTheme: const IconThemeData(color: Colors.white),
   );
 
   @override

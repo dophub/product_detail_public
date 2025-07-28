@@ -3,13 +3,11 @@ import 'AppTheme.dart';
 
 ThemeData getTheme<T extends AppTheme>(T theme) => ThemeData(
       colorScheme: theme.colorScheme,
-      backgroundColor: theme.backgroundColor,
       scaffoldBackgroundColor: theme.scaffoldBackgroundColor,
       cardColor: theme.cardColor,
       cardTheme: theme.cardTheme,
       textTheme: theme.textTheme,
       appBarTheme: theme.appBarTheme,
-      bottomAppBarColor: theme.bottomAppBarColor,
       iconTheme: theme.iconTheme,
       brightness: theme.brightness,
       elevatedButtonTheme: theme.elevatedButtonTheme,

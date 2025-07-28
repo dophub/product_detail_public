@@ -38,11 +38,11 @@ class ErrorMessageDialog {
                 contactPadding: const EdgeInsets.symmetric(horizontal: paddingL),
                 onTap: onTap ?? () => Navigator.of(context,rootNavigator: true).maybePop(),
                 txt: buttonText ?? 'Tekrar Dene',
-                textColor: Theme.of(context).textTheme.bodyText1!.color!,
+                textColor: Theme.of(context).textTheme.bodyMedium!.color!,
                 style: Theme.of(context).outlinedButtonTheme.style!.copyWith(
                       side: MaterialStateProperty.all<BorderSide>(
                         BorderSide(
-                          color: Theme.of(context).textTheme.bodyText1!.color!,
+                          color: Theme.of(context).textTheme.bodyMedium!.color!,
                         ),
                       ),
                     ),

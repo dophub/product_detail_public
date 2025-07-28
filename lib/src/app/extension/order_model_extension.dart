@@ -147,9 +147,7 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
       /// Sectionlar zorunlu seçmelidir
       if (sections![sectionIndex].isSelected == false) {
         if (sections![sectionIndex].chooseRequired != false) {
-          throw !newValidation
-              ? -1
-              : ProductDetailValidationException(type: ItemType.PROMOTION_MENU, index: sectionIndex);
+          throw !newValidation ? -1 : ProductDetailValidationException(key: sections![sectionIndex].globalKey);
         } else {
           continue;
         }
@@ -165,8 +163,10 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
       int sectionLastIndex = item.promotionMenu!.sections!.length - 1;
       for (int productIndex = 0; productIndex < sections![sectionIndex].products!.length; productIndex++) {
         if (sections![sectionIndex].products![productIndex].isSelected == true) {
-          item.promotionMenu!.sections![sectionLastIndex].sectionItem!.itemId = sections![sectionIndex].products![productIndex].id;
-          item.promotionMenu!.sections![sectionLastIndex].sectionItem!.productName = sections![sectionIndex].products![productIndex].productName;
+          item.promotionMenu!.sections![sectionLastIndex].sectionItem!.itemId =
+              sections![sectionIndex].products![productIndex].id;
+          item.promotionMenu!.sections![sectionLastIndex].sectionItem!.productName =
+              sections![sectionIndex].products![productIndex].productName;
           final List<Options> selectedOptions = [];
           try {
             selectedOptions.addAll(
@@ -175,8 +175,8 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
             selectedOptions.addAll(
               sections![sectionIndex].products![productIndex].features!.getSelected(newValidation: newValidation),
             );
-          } on ProductDetailValidationException catch (_) {
-            throw ProductDetailValidationException(type: ItemType.PROMOTION_MENU, index: sectionIndex);
+          } on ProductDetailValidationException catch (e) {
+            throw ProductDetailValidationException(key: e.key);
           } on int catch (_) {
             rethrow;
           }
@@ -368,7 +368,7 @@ extension OptionGroupListExtension on List<OptionGroupModel> {
 
       /// TODO Yeni Eklendi
       else if (this[groupIndex].isRequire == true) {
-        throw !newValidation ? -1 : ProductDetailValidationException(type: OptionType.OPTION, index: groupIndex);
+        throw !newValidation ? -1 : ProductDetailValidationException(key: this[groupIndex].globalKey);
       }
     }
     return options;
@@ -413,7 +413,7 @@ extension FeatureListExtension on List<FeatureModel> {
 
       /// TODO Yeni Eklendi
       else if (this[groupIndex].isRequire == true) {
-        throw !newValidation ? -1 : ProductDetailValidationException(type: OptionType.FEATURE, index: groupIndex);
+        throw !newValidation ? -1 : ProductDetailValidationException(key: this[groupIndex].globalKey);
       }
     }
     return options;
