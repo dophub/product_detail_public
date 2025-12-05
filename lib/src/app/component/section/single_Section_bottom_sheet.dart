@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:product_detail/src/app/const/assets.dart';
@@ -115,68 +116,106 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
   }
 
   Future onSelect(BuildContext context) {
-    return showModalBottomSheet(
-      context: context,
-      isScrollControlled: false,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(radiusXL),
+    final screenSize = MediaQuery.of(context).size;
+
+    final w = LayoutBuilder(builder: (BuildContext context, constraints) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: paddingL,
+          vertical: paddingM,
+        ).copyWith(top: 0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: s16W700Dark(context),
+                  ),
+                  subTitle != null && subTitle!.isNotEmpty
+                      ? Padding(
+                          padding: const EdgeInsets.only(top: paddingXXXXXS),
+                          child: Text(
+                            subTitle!,
+                            style: s14W400Dark(context),
+                          ),
+                        )
+                      : const SizedBox(),
+                ],
+              ),
+            ),
+            const SizedBox(height: paddingXXXS),
+            Flexible(
+              child: SingleChildScrollView(
+                child: BottomSheetRadioButtonList(
+                  selectedIndex: selectedIndex,
+                  list: list,
+                  onTap: (int index) {
+                    onTap(index);
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
-      ),
-      constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height / 2),
-      backgroundColor: Theme.of(context).cardTheme.color,
-      builder: (BuildContext context) {
-        return SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: paddingL,
-              vertical: paddingM,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const BottomSheetHoldAndDragWidget(),
-                const SizedBox(height: paddingM),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style: s16W700Dark(context),
-                      ),
-                      subTitle != null && subTitle!.isNotEmpty
-                          ? Padding(
-                              padding: const EdgeInsets.only(top: paddingXXXXXS),
-                              child: Text(
-                                subTitle!,
-                                style: s14W400Dark(context),
-                              ),
-                            )
-                          : const SizedBox(),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: paddingXXXS),
-                Flexible(
-                  child: SingleChildScrollView(
-                    child: BottomSheetRadioButtonList(
-                      selectedIndex: selectedIndex,
-                      list: list,
-                      onTap: (int index) {
-                        onTap(index);
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ),
-                ),
-              ],
-            ),
+      );
+    });
+
+    if (screenSize.width < 600) {
+      return showModalBottomSheet(
+        context: context,
+        isScrollControlled: false,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(radiusXL),
           ),
-        );
-      },
-    );
+        ),
+        backgroundColor: Theme.of(context).cardTheme.color,
+        builder: (BuildContext context) {
+          return SafeArea(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: screenSize.width, maxHeight: screenSize.height / 2),
+              child: Column(
+                children: [
+                  const SizedBox(height: paddingM),
+                  const BottomSheetHoldAndDragWidget(),
+                  const SizedBox(height: paddingM),
+                  w,
+                ],
+              ),
+            ),
+          );
+        },
+      );
+    } else {
+      return showDialog(
+        barrierDismissible: true,
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: MediaQuery.of(context).orientation == Orientation.portrait
+                    ? screenSize.width
+                    : screenSize.width / 2,
+                maxHeight: MediaQuery.of(context).orientation == Orientation.portrait
+                    ? screenSize.width
+                    : screenSize.width / 2,
+              ),
+              child: Padding(
+                padding: EdgeInsets.only(top: paddingM),
+                child: w,
+              ),
+            ),
+          );
+        },
+      );
+    }
   }
 }
