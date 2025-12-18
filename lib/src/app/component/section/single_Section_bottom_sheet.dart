@@ -186,7 +186,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
                   const SizedBox(height: paddingM),
                   const BottomSheetHoldAndDragWidget(),
                   const SizedBox(height: paddingM),
-                  w,
+                  Expanded(child: w),
                 ],
               ),
             ),
