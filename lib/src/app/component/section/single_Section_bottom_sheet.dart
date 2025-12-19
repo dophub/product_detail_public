@@ -132,6 +132,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     title,
@@ -182,6 +183,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
             child: ConstrainedBox(
               constraints: BoxConstraints(maxWidth: screenSize.width, maxHeight: screenSize.height / 2),
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   const SizedBox(height: paddingM),
                   const BottomSheetHoldAndDragWidget(),
