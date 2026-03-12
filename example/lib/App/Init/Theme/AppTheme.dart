@@ -14,7 +14,7 @@ abstract class AppTheme {
   late final Color dividerColor;
   late final ColorScheme colorScheme;
   late final ColorScheme buttonColorScheme;
-  late final CardTheme cardTheme;
+  late final CardThemeData cardTheme;
   late final TextTheme textTheme;
   late final ElevatedButtonThemeData elevatedButtonTheme;
   late final InputDecorationTheme inputDecorationTheme;

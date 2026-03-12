@@ -70,7 +70,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
                 padding: const EdgeInsets.only(right: paddingXXXS),
                 child: Text(
                   title,
-                  style: s14W400Dark(context).copyWith(color: onCardColor),
+                  style: s13W400Dark(context).copyWith(color: onCardColor),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -85,7 +85,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
                           ? Text(
                               AppLocalization.getLabels(context).select,
                               softWrap: true,
-                              style: s14W700Dark(context).copyWith(color: onCardColor),
+                              style: s13W600Dark(context).copyWith(color: onCardColor),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               textWidthBasis: TextWidthBasis.longestLine,
@@ -136,7 +136,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
                 children: [
                   Text(
                     title,
-                    style: s16W700Dark(context),
+                    style: s16W600Dark(context),
                   ),
                   subTitle != null && subTitle!.isNotEmpty
                       ? Padding(

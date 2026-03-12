@@ -111,7 +111,7 @@ class _BottomSheetRadioButtonListState<T extends ISectionsWidgetModel> extends S
                             child: PriceTextWidgetWithParentheses(
                               price: widget.list[index].getPrice,
                               name: widget.list[index].getName,
-                              textStyle: s16W700Dark(context),
+                              textStyle: s16W600Dark(context),
                               color: onCardColor,
                               priceColor: onCardColor,
                             ),

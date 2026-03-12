@@ -24,13 +24,13 @@ class MultiSectionDecreaseSection<T extends ISectionsWidgetModel> extends Statel
   final bool showErrorOutline;
 
   const MultiSectionDecreaseSection({
-    Key? key,
+    super.key,
     required this.title,
     this.subTitle,
     required this.onTap,
     required this.list,
     required this.showErrorOutline,
-  }) : super(key: key);
+  });
 
   /// [selected] = true malzeme üründen cıkartıldı
   /// [selected] = false malzeme üründe olsun
@@ -87,7 +87,7 @@ class MultiSectionDecreaseSection<T extends ISectionsWidgetModel> extends Statel
                               padding: const EdgeInsets.symmetric(horizontal: paddingXXS, vertical: paddingXXXS),
                               child: Text(
                                 element.getName,
-                                style: s16W400Dark(context).copyWith(
+                                style: s12W400Dark(context).copyWith(
                                   color: color,
                                   decoration: titleTextDecoration,
                                 ),

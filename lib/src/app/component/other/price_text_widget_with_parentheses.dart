@@ -24,14 +24,16 @@ class PriceTextWidgetWithParentheses extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _textColor = color ?? Theme.of(context).colorScheme.onBackground;
-    final _priceColor = priceColor ?? Theme.of(context).colorScheme.primary;
-    final _textStyle = textStyle == null ? s14W400Dark(context) : textStyle!;
+    final theme = Theme.of(context);
+    final _textColor = color ?? theme.colorScheme.onBackground;
+    final _priceColor = priceColor ?? theme.colorScheme.primary;
+    final _textStyle = textStyle ?? s13W400Dark(context);
     final percent = NumberFormat.currency(
       locale: Localizations.localeOf(context).languageCode,
       symbol: '',
       decimalDigits: 2,
     );
+
     return price == null || price == 0
         ? Text(
             name,
@@ -45,20 +47,10 @@ class PriceTextWidgetWithParentheses extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             text: TextSpan(
               text: name,
-              style: textStyle == null
-                  ? s14W400Dark(context).copyWith(color: _textColor)
-                  : textStyle!.copyWith(color: _textColor),
+              style: _textStyle.copyWith(color: _textColor),
               children: <TextSpan>[
                 TextSpan(
-                  text: ' (+',
-                  style: _textStyle.copyWith(color: _priceColor),
-                ),
-                TextSpan(
-                  text: priceUnit,
-                  style: _textStyle.copyWith(fontFamily: '', color: _priceColor),
-                ),
-                TextSpan(
-                  text: '${percent.format(price!)})',
+                  text: ' (+$priceUnit${percent.format(price!)})',
                   style: _textStyle.copyWith(color: _priceColor),
                 ),
               ],

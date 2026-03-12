@@ -62,7 +62,7 @@ class AppLightTheme implements AppTheme {
   );
 
   @override
-  CardTheme cardTheme = CardTheme(
+  CardThemeData cardTheme = CardThemeData(
     elevation: 0,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radiusXS)),
     color: AppColor.cardColor,
