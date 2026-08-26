@@ -31,34 +31,37 @@ class RadioButtonList<T extends ISectionsWidgetModel> extends StatelessWidget {
                 highlightColor: Colors.transparent,
                 splashColor: Colors.transparent,
                 onTap: () => onSelect(index),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 20,
-                      width: 20,
-                      child: Radio(
-                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        value: index,
-                        groupValue: selectedIndex,
-                        onChanged: onSelect,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: paddingM),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 20,
+                        width: 20,
+                        child: Radio(
+                          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          value: index,
+                          groupValue: selectedIndex,
+                          onChanged: onSelect,
+                        ),
                       ),
-                    ),
-                    Flexible(
-                      child: Material(
-                        color: Colors.transparent,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: paddingXXS, bottom: paddingM),
-                          child: PriceTextWidgetWithParentheses(
-                            price: list[index].getPrice,
-                            name: list[index].getName,
-                            color: colorScheme.onBackground,
-                            priceColor: colorScheme.primary,
+                      Flexible(
+                        child: Material(
+                          color: Colors.transparent,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: paddingXXS, top: paddingXXXXXS),
+                            child: PriceTextWidgetWithParentheses(
+                              price: list[index].getPrice,
+                              name: list[index].getName,
+                              color: colorScheme.onBackground,
+                              priceColor: colorScheme.primary,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ))
           .toList(),

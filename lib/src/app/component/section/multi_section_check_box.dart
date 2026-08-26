@@ -60,34 +60,37 @@ class MultiSectionCheckBox<T extends ISectionsWidgetModel> extends StatelessWidg
                       highlightColor: Colors.transparent,
                       splashColor: Colors.transparent,
                       onTap: () => onSelect(context, !list[index].getStatus, index),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 20,
-                            width: 20,
-                            child: Checkbox(
-                              side: theme.checkboxTheme.side!.copyWith(width: 1),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(radiusXXXXXS),
-                              ),
-                              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                              value: list[index].getStatus,
-                              onChanged: (value) => onSelect(context, value, index),
-                            ),
-                          ),
-                          Flexible(
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: paddingXXS, bottom: paddingM),
-                              child: PriceTextWidgetWithParentheses(
-                                price: list[index].getPrice,
-                                name: list[index].getName,
-                                color: theme.colorScheme.onBackground,
-                                priceColor: theme.colorScheme.primary,
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: paddingM),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 20,
+                              width: 20,
+                              child: Checkbox(
+                                side: theme.checkboxTheme.side!.copyWith(width: 1),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(radiusXXXXXS),
+                                ),
+                                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                value: list[index].getStatus,
+                                onChanged: (value) => onSelect(context, value, index),
                               ),
                             ),
-                          ),
-                        ],
+                            Flexible(
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: paddingXXS, top: paddingXXXXXS),
+                                child: PriceTextWidgetWithParentheses(
+                                  price: list[index].getPrice,
+                                  name: list[index].getName,
+                                  color: theme.colorScheme.onBackground,
+                                  priceColor: theme.colorScheme.primary,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   )

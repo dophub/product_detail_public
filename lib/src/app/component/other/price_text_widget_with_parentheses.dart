@@ -11,6 +11,7 @@ class PriceTextWidgetWithParentheses extends StatelessWidget {
   final Color? priceColor;
   final String name;
   final int? maxLines;
+  final TextOverflow overflow;
 
   const PriceTextWidgetWithParentheses({
     super.key,
@@ -20,6 +21,7 @@ class PriceTextWidgetWithParentheses extends StatelessWidget {
     required this.priceColor,
     this.textStyle,
     this.maxLines,
+    this.overflow = TextOverflow.clip,
   });
 
   @override
@@ -39,12 +41,12 @@ class PriceTextWidgetWithParentheses extends StatelessWidget {
             name,
             style: _textStyle.copyWith(color: _textColor),
             maxLines: maxLines,
-            overflow: TextOverflow.ellipsis,
+            overflow: overflow,
           )
         : RichText(
             textAlign: TextAlign.start,
             maxLines: maxLines,
-            overflow: TextOverflow.ellipsis,
+            overflow: overflow,
             text: TextSpan(
               text: name,
               style: _textStyle.copyWith(color: _textColor),

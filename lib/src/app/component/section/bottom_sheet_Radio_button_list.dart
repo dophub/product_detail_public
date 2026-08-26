@@ -111,15 +111,12 @@ class _BottomSheetRadioButtonListState<T extends ISectionsWidgetModel> extends S
                             ),
                         const SizedBox(width: paddingXS),
                         Flexible(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 0),
-                            child: PriceTextWidgetWithParentheses(
-                              price: widget.list[index].getPrice,
-                              name: widget.list[index].getName,
-                              textStyle: s16W600Dark(context),
-                              color: onCardColor,
-                              priceColor: onCardColor,
-                            ),
+                          child: PriceTextWidgetWithParentheses(
+                            price: widget.list[index].getPrice,
+                            name: widget.list[index].getName,
+                            textStyle: s16W600Dark(context),
+                            color: onCardColor,
+                            priceColor: onCardColor,
                           ),
                         ),
                       ],
