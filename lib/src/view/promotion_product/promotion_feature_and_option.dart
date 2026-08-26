@@ -154,7 +154,6 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
                 );
               } else if ( features.addingTypeId == AddingTypeId.SELECT.name && features.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
-                /// Çoklu Ekleme
                 /// Çoklu Seçme
                 return MultiSectionCheckBox(
                   title: features.featureName!,
@@ -167,7 +166,6 @@ class PromotionFeatureAndOption extends StatelessWidget {
                 );
               } else if (features.addingTypeId == AddingTypeId.ADD.name  && features.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
                 /// Çoklu Ekleme
-                /// Çoklu Seçme
                 return MultiSectionCard(
                   title: features.featureName!,
                   subTitle: features.description!,
