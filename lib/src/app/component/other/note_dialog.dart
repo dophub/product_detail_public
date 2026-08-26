@@ -22,7 +22,7 @@ class NoteDialog {
         data: Theme.of(context).copyWith(
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
-              textStyle: MaterialStateProperty.all(
+              textStyle: WidgetStateProperty.all(
                 TextStyle(
                   fontSize: s14W400Dark(context).fontSize,
                   fontWeight: s14W400Dark(context).fontWeight,
@@ -50,7 +50,7 @@ class NoteDialog {
                         autofocus: true,
                         decoration: InputDecoration(
                           hintText: AppLocalization.getLabels(context).productNote,
-                          fillColor: Theme.of(context).colorScheme.background,
+                          fillColor: ColorScheme.of(context).background,
                         ),
                         textCapitalization: TextCapitalization.sentences,
                         maxLines: 3,

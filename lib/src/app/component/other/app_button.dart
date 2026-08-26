@@ -13,7 +13,7 @@ class AppButton extends StatelessWidget {
   final TextStyle? textStyle;
 
   const AppButton({
-    Key? key,
+    super.key,
     required this.onTap,
     this.txt = '',
     this.widget,
@@ -21,7 +21,7 @@ class AppButton extends StatelessWidget {
     this.buttonPadding,
     this.style,
     this.textStyle,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

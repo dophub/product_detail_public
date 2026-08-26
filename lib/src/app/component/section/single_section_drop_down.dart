@@ -31,10 +31,11 @@ class SingleSectionDropDown<T extends ISectionsWidgetModel> extends StatelessWid
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Column(
       children: [
         Card(
-          color: Theme.of(context).cardColor,
+          color: theme.cardColor,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: paddingM),
             child: DropdownButtonHideUnderline(
@@ -48,7 +49,7 @@ class SingleSectionDropDown<T extends ISectionsWidgetModel> extends StatelessWid
                 ),
                 iconSize: 24,
                 elevation: 2,
-                dropdownColor: Theme.of(context).cardTheme.color,
+                dropdownColor: theme.cardTheme.color,
                 style: s16W400Dark(context),
                 onChanged: onSelect,
                 items: list!
@@ -58,8 +59,8 @@ class SingleSectionDropDown<T extends ISectionsWidgetModel> extends StatelessWid
                         child: PriceTextWidgetWithParentheses(
                           price: element.getPrice,
                           name: element.getName,
-                          color: Theme.of(context).colorScheme.onBackground,
-                          priceColor: Theme.of(context).colorScheme.primary,
+                          color: theme.colorScheme.onBackground,
+                          priceColor: theme.colorScheme.primary,
                         ),
                       ),
                     )

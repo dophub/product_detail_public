@@ -30,11 +30,12 @@ class SingleSectionRadioButton<T extends ISectionsWidgetModel> extends Stateless
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Card(
-      color: Theme.of(context).cardColor,
+      color: theme.cardColor,
       shape: showErrorOutline
           ? RoundedRectangleBorder(
-              side: BorderSide(color: Theme.of(context).colorScheme.errorContainer, width: 1),
+              side: BorderSide(color: theme.colorScheme.errorContainer, width: 1),
               borderRadius: BorderRadius.circular(radiusXS),
             )
           : null,

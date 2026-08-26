@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:product_detail/src/app/const/assets.dart';
@@ -45,8 +44,9 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
 
   @override
   Widget build(BuildContext context) {
-    Color cardColor = Theme.of(context).cardColor;
-    Color onCardColor = Theme.of(context).colorScheme.onBackground;
+    final theme = Theme.of(context);
+    Color cardColor = theme.cardColor;
+    Color onCardColor = theme.colorScheme.onBackground;
     if (selectedIndex != null) {
       if (selectedCardColor != null) cardColor = selectedCardColor!;
       if (selectedOnCardColor != null) onCardColor = selectedOnCardColor!;
@@ -57,7 +57,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
         color: cardColor,
         shape: showErrorOutline
             ? RoundedRectangleBorder(
-                side: BorderSide(color: Theme.of(context).colorScheme.errorContainer, width: 1),
+                side: BorderSide(color: theme.colorScheme.errorContainer, width: 1),
                 borderRadius: BorderRadius.circular(radiusXS),
               )
             : null,
@@ -177,7 +177,7 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
             top: Radius.circular(radiusXL),
           ),
         ),
-        backgroundColor: Theme.of(context).cardTheme.color,
+        backgroundColor: CardTheme.of(context).color,
         builder: (BuildContext context) {
           return SafeArea(
             child: ConstrainedBox(

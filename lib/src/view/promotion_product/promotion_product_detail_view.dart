@@ -21,6 +21,7 @@ class PromotionProductDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = ColorScheme.of(context);
     return GetBuilder<PromotionController>(
       id: 'promotionDetailModelUpdate',
       builder: (PromotionController controller) {
@@ -50,8 +51,8 @@ class PromotionProductDetailView extends StatelessWidget {
                             selectedIndex: sections[sectionIndex].getIndexForSelectedProduct(),
                             onTap: (int selectedIndex) =>
                                 controller.sectionBottomSheetOnChange(sectionIndex, selectedIndex),
-                            selectedCardColor: Theme.of(context).colorScheme.secondary,
-                            selectedOnCardColor: Theme.of(context).colorScheme.onSecondary,
+                            selectedCardColor: colorScheme.secondary,
+                            selectedOnCardColor: colorScheme.onSecondary,
                             showErrorOutline: controller.validate &&
                                 !sections[sectionIndex].isSelected &&
                                 sections[sectionIndex].chooseRequired != false,
@@ -92,7 +93,7 @@ class PromotionProductDetailView extends StatelessWidget {
                         controller: controller.cNote,
                         decoration: InputDecoration(
                           hintText: AppLocalization.getLabels(context).productNote,
-                          fillColor: Theme.of(context).colorScheme.background,
+                          fillColor: colorScheme.background,
                         ),
                         textCapitalization: TextCapitalization.sentences,
                         maxLines: 3,

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:product_detail/extension.dart';
@@ -12,6 +11,7 @@ import 'package:product_detail/src/controller/product_controller.dart';
 import 'package:sip_models/enum.dart';
 import 'package:sip_models/response.dart';
 
+import '../../app/component/section/multi_section_card.dart';
 import '../../app/i10n/i10n.dart';
 
 /// Ürün detayının View kısmınıdır
@@ -25,6 +25,7 @@ class ProductDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = ColorScheme.of(context);
     return GetBuilder<ProductController>(
       id: 'productDetailModelUpdate',
       builder: (ProductController controller) {
@@ -52,8 +53,8 @@ class ProductDetailView extends StatelessWidget {
                       list: optionGroup.options!,
                       showErrorOutline: controller.validate && !optionGroup.isSelected && optionGroup.isRequire!,
                     );
-                  } else if (optionGroup.addingTypeId == describeEnum(AddingTypeId.DECREASE) &&
-                      optionGroup.chooseTypeId == describeEnum(ChooseTypeId.MULTIPLE)) {
+                  } else if (optionGroup.addingTypeId == AddingTypeId.DECREASE.name &&
+                      optionGroup.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
                     /// Çoklu Çıkarma
                     return MultiSectionDecreaseSection(
                       title: optionGroup.optionGroupName!,
@@ -63,8 +64,8 @@ class ProductDetailView extends StatelessWidget {
                       list: optionGroup.options!,
                       showErrorOutline: controller.validate && !optionGroup.isSelected && optionGroup.isRequire!,
                     );
-                  } else if (optionGroup.addingTypeId == describeEnum(AddingTypeId.ADD) &&
-                      optionGroup.chooseTypeId == describeEnum(ChooseTypeId.SINGLE)) {
+                  } else if (optionGroup.addingTypeId == AddingTypeId.ADD.name &&
+                      optionGroup.chooseTypeId == ChooseTypeId.SINGLE.name) {
                     /// Tekli Ekleme
                     return SingleSectionBottomSheet(
                       title: optionGroup.optionGroupName!,
@@ -76,12 +77,20 @@ class ProductDetailView extends StatelessWidget {
                       onTap: (int selectedIndex) => controller.singleOptionSelection(optionGroupsIndex, selectedIndex),
                       showErrorOutline: controller.validate && !optionGroup.isSelected && optionGroup.isRequire!,
                     );
-                  } else if ((optionGroup.addingTypeId == describeEnum(AddingTypeId.ADD) ||
-                          optionGroup.addingTypeId == describeEnum(AddingTypeId.SELECT)) &&
-                      optionGroup.chooseTypeId == describeEnum(ChooseTypeId.MULTIPLE)) {
-                    /// Çoklu Ekleme
+                  } else if (optionGroup.addingTypeId == AddingTypeId.SELECT.name && optionGroup.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
                     /// Tekli Seçme
                     return MultiSectionCheckBox(
+                      title: optionGroup.optionGroupName!,
+                      subTitle: optionGroup.description,
+                      list: optionGroup.options!,
+                      onTap: (bool value, int selectedIndex) =>
+                          controller.multiAddOptionSelection(value, optionGroupsIndex, selectedIndex),
+                      maxSection: optionGroup.maxCount,
+                      showErrorOutline: controller.validate && !optionGroup.isSelected && optionGroup.isRequire!,
+                    );
+                  } else if (optionGroup.addingTypeId == AddingTypeId.ADD.name && optionGroup.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
+                    /// Çoklu Ekleme
+                    return MultiSectionCard(
                       title: optionGroup.optionGroupName!,
                       subTitle: optionGroup.description,
                       list: optionGroup.options!,
@@ -110,8 +119,7 @@ class ProductDetailView extends StatelessWidget {
                 itemCount: controller.productDetailModel.features!.length,
                 itemBuilder: (BuildContext context, int featureIndex) {
                   var features = controller.productDetailModel.features![featureIndex];
-                  if (features.addingTypeId == describeEnum(AddingTypeId.SELECT) &&
-                      features.chooseTypeId == describeEnum(ChooseTypeId.SINGLE)) {
+                  if (features.addingTypeId == AddingTypeId.SELECT.name && features.chooseTypeId == ChooseTypeId.SINGLE.name) {
                     /// Tekli Seçme
                     return SingleSectionRadioButton(
                       title: features.featureName!,
@@ -122,8 +130,7 @@ class ProductDetailView extends StatelessWidget {
                       list: features.items!,
                       showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
                     );
-                  } else if (features.addingTypeId == describeEnum(AddingTypeId.DECREASE) &&
-                      features.chooseTypeId == describeEnum(ChooseTypeId.MULTIPLE)) {
+                  } else if (features.addingTypeId == AddingTypeId.DECREASE.name && features.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
                     /// Çoklu Çıkarma
                     return MultiSectionDecreaseSection(
                       title: features.featureName!,
@@ -133,8 +140,7 @@ class ProductDetailView extends StatelessWidget {
                       list: features.items!,
                       showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
                     );
-                  } else if (features.addingTypeId == describeEnum(AddingTypeId.ADD) &&
-                      features.chooseTypeId == describeEnum(ChooseTypeId.SINGLE)) {
+                  } else if (features.addingTypeId == AddingTypeId.ADD.name && features.chooseTypeId == ChooseTypeId.SINGLE.name) {
                     /// Tekli Ekleme
                     return SingleSectionBottomSheet(
                       title: features.featureName!,
@@ -146,12 +152,22 @@ class ProductDetailView extends StatelessWidget {
                       onTap: (int selectedIndex) => controller.singleFeatureSelection(featureIndex, selectedIndex),
                       showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
                     );
-                  } else if ((features.addingTypeId == describeEnum(AddingTypeId.ADD) ||
-                          features.addingTypeId == describeEnum(AddingTypeId.SELECT)) &&
-                      features.chooseTypeId == describeEnum(ChooseTypeId.MULTIPLE)) {
+                  } else if (features.addingTypeId == AddingTypeId.SELECT.name && features.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
                     /// Çoklu Ekleme
                     /// Çoklu Seçme
                     return MultiSectionCheckBox(
+                      title: features.featureName!,
+                      subTitle: features.description!,
+                      list: features.items!,
+                      onTap: (bool value, int selectedIndex) =>
+                          controller.multiAddFeatureSelection(value, featureIndex, selectedIndex),
+                      maxSection: features.maxCount,
+                      showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
+                    );
+                  } else if (features.addingTypeId == AddingTypeId.ADD.name && features.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
+                    /// Çoklu Ekleme
+                    /// Çoklu Seçme
+                    return MultiSectionCard(
                       title: features.featureName!,
                       subTitle: features.description!,
                       list: features.items!,
@@ -182,7 +198,7 @@ class ProductDetailView extends StatelessWidget {
                   controller: controller.cNote,
                   decoration: InputDecoration(
                     hintText: AppLocalization.getLabels(context).productNote,
-                    fillColor: Theme.of(context).colorScheme.background,
+                    fillColor: colorScheme.background,
                   ),
                   textCapitalization: TextCapitalization.sentences,
                   maxLines: 3,

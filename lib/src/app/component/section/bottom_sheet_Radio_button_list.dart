@@ -39,6 +39,7 @@ class _BottomSheetRadioButtonListState<T extends ISectionsWidgetModel> extends S
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = ColorScheme.of(context);
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: widget.list.mapIndexed<Widget>(
@@ -48,14 +49,14 @@ class _BottomSheetRadioButtonListState<T extends ISectionsWidgetModel> extends S
           final Color borderColor;
           final bool showCheckBoxBorder;
           if (selectedIndex == index) {
-            cardColor = Theme.of(context).colorScheme.secondary;
-            onCardColor = Theme.of(context).colorScheme.onSecondary;
-            borderColor = Theme.of(context).colorScheme.secondary;
+            cardColor = colorScheme.secondary;
+            onCardColor = colorScheme.onSecondary;
+            borderColor = colorScheme.secondary;
             showCheckBoxBorder = true;
           } else {
             cardColor = Colors.transparent;
-            onCardColor = Theme.of(context).colorScheme.primary;
-            borderColor = Theme.of(context).colorScheme.primary;
+            onCardColor = colorScheme.primary;
+            borderColor = colorScheme.primary;
             showCheckBoxBorder = false;
           }
           return GestureDetector(
@@ -96,7 +97,7 @@ class _BottomSheetRadioButtonListState<T extends ISectionsWidgetModel> extends S
                                     visible: showCheckBoxBorder,
                                     child: DecoratedBox(
                                       decoration: BoxDecoration(
-                                        color: Theme.of(context).colorScheme.onSecondary,
+                                        color: colorScheme.onSecondary,
                                         shape: BoxShape.circle,
                                       ),
                                     ),

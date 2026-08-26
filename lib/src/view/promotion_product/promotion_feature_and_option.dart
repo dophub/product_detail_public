@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:product_detail/extension.dart';
@@ -11,6 +10,7 @@ import 'package:product_detail/src/controller/promotion_controller.dart';
 import 'package:sip_models/enum.dart';
 import 'package:sip_models/response.dart';
 
+import '../../app/component/section/multi_section_card.dart';
 import '../../app/i10n/i10n.dart';
 
 /// product optionGroups
@@ -41,8 +41,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
             itemCount: optionGroupsList.length,
             itemBuilder: (BuildContext context, int optionGroupsIndex) {
               var optionGroup = optionGroupsList[optionGroupsIndex];
-              if (optionGroup.addingTypeId == describeEnum(AddingTypeId.SELECT) &&
-                  optionGroup.chooseTypeId == describeEnum(ChooseTypeId.SINGLE)) {
+              if (optionGroup.addingTypeId == AddingTypeId.SELECT.name && optionGroup.chooseTypeId == ChooseTypeId.SINGLE.name) {
                 /// Tekli Seçim
                 return SingleSectionRadioButton(
                   title: optionGroup.optionGroupName!,
@@ -54,8 +53,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   list: optionGroup.options!,
                   showErrorOutline: controller.validate && !optionGroup.isSelected && optionGroup.isRequire!,
                 );
-              } else if (optionGroup.addingTypeId == describeEnum(AddingTypeId.DECREASE) &&
-                  optionGroup.chooseTypeId == describeEnum(ChooseTypeId.MULTIPLE)) {
+              } else if (optionGroup.addingTypeId == AddingTypeId.DECREASE.name && optionGroup.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
                 /// Çoklu Çıkarma
                 return MultiSectionDecreaseSection(
                   title: optionGroup.optionGroupName!,
@@ -65,8 +63,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   list: optionGroup.options!,
                   showErrorOutline: controller.validate && !optionGroup.isSelected && optionGroup.isRequire!,
                 );
-              } else if (optionGroup.addingTypeId == describeEnum(AddingTypeId.ADD) &&
-                  optionGroup.chooseTypeId == describeEnum(ChooseTypeId.SINGLE)) {
+              } else if (optionGroup.addingTypeId == AddingTypeId.ADD.name && optionGroup.chooseTypeId == ChooseTypeId.SINGLE.name) {
                 /// Tekli Ekleme
                 return SingleSectionBottomSheet(
                   title: optionGroup.optionGroupName!,
@@ -79,12 +76,20 @@ class PromotionFeatureAndOption extends StatelessWidget {
                       controller.singleOptionSelection(sectionIndex, optionGroupsIndex, selectedIndex),
                   showErrorOutline: controller.validate && !optionGroup.isSelected && optionGroup.isRequire!,
                 );
-              } else if ((optionGroup.addingTypeId == describeEnum(AddingTypeId.ADD) ||
-                      optionGroup.addingTypeId == describeEnum(AddingTypeId.SELECT)) &&
-                  optionGroup.chooseTypeId == describeEnum(ChooseTypeId.MULTIPLE)) {
-                /// Çoklu Ekleme
+              } else if (optionGroup.addingTypeId == AddingTypeId.SELECT.name && optionGroup.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
                 /// Tekli Seçme
                 return MultiSectionCheckBox(
+                  title: optionGroup.optionGroupName!,
+                  subTitle: optionGroup.description,
+                  list: optionGroup.options!,
+                  onTap: (bool value, int selectedIndex) =>
+                      controller.multiAddOptionSelection(sectionIndex, value, optionGroupsIndex, selectedIndex),
+                  maxSection: optionGroup.maxCount,
+                  showErrorOutline: controller.validate && !optionGroup.isSelected && optionGroup.isRequire!,
+                );
+              } else if (optionGroup.addingTypeId == AddingTypeId.ADD.name && optionGroup.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
+                /// Çoklu Ekleme
+                return MultiSectionCard(
                   title: optionGroup.optionGroupName!,
                   subTitle: optionGroup.description,
                   list: optionGroup.options!,
@@ -113,8 +118,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
             itemCount: featuresList.length,
             itemBuilder: (BuildContext context, int featureIndex) {
               var features = featuresList[featureIndex];
-              if (features.addingTypeId == describeEnum(AddingTypeId.SELECT) &&
-                  features.chooseTypeId == describeEnum(ChooseTypeId.SINGLE)) {
+              if (features.addingTypeId == AddingTypeId.SELECT.name && features.chooseTypeId == ChooseTypeId.SINGLE.name) {
                 /// Tekli Seçme
                 return SingleSectionRadioButton(
                   title: features.featureName!,
@@ -126,8 +130,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   list: features.items!,
                   showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
                 );
-              } else if (features.addingTypeId == describeEnum(AddingTypeId.DECREASE) &&
-                  features.chooseTypeId == describeEnum(ChooseTypeId.MULTIPLE)) {
+              } else if (features.addingTypeId == AddingTypeId.DECREASE.name && features.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
                 /// Çoklu Çıkarma
                 return MultiSectionDecreaseSection(
                   title: features.featureName!,
@@ -137,8 +140,7 @@ class PromotionFeatureAndOption extends StatelessWidget {
                   list: features.items!,
                   showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
                 );
-              } else if (features.addingTypeId == describeEnum(AddingTypeId.ADD) &&
-                  features.chooseTypeId == describeEnum(ChooseTypeId.SINGLE)) {
+              } else if (features.addingTypeId == AddingTypeId.ADD.name && features.chooseTypeId == ChooseTypeId.SINGLE.name) {
                 /// Tekli Ekleme
                 return SingleSectionBottomSheet(
                   title: features.featureName!,
@@ -151,12 +153,22 @@ class PromotionFeatureAndOption extends StatelessWidget {
                       controller.singleFeatureSelection(sectionIndex, featureIndex, selectedIndex),
                   showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
                 );
-              } else if ((features.addingTypeId == describeEnum(AddingTypeId.ADD) ||
-                      features.addingTypeId == describeEnum(AddingTypeId.SELECT)) &&
-                  features.chooseTypeId == describeEnum(ChooseTypeId.MULTIPLE)) {
+              } else if ( features.addingTypeId == AddingTypeId.SELECT.name && features.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
                 /// Çoklu Ekleme
                 /// Çoklu Seçme
                 return MultiSectionCheckBox(
+                  title: features.featureName!,
+                  subTitle: features.description!,
+                  list: features.items!,
+                  onTap: (bool value, int selectedIndex) =>
+                      controller.multiAddFeatureSelection(sectionIndex, value, featureIndex, selectedIndex),
+                  maxSection: features.maxCount,
+                  showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
+                );
+              } else if (features.addingTypeId == AddingTypeId.ADD.name  && features.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
+                /// Çoklu Ekleme
+                /// Çoklu Seçme
+                return MultiSectionCard(
                   title: features.featureName!,
                   subTitle: features.description!,
                   list: features.items!,

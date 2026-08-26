@@ -21,6 +21,7 @@ class RadioButtonList<T extends ISectionsWidgetModel> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = ColorScheme.of(context);
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: list
@@ -47,8 +48,8 @@ class RadioButtonList<T extends ISectionsWidgetModel> extends StatelessWidget {
                           child: PriceTextWidgetWithParentheses(
                             price: list[index].getPrice,
                             name: list[index].getName,
-                            color: Theme.of(context).colorScheme.onBackground,
-                            priceColor: Theme.of(context).colorScheme.primary,
+                            color: colorScheme.onBackground,
+                            priceColor: colorScheme.primary,
                           ),
                         ),
                       ),

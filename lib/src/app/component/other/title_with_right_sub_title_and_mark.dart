@@ -21,6 +21,7 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = ColorScheme.of(context);
     return Align(
       alignment: Alignment.centerLeft,
       child: Column(
@@ -40,7 +41,7 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
                         text: maxCount != null && maxCount != 0
                             ? ' ${AppLocalization.getLabels(context).maxSelection(maxCount!)}'
                             : null,
-                        style: s12W400Dark(context).copyWith(color: Theme.of(context).colorScheme.errorContainer),
+                        style: s12W400Dark(context).copyWith(color: colorScheme.errorContainer),
                       ),
                     ],
                   ),
@@ -55,7 +56,7 @@ class TitleWithRightSubTitleAndMark extends StatelessWidget {
               children: [
                 Divider(
                   height: paddingM,
-                  color: Theme.of(context).colorScheme.primary,
+                  color: colorScheme.primary,
                 ),
                 Text(
                   subTitle!,

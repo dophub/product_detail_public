@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// Bottom Sheetin üst kısmında gösterilen sürekle bırak çizgisi
 class BottomSheetHoldAndDragWidget extends StatelessWidget {
-  const BottomSheetHoldAndDragWidget({Key? key}) : super(key: key);
+  const BottomSheetHoldAndDragWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

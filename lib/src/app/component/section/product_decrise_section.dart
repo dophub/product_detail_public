@@ -37,11 +37,12 @@ class MultiSectionDecreaseSection<T extends ISectionsWidgetModel> extends Statel
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Card(
-      color: Theme.of(context).cardColor,
+      color: theme.cardColor,
       shape: showErrorOutline
           ? RoundedRectangleBorder(
-              side: BorderSide(color: Theme.of(context).colorScheme.errorContainer, width: 1),
+              side: BorderSide(color: theme.colorScheme.errorContainer, width: 1),
               borderRadius: BorderRadius.circular(radiusXS),
             )
           : null,
@@ -67,10 +68,10 @@ class MultiSectionDecreaseSection<T extends ISectionsWidgetModel> extends Statel
                         Color color;
                         TextDecoration titleTextDecoration;
                         if (element.getStatus == false) {
-                          color = Theme.of(context).colorScheme.primary;
+                          color = theme.colorScheme.primary;
                           titleTextDecoration = TextDecoration.none;
                         } else {
-                          color = Theme.of(context).colorScheme.onBackground;
+                          color = theme.colorScheme.onBackground;
                           titleTextDecoration = TextDecoration.lineThrough;
                         }
                         return GestureDetector(
