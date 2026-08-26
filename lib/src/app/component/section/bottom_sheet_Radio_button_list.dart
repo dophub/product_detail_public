@@ -59,7 +59,11 @@ class _BottomSheetRadioButtonListState<T extends ISectionsWidgetModel> extends S
             borderColor = colorScheme.primary;
             showCheckBoxBorder = false;
           }
-          return GestureDetector(
+          return InkWell(
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            splashColor: Colors.transparent,
             onTap: () => onSelect(index),
             child: Material(
               color: Colors.transparent,

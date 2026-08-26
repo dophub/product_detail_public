@@ -74,7 +74,11 @@ class MultiSectionDecreaseSection<T extends ISectionsWidgetModel> extends Statel
                           color = theme.colorScheme.onBackground;
                           titleTextDecoration = TextDecoration.lineThrough;
                         }
-                        return GestureDetector(
+                        return InkWell(
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          splashColor: Colors.transparent,
                           onTap: () => onSelect(index),
                           child: DecoratedBox(
                             decoration: BoxDecoration(

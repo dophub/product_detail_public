@@ -54,7 +54,11 @@ class MultiSectionCheckBox<T extends ISectionsWidgetModel> extends StatelessWidg
             Column(
               children: list
                   .mapIndexed<Widget>(
-                    (index, element) => GestureDetector(
+                    (index, element) => InkWell(
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      splashColor: Colors.transparent,
                       onTap: () => onSelect(context, !list[index].getStatus, index),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,

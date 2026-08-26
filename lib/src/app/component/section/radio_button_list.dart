@@ -25,7 +25,11 @@ class RadioButtonList<T extends ISectionsWidgetModel> extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: list
-          .mapIndexed<Widget>((index, element) => GestureDetector(
+          .mapIndexed<Widget>((index, element) => InkWell(
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                splashColor: Colors.transparent,
                 onTap: () => onSelect(index),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,

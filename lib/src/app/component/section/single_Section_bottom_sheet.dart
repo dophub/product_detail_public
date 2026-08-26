@@ -51,7 +51,11 @@ class SingleSectionBottomSheet<T extends ISectionsWidgetModel> extends Stateless
       if (selectedCardColor != null) cardColor = selectedCardColor!;
       if (selectedOnCardColor != null) onCardColor = selectedOnCardColor!;
     }
-    return GestureDetector(
+    return InkWell(
+      focusColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
       onTap: () => onSelect(context),
       child: Card(
         color: cardColor,

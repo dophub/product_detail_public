@@ -72,7 +72,11 @@ class MultiSectionCard<T extends ISectionsWidgetModel> extends StatelessWidget {
                           borderColor = theme.colorScheme.onBackground;
                           textColor = null;
                         }
-                        return GestureDetector(
+                        return InkWell(
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          splashColor: Colors.transparent,
                           onTap: () => onSelect(context, !element.getStatus, index),
                           child: DecoratedBox(
                             decoration: BoxDecoration(
