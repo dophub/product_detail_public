@@ -50,7 +50,10 @@ class PromotionDetails extends StatelessWidget {
                     // Miktar Button
                     const PromotionQuantityRowAndButton(),
                     // Promotion ürün ise
-                    PromotionProductDetailView(controller: controller.optionViewController!),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: paddingM).copyWith(top: paddingS),
+                      child: PromotionProductDetailView(controller: controller.optionViewController!),
+                    ),
                   ],
                 ):const SizedBox()
       ],

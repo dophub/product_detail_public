@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:product_detail/extension.dart';
-import 'package:product_detail/src/app/component/other/note_dialog.dart';
 import 'package:product_detail/src/app/component/section/multi_section_check_box.dart';
 import 'package:product_detail/src/app/component/section/product_decrise_section.dart';
 import 'package:product_detail/src/app/component/section/single_Section_bottom_sheet.dart';
@@ -11,6 +10,7 @@ import 'package:product_detail/src/controller/product_controller.dart';
 import 'package:sip_models/enum.dart';
 import 'package:sip_models/response.dart';
 
+import '../../app/component/other/product_note_field.dart';
 import '../../app/component/section/multi_section_card.dart';
 import '../../app/i10n/i10n.dart';
 
@@ -25,7 +25,6 @@ class ProductDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = ColorScheme.of(context);
     return GetBuilder<ProductController>(
       id: 'productDetailModelUpdate',
       builder: (ProductController controller) {
@@ -77,7 +76,8 @@ class ProductDetailView extends StatelessWidget {
                       onTap: (int selectedIndex) => controller.singleOptionSelection(optionGroupsIndex, selectedIndex),
                       showErrorOutline: controller.validate && !optionGroup.isSelected && optionGroup.isRequire!,
                     );
-                  } else if (optionGroup.addingTypeId == AddingTypeId.SELECT.name && optionGroup.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
+                  } else if (optionGroup.addingTypeId == AddingTypeId.SELECT.name &&
+                      optionGroup.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
                     /// Tekli Seçme
                     return MultiSectionCheckBox(
                       title: optionGroup.optionGroupName!,
@@ -88,7 +88,8 @@ class ProductDetailView extends StatelessWidget {
                       maxSection: optionGroup.maxCount,
                       showErrorOutline: controller.validate && !optionGroup.isSelected && optionGroup.isRequire!,
                     );
-                  } else if (optionGroup.addingTypeId == AddingTypeId.ADD.name && optionGroup.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
+                  } else if (optionGroup.addingTypeId == AddingTypeId.ADD.name &&
+                      optionGroup.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
                     /// Çoklu Ekleme
                     return MultiSectionCard(
                       title: optionGroup.optionGroupName!,
@@ -119,7 +120,8 @@ class ProductDetailView extends StatelessWidget {
                 itemCount: controller.productDetailModel.features!.length,
                 itemBuilder: (BuildContext context, int featureIndex) {
                   var features = controller.productDetailModel.features![featureIndex];
-                  if (features.addingTypeId == AddingTypeId.SELECT.name && features.chooseTypeId == ChooseTypeId.SINGLE.name) {
+                  if (features.addingTypeId == AddingTypeId.SELECT.name &&
+                      features.chooseTypeId == ChooseTypeId.SINGLE.name) {
                     /// Tekli Seçme
                     return SingleSectionRadioButton(
                       title: features.featureName!,
@@ -130,7 +132,8 @@ class ProductDetailView extends StatelessWidget {
                       list: features.items!,
                       showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
                     );
-                  } else if (features.addingTypeId == AddingTypeId.DECREASE.name && features.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
+                  } else if (features.addingTypeId == AddingTypeId.DECREASE.name &&
+                      features.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
                     /// Çoklu Çıkarma
                     return MultiSectionDecreaseSection(
                       title: features.featureName!,
@@ -140,7 +143,8 @@ class ProductDetailView extends StatelessWidget {
                       list: features.items!,
                       showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
                     );
-                  } else if (features.addingTypeId == AddingTypeId.ADD.name && features.chooseTypeId == ChooseTypeId.SINGLE.name) {
+                  } else if (features.addingTypeId == AddingTypeId.ADD.name &&
+                      features.chooseTypeId == ChooseTypeId.SINGLE.name) {
                     /// Tekli Ekleme
                     return SingleSectionBottomSheet(
                       title: features.featureName!,
@@ -152,7 +156,8 @@ class ProductDetailView extends StatelessWidget {
                       onTap: (int selectedIndex) => controller.singleFeatureSelection(featureIndex, selectedIndex),
                       showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
                     );
-                  } else if (features.addingTypeId == AddingTypeId.SELECT.name && features.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
+                  } else if (features.addingTypeId == AddingTypeId.SELECT.name &&
+                      features.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
                     /// Çoklu Ekleme
                     /// Çoklu Seçme
                     return MultiSectionCheckBox(
@@ -164,7 +169,8 @@ class ProductDetailView extends StatelessWidget {
                       maxSection: features.maxCount,
                       showErrorOutline: controller.validate && !features.isSelected && features.isRequire!,
                     );
-                  } else if (features.addingTypeId == AddingTypeId.ADD.name && features.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
+                  } else if (features.addingTypeId == AddingTypeId.ADD.name &&
+                      features.chooseTypeId == ChooseTypeId.MULTIPLE.name) {
                     /// Çoklu Ekleme
                     /// Çoklu Seçme
                     return MultiSectionCard(
@@ -185,28 +191,11 @@ class ProductDetailView extends StatelessWidget {
                 },
               ),
             ),
-            GestureDetector(
-              child: GestureDetector(
-                onTap: () {
-                  NoteDialog().showMenuDialog(
-                    context,
-                    text: controller.cNote.text,
-                    onClose: controller.onCloseNotDialog,
-                  );
-                },
-                child: TextFormField(
-                  controller: controller.cNote,
-                  decoration: InputDecoration(
-                    hintText: AppLocalization.getLabels(context).productNote,
-                    fillColor: colorScheme.background,
-                  ),
-                  textCapitalization: TextCapitalization.sentences,
-                  maxLines: 3,
-                  enabled: false,
-                  textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.text,
-                ),
-              ),
+
+            /// Note
+            ProductNoteField(
+              controller: controller.cNote,
+              onClose: controller.onCloseNotDialog,
             ),
           ],
         );
