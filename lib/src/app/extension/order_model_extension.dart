@@ -8,8 +8,8 @@ import '../exception/exception.dart';
 extension OrderModelExtension on ProductDetailModel {
   /// Sepete Buttonuna tıklandığında tetiklenen Fon.
   ItemOrder? getBasketModel({
-    orderItemId,
-    required int count,
+    int? orderItemId,
+    required num count,
     required double amount,
     required String note,
     required TimeoutAction timeoutAction,
@@ -37,7 +37,7 @@ extension OrderModelExtension on ProductDetailModel {
   }
 
   /// Secilen SECTION lere göre toplam tutarı güncellemekte
-  double getTotalAmount({required PriceType priceType, required int quantity}) {
+  double getTotalAmount({required PriceType priceType, required num quantity}) {
     double _amount = 0;
     _amount = price!.getPrice(priceType);
 
@@ -122,8 +122,8 @@ extension OrderModelExtension on ProductDetailModel {
 extension PromotionModelExtension on PromotionMenuDetailModel {
   /// Sepete Buttonuna tıklandığında tetiklenen Fon.
   ItemOrder? getBasketModel({
-    orderItemId,
-    required int count,
+    int? orderItemId,
+    required num count,
     required double amount,
     required String note,
     required TimeoutAction timeoutAction,
@@ -187,7 +187,7 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
     return item;
   }
 
-  double getTotalAmount({required PriceType priceType, required int quantity}) {
+  double getTotalAmount({required PriceType priceType, required num quantity}) {
     double _amount = 0;
     _amount = price!.getPrice(priceType);
 

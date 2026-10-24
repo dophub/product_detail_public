@@ -51,7 +51,7 @@ class PromotionViewController extends ValueNotifier<double> {
   }
 
   /// Ürün adedini güncellemek için kullanılmakta
-  set count(int _count) => _controller.countUpdate(_count);
+  void updateCount(num _count, [double multiplier = 1]) => _controller.updateCount(_count, multiplier);
 
   /// Kullanıcının seçtiği özeliklere ve adede göre güncell toplam tutardır
   double get amount => _controller.amount;
@@ -92,7 +92,10 @@ class PromotionController extends GetxController {
   late Rx<TextEditingController> _cNote;
 
   /// Ürün adedidir
-  late Rx<int> _count;
+  late RxNum _count;
+
+  /// Birim Çarpanı
+  late RxDouble _multiplier;
 
   /// [ProductViewController] te extends edilen [ValueNotifier] value kısmını güncellemek için kullanılmakta
   Function(double) onChangeAmount;
@@ -130,7 +133,8 @@ class PromotionController extends GetxController {
 
     /// [orderItem] olduğunda sepette olan ürünün adedini setlemekte
     /// yoksa 1 olaçaktır
-    _count = orderItem == null ? 1.obs : orderItem!.count!.obs;
+    _count = RxNum(orderItem?.count! ?? 1);
+    _multiplier = RxDouble(orderItem?.unit?.multiplier ?? 1.0);
   }
 
   bool get validate => _validate.value;
@@ -140,10 +144,16 @@ class PromotionController extends GetxController {
     update(['promotionDetailModelUpdate']);
   }
 
-  int get count => _count.value;
+  num get count => _count.value;
 
-  set count(int value) {
+  set count(num value) {
     _count.value = value;
+  }
+
+  double get multiplier => _multiplier.value;
+
+  set multiplier(double value) {
+    _multiplier.value = value;
   }
 
   double get amount => _amount.value;
@@ -231,9 +241,10 @@ class PromotionController extends GetxController {
   }
 
   /// Miktar buttonuna tıklandığı zaman çalışan metod
-  void countUpdate(int _count) {
-    amount = (amount / count) * _count;
+  void updateCount(num _count, double _multiplier) {
+    amount = (amount / count / multiplier) * _count * _multiplier;
     count = _count;
+    multiplier = _multiplier;
   }
 
   /// Secilen SECTION lere göre toplam tutarı güncellemekte
