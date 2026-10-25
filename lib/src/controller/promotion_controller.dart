@@ -242,14 +242,14 @@ class PromotionController extends GetxController {
 
   /// Miktar buttonuna tıklandığı zaman çalışan metod
   void updateCount(num _count, double _multiplier) {
-    amount = (amount / count / multiplier) * _count * _multiplier;
     count = _count;
     multiplier = _multiplier;
+    amount = promotionMenuModel.getTotalAmount(priceType: priceType, quantity: count, multiplier: multiplier);
   }
 
   /// Secilen SECTION lere göre toplam tutarı güncellemekte
   void amountUpdate() {
-    amount = promotionMenuModel.getTotalAmount(priceType: priceType, quantity: count);
+    amount = promotionMenuModel.getTotalAmount(priceType: priceType, quantity: count, multiplier: multiplier);
   }
 
   /// Sepete Buttonuna tıklandığında tetiklenen Fon.

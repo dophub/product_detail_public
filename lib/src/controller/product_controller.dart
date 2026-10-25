@@ -221,14 +221,14 @@ class ProductController extends GetxController {
 
   /// Miktar buttonuna tıklandığı zaman çalışan metod
   void updateCount(num _count, double _multiplier) {
-    amount = (amount / count / multiplier) * _count * _multiplier;
     count = _count;
     multiplier = _multiplier;
+    amount = productDetailModel.getTotalAmount(priceType: priceType, quantity: count, multiplier: multiplier);
   }
 
   /// Secilen SECTION lere göre toplam tutarı güncellemekte
   void amountUpdate() {
-    amount = productDetailModel.getTotalAmount(priceType: priceType, quantity: count);
+    amount = productDetailModel.getTotalAmount(priceType: priceType, quantity: count, multiplier: multiplier);
   }
 
   /// Sepete Buttonuna tıklandığında tetiklenen Fon.

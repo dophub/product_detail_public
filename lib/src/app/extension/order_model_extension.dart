@@ -37,7 +37,7 @@ extension OrderModelExtension on ProductDetailModel {
   }
 
   /// Secilen SECTION lere göre toplam tutarı güncellemekte
-  double getTotalAmount({required PriceType priceType, required num quantity}) {
+  double getTotalAmount({required PriceType priceType, required num quantity, required double multiplier}) {
     double _amount = 0;
     _amount = price!.getPrice(priceType);
 
@@ -58,7 +58,7 @@ extension OrderModelExtension on ProductDetailModel {
         }
       }
     }
-    return _amount * quantity;
+    return _amount * quantity * multiplier;
   }
 
   /// Frame yüklendikten sonra section lerde olan isDefault alanına göre isSelected alanlarımızı güncelliyoruz
@@ -187,7 +187,7 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
     return item;
   }
 
-  double getTotalAmount({required PriceType priceType, required num quantity}) {
+  double getTotalAmount({required PriceType priceType, required num quantity, required double multiplier}) {
     double _amount = 0;
     _amount = price!.getPrice(priceType);
 
@@ -221,7 +221,7 @@ extension PromotionModelExtension on PromotionMenuDetailModel {
         }
       }
     }
-    return _amount * quantity;
+    return _amount * quantity * multiplier;
   }
 
   /// Frame yüklendikten sonra section lerde olan isDefault alanına göre isSelected alanlarımızı güncelliyoruz
