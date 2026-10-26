@@ -6,18 +6,18 @@ import 'package:example/App/Theme/AppColors.dart';
 /// Yuvarlak mavi Mıktar ARTIRMA butonu
 class CircleDecreaseButton extends StatelessWidget {
   final Function() onTap;
-  final int? quantity;
+  final num? quantity;
   final bool deleteAble;
 
   final double? iconSize;
 
   const CircleDecreaseButton({
-    Key? key,
+    super.key,
     required this.onTap,
     this.iconSize,
     this.quantity,
     this.deleteAble = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -37,19 +37,18 @@ class CircleDecreaseButton extends StatelessWidget {
           border: Border.all(width: 1, color: AppColor.primaryVariant),
         ),
         child: AnimatedSwitcher(
-          duration: const Duration(milliseconds:350),
+          duration: const Duration(milliseconds: 350),
           switchInCurve: Curves.bounceOut,
-          reverseDuration: const Duration(milliseconds:0),
-          transitionBuilder: (Widget child, Animation<double> animation) =>
-              quantity == 1
-                  ? ScaleTransition(
-                      scale: animation,
-                      child: child,
-                    )
-                  : FadeTransition(
-                      opacity: animation,
-                      child: child,
-                    ),
+          reverseDuration: const Duration(milliseconds: 0),
+          transitionBuilder: (Widget child, Animation<double> animation) => quantity == 1
+              ? ScaleTransition(
+                  scale: animation,
+                  child: child,
+                )
+              : FadeTransition(
+                  opacity: animation,
+                  child: child,
+                ),
           child: quantity == 1 && deleteAble
               ? Icon(
                   CupertinoIcons.delete,

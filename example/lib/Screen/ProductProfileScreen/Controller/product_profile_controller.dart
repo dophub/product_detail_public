@@ -20,7 +20,7 @@ class ProductProfileController extends GetxController {
   late Rx<ProductDetailModel> _productDetailModel;
   late final int dealerId;
   late Rx<double> _amount;
-  late Rx<int> _count;
+  late Rx<num> _count;
   late Rx<int> _imagePositionIndex;
   final SnappingSheetController bottomSheetScrollController = SnappingSheetController();
   late Rx<double> _bottomSheetPosition;
@@ -68,9 +68,9 @@ class ProductProfileController extends GetxController {
     }
   }
 
-  int get count => _count.value;
+  num get count => _count.value;
 
-  set count(int value) {
+  set count(num value) {
     _count.value = value;
   }
 
@@ -135,9 +135,9 @@ class ProductProfileController extends GetxController {
   }
 
   /// Miktar buttonuna tıklandığı zaman çalışan metod
-  void onTapQuantityBtn(int value) {
+  void onTapQuantityBtn(num value) {
     count = value;
-    optionViewController!.count = value;
+    optionViewController!.updateCount(count, 1);
   }
 
   /// Api den Gelen response teki resim listesinden Size Id si [ImageSizeId.mobile_detail] olan cekiyor.

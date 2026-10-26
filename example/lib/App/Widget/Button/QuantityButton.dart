@@ -7,18 +7,18 @@ import 'package:example/App/Widget/Button/CircleDecreaseButton.dart';
 
 /// Ürün Miktar butonu ' - Aded + ' Şeklinde
 class QuantityButton extends StatelessWidget {
-  final ValueChanged<int> onChange;
-  final int quantity;
+  final ValueChanged<num> onChange;
+  final num quantity;
   final bool deleteAble;
   final double? iconSize;
 
   const QuantityButton({
-    Key? key,
+    super.key,
     required this.onChange,
     this.deleteAble = false,
     this.quantity = 1,
     this.iconSize,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class QuantityButton extends StatelessWidget {
             if (quantity > 1) {
               onChange(quantity - 1);
             } else {
-              if(deleteAble) onChange(0);
+              if (deleteAble) onChange(0);
             }
           },
           iconSize: iconSize,
@@ -41,8 +41,7 @@ class QuantityButton extends StatelessWidget {
           width: SizeConfig.blockSizeHorizontal * 6,
           child: FittedBox(
             fit: BoxFit.fitWidth,
-            child: Text(quantity.toString(),
-                style: s16W700Dark(context), maxLines: 1),
+            child: Text(quantity.toString(), style: s16W700Dark(context), maxLines: 1),
           ),
         ),
         CircleAddButton(

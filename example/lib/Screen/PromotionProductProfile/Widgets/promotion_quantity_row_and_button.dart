@@ -8,8 +8,8 @@ import 'package:example/Screen/PromotionProductProfile/Controller/promotion_prof
 class PromotionQuantityRowAndButton extends StatelessWidget {
   /// 'Adet yazısı - Miktar butonlar' şeklinde Row Widget
   const PromotionQuantityRowAndButton({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
